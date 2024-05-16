@@ -1,0 +1,140 @@
+\documentclass{beamer}
+\usepackage{ctex}
+
+% 样式
+\usetheme{Copenhagen}
+\usecolortheme[RGB={0,86,32}]{structure}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{sections/subsections in toc}[square]
+
+% 图片
+\graphicspath{{img/}}
+
+% 公式
+\usepackage{amsmath,bm}
+\usepackage{lmodern}
+\usepackage{utopia}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% 字体
+\setCJKmainfont[BoldFont={STHeiti}, ItalicFont={STKaiti}]{STSong}
+\setCJKsansfont{PingFang SC}
+\setCJKmonofont{PingFang SC}
+\RequirePackage{fontspec,xltxtra,xunicode}
+\setmainfont[Mapping=tex-text]{Times New Roman}
+\setsansfont[Mapping=tex-text]{Helvetica Neue}
+\setmonofont{Monaco}
+\usefonttheme[onlymath]{serif}
+
+% 模块
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tasks}
+\usepackage{tabto}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[normalem]{ulem}
+\newcommand\redout{\bgroup\markoverwith
+{\textcolor{red}{\rule[0.5ex]{2pt}{0.8pt}}}\ULon}
+\setlength{\leftmargini}{12pt}
+\usepackage{xpatch}
+\xpatchcmd{\itemize}
+  {\def\makelabel}
+  {\ifnum\@itemdepth=1\relax
+     \setlength\itemsep{1.5ex}% separation for first level
+   \else
+     \ifnum\@itemdepth=2\relax
+       \setlength\itemsep{1ex}% separation for second level
+       \setlength\topsep{1ex}% separation for second level
+     \else
+       \ifnum\@itemdepth=3\relax
+         \setlength\itemsep{1ex}% separation for third level
+         \setlength\topsep{1ex}% separation for third level
+   \fi\fi\fi\def\makelabel
+  }
+ {}
+ {}
+\xpatchcmd{\beamer@enum@}
+  {\def\makelabel}
+  {\ifnum\@itemdepth=1\relax
+     \setlength\itemsep{1.5ex}% separation for first level
+   \else
+     \ifnum\@itemdepth=2\relax
+       \setlength\itemsep{1ex}% separation for second level
+       \setlength\topsep{1ex}% separation for second level
+     \else
+       \ifnum\@itemdepth=3\relax
+         \setlength\itemsep{1ex}% separation for third level
+         \setlength\topsep{1ex}% separation for third level
+   \fi\fi\fi\def\makelabel
+  }
+ {}
+ {}
+
+ % 代码
+ \definecolor{codered}{rgb}{0.8,0,0}
+ \definecolor{codegreen}{rgb}{0,0.6,0}
+ \definecolor{codeblue}{rgb}{0,0,0.9}
+ \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+ \definecolor{codepurple}{rgb}{0.58,0,0.82}
+ \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ \lstdefinestyle{vscode}{
+     % backgroundcolor=\color{backcolour},
+     commentstyle=\ttfamily\color{codegreen},
+     keywordstyle=\color{codeblue},
+     numberstyle=\scriptsize\color{codegray},
+     stringstyle=\color{codered},
+     basicstyle=\ttfamily\footnotesize,
+     breakatwhitespace=false,
+     breaklines=true,
+     captionpos=b,
+     keepspaces=true,
+     numbers=left,
+     numbersep=5pt,
+     showspaces=false,
+     showstringspaces=false,
+     showtabs=false,
+     tabsize=2
+ }
+ \lstset{style=vscode}
+ \lstset{inputpath={code/}}
+
+ % 流程图
+ \usepackage{tikz}
+ \usetikzlibrary{
+     shapes,
+     arrows,
+     arrows.meta,
+     tikzmark,
+     calc,
+     positioning
+ }
+ \usetikzmarklibrary{listings}
+ \newcommand{\redbox}[3]{
+     \draw[red, very thick] (pic cs:line-#1-start) ++(#2*5.4pt-1.25pt, -.25em) rectangle ++(#3*5.4pt+2.4pt, 1em);
+ }
+ \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=1cm, minimum height=.5cm, text centered, text width=1.5cm, draw=black, font=\footnotesize]
+ \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1cm, minimum height=.5cm, text centered, text width=1.5cm, draw=black, font=\footnotesize]
+ \tikzstyle{process} = [rectangle, minimum width=1cm, minimum height=.5cm, text centered, text width=1.5cm, draw=black, font=\footnotesize]
+ \tikzstyle{decision} = [diamond, aspect=3, text centered, draw=black, font=\footnotesize]
+ \tikzstyle{arrow} = [->,>=stealth, font=\footnotesize]
+
+
+ %------------------------------------------------------------
+ \AtBeginSection[]
+ {
+     \begin{frame}
+         \frametitle{目录}
+         \tableofcontents[currentsection,hideallsubsections]
+     \end{frame}
+ }
+ %------------------------------------------------------------
+
+
+ \include{src/ch00}
