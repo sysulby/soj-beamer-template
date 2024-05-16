@@ -1,0 +1,653 @@
+%------------------------------------------------------------
+\title[08 - 多重循环]
+{08 - 多重循环}
+
+\subtitle{C++ 程序设计基础}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例题回顾 - 加减数列求和}
+
+    \alt<2>{
+        \lstinputlisting[language=C++]{ch08/cal_seq1.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^6$)，求 $1 - 2 + 3 - 4 + 5 ...$，一直到 $n$ 的和。
+
+                \item 样例输入
+                
+                    \lstinline|7|
+
+                \item 样例输出
+                
+                    \lstinline|4|
+                
+                \item 解释说明
+                
+                    $1 - 2 + 3 - 4 + 5 - 6 + 7 = 4$
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{讨论}
+
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            {\large 既然循环体中可以写顺序结构和分支结构，\\那么是否可以写循环结构呢？}
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{多重循环}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{多重循环}
+
+    \begin{itemize}[<+->]
+        \item 一重循环
+        \item 二重循环
+        
+        \begin{itemize}
+            \item 在一重循环的循环体中再写一个循环
+        \end{itemize}
+
+        \item 三重循环
+        \item ...
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.1.1：输出一行 m 个星号}
+
+    \alt<2>{
+        \lstinputlisting[language=C++]{ch08/star_m.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $m$ ($1 \le n \le 1000$)，输出一行 $m$ 个星号。
+
+                \item 样例输入
+
+                    \lstinline|5|
+
+                \item 样例输出\\*****
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.1.2：输出 n 行 m 个星号}
+
+    % \alt<2>{
+        % \lstinputlisting[language=C++]{ch08/star_n_m.cc}
+    % }
+    {
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $n,m$ ($1 \le n,m \le 1000$)，输出 $n$ 行 $m$ 个星号。
+
+                \item 样例输入
+
+                    \lstinline|3 5|
+
+                \item 样例输出\\*****\\*****\\*****
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{步骤拆分}
+
+    \begin{columns}
+        \column{.01\textwidth}
+
+        \column{.70\textwidth}
+        \lstinputlisting[language=C++]{ch08/star_n_m.cc}
+        \begin{tikzpicture}[overlay]
+            % height = 0.43
+            % width = (0,6.4)
+            % int i = 1;
+            \uncover<2>{\draw[red, very thick] (1.665,3.28) rectangle (3.6,3.71);}
+            % i <= n
+            \uncover<3,17,31>{\draw[red, very thick] (3.7,3.28) rectangle (5.1,3.71);}
+            % i++
+            \uncover<16,30>{\draw[red, very thick] (5.2,3.28) rectangle (5.9,3.71);}
+            % int j = 1;
+            \uncover<4,18>{\draw[red, very thick] (2.45,2.90) rectangle (4.4,3.33);}
+            % j <= m;
+            \uncover<5,8,11,14,19,22,25,28>{\draw[red, very thick] (4.5,2.90) rectangle (5.9,3.33);}
+            % j++
+            \uncover<7,10,13,21,24,27>{\draw[red, very thick] (6.0,2.90) rectangle (6.7,3.33);}
+            % cout << "*";
+            \uncover<6,9,12,20,23,26>{\draw[red, very thick] (0,2.47) rectangle (6.4,2.95);}
+            % cout << endl;
+            \uncover<15,29>{\draw[red, very thick] (0,1.72) rectangle (6.4,2.15);}
+            % return 0;
+            \uncover<32>{\draw[red, very thick] (0,0.97) rectangle (6.4,1.40);}
+        \end{tikzpicture}
+
+        \column{.30\textwidth}
+        \begin{itemize}
+                \uncover<2-> {
+                \item 输入
+                
+                \lstinline|2 3|
+
+                \item 变量
+
+                    \only<2>{\textcolor{red}{\lstinline|i = 1|}}
+                    \only<3-15>{\lstinline|i = 1|}
+                    \only<16>{\textcolor{red}{\lstinline|i = 2|}}
+                    \only<17-29>{\lstinline|i = 2|}
+                    \only<30>{\textcolor{red}{\lstinline|i = 3|}}
+                    \only<31>{\textcolor{red}{\lstinline|i <= 2| 不成立}}
+                    % \only<32->{\lstinline|i = 3|}
+
+                    \only<4,18>{\textcolor{red}{\lstinline|j = 1|}}
+                    \only<5-6,19-20>{\lstinline|j = 1|}
+                    \only<7,21>{\textcolor{red}{\lstinline|j = 2|}}
+                    \only<8-9,22-23>{\lstinline|j = 2|}
+                    \only<10,24>{\textcolor{red}{\lstinline|j = 3|}}
+                    \only<11-12,25-26>{\lstinline|j = 3|}
+                    \only<13,27>{\textcolor{red}{\lstinline|j = 4|}}
+                    \only<14,28>{\textcolor{red}{\lstinline|j <= 3| 不成立}}
+                    % \only<14,28>{\lstinline|j = 4|}
+
+                }
+
+                \uncover<6-> {
+                \item 输出
+
+                    \uncover<6->{\lstinline|*|}
+                    \uncover<9->{\lstinline|*|}
+                    \uncover<12->{\lstinline|*|\\}
+                    \uncover<20->{\lstinline|*|}
+                    \uncover<23->{\lstinline|*|}
+                    \uncover<26->{\lstinline|*|}
+
+                }
+        \end{itemize}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{多重循环的应用}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.2：输出 n 行从 1 到 m 的整数}
+
+    \alt<2>{
+        \lstinputlisting[language=C++]{ch08/num_n_m.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $n,m$ ($1 \le n,m \le 1000$)，输出 $n$ 行从 $1$ 到 $m$ 的整数。
+
+                \item 样例输入
+
+                    \lstinline|2 4|
+
+                \item 样例输出
+                
+                    \lstinline|1 2 3 4|\\
+                    \lstinline|1 2 3 4|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.3：输出二重循环的循环变量}
+
+    \alt<2>{
+        \lstinputlisting[language=C++]{ch08/num_ij.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 在【例 8.2】的基础上，输出二重循环的循环变量 \lstinline|(i,j)| 的值，每次输出以空格间隔。
+                
+                \item 样例输入
+
+                    \lstinline|2 4|
+
+                \item 样例输出
+                
+                    \lstinline|(1,1) (1,2) (1,3) (1,4)|\\
+                    \lstinline|(2,1) (2,2) (2,3) (2,4)|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 8.4：输出二重循环的循环变量}
+    \begin{itemize}
+        \item 当输入 n 为 3，m 为 4 时，输出如图所示\\
+        \lstinline|3 4|\\
+        \lstinline|(1,1) (1,2) (1,3) (1,4)|\ \ \ \ \  
+        % i
+        \only<2>{\textcolor{red}{\lstinline|i = 1|}}
+        \only<3>{\textcolor{red}{\lstinline|i = 2|}}
+        \only<4>{\textcolor{red}{\lstinline|i = 3|}}
+        % j
+        \only<5>{\textcolor{red}{\lstinline|j = 1|}}
+        \only<6>{\textcolor{red}{\lstinline|j = 2|}}
+        \only<7>{\textcolor{red}{\lstinline|j = 3|}}
+        \only<8>{\textcolor{red}{\lstinline|j = 4|}}
+        \\
+        \lstinline|(2,1) (2,2) (2,3) (2,4)|\\
+        \lstinline|(3,1) (1,2) (1,3) (1,4)|
+        \item i 表示所在的行号
+        \item j 表示所在的列号
+    \end{itemize}
+
+    \begin{tikzpicture}[overlay]
+
+        \begin{columns}
+            \column{.50\textwidth}
+            % i
+            \only<2>{\draw[red, very thick] (0.3,3.00) rectangle (5.1,3.43);}
+            \only<3>{\draw[red, very thick] (0.3,2.50) rectangle (5.1,2.93);}
+            \only<4>{\draw[red, very thick] (0.3,2.03) rectangle (5.1,2.46);}
+            % j
+            \only<5>{\draw[red, very thick] (0.3,3.43) rectangle (1.5,2);}
+            \only<6>{\draw[red, very thick] (1.5,3.43) rectangle (2.6,2);}
+            \only<7>{\draw[red, very thick] (2.6,3.43) rectangle (3.7,2);}
+            \only<8>{\draw[red, very thick] (3.7,3.43) rectangle (4.9,2);}
+        \end{columns}
+        
+    \end{tikzpicture}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.5：输出数字直角三角形}
+
+    \alt<2>{
+        \lstinputlisting[language=C++]{ch08/num_triangle.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^3$)，输出一个等腰直角三角形，腰长为 $n$，每行由整数 $1, 2, 3 ...$ 组成，整数之间用空格间隔。
+
+                \item 样例输入
+
+                    \lstinline|3|
+
+                \item 样例输出
+                
+                    \lstinline|1|\\
+                    \lstinline|1 2|\\
+                    \lstinline|1 2 3|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.6：累加数列求和}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++]{ch08/cal_seq2.cc}
+        \begin{tikzpicture}[overlay]
+            \only<3>{\draw[red, very thick] (1.3,3.30) rectangle (3,3.73);}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 已知 $A_i = 1 + 2 + 3 + ... + i$，$S_n = A_1 + A_2 + A_3 + ... + A_n$。\\
+                    编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^4$)，计算 $S_n$ 的结果并输出。
+
+                \item 样例输入
+
+                    \lstinline|3|
+
+                \item 样例输出
+                
+                    \lstinline|10|
+
+                \item 样例解释\\
+                
+                    $A_1 = 1$\\
+                    $A_2 = 1 + 2$\\
+                    $A_3 = 1 + 2 + 3$\\
+                    $S_3 = A_1 + A_2 + A_3$
+                
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.6：累加数列求和 - 代码优化}
+    \lstinputlisting[language=C++]{ch08/cal_seq3.cc}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.7：空心矩形}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++]{ch08/rectangle_hollow.cc}
+        \begin{tikzpicture}[overlay]
+            \only<3>{\draw[red, very thick] (3,4) rectangle (9.9,4.43);}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $n,m$ ($1 \leq n,m \leq 10^3$)，\\输出一个 $n$ 行 $m$ 列的空心矩形，矩形由星号形成。
+                
+                \item 样例输入
+
+                    \lstinline|4 7|
+
+                \item 样例输出\\
+                
+                    \lstinline|*******|\\
+                    \lstinline|* \ \ \ \ \*|\\
+                    \lstinline|* \ \ \ \ \*|\\
+                    \lstinline|*******|
+                
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.8：等腰三角形}
+
+    \alt<2>{
+        \lstinputlisting[language=C++]{ch08/triangle_isosceles.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 20$)，\\输出高为 $n$ 的由 * 号组成的等腰三角形。
+                
+                \item 样例输入
+
+                    \lstinline|3|
+
+                \item 样例输出\\
+                
+                    \lstinline| \ \ \*|\\
+                    \lstinline| \ \***|\\
+                    \lstinline| \*****|
+                
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.9：求一个整数中含有多少个 1}
+
+    \alt<2-6>{
+        \alt<2-4> {
+            \begin{columns}
+
+                \column{.65\textwidth}
+                \lstinputlisting[language=C++]{ch08/cnt_1_1.cc}
+    
+                \column{.35\textwidth}
+                \uncover<3->{
+                    \begin{itemize}[<+->]
+                        \item<3-> 运行结果正确吗？
+                        \item<4> 不正确，\\数位拆分后 $n$ 的值会变为 $0$。
+                    \end{itemize}
+                }
+            \end{columns}
+        }{
+            \begin{columns}
+
+                \column{.65\textwidth}
+                \lstinputlisting[language=C++]{ch08/cnt_1_2.cc}
+
+                \begin{tikzpicture}[overlay]
+                    \only<6->{\draw[red, very thick] (0.5,3.67) rectangle (3.2,4.10);}
+                \end{tikzpicture}
+
+                \column{.35\textwidth}
+                \uncover<5->{
+                    \begin{itemize}[<+->]
+                        \item<6-> 由于后续需要输出 n，因此不能直接用 n 进行数位拆分
+                    \end{itemize}
+                }
+            \end{columns}
+        }
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^9$)，\\统计 $n$ 的数位上有多少个 $1$，输出 $n$ 和其含有 $1$ 的个数，用空格间隔。
+                
+                \item 样例输入
+
+                    \lstinline|1351|
+
+                \item 样例输出\\
+                
+                    \lstinline|1351 2|
+                
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例8.10：数 1 的个数}
+
+    \alt<2-6>{
+        \alt<2-4> {
+            \begin{columns}
+
+                \column{.65\textwidth}
+                \lstinputlisting[language=C++]{ch08/count_1_1.cc}
+    
+                \column{.35\textwidth}
+                \uncover<3->{
+                    \begin{itemize}[<+->]
+                        \item<3-> 运行结果正确吗？
+                        \item<4> 不正确，会死循环。\\因为数位拆分后 $i$ 会变化！
+                    \end{itemize}
+                }
+
+            \end{columns}
+        }{
+            \begin{columns}
+
+                \column{.65\textwidth}
+                \lstinputlisting[language=C++]{ch08/count_1_2.cc}
+                
+                \begin{tikzpicture}[overlay]
+                    \only<6->{\draw[red, very thick] (1.3,4.07) rectangle (4,4.50);}
+                \end{tikzpicture}
+
+                \column{.35\textwidth}
+                \uncover<5->{
+                    \begin{itemize}[<+->]
+                        \item<6-> 为了避免程序进入死循环，使用临时变量 \lstinline|tmp| 进行数位拆分
+                    \end{itemize}
+                }
+            
+            \end{columns}
+        }
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^6$)，\\求从 $1$ 到 $n$ 的所有整数中，数位上出现数字 “$1$” 的个数。                
+                
+                \item 样例输入
+
+                    \lstinline|12|
+
+                \item 样例输出
+                
+                    \lstinline|5|
+                
+                \item 样例解释\\
+                
+                    当 \lstinline|n = 12| 时，$1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12$ 中\\数位上出现了 $5$ 个数字 “$1$”。
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{break 和 continue 语句}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{break 在多重循环中的应用}
+
+    \uncover<1->{\lstinputlisting[language=C++]{ch08/for_break_1.cc}}
+    \uncover<3->{\lstinputlisting[language=C++]{ch08/for_break_2.cc}}
+
+    \begin{tikzpicture}[overlay]
+        \uncover<2->{\draw[red, very thick] (0,6) rectangle (3.6,6.44);}
+        \uncover<2->{\draw[red, very thick, ->] (3.6,6.215) -- (6.5,6.215) -- (6.5,4.7) -- (0.3,4.7);}
+        \uncover<4>{\draw[red, very thick] (0,2.9) rectangle (2.8,3.33);}
+        \uncover<4->{\draw[red, very thick, ->] (2.8,3.12) -- (6.5,3.12) -- (6.5,0.8) -- (0.3,0.8);}
+    \end{tikzpicture}
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{continue 在多重循环中的应用}
+
+    \uncover<1->{\lstinputlisting[language=C++]{ch08/for_continue_1.cc}}
+    \uncover<3->{\lstinputlisting[language=C++]{ch08/for_continue_2.cc}}
+
+    \begin{tikzpicture}[overlay]
+        \uncover<2->{\draw[red, very thick] (0,6) rectangle (4,6.44);}
+        \uncover<2->{\draw[red, very thick, ->] (4,6.215) -- (5.6,6.215) -- (5.6,6.8);}
+        \uncover<4>{\draw[red, very thick] (0,2.9) rectangle (3.3,3.33);}
+        \uncover<4->{\draw[red, very thick, ->] (3.3,3.12) -- (4.9,3.12) -- (4.9,3.7);}
+    \end{tikzpicture}
+    
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}[<+->]
+        \item 多重循环的概念
+        \item 多重循环的应用
+            \begin{itemize}[<+->]
+                \item 输出图形问题
+                \item 数列计算问题
+                \item 数位拆分问题
+            \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
