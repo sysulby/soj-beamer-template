@@ -1,0 +1,641 @@
+%------------------------------------------------------------
+\title[07 - 循环与分支综合]
+{07 - 循环与分支综合}
+
+\subtitle{C++ 程序设计基础}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+	\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+	
+	\author[sysulby]
+	{SOJ 信息学竞赛教练组}
+	
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	\setcounter{framenumber}{0} % 标题页不编号
+	
+	
+	\section{复习回顾}
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{分支结构}
+		
+		\begin{columns}
+			\column{.01\textwidth}
+			
+			\column{.49\textwidth}
+			\begin{itemize}[<+->]
+				\item 根据不同的情况，执行不同的操作
+				\begin{itemize}
+					\item 单分支
+					\item 双分支
+					\item 多分支
+					\item 分支嵌套
+				\end{itemize}
+			\end{itemize}
+			
+			\column{.50\textwidth}
+
+				\only<2>{\lstinputlisting[language=C++]{ch04/if.cc}}
+				\only<3>{\lstinputlisting[language=C++]{ch04/if_else.cc}}
+				\only<4>{\lstinputlisting[language=C++]{ch04/if_else_if.cc}}
+				\only<5>{\lstinputlisting[language=C++]{ch04/if_nest.cc}}
+			
+			
+		\end{columns}
+		
+	\end{frame}
+	%------------------------------------------------------------
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例题回顾：闰年判断}
+		
+		\alt<2-2>{
+			\lstinputlisting[language=C++]{ch04/leap2.cc}
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 闰年分为世纪闰年和普通闰年。\\
+					普通闰年的年份是 $4$ 的倍数，且不是 $100$ 的倍数；世纪闰年的年份是 $400$ 的倍数。\\
+					编写程序，输入一个整数 $year$ ($1000 \le year \le 3000$)，表示一个年份，判断该年份是否为闰年，输出对应的判断结果。
+					
+					\item 样例输入
+					
+					\lstinline|2010|
+					
+					\item 样例输出
+					
+					\lstinline|2010 is not leap year|
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{循环结构}
+		
+			\begin{itemize}[<+->]
+				\item 可反复执行某些指令
+				\begin{itemize}
+					\item \lstinline|while| 循环：先判断再执行
+					\item \lstinline|do..while| 循环：先执行再判断，至少执行一次
+					\item \lstinline|for| 循环：执行初始动作后，先判断再执行
+				\end{itemize}
+			
+			\only<2>{\lstinputlisting[language=C++]{ch05/while.cc}}
+			\only<3>{\lstinputlisting[language=C++]{ch05/do_while.cc}}
+			\only<4>{\lstinputlisting[language=C++]{ch06/for.cc}}
+			\end{itemize}
+			
+	\end{frame}
+	%------------------------------------------------------------
+	
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例题回顾：输出从 1 到 n 的整数之和}
+		
+		\alt<2>{
+			\lstinputlisting[language=C++]{ch06/for_sum_1_to_n.cc}
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，输出从 $1$ 到 $n$ 之间的整数之和。
+					
+					\item 样例输入
+					
+					\lstinline|5|
+					
+					\item 样例输出
+					
+					\lstinline|15|
+					
+					\item 样例说明
+					
+					$1+2+3+4+5=15$
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	
+	\section{循环嵌套分支}
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例 7.1：加减数列求和}
+		
+		\alt<2>{
+			\lstinputlisting[language=C++]{ch07/sum.cc}
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，输出 $1-2+3-4+5...$，一直到 $n$ 的和。
+					
+					\item 样例输入
+					
+					\lstinline|7|
+					
+					\item 样例输出
+					
+					\lstinline|4|
+					
+					\item 样例说明
+					
+					$1-2+3-4+5-6+7=4$
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例 7.2：优秀学生}
+		
+		\alt<2-9>{
+			\begin{columns}
+				\column{.01\textwidth}
+				
+				\column{.72\textwidth}
+				\lstinputlisting[language=C++]{ch07/student.cc}
+				
+				\column{.27\textwidth}
+				\begin{itemize}
+					\uncover<3-> {
+						\item 允许边输入边输出
+						
+						\item<4-> 运行窗口
+						
+						\uncover<5->{\lstinline|2|\\}
+						\uncover<6->{\lstinline|98 92|\\}
+						\uncover<7->{\lstinline|Good Job|\\}
+						\uncover<8->{\lstinline|80 95|\\}
+						\uncover<9->{\lstinline|Try Harder|}
+					}
+				\end{itemize}
+			\end{columns}
+			
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，表示有 $n$ 个学生，接下来输入每个学生的语文成绩 $x$ ($1 \le x \le 100$) 和数学成绩 $y$ ($1 \le y \le 100$)。对于每个学生，如果其两科成绩均不低于 $90$ 分，则输出“Good Job”，否则输出“Try Harder”。
+					
+					\item 样例输入
+					
+					\lstinline|2|\\
+					\lstinline|98 92|\\
+					\lstinline|80 95|
+					
+					\item 样例输出
+					
+					\lstinline|Good Job|\\
+					\lstinline|Try Harder|
+					
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例 7.3：输出 n 的所有因子}
+		
+		\alt<2-3>{
+			\lstinputlisting[language=C++,name=factors]{ch07/factors.cc}
+			\begin{tikzpicture}[remember picture,overlay]
+				\uncover<3>{\redbox{factors-9}{8}{10}}
+			\end{tikzpicture}
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，输出 $n$ 的所有因子。
+					
+					\item 样例输入
+					
+					\lstinline|8|
+					
+					\item 样例输出
+					
+					\lstinline|1 2 4 8|
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例 7.4：求 n 的所有因子之和}
+		
+		\alt<2-3>{
+			\lstinputlisting[language=C++,name=factors_sum]{ch07/factors_sum.cc}
+			
+			\begin{tikzpicture}[remember picture,overlay]
+				\uncover<3>{\redbox{factors_sum-10}{6}{9}}
+			\end{tikzpicture}
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，求 $n$ 的所有因子之和。
+					
+					\item 样例输入
+					
+					\lstinline|8|
+					
+					\item 样例输出
+					
+					\lstinline|15|
+					
+					\item 样例说明
+					
+					$1+2+4+8=15$
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	
+		%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例 7.5：求 n 个数的最大值}
+		
+		\alt<2-10>{
+			\alt<7-10> {
+				\alt<9-10>{
+					\begin{itemize}
+					\lstinputlisting[language=C++,name=max2]{ch07/max2.cc}
+					
+					\item 把擂主的初始值设置为最小值，保证第一个挑战者能攻擂成功，则无需特判是否为第一个挑战者
+					\end{itemize}
+				}{
+					\begin{itemize}
+					\lstinputlisting[language=C++,name=max1]{ch07/max1.cc}
+					
+					\item 如果 $x$ 是第一个挑战者，那 $x$ 直接成为擂主；或者新来的挑战者 $x$ 大于擂主 $Max$，那挑战者 $x$ 成为擂主
+					\end{itemize}
+				}
+				
+				\begin{tikzpicture}[remember picture,overlay]
+					\uncover<8>{\redbox{max1-7}{7}{10}}
+					\uncover<8>{\redbox{max1-9}{8}{6}}
+					\uncover<10>{\redbox{max2-5}{12}{11}}
+					\uncover<10>{\redbox{max2-9}{8}{7}}
+				\end{tikzpicture}
+			}{
+				\begin{itemize}
+					\item 打擂台找最大值
+				\end{itemize}				
+				
+				\vspace*{1em}
+				\centering
+				\begin{tikzpicture}[node distance=1.25cm]
+					\node (start) [process] {8};
+					\node (second) [process, right of=start, xshift = 1.5cm] {7};
+					\node (third) [process, right of=second, xshift = 1.5cm] {9};
+					\node (stop) [process, right of=third, xshift = 1.5cm] {5};
+					\node (max) [startstop, below of=second, xshift = 1.5cm] {擂主};
+					
+					\only<3>{\draw [arrow] (start) --  node[left, xshift = -0.3cm, yshift = -0.1cm] {攻擂成功} (max);}
+					\only<4>{\draw [arrow] (second) --  node[left, xshift = -0.1cm, yshift = -0.1cm] {攻擂失败} (max);}
+					\only<5>{\draw [arrow] (third) -- node[left, xshift = -0.1cm] {攻擂成功} (max);}
+					\only<6>{\draw [arrow] (stop) --  node[left, xshift=-0.3cm] {攻擂失败} (max);}
+				\end{tikzpicture}
+				
+				
+				\begin{itemize}
+					\item<3-4> 擂主：\lstinline|8|
+					\item<5-6> 擂主：\lstinline|9|
+				\end{itemize}				
+			}
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，接下来输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，求这 $n$ 个整数中的最大值。
+					
+					\item 样例输入
+					
+					\lstinline|4|\\
+					\lstinline|8 7 9 5|
+					
+					\item 样例输出
+					
+					\lstinline|9|
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例 7.6：求 n 个数的最大值及位置}
+		
+		\alt<2-3>{
+			\lstinputlisting[language=C++,name=max_pos]{ch07/max_pos.cc}
+			
+			\begin{tikzpicture}[remember picture,overlay]
+				\uncover<3>{\redbox{max_pos-7}{2}{10}}
+				\uncover<3>{\redbox{max_pos-13}{6}{10}}
+			\end{tikzpicture}
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，接下来输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，求这 $n$ 个整数中的最大值及位置。
+					
+					\item 样例输入
+					
+					\lstinline|4|\\
+					\lstinline|8 7 9 5|
+					
+					\item 样例输出
+					
+					\lstinline|9 3|
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例 7.7：反向输出非负整数}
+		
+		\alt<2-3>{
+			\lstinputlisting[language=C++,name=output_digits]{ch07/output_digits.cc}
+			
+			\begin{tikzpicture}[remember picture,overlay]
+				\uncover<3>{\redbox{output_digits-9}{4}{15}}
+				\uncover<3>{\redbox{output_digits-10}{4}{8}}
+			\end{tikzpicture}
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 编写程序，输入一个整数 $n$ ($1 \le n \le 10^9$)，请从低位到高位输出 $n$ 的每个数位。
+					
+					\item 样例输入
+					
+					\lstinline|856|
+					
+					\item 样例输出
+					
+					\lstinline|6 5 8|
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{例 7.8：求一个整数中有多少个 3}
+		
+		\alt<2-3>{
+			\lstinputlisting[language=C++,name=numOfdigit3]{ch07/num_of_digit_3.cc}
+			
+			\begin{tikzpicture}[remember picture,overlay]
+				\uncover<3>{\redbox{numOfdigit3-9}{4}{15}}
+				\uncover<3>{\redbox{numOfdigit3-11}{8}{6}}
+			\end{tikzpicture}
+		}{
+			\begin{exampleblock}{编程题}
+				
+				\begin{itemize}
+					\item 编写程序，输入一个整数 $n$ ($1 \le n \le 10^9$)，统计 $n$ 的数位上有多少个 $3$。
+					
+					\item 样例输入
+					
+					\lstinline|1353|
+					
+					\item 样例输出
+					
+					\lstinline|2|
+					
+				\end{itemize}
+				
+			\end{exampleblock}
+		}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	\section{break 和 continue 语句}
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{break 和 continue 语句}
+						
+			\begin{itemize}
+				\item \lstinline|break|：用于循环体中，表示跳出本层循环
+			\end{itemize}
+			
+			\begin{columns}
+				\column{.05\textwidth}
+				
+				\column{.43\textwidth}
+				\uncover<1-4>{\lstinputlisting[language=C++,name=while_break]{ch07/while_break.cc}}
+				
+				\column{.52\textwidth}
+				\uncover<3-4>{\lstinputlisting[language=C++,name=for_break]{ch07/for_break.cc}}
+			\end{columns}
+			
+			\begin{tikzpicture}[remember picture,overlay]
+				\uncover<2->{\redbox{while_break-3}{11}{6}}
+				\uncover<2->{\draw[red, very thick, ->] (3.8,1.25) -- (4.5,1.25) -- (4.5,0.1) -- (0.6,0.1);}
+				\uncover<4>{\redbox{for_break-3}{11}{6}}
+				\uncover<4>{\draw[red, very thick, ->] (8.95,1.25) -- (9.7,1.25) -- (9.7,0.1) -- (5.7,0.1);}
+			\end{tikzpicture}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{break 和 continue 语句}
+		
+		\begin{itemize}
+			\item \lstinline|continue|：用于循环体中，表示跳过本次循环（循环体）中余下未执行的语句，进行下一次循环
+		\end{itemize}
+		
+		\begin{columns}
+			\column{.05\textwidth}
+			
+			\column{.43\textwidth}
+			\uncover<1-4>{\lstinputlisting[language=C++,name=while_continue]{ch07/while_continue.cc}}
+			
+			\column{.52\textwidth}
+			\uncover<3-4>{\lstinputlisting[language=C++,name=for_continue]{ch07/for_continue.cc}}
+		\end{columns}
+		
+	\begin{tikzpicture}[remember picture,overlay]
+		\uncover<2->{\redbox{while_continue-3}{11}{9}}
+		\uncover<2->{\draw[red, very thick, ->] (4.35,1.25) -- (5.0,1.25) -- (5.0,2) -- (3.1,2);}
+		\uncover<4>{\redbox{for_continue-3}{11}{9}}
+		\uncover<4>{\draw[red, very thick, ->] (9.5,1.25) -- (10.4,1.25) -- (10.4,1.85);}
+	\end{tikzpicture}
+	
+	\end{frame}
+	%------------------------------------------------------------
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{break 语句 - 示例}
+		
+		\begin{itemize}
+			\item 输入一个整数 $n$ ($1 \le n \le 10^6$)，输出 $1 \sim n$ 中的每个整数，增加判断当这个数为 $5$ 时，使用 \lstinline|break| 语句，观察输出结果。
+		\end{itemize}
+		
+		\begin{columns}
+			\column{.01\textwidth}
+			
+			\column{.43\textwidth}
+			\uncover<2-5>{\lstinputlisting[language=C++,name=while_1_n_break]{ch07/while_1_n_break.cc}}
+			
+			\column{.56\textwidth}
+			\uncover<4-5>{\lstinputlisting[language=C++,name=for_1_n_break]{ch07/for_1_n_break.cc}}
+		\end{columns}
+		
+		\begin{tikzpicture}[remember picture,overlay]
+			\uncover<3->{\redbox{while_1_n_break-4}{14}{6}}
+			\uncover<3->{\draw[red, very thick, ->] (3.97,1.65) -- (4.5,1.65) -- (4.5,0.4) -- (0.6,0.4);}
+			\uncover<5>{\redbox{for_1_n_break-4}{14}{6}}
+			\uncover<5>{\draw[red, very thick, ->] (9.1,1.45) -- (9.7,1.45) -- (9.7,0.5) -- (5.7,0.5);}
+		\end{tikzpicture}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{continue 语句 - 示例}
+		
+		\begin{itemize}
+			\item 输入一个整数 $n$ ($1 \le n \le 10^6$)，输出 $1 \sim n$ 中的每个整数，增加判断当这个数为 $5$ 时，使用 \lstinline|continue| 语句，观察输出结果。
+		\end{itemize}
+		
+		\begin{columns}
+			\column{.01\textwidth}
+			
+			\column{.43\textwidth}
+			\only<2-5>{\lstinputlisting[language=C++,name=while_1_n_continue]{ch07/while_1_n_continue.cc}}
+			
+			\column{.56\textwidth}
+			\only<4-5>{\lstinputlisting[language=C++,name=for_1_n_continue]{ch07/for_1_n_continue.cc}}
+		\end{columns}
+		
+		\begin{tikzpicture}[remember picture,overlay]
+			\uncover<3->{\redbox{while_1_n_continue-4}{14}{9}}
+			\uncover<3->{\draw[red, very thick, ->] (4.5,1.65) -- (4.7, 1.65) -- (4.7,2) -- (3.2,2);}
+			\uncover<5>{\redbox{for_1_n_continue-4}{14}{9}}
+			\uncover<5>{\draw[red, very thick, ->] (9.65,1.45) -- (10.2,1.45) -- (10.2,1.75);}
+		\end{tikzpicture}
+		
+	\end{frame}
+	%------------------------------------------------------------
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{break 和 continue 语句}
+		
+		\begin{itemize}
+			\item \lstinline|break|
+			\begin{itemize}
+				\item 在 \lstinline|while| 循环中，直接跳出本层 \lstinline|while| 循环
+				\item 在 \lstinline|for| 循环中，直接跳出本层 \lstinline|for| 循环
+			\end{itemize}
+			\item \lstinline|continue|
+			\begin{itemize}
+				\item 在 \lstinline|while| 循环中，直接跳转到\textbf{条件语句}，需要额外注意
+				\item 在 \lstinline|for| 循环中，直接跳转到每次循环后的动作
+			\end{itemize}
+		\end{itemize}
+			
+	\end{frame}
+	%------------------------------------------------------------
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{随堂练习}
+		
+		\begin{exampleblock}{填空题}
+			
+			\begin{enumerate}
+				\item 阅读程序写结果
+				\lstinputlisting[language=C++]{ch07/exercise.cc}
+				
+				输入：\lstinline|7 12| \tabto{8em} 	
+				输出：\uncover<2->{\textcolor{red}{\lstinline|7 8 9|}}
+			\end{enumerate}
+			
+		\end{exampleblock}
+	\end{frame}
+	%------------------------------------------------------------
+	
+	\section{总结}
+	
+	%------------------------------------------------------------
+	\begin{frame}[fragile]
+		\frametitle{总结}
+		
+		\begin{itemize}
+			\item 循环与分支综合
+			\begin{itemize}
+				\item 求和问题
+				\item 计数问题
+				\item 最值问题
+				\item 数位拆分
+			\end{itemize}
+			\item \lstinline|break| 和 \lstinline|continue| 语句
+		\end{itemize}
+	\end{frame}
+	%------------------------------------------------------------
+
+\end{document}
