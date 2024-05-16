@@ -1,0 +1,624 @@
+%------------------------------------------------------------
+\title[04 - 分支结构：if..else 语句]
+{04 - 分支结构：if..else 语句}
+
+\subtitle{C++ 程序设计基础}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{问题回顾：两位数判断}
+
+    \alt<2-3>{
+        \begin{columns}
+            \column{.01\textwidth}
+
+            \column{.74\textwidth}
+            \lstinputlisting[language=C++,name=double_digit]{ch04/double_digit.cc}
+
+            \column{.25\textwidth}
+            \uncover<3>{
+                \begin{tikzpicture}[node distance=1cm]
+                    \node (start) [process] {...};
+                    \node (process1) [process, below of=start] {步骤 1};
+                    \node (process2) [process, below of=process1] {步骤 2};
+                    \node (process3) [process, below of=process2] {...};
+                    \node (process4) [process, below of=process3] {步骤 n};
+                    \node (stop) [process, below of=process4] {...};
+
+                    \draw [arrow] (start) -- (process1);
+                    \draw [arrow] (process1) -- (process2);
+                    \draw [arrow] (process2) -- (process3);
+                    \draw [arrow] (process3) -- (process4);
+                    \draw [arrow] (process4) -- (stop);
+                \end{tikzpicture}
+            }
+        \end{columns}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，由用户输入一个整数 $n$ ($0 \le n \le 10^9$)，如果该整数是两位数，则输出 1，否则输出 0。
+
+                \item 样例输入
+
+                    \lstinline|10|
+
+                \item 样例输出
+
+                    \lstinline|1|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{顺序结构}
+
+    \begin{columns}
+        \column{.75\textwidth}
+        \begin{itemize}
+            \item<1-> 程序按照从上到下的顺序逐条执行各个语句
+
+            \item<2-> 程序单一，无法处理复杂多样的问题
+
+                \begin{itemize}
+                    \item  成绩分级
+                    \item  电梯运行（接送逻辑）
+                \end{itemize}
+
+        \end{itemize}
+
+        \column{.01\textwidth}
+
+        \column{.24\textwidth}
+        \begin{tikzpicture}[node distance=1cm]
+            \node (start) [process] {...};
+            \node (process1) [process, below of=start] {步骤 1};
+            \node (process2) [process, below of=process1] {步骤 2};
+            \node (process3) [process, below of=process2] {...};
+            \node (process4) [process, below of=process3] {步骤 n};
+            \node (stop) [process, below of=process4] {...};
+
+            \draw [arrow] (start) -- (process1);
+            \draw [arrow] (process1) -- (process2);
+            \draw [arrow] (process2) -- (process3);
+            \draw [arrow] (process3) -- (process4);
+            \draw [arrow] (process4) -- (stop);
+        \end{tikzpicture}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{分支结构}
+
+    \begin{itemize}
+        \item<1-> 分支结构：可以根据不同情况，执行不同的语句
+
+        \item<2-> 主要的分支结构有
+
+            \begin{itemize}
+                \item \lstinline|if..else| 语句
+                \item \lstinline|switch| 语句
+                \item 条件运算符
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{双分支结构}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{双分支结构}
+
+    \begin{columns}
+        \column{.7\textwidth}
+        \begin{overlayarea}{\textwidth}{.6\textheight}
+            \begin{itemize}
+                \item \lstinline|if..else| 语句：以条件语句作为判断依据，选择执行不同的分支
+            \end{itemize}
+
+            \uncover<2->{
+                \vspace*{1em}
+                \centering
+                \begin{tikzpicture}[node distance=1.25cm]
+                    \node (start) [process] {...};
+                    \node (decision1) [decision, below of=start] {条件语句};
+                    \node (process1) [process, below of=decision1, xshift=-2.2cm] {语句块 1};
+                    \node (process2) [process, below of=decision1, xshift=2.2cm] {语句块 2};
+                    \node (stop) [process, below of=decision1, yshift=-1cm] {...};
+
+                    \draw [arrow] (start) -- (decision1);
+                    \draw [arrow] (decision1) -| node[above, xshift=.2cm] {yes} (process1);
+                    \draw [arrow] (decision1) -| node[above, xshift=-.2cm] {no} (process2);
+                    \draw [arrow] (process1) -| (stop);
+                    \draw [arrow] (process2) -| (stop);
+                \end{tikzpicture}
+            }
+        \end{overlayarea}
+
+        \column{.3\textwidth}
+        \begin{overlayarea}{\textwidth}{.3\textheight}
+            \uncover<3->{
+                \lstinputlisting[language=C++,name=if_else]{ch04/if_else.cc}
+            }
+        \end{overlayarea}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{if..else 语句}
+
+    \begin{columns}
+        \column{.7\textwidth}
+        \begin{overlayarea}{\textwidth}{.6\textheight}
+            \begin{itemize}
+                \item \lstinline|if..else| 语句：以条件语句作为判断依据，选择执行不同的分支
+
+                \item 条件语句通常是布尔类型的表达式
+
+                    \begin{itemize}
+                        \item<2-> 条件成立（\lstinline|true|）则执行语句块 1
+                        \item<3-> 条件不成立（\lstinline|false|）则执行语句块 2
+                    \end{itemize}
+
+                \item<4-> 当语句块中只有一个语句时，可以省略花括号
+            \end{itemize}
+        \end{overlayarea}
+
+        \column{.3\textwidth}
+        \begin{overlayarea}{\textwidth}{.3\textheight}
+            \lstinputlisting[language=C++,name=if_else]{ch04/if_else.cc}
+        \end{overlayarea}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{if..else 语句}
+
+    \begin{columns}
+        \column{.7\textwidth}
+        \begin{overlayarea}{\textwidth}{.6\textheight}
+            \begin{itemize}
+                \item \lstinline|if..else| 语句：以条件语句作为判断依据，选择执行不同的分支
+
+                \item 条件语句也可以是数值，但会被转化为布尔值
+
+                    \begin{itemize}
+                        \item<2-> 数值非 $0$ 值时，会转化成 \lstinline|true|
+                        \item<3-> 数值为 $0$ 时，会转化为 \lstinline|false|
+                    \end{itemize}
+
+            \end{itemize}
+        \end{overlayarea}
+
+        \column{.3\textwidth}
+        \begin{overlayarea}{\textwidth}{.3\textheight}
+            \lstinputlisting[language=C++,name=if_else]{ch04/if_else.cc}
+        \end{overlayarea}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 4.1：4 的倍数}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=mod4]{ch04/mod4.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，由用户输入一个整数 $n$ ($1 \le n \le 10^9$)，如果该整数是 $4$ 的倍数，则输出 Yes，否则输出 No。
+
+                \item 样例输入
+
+                    \lstinline|12|
+
+                \item 样例输出
+
+                    \lstinline|Yes|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 4.2：闰年判断}
+
+    \alt<2-3>{
+        \alt<2>{
+            \lstinputlisting[language=C++,name=leap1]{ch04/leap1.cc}
+        }{
+            \lstinputlisting[language=C++,name=leap2]{ch04/leap2.cc}
+        }
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 闰年分为世纪闰年和普通闰年。\\
+                    普通闰年的年份是 $4$ 的倍数，且不是 $100$ 的倍数；世纪闰年的年份是 $400$ 的倍数。\\
+                    编写程序，输入一个整数 $year$ ($1000 \le year \le 3000$)，表示一个年份，判断该年份是否为闰年，输出对应的判断结果。
+
+                \item 样例输入
+
+                    \lstinline|2010|
+
+                \item 样例输出
+
+                    \lstinline|2010 is not leap year|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{条件运算符}
+
+    \begin{itemize}[<+->]
+        \item 条件运算符也是双分支结构的一种形式
+
+            \begin{itemize}
+                \item \textbf{条件语句? \enspace 表达式1: \enspace 表达式2}
+            \end{itemize}
+
+        \item 依照条件语句是否成立，取不同的结果 
+
+            \begin{itemize}
+                \item 条件成立（\lstinline|true|）则取表达式 1 的结果
+                \item 条件不成立（\lstinline|false|）则取表达式 2 的结果
+                \item \lstinline|int a = 3, b = 5;|\\
+                    \lstinline{cout << (a < b? a: b) << endl; // 输出 3}
+            \end{itemize}
+
+        \item 注意，应尽量保证两个表达式运算结果的数据类型是一致的
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{随堂练习}
+
+    \begin{exampleblock}{填空题}
+
+        \begin{enumerate}
+                \only<1-2>{
+                \item[1.] 阅读程序写结果
+                    \lstinputlisting[language=C++,name=exercise1]{ch04/exercise1.cc}
+
+                    输出：\uncover<2>{\textcolor{red}{\lstinline|false|}}
+                }
+
+                \only<3-4>{
+                \item[2.] 阅读程序写结果
+                    \lstinputlisting[language=C++,name=exercise2]{ch04/exercise2.cc}
+
+                    输出：\uncover<4>{\textcolor{red}{\lstinline|true|}}
+                }
+
+                \only<5-6>{
+                \item[3.] 阅读程序写结果
+                    \lstinputlisting[language=C++,name=exercise3]{ch04/exercise3.cc}
+
+                    输出：\uncover<6>{\textcolor{red}{\lstinline|true|}}
+                }
+        \end{enumerate}
+
+    \end{exampleblock}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{单分支与多分支}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{单分支结构}
+
+    \begin{columns}
+        \column{.64\textwidth}
+        \begin{itemize}[<+->]
+            \item 单分支结构没有 \lstinline|else| 部分
+
+                \begin{itemize}
+                    \item 条件语句成立时，执行语句块
+                    \item 条件语句不成立时，跳过语句块
+                \end{itemize}
+
+        \end{itemize}
+
+        \column{.36\textwidth}
+        \lstinputlisting[language=C++,name=if]{ch04/if.cc}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{随堂练习}
+
+    \begin{exampleblock}{填空题}
+
+        \begin{enumerate}
+            \item 阅读程序写结果
+                \lstinputlisting[language=C++,name=days]{ch04/days.cc}
+
+                输入：2020 \tabto{8em} 输出：\uncover<2->{\textcolor{red}{\lstinline|366|}}
+
+                输入：1900 \tabto{8em} 输出：\uncover<3->{\textcolor{red}{\lstinline|365|}}
+        \end{enumerate}
+
+    \end{exampleblock}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{多分支结构}
+
+    \begin{columns}
+        \column{.54\textwidth}
+        \begin{itemize}[<+->]
+            \item 多分支结构会依次判断条件语句
+
+                \begin{itemize}
+                    \item 当前条件成立时，执行对应的语句块，并结束判断
+                \end{itemize}
+
+            \item 因此至多只会执行一个语句块
+
+            \item 注意，最后的 \lstinline|else| 不用写条件
+        \end{itemize}
+
+        \column{.46\textwidth}
+        \lstinputlisting[language=C++,name=if_else_if]{ch04/if_else_if.cc}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 4.3：成绩分级}
+
+    \alt<2-3>{
+        \alt<2>{
+            \lstinputlisting[language=C++,name=grade1]{ch04/grade1.cc}
+        }{
+            \lstinputlisting[language=C++,name=grade2]{ch04/grade2.cc}
+        }
+    }{
+        \begin{exampleblock}{编程题}
+            \begin{columns}[onlytextwidth]
+                \column{.66\textwidth}
+                \begin{itemize}
+                    \item 编写程序，输入一个整数 $score$ ($0 \le score \le 100$)，表示成绩，输出对应的等级。
+
+                    \item 样例输入
+
+                        \lstinline|90|
+
+                    \item 样例输出
+
+                        \lstinline|A|
+
+                \end{itemize}
+
+                \column{.02\textwidth}
+
+                \column{.32\textwidth}
+                \begin{tabular}{cc}
+                    \toprule
+                    分数          & 等级 \\
+                    \midrule
+                    $90 \sim 100$ & A    \\
+                    $80 \sim 89$  & B    \\
+                    $60 \sim 79$  & C    \\
+                    $0 \sim 59$   & F    \\
+                    \bottomrule
+                \end{tabular}
+            \end{columns}
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{分支嵌套}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{多分支与多个分支}
+
+    \begin{itemize}
+        \item<1-> 多分支结构条件不能同时成立，最多只会执行一个分支
+        \item<2-> 多个分支结构条件可能同时成立，符合条件就执行对应的分支，可执行多个分支
+    \end{itemize}
+
+    \begin{columns}
+        \column{.08\textwidth}
+
+        \column{.48\textwidth}
+        \uncover<1->{
+            \lstinputlisting[language=C++,name=if_else_if]{ch04/if_else_if.cc}
+        }
+
+        \column{.02\textwidth}
+
+        \column{.42\textwidth}
+        \uncover<2->{
+            \lstinputlisting[language=C++,name=if_x_3]{ch04/if_x_3.cc}
+        }
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{多分支与多个分支}
+
+    \begin{itemize}
+        \item 当 $score$ 为 $95$ 时，分别会输出什么？
+    \end{itemize}
+
+    \begin{columns}
+        \column{.08\textwidth}
+
+        \column{.45\textwidth}
+        \lstinputlisting[language=C++,name=grade3]{ch04/grade3.cc}
+
+        \column{.02\textwidth}
+
+        \column{.45\textwidth}
+        \lstinputlisting[language=C++,name=grade4]{ch04/grade4.cc}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{分支嵌套}
+
+    \begin{columns}
+        \column{.55\textwidth}
+        \begin{itemize}[<+->]
+            \item 在分支结构的语句块中，使用分支结构，这就形成了分支嵌套
+            \item 注意，应尽量不省略大括号，以明确各层次的嵌套关系
+        \end{itemize}
+
+        \column{.45\textwidth}
+        \lstinputlisting[language=C++,name=if_nest]{ch04/if_nest.cc}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 4.4：数字判断}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=judge]{ch04/judge.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 输入一个整数 $n$，按以下规则输出对应描述 $n$ 的语句。
+                    \begin{itemize}
+                        \item 当 $n$ 是正数时，输出 $n$ 是奇数 odd 还是偶数 even
+                        \item 当 $n$ 是 $0$ 时，输出 zero
+                        \item 当 $n$ 是负数时，输出 negative
+                    \end{itemize}
+
+                \item 样例输入
+
+                    \lstinline|5|
+
+                \item 样例输出
+
+                    \lstinline|odd|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 4.5：求三个数的最大值}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=max_of_three]{ch04/max_of_three.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，由用户输入三个整数 $a, b, c$ ($0 \le a, b, c \le 1000$)，输出这三个数中的最大值。
+
+                \item 样例输入
+
+                    \lstinline|4 29 16|
+
+                \item 样例输出
+
+                    \lstinline|29|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}
+        \item 双分支结构
+        \item 单分支结构
+        \item 多分支结构
+        \item 分支嵌套
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge Thank you!}
+    \end{center}
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}

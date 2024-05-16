@@ -1,0 +1,615 @@
+%------------------------------------------------------------
+\title[02 - 变量与输入输出]
+{02 - 变量与输入输出}
+
+\subtitle{C++ 程序设计基础}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{程序的基本结构}
+
+    \lstinputlisting[language=C++,name=structure]{ch02/structure.cc}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{输出语句}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=output2]{ch02/output2.cc}
+    }{
+        \lstinputlisting[language=C++,name=output1]{ch02/output1.cc}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{格式控制}
+
+    \lstinputlisting[language=C++,name=output3]{ch02/output3.cc}
+
+    \begin{itemize}
+        \item<2-> 输出结果：3.14
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{变量}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量}
+
+    \begin{itemize}
+        \item<1-> 变量的概念
+
+            \begin{itemize}
+                \item 变量就是在程序运行过程中，其值可以被改变的量
+            \end{itemize}
+
+        \item<2-> 变量的作用
+
+            \begin{itemize}
+                \item 程序运行过程中\textbf{存储数据}的“盒子”
+            \end{itemize}
+
+        \item<3-> 变量的声明
+
+            \begin{itemize}
+                \item \textbf{类型 \enspace 变量名}
+                \item \lstinline|int a;|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量}
+
+    \begin{itemize}
+        \item<1-> 变量的初始化
+
+            \begin{itemize}
+                \item 变量在声明的同时设置一个初始的数值
+                \item \textbf{类型 \enspace 变量名 = 值}
+                \item \lstinline|int a = 2;|
+            \end{itemize}
+
+        \item<2-> 变量的赋值
+
+            \begin{itemize}
+                \item 在变量声明之后，可以通过 \textcolor{red}{=} 修改变量存储的数据
+                \item \lstinline|a = 3; // 变量 a 中存储的数据会从 2 变为 3|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量的命名规则}
+
+    \begin{itemize}
+
+        \item<1-> 变量名只能由字母、数字或下划线构成，但不能以数字开头
+
+            \begin{itemize}
+                \item \lstinline|dis2| 或 \lstinline|_dis| 是合法变量名
+                \item \lstinline|2dis| 是非法变量名
+            \end{itemize}
+
+        \item<2-> 变量名区分大小写
+
+            \begin{itemize}
+                \item \lstinline|Dis| 与 \lstinline|dis| 视作不同变量名
+            \end{itemize}
+
+        \item<3-> 变量名不能与 C++ 的关键字重名
+
+            \begin{itemize}
+                \item \lstinline|std| 和 \lstinline|return| 是非法变量名
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量的输入与输出}
+
+    \begin{itemize}
+        \item<1-> 当我们希望变量的值不是预先写入程序，而是通过用户输入决定时，应该怎么办？
+
+        \item<2-> 使用 \lstinline|cin| 语句输入变量，在输入流符号 \lstinline|>>| 后写上变量名
+
+            \begin{itemize}
+                \item
+                    \lstinline|int a;|\\
+                    \lstinline|cin >> a;|
+            \end{itemize}
+
+        \item<3-> 使用 \lstinline|cout| 语句输出变量，在输出流符号 \lstinline|<<| 后写上变量名
+
+            \begin{itemize}
+                \item \lstinline|cout << a << endl;|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{多个变量的使用}
+
+    \begin{itemize}
+        \item<1-> 可以同时声明多个变量
+
+            \begin{itemize}
+                \item \lstinline|int a, b;|
+            \end{itemize}
+
+        \item<2-> 同时输入多个变量
+
+            \begin{itemize}
+                \item \lstinline|cin >> a >> b;|
+            \end{itemize}
+
+        \item<3-> 同时输出多个变量
+
+            \begin{itemize}
+                \item \lstinline|cout << a << " " << b << endl;|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 2.1：输出长方形的长和宽 I}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=example1]{ch02/example1.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，由用户输入两个整数 $a$, $b$，代表长方形的长和宽，再输出长和宽。
+
+                \item 输出分两行，第一行输出长，第二行输出宽。
+
+                \item 样例输入
+
+                    \lstinline|5 3|
+
+                \item 样例输出
+
+                    \lstinline|length of rectangle: 5|\\
+                    \lstinline|width of rectangle: 3|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{数据类型}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量的数据类型}
+
+    \begin{block}{整数类型}
+
+        \begin{itemize}
+            \item \lstinline|int|：$-2^{31} \sim 2^{31} - 1$（近似值 $2.1 \times 10^9$）
+            \item \lstinline|long long|：$-2^{63} \sim 2^{63} - 1$（近似值 $9.2 \times 10^{18}$）
+        \end{itemize}
+
+    \end{block}
+
+    \begin{itemize}
+        \item
+            \lstinline|int a = 123;|\\
+            \lstinline|cout << a << endl; // 输出 123|
+
+        \item<2->
+            \alt<2>{
+                \lstinline|int b = 123456789123;|\\
+                \lstinline|cout << b << endl; // 输出错误，整数溢出|
+            }{
+                \redout{{\lstinline|int b = 123456789123;|}}\\
+                \redout{{\lstinline|cout << b << endl; // 输出错误，整数溢出|}}
+            }
+
+        \item<3->
+            \lstinline|long long b = 123456789123;|\\
+            \lstinline|cout << b << endl; // 输出 123456789123|
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量的数据类型}
+
+    \begin{block}{浮点数类型（实数/小数）}
+
+        \begin{itemize}
+            \item \lstinline|double|：双精度浮点数
+        \end{itemize}
+
+    \end{block}
+
+    \begin{itemize}
+        \item
+            \lstinline|double d = 2.33;|\\
+            \lstinline|cout << d << endl; // 输出 2.33|
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量的数据类型}
+
+    \begin{block}{字符类型}
+
+        \begin{itemize}
+            \item \lstinline|char|：键盘上的字母、数字及符号
+        \end{itemize}
+
+    \end{block}
+
+    \begin{itemize}
+        \item
+            \lstinline|char c = '!';|\\
+            \lstinline|cout << c << endl; // 输出 !|
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量的数据类型}
+
+    \begin{block}{布尔类型}
+
+        \begin{itemize}
+            \item \lstinline|bool|：true / false（真 / 假）
+        \end{itemize}
+
+    \end{block}
+
+    \begin{itemize}
+        \item
+            \lstinline|bool t = true;|\\
+            \lstinline|cout << t << endl; // 输出 1|
+
+        \item
+            \lstinline|bool f = false;|\\
+            \lstinline|cout << f << endl; // 输出 0|
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 2.2：输出长方形的长和宽 II}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=example2]{ch02/example2.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，由用户输入两个实数 $a$, $b$，代表长方形的长和宽，再输出长和宽。
+
+                \item 输出分两行，第一行输出长，第二行输出宽。结果保留 $2$ 位小数。
+
+                \item 样例输入
+
+                    \lstinline|5.727 3.472|
+
+                \item 样例输出
+
+                    \lstinline|length of rectangle: 5.73|\\
+                    \lstinline|width of rectangle: 3.47|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{常量}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{常量}
+
+    \begin{itemize}
+        \item<1-> 常量的概念
+
+            \begin{itemize}
+                \item 常量就是在程序运行过程中，其值不能被改变的量
+            \end{itemize}
+
+        \item<2-> 常量的作用
+
+            \begin{itemize}
+                \item 存储在程序运行过程中不能被修改的数据，更易于维护
+                \item 例如：圆周率 $PI$
+            \end{itemize}
+
+        \item<3-> 常量的声明
+
+            \begin{itemize}
+                \item 声明常量与声明变量类似
+                \item 但需要在数据类型前加 \lstinline|const| 关键字
+                \item \lstinline|const double PI = 3.14159;|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{注意事项}
+
+    \begin{itemize}
+        \item<1-> 常量必须在声明的同时初始化
+
+        \item<2-> 不能被重新赋值
+
+            \begin{itemize}
+                \item
+                    \alt<2>{
+                        \lstinline|const double PI;|\\
+                        \lstinline|PI = 3.14159;|
+                    }{
+                        \redout{{\lstinline|const double PI;|}}\\
+                        \redout{{\lstinline|PI = 3.14159;|}}
+                    }
+            \end{itemize}
+
+        \item<4-5> 也不能输入
+
+            \begin{itemize}
+                \item
+                    \alt<4>{
+                        \lstinline|const double PI;|\\
+                        \lstinline|cin >> PI;|
+                    }{
+                        \redout{{\lstinline|const double PI;|}}\\
+                        \redout{{\lstinline|cin >> PI;|}}
+                    }
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字面量}
+
+    \begin{itemize}
+        \item<1-> 字面量的概念
+
+            \begin{itemize}
+                \item C++ 源代码中的固定数值，是预先写入程序中的数据
+                \item \lstinline|int a = 2;|
+            \end{itemize}
+
+        \item<2-> 字面量的数据类型
+
+            \begin{itemize}
+                \item \lstinline|cout << 3 << endl;   // 3 默认是整数类型|
+                \item \lstinline|cout << 3.0 << endl; // 3.0 默认是浮点数类型|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{类型转换}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{类型转换}
+
+    \lstinputlisting[language=C++,name=cast]{ch02/cast.cc}
+
+    \begin{itemize}
+        \item<2-> 以上程序能编译通过吗？
+        \item<2-> 运行结果是两行 \lstinline|123456789123| 吗？
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{类型转换}
+
+    \begin{itemize}
+        \item 任何基本数据类型之间都可以相互转换，常见的有：
+
+            \begin{itemize}
+                \item \lstinline|int <=> long long|
+                \item \lstinline|int <=> double|
+                \item \lstinline|int <=> bool|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{类型转换}
+
+    \begin{itemize}
+        \item<1-> \lstinline|int| 和 \lstinline|long long| 的数据范围不同（容量不同）
+
+        \item<2-> \lstinline|int => long long|
+
+            \begin{itemize}
+                \item 数据正常转换
+            \end{itemize}
+
+        \item<3-> \lstinline|long long => int|
+
+            \begin{itemize}
+                \item 超过 \lstinline|int| 类型上限（$2.1 \times 10^9$）时会\textbf{溢出}，导致数据不准确
+                \item 其它情况下，数据正常转换
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{类型转换}
+
+    \begin{itemize}
+        \item<1-> \lstinline|double| 和 \lstinline|int| 的区别在于是否存在小数部分
+
+        \item<2-> \lstinline|double => int|
+
+            \begin{itemize}
+                \item 删除小数部分
+                \item \lstinline|2.9 => 2|
+            \end{itemize}
+
+        \item<3-> \lstinline|int => double|
+
+            \begin{itemize}
+                \item 添加小数部分
+                \item \lstinline|5 => 5.0|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{类型转换}
+
+    \begin{itemize}
+        \item<1-> \lstinline|bool| 类型表示 true / false，实际存储的是数值 $1$ / $0$
+
+        \item<2-> \lstinline|bool => int|
+
+            \begin{itemize}
+                \item \lstinline|false => 0|
+                \item \lstinline|true => 1|
+            \end{itemize}
+
+        \item<3-> \lstinline|int => bool|
+
+            \begin{itemize}
+                \item \lstinline|0 => false|
+                \item \lstinline|非 0 => true|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{类型转换}
+
+    \begin{itemize}
+        \item<1-> 直接赋值时，会产生隐式类型转换
+
+            \begin{itemize}
+                \item
+                    \lstinline|int a = 2.9;|\\
+                    \lstinline|cout << a << endl; // 输出 2|
+            \end{itemize}
+
+        \item<2-> 也可以通过 \textbf{(类型)变量名} 的形式进行强制类型转换
+
+            \begin{itemize}
+                \item
+                    \lstinline|double b = 2.9;|\\
+                    \lstinline|cout << b << endl;      // 输出 2.9|\\
+                    \lstinline|cout << (int)b << endl; // 输出 2|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}
+        \item 变量与常量
+            \begin{itemize}
+                \item 声明、初始化
+                \item 赋值
+                \item 输入输出
+            \end{itemize}
+
+        \item 数据类型与类型转换
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge Thank you!}
+    \end{center}
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}

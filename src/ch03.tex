@@ -1,0 +1,737 @@
+%------------------------------------------------------------
+\title[03 - 表达式与运算]
+{03 - 表达式与运算}
+
+\subtitle{C++ 程序设计基础}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量的类型}
+
+    \begin{itemize}
+        \item<1-> 整数类型
+
+            \begin{itemize}
+                \item \lstinline|int|：近似值 $2.1 \times 10^9$
+                \item \lstinline|long long|：近似值 $9.2 \times 10^{18}$
+            \end{itemize}
+
+        \item<2-> 浮点数类型（实数/小数）
+
+            \begin{itemize}
+                \item \lstinline|double|：双精度浮点数
+            \end{itemize}
+
+        \item<3-> 字符类型
+
+            \begin{itemize}
+                \item \lstinline|char|：键盘上的字母、数字及符号
+            \end{itemize}
+
+        \item<4-> 布尔类型
+
+            \begin{itemize}
+                \item \lstinline|bool|：true / false（真 / 假）
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量的声明与访问}
+
+    \begin{itemize}
+        \item<1-> 变量的声明
+
+            \begin{itemize}
+                \item \textbf{类型 \enspace 变量名}
+                \item \lstinline|int a;|
+            \end{itemize}
+
+        \item<2-> 变量的赋值
+
+            \begin{itemize}
+                \item \lstinline|a = 100;|
+            \end{itemize}
+
+        \item<3-> 使用 \lstinline|cin| 语句输入变量，在输入流符号 \lstinline|>>| 后写上变量名
+
+            \begin{itemize}
+                \item \lstinline|cin >> a;|
+            \end{itemize}
+
+        \item<4-> 使用 \lstinline|cout| 语句输出变量，在输出流符号 \lstinline|<<| 后写上变量名
+
+            \begin{itemize}
+                \item \lstinline|cout << a << endl;|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{算术运算}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{算术运算}
+
+    \begin{table}[]
+        \begin{tabular}{cccc}
+            \toprule
+            操作          & 操作符        & 例子                & 结果            \\
+            \midrule
+            加法          & \lstinline|+| & \lstinline|20 + 10| & \lstinline|30|  \\
+            减法          & \lstinline|–| & \lstinline|20 – 10| & \lstinline|10|  \\
+            乘法          & \lstinline|*| & \lstinline|20 * 10| & \lstinline|200| \\
+            除法          & \lstinline|/| & \lstinline|20 / 10| & \lstinline|2|   \\
+            取模（求余数）& \lstinline|%| & \lstinline|20 % 10| & \lstinline|0|   \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{运算规则}
+
+    \begin{itemize}[<+->]
+        \item \textbf{相同数据类型}的运算数进行算术运算，得到的结果也是\textbf{相同类型}
+
+            \begin{itemize}
+                \item 例：整数除以整数，结果也是整数
+                \item \lstinline|2 / 4| 的结果是什么？是 $0$ 还是 $0.5$？
+
+                    \begin{itemize}
+                        \item 是 $0$（整数）而不是 $0.5$（实数）
+                    \end{itemize}
+
+                \item 那如何让 \lstinline|2 / 4| 的结果为 $0.5$ 呢？
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{隐式类型转换}
+
+    \begin{itemize}[<+->]
+        \item
+            \textbf{不同数据类型}的运算数进行算术运算，则存储空间小的类型自动转换为存储空间大的类型，再进行运算，运算的结果为\textbf{存储空间大}的类型
+
+            \begin{itemize}
+                \item 例：实数除以整数 ，结果是实数
+                \item \lstinline|2.0 / 4| 的结果的结果为 $0.5$（实数）
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{随堂练习}
+
+    \begin{exampleblock}{选择题}
+
+        \begin{enumerate}
+            \item 下面语句中可以得到整数的有
+
+                \alt<2>{
+                    \begin{tasks}
+                        \task[A.] \lstinline|10 / 4.0;|
+                        \task[B.] \lstinline|(double)10 / 4;|
+                        \task[C.] \lstinline|1.0 * 10;|
+                        \task[D.] \textcolor{red}{\lstinline|10 * 4;|}
+                    \end{tasks}
+                }{
+                    \begin{tasks}
+                        \task[A.] \lstinline|10 / 4.0;|
+                        \task[B.] \lstinline|(double)10 / 4;|
+                        \task[C.] \lstinline|1.0 * 10;|
+                        \task[D.] \lstinline|10 * 4;|
+                    \end{tasks}
+                }
+
+        \end{enumerate}
+
+    \end{exampleblock}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{表达式}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{表达式}
+
+    \begin{itemize}[<+->]
+        \item 表达式，是由变量、常量、运算符和分组符号等组成，能通过计算得出数值的式子，如 \lstinline|a * 10 - b|
+
+            \begin{itemize}
+                \item 分组符号只可以为\textbf{小括号}，如 \lstinline|a * (10 – b)|
+                \item 运算符\textbf{不可以}省略不写
+                \item 括号使用时，需要成对出现
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{随堂练习}
+
+    \begin{exampleblock}{选择题}
+
+        \begin{enumerate}
+            \item 以下选项中出现的字母或单词均为变量或常量，那么以下选项中在 C++ 中属于合法的表达式的有
+
+                \alt<2>{
+                    \begin{tasks}
+                        \task[A.] \lstinline|2(a + b)|
+                        \task[B.] \lstinline|[(a + b) * h] / 2|
+                        \task[C.] \lstinline|2pi * r|
+                        \task[D.] \textcolor{red}{\lstinline|pi * r * r|}
+                    \end{tasks}
+                }{
+                    \begin{tasks}
+                        \task[A.] \lstinline|2(a + b)|
+                        \task[B.] \lstinline|[(a + b) * h] / 2|
+                        \task[C.] \lstinline|2pi * r|
+                        \task[D.] \lstinline|pi * r * r|
+                    \end{tasks}
+                }
+
+        \end{enumerate}
+
+    \end{exampleblock}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{表达式}
+
+    \begin{itemize}
+        \item 在表达式中，参与运算不会改变变量的值
+
+        \item 对于表达式的结果，我们可以直接输出，或存储后再使用
+
+            \uncover<2-> {
+                \alt<3> {
+                    \lstinputlisting[language=C++,name=expression2]{ch03/expression2.cc}
+                }{
+                    \lstinputlisting[language=C++,name=expression1]{ch03/expression1.cc}
+                }
+            }
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{运算的优先级}
+
+    \begin{itemize}
+        \item 在表达式求值时，必须了解各种运算及其优先顺序
+
+            \begin{itemize}
+                \item 优先顺序从高到低排列：
+
+                    \begin{multicols}{2}
+                        \begin{enumerate}
+                            \item 括号
+                            \item 乘法 / 除法 / 取模
+                            \item 加法 / 减法
+                            \item 关系运算
+                            \item 逻辑运算
+                            \item 赋值运算
+                        \end{enumerate}
+                    \end{multicols}
+
+                \item 同等优先顺序的两个运算则按照从左到右进行计算
+
+                    \begin{itemize}
+                        \item 除了赋值运算和逻辑非
+                    \end{itemize}
+
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{赋值运算}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{赋值运算}
+
+    \begin{table}[]
+        \begin{tabular}{ccc}
+            \toprule
+            操作     & 操作符         & 解释                                             \\
+            \midrule
+            赋值     & \lstinline|=|  & 将值赋予变量                                     \\
+            加法赋值 & \lstinline|+=| & \lstinline|a += b|，等价于 \lstinline|a = a + b| \\
+            减法赋值 & \lstinline|–=| & \lstinline|a -= b|，等价于 \lstinline|a = a - b| \\
+            乘法赋值 & \lstinline|*=| & \lstinline|a *= b|，等价于 \lstinline|a = a * b| \\
+            除法赋值 & \lstinline|/=| & \lstinline|a /= b|，等价于 \lstinline|a = a / b| \\
+            取模赋值 & \lstinline|%=| & \lstinline|a %= b|，等价于 \lstinline|a = a % b| \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{随堂练习}
+
+    \begin{exampleblock}{填空题}
+
+        \begin{enumerate}
+            \item 在各表达式互相独立、不相互影响的情况下，写出执行下列表达式后各变量的值。（a、b 的初始值分别为 21、5）
+
+                \begin{itemize}
+                    \item \lstinline|a + b;| \alt<2>{\textcolor{red}{\tabto{8em} $a = 21$ \tabto{12em} $b = 5$}}{}
+                    \item \lstinline|a += b;| \alt<2>{\textcolor{red}{\tabto{8em} $a = 26$ \tabto{12em} $b = 5$}}{}
+                    \item \lstinline|b = a / b;| \alt<2>{\textcolor{red}{\tabto{8em} $a = 21$ \tabto{12em} $b = 4$}}{}
+                    \item \lstinline|a %= b;| \alt<2>{\textcolor{red}{\tabto{8em} $a = 1$ \tabto{12em} $b = 5$}}{}
+                \end{itemize}
+
+        \end{enumerate}
+
+    \end{exampleblock}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 3.1：交换两个变量的值}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=swap]{ch03/swap.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，由用户输入两个整数 $a$, $b$ ($1 \le a, b \le 10^3$)，输出交换后的整数。
+
+                \item 样例输入
+
+                    \lstinline|3 5|
+
+                \item 样例输出
+
+                    \lstinline|5 3|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{自增自减}
+
+    \begin{table}[]
+        \begin{tabular}{ccc}
+            \toprule
+            操作 & 操作符         & 解释             \\
+            \midrule
+            自增 & \lstinline|++| & 变量的值增加 $1$ \\
+            自减 & \lstinline|--| & 变量的值减少 $1$ \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    \begin{itemize}
+        \item<2-> 自增和自减运算符可放在变量前或变量后，单独使用时，效果都一样
+
+            \begin{itemize}
+                \item \lstinline|a++;| 与 \lstinline|++a;| 等价，都表示 \lstinline|a = a + 1;|
+                \item \lstinline|a--;| 与 \lstinline|--a;| 等价，都表示 \lstinline|a = a - 1;|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{自增自减}
+
+    \begin{itemize}
+        \item 自增和自减运算符参与其他操作时，运算符的前后位置会影响结果
+
+            \begin{itemize}
+                \item<2-> \lstinline|b = a++;|
+
+                    \begin{itemize}
+                        \item 先赋值，再 \lstinline|a++|
+                        \item 相当于 \lstinline|b = a; a = a + 1;|
+                    \end{itemize}
+
+                \item<3-> \lstinline|b = ++a;|
+
+                    \begin{itemize}
+                        \item 先 \lstinline|++a|，再赋值
+                        \item 相当于 \lstinline|a = a + 1; b = a;|
+                    \end{itemize}
+
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字符的简单运算}
+
+    \begin{itemize}
+        \item 字符类型的变量，也可以进行加减运算
+
+            \begin{itemize}
+                \item \lstinline|char ch = 'a';      // 字符类型变量 ch 赋值为字母 a|
+                \item \lstinline|ch++;               // 变量 ch 的值加 1|
+                \item \lstinline|cout << ch << endl; // 输出字母 b|
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 3.2：输出下一个字母}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=next_alpha]{ch03/next_alpha.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，由用户输入一个a 到 y 之间的小写字母，输出该字母的下一个字母。
+
+                \item 样例输入
+
+                    \lstinline|a|
+
+                \item 样例输出
+
+                    \lstinline|b|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{关系运算}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{关系运算}
+
+    \begin{table}[]
+        \begin{tabular}{cccc}
+            \toprule
+            操作          & 操作符         & 例子                 & 结果              \\
+            \midrule
+            判断相等      & \lstinline|==| & \lstinline|20 == 10| & \lstinline|false| \\
+            判断不等      & \lstinline|!=| & \lstinline|20 != 10| & \lstinline|true|  \\
+            判断大于      & \lstinline|>|  & \lstinline|20 > 10|  & \lstinline|true|  \\
+            判断小于      & \lstinline|<|  & \lstinline|20 < 10|  & \lstinline|false| \\
+            判断大于等于  & \lstinline|>=| & \lstinline|20 >= 10| & \lstinline|true|  \\
+            判断小于等于  & \lstinline|<=| & \lstinline|20 <= 20| & \lstinline|true|  \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{关系运算}
+
+    \begin{itemize}[<+->]
+        \item 参与关系运算的操作数是任意类型的表达式，结果是 \lstinline|bool| 类型
+
+        \item 能将关系运算表达式的结果赋值给 \lstinline|bool| 类型变量并输出
+
+            \begin{itemize}
+                \item
+                    \lstinline|bool f;|\\
+                     \lstinline|f = (20 > 10);|\\
+                     \lstinline|cout << f << endl; // 输出结果为 1|
+
+                \item
+                    \lstinline|f = (10 + 10 != 20);|\\
+                     \lstinline|cout << f << endl; // 输出结果为 0|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{判断倍数关系}
+
+    \begin{itemize}[<+->]
+        \item 如何判断整数 a 是否为 2 的倍数？
+
+            \begin{itemize}
+                \item
+                     
+                    \lstinline|bool f;|\\
+                     \lstinline|f = (a % 2 == 0);|\\
+
+                \item
+                     \lstinline|cout << f << endl; // 2 的倍数则输出 1，否则输出 0|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 3.3：4 的倍数}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=mod4]{ch03/mod4.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，由用户输入一个整数 $n$ ($1 \le n \le 10^9$)，如果该整数是 $4$ 的倍数，则输出 1，否则输出 0。
+
+                \item 样例输入
+
+                    \lstinline|12|
+
+                \item 样例输出
+
+                    \lstinline|1|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{逻辑运算}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{逻辑运算}
+
+    \begin{itemize}
+        \item 参与逻辑运算的操作数是 bool 类型，结果也是 bool 类型
+
+        \item 逻辑运算有以下三种：
+
+            \begin{itemize}
+                \item 逻辑与 \lstinline|&&|
+                \item 逻辑或 \lstinline||||
+                \item 逻辑非 \lstinline|!|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{逻辑与：\&\&}
+
+    \begin{itemize}
+        \item 逻辑与运算符有“并且”的含义，当两侧的操作数都成立（\lstinline|true|）时，表达式才成立（\lstinline|true|）
+    \end{itemize}
+
+    \begin{table}[]
+        \begin{tabular}{ccc}
+            \toprule
+            表达式                     & 操作数运算                 & 结果              \\
+            \midrule
+            \lstinline|2 > 1 && 2 < 3| & \lstinline|true && true|   & \lstinline|true|  \\
+            \lstinline|2 > 1 && 2 > 3| & \lstinline|true && false|  & \lstinline|false| \\
+            \lstinline|2 < 1 && 2 < 3| & \lstinline|false && true|  & \lstinline|false| \\
+            \lstinline|2 < 1 && 2 > 3| & \lstinline|false && false| & \lstinline|false| \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{逻辑或：||}
+
+    \begin{itemize}
+        \item 逻辑或运算符有“或者”的含义，当两侧的操作数有一个成立（\lstinline|true|）时，表达式就成立（\lstinline|true|） 
+    \end{itemize}
+
+    \begin{table}[]
+        \begin{tabular}{ccc}
+            \toprule
+            表达式                     & 操作数运算                 & 结果              \\
+            \midrule
+            \lstinline!2 > 1 || 2 < 3! & \lstinline!true || true!   & \lstinline!true!  \\
+            \lstinline!2 > 1 || 2 > 3! & \lstinline!true || false!  & \lstinline!true!  \\
+            \lstinline!2 < 1 || 2 < 3! & \lstinline!false || true!  & \lstinline!true!  \\
+            \lstinline!2 < 1 || 2 > 3! & \lstinline!false || false! & \lstinline!false! \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{逻辑非：!}
+
+    \begin{itemize}
+        \item 逻辑非运算符会将表达式的结果取反
+    \end{itemize}
+
+    \begin{table}[]
+        \begin{tabular}{ccc}
+            \toprule
+            表达式                  & 操作数运算             & 结果              \\
+            \midrule
+            \lstinline|!(2 > 1)|    & \lstinline|!(true)|    & \lstinline|false| \\
+            \lstinline|!(2 < 1)|    & \lstinline|!(false)|   & \lstinline|true|  \\
+            \lstinline|!(!(2 > 1))| & \lstinline|!(!(true))| & \lstinline|true|  \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{随堂练习}
+
+    \begin{exampleblock}{选择题}
+
+        \begin{enumerate}
+            \item 在 C++ 中，判断 a 等于 0 或 b 等于 0 的表达式是
+
+                \alt<2>{
+                    \begin{tasks}
+                        \task[A.] \lstinline{a != 0 && b != 0}
+                        \task[B.] \lstinline{a != 0 || b != 0}
+                        \task[C.] \textcolor{red}{\lstinline{a == 0 || b == 0}}
+                        \task[D.] \lstinline{a = 0 || b = 0}
+                    \end{tasks}
+                }{
+                    \begin{tasks}
+                        \task[A.] \lstinline{a != 0 && b != 0}
+                        \task[B.] \lstinline{a != 0 || b != 0}
+                        \task[C.] \lstinline{a == 0 || b == 0}
+                        \task[D.] \lstinline{a = 0 || b = 0}
+                    \end{tasks}
+                }
+
+        \end{enumerate}
+
+    \end{exampleblock}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 3.4：两位数判断}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=double_digit]{ch03/double_digit.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，由用户输入一个整数 $n$ ($0 \le n \le 10^9$)，如果该整数是两位数，则输出 1，否则输出 0。
+
+                \item 样例输入
+
+                    \lstinline|10|
+
+                \item 样例输出
+
+                    \lstinline|1|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}
+        \item 算术运算
+        \item 赋值运算
+        \item 关系运算
+        \item 逻辑运算
+        \item 运算优先级
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge Thank you!}
+    \end{center}
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}

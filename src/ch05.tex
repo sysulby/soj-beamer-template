@@ -1,0 +1,592 @@
+%------------------------------------------------------------
+\title[05 - 循环结构：while 循环]
+{05 - 循环结构：while 循环}
+
+\subtitle{C++ 程序设计基础}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{顺序结构与分支结构}
+
+    \begin{itemize}[<+->]
+        \item 顺序结构：程序按照从上到下的顺序逐条执行各个语句
+        \item 分支结构：可以根据不同情况，执行不同的语句
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{顺序结构与分支结构的局限性}
+
+    \begin{itemize}[<+->]
+        \item 只能处理小规模的问题
+
+            \begin{itemize}
+                \item 输出一行 \lstinline|"Hello world"|，如果要求输出 $100$ 行呢？
+                \item 判断年份是否是闰年，如果有 $1000$ 个年份要判断呢？
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{循环结构}
+
+    \begin{itemize}
+        \item<1-> 循环结构：能够\textbf{反复}执行一段指令
+
+        \item<2-> 循环结构的主要语法
+
+            \begin{itemize}
+                \item \lstinline|while| 循环
+                \item \lstinline|do...whie| 循环
+                \item \lstinline|for| 循环
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{while 循环}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{while 循环}
+
+    \begin{columns}
+        \column{.65\textwidth}
+        \begin{overlayarea}{\textwidth}{.6\textheight}
+            \begin{itemize}
+                \item \lstinline|while| 循环：依照条件语句判定是否继续执行循环
+            \end{itemize}
+
+            \uncover<2->{
+                \vspace*{1em}
+                \centering
+                \begin{tikzpicture}[node distance=1.25cm]
+                    \node (start) [process] {...};
+                    \node (decision1) [decision, below of=start] {条件语句};
+                    \node (process1) [process, below of=decision1] {循环体};
+                    \node (stop) [process, below of=process1] {...};
+
+                    \draw [arrow] (start) -- (decision1);
+                    \draw [arrow] (decision1) -- node[left] {yes} (process1);
+                    \draw [arrow] (decision1) -- ++(2.2,0) |- node[above, xshift=-.6cm] {no} (stop);
+                    \draw [arrow] (process1) -- ++(-2.2,0) |- (decision1);
+                \end{tikzpicture}
+            }
+        \end{overlayarea}
+
+        \column{.35\textwidth}
+        \begin{overlayarea}{\textwidth}{.3\textheight}
+            \uncover<3->{
+                \lstinputlisting[language=C++,name=while]{ch05/while.cc}
+            }
+        \end{overlayarea}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{while 循环}
+
+    \begin{columns}
+        \column{.65\textwidth}
+        \begin{overlayarea}{\textwidth}{.6\textheight}
+            \begin{itemize}
+                \item \lstinline|while| 循环：依照条件语句判定是否继续执行循环
+
+                \item 条件语句通常是布尔类型的表达式
+
+                    \begin{itemize}
+                        \item<2-> 条件成立（\lstinline|true|）则执行循环体
+                        \item<3-> 条件不成立（\lstinline|false|）则结束循环
+                    \end{itemize}
+
+                \item<4-> 当循环体中只有一个语句时，可以省略花括号
+            \end{itemize}
+        \end{overlayarea}
+
+        \column{.35\textwidth}
+        \begin{overlayarea}{\textwidth}{.3\textheight}
+            \lstinputlisting[language=C++,name=while]{ch05/while.cc}
+        \end{overlayarea}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{示例：while 循环}
+
+    \begin{columns}
+        \column{.01\textwidth}
+
+        \column{.72\textwidth}
+        \lstinputlisting[language=C++,name=while_3_hello]{ch05/while_3_hello.cc}
+        \begin{tikzpicture}[remember picture,overlay]
+            \uncover<2>{\redbox{while_3_hello-6}{2}{10}}
+            \uncover<3,6,9,12>{\redbox{while_3_hello-7}{2}{15}}
+            \uncover<4,7,10>{\redbox{while_3_hello-8}{4}{24}}
+            \uncover<5,8,11>{\redbox{while_3_hello-9}{4}{4}}
+            \uncover<13->{\redbox{while_3_hello-12}{2}{9}}
+        \end{tikzpicture}
+
+        \column{.27\textwidth}
+        \begin{itemize}
+                \uncover<2-> {
+                \item 变量
+
+                    \only<2-4>{\lstinline|n = 3|}
+                    \only<5>{\textcolor{red}{\lstinline|n = 2|}}
+                    \only<6-7>{\lstinline|n = 2|}
+                    \only<8>{\textcolor{red}{\lstinline|n = 1|}}
+                    \only<9-10>{\lstinline|n = 1|}
+                    \only<11>{\textcolor{red}{\lstinline|n = 0|}}
+                    \only<12>{\textcolor{red}{\lstinline|n > 0| 不成立}}
+                    \only<13->{\lstinline|n = 0|}
+                }
+
+                \uncover<4-> {
+                \item 输出
+
+                    \uncover<4->{\lstinline|hello|\\}
+                    \uncover<7->{\lstinline|hello|\\}
+                    \uncover<10->{\lstinline|hello|}
+                }
+        \end{itemize}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.1：输出 n 行 hello}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=while_n_hello]{ch05/while_n_hello.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，输出 $n$ 行 hello。
+
+                \item 样例输入
+
+                    \lstinline|2|
+
+                \item 样例输出
+
+                    \lstinline|hello|\\
+                    \lstinline|hello|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{while 循环的应用}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.2：输出从 n 到 1 之间的整数}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=while_n_to_1]{ch05/while_n_to_1.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，输出从 $n$ 到 $1$ 之间的整数，每个数字单独占一行。
+
+                \item 样例输入
+
+                    \lstinline|3|
+
+                \item 样例输出
+
+                    \lstinline|3|\\
+                    \lstinline|2|\\
+                    \lstinline|1|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.3：输出从 n 到 1 的整数之和}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++,name=while_sum_n_to_1]{ch05/while_sum_n_to_1.cc}
+
+        \begin{tikzpicture}[remember picture,overlay]
+            \uncover<3>{\redbox{while_sum_n_to_1-8}{2}{12}}
+            \uncover<3>{\redbox{while_sum_n_to_1-10}{4}{9}}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，输出从 $n$ 到 $1$ 之间的整数之和。
+
+                \item 样例输入
+
+                    \lstinline|5|
+
+                \item 样例输出
+
+                    \lstinline|15|
+
+                \item 样例说明
+
+                    $5 + 4 + 3 + 2 + 1 = 15$
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.4：对输入的 n 个整数求和}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++,name=while_sum_x]{ch05/while_sum_x.cc}
+
+        \begin{tikzpicture}[remember picture,overlay]
+            \uncover<3>{\redbox{while_sum_x-8}{2}{12}}
+            \uncover<3>{\redbox{while_sum_x-10}{4}{9}}
+            \uncover<3>{\redbox{while_sum_x-11}{4}{9}}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，第一行输入一个整数 $n$ ($1 \le n \le 1000$)，第二行输入 $n$ 个整数 $x$ ($1 \le x \le 10^6$)，输出 $x$ 的和。
+
+                \item 样例输入
+
+                    \lstinline|3|\\
+                    \lstinline|2 5 8|
+
+                \item 样例输出
+
+                    \lstinline|15|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.5：输出 n 天的学习时长}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=while_n_days_study]{ch05/while_n_days_study.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，第一行输入一个整数 $n$ ($1 \le n \le 1000$)，表示有 $n$ 天。接下来的 $n$ 行，每行输入两个整数 $a$, $b$ ($0 \le a, b \le 6$)，分别表示校内的学习时长和校外的学习时长。\\
+                    对于每一天，输出一行，表示这天的总学习时长。
+
+                \item 样例输入
+
+                    \lstinline|2|\\
+                    \lstinline|5 3|\\
+                    \lstinline|3 2|
+
+                \item 样例输出
+
+                    \lstinline|8|\\
+                    \lstinline|5|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{思考}
+
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            前面输入的数据的数量都是确定的，\\
+            如果输入的数据的数量不确定该怎么做呢？
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.6：求出若干个数的总和}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++,name=while_cin_sum]{ch05/while_cin_sum.cc}
+
+        \begin{tikzpicture}[remember picture,overlay]
+            \uncover<3>{\redbox{while_cin_sum-9}{9}{18}}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入若干个整数 $x$ ($1 \le x \le 1000$, 不超过 $100$ 个)，当输入为 $0$ 时结束，求输入的数的总和。
+
+                \item 样例输入
+
+                    \lstinline|5 1 3 4 0|
+
+                \item 样例输出
+
+                    \lstinline|13|
+
+                \item 样例说明
+
+                    $5 + 1 + 3 + 4 = 13$
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{do..while 循环}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{do..while 循环}
+
+    \begin{columns}
+        \column{.65\textwidth}
+        \begin{overlayarea}{\textwidth}{.7\textheight}
+            \begin{itemize}
+                \item \lstinline|do..while| 循环：先执行一次循环体，再依照条件语句判定是否继续执行循环
+            \end{itemize}
+
+            \uncover<2->{
+                \vspace*{1em}
+                \centering
+                \begin{tikzpicture}[node distance=1.25cm]
+                    \node (start) [process] {...};
+                    \node (process1) [process, below of=start] {循环体};
+                    \node (decision1) [decision, below of=process1] {条件语句};
+                    \node (stop) [process, below of=decision1] {...};
+
+                    \draw [arrow] (start) -- (process1);
+                    \draw [arrow] (process1) -- (decision1);
+                    \draw [arrow] (decision1) -- ++(-2.2, 0) |- node[right, yshift = -.6cm] {yes} (process1);
+                    \draw [arrow] (decision1) -- node[left] {no} (stop);
+                \end{tikzpicture}
+            }
+        \end{overlayarea}
+
+        \column{.35\textwidth}
+        \begin{overlayarea}{\textwidth}{.3\textheight}
+            \uncover<3->{
+                \lstinputlisting[language=C++,name=do_while]{ch05/do_while.cc}
+            }
+        \end{overlayarea}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{do..while 循环}
+
+    \begin{columns}
+        \column{.65\textwidth}
+        \begin{overlayarea}{\textwidth}{.7\textheight}
+            \begin{itemize}
+                \item \lstinline|do..while| 循环：先执行一次循环体，再依照条件语句判定是否继续执行循环
+
+                \item 条件语句通常是布尔类型的表达式
+
+                    \begin{itemize}
+                        \item<2-> 条件成立（\lstinline|true|）则执行循环体
+                        \item<3-> 条件不成立（\lstinline|false|）则结束循环
+                    \end{itemize}
+
+                \item<4-> \lstinline|do...while| 循环的小括号后必须要有一个分号
+
+                \item<5-> 当语句块中只有一个语句时，可以省略花括号
+            \end{itemize}
+        \end{overlayarea}
+
+        \column{.35\textwidth}
+        \begin{overlayarea}{\textwidth}{.3\textheight}
+            \lstinputlisting[language=C++,name=do_while]{ch05/do_while.cc}
+        \end{overlayarea}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{示例：do..while 循环}
+
+    \lstinputlisting[language=C++,name=do_while_3_hello]{ch05/do_while_3_hello.cc}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.7：判断非负整数的位数}
+
+    \alt<2-6>{
+        \alt<2-4>{
+            \lstinputlisting[language=C++,name=while_count_digit]{ch05/while_count_digit.cc}
+        }{
+            \lstinputlisting[language=C++,name=do_while_count_digit]{ch05/do_while_count_digit.cc}
+        }
+        \uncover<4> {
+            \begin{itemize}
+                \item 如果输入为 $0$ 呢？
+            \end{itemize}
+        }
+
+        \begin{tikzpicture}[remember picture,overlay]
+            \uncover<3-4>{\redbox{while_count_digit-8}{2}{12}}
+            \uncover<3-4>{\redbox{while_count_digit-11}{4}{8}}
+            \uncover<6->{\redbox{do_while_count_digit-9}{2}{4}}
+            \uncover<6->{\redbox{do_while_count_digit-12}{2}{17}}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个非负整数 $n$ ($1 \le n \le 10^9$)，输出 $n$ 的位数。
+
+                \item 样例输入
+
+                    \lstinline|16|
+
+                \item 样例输出
+
+                    \lstinline|2|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.8：反向输出非负整数}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++,name=do_while_reverse_digit]{ch05/do_while_reverse_digit.cc}
+
+        \begin{tikzpicture}[remember picture,overlay]
+            \uncover<3>{\redbox{do_while_reverse_digit-9}{12}{6}}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($0 \le n \le 10^9$)，对 $n$ 进行拆分数位并反向输出每一位数，数字之间以空格间隔。
+
+                \item 样例输入
+
+                    \lstinline|856|
+
+                \item 样例输出
+
+                    \lstinline|6 5 8|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{while 和 do..while 的区别}
+
+    \begin{itemize}
+        \item \lstinline|while| 循环：先循环再判断
+        \item \lstinline|do..while| 循环：先执行再判断，\textbf{至少执行一次}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}
+        \item \lstinline|while| 循环
+        \item \lstinline|do...while| 循环
+        \item 累加器 sum 和 计数器 cnt 需要初始化为 $0$
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge Thank you!}
+    \end{center}
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
