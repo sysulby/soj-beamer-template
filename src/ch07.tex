@@ -333,19 +333,15 @@
                 \node (second) [process, right of=start, xshift = 1.5cm] {7};
                 \node (third) [process, right of=second, xshift = 1.5cm] {9};
                 \node (stop) [process, right of=third, xshift = 1.5cm] {5};
-                \node (max) [startstop, below of=second, xshift = 1.5cm] {擂主};
-
-                \only<3>{\draw [arrow] (start) --  node[left, xshift = -0.3cm, yshift = -0.1cm] {攻擂成功} (max);}
-                \only<4>{\draw [arrow] (second) --  node[left, xshift = -0.1cm, yshift = -0.1cm] {攻擂失败} (max);}
-                \only<5>{\draw [arrow] (third) -- node[left, xshift = -0.1cm] {攻擂成功} (max);}
-                \only<6>{\draw [arrow] (stop) --  node[left, xshift=-0.3cm] {攻擂失败} (max);}
-            \end{tikzpicture}
-
-
-            \begin{itemize}
-                \item<3-4> 擂主：\lstinline|8|
-                \item<5-6> 擂主：\lstinline|9|
-            \end{itemize}				
+                \only<2>{\node (max) [startstop, below of=second, xshift = 1.5cm] {擂主};}
+				\only<3-4>{\node (max1) [startstop, below of=second, xshift = 1.5cm] {擂主: 8};}
+				\only<5-6>{\node (max2) [startstop, below of=second, xshift = 1.5cm] {擂主: 9};}
+				
+				\only<3>{\draw [arrow] (start) --  node[left, xshift = -0.3cm, yshift = -0.1cm] {攻擂成功} (max1);}
+				\only<4>{\draw [arrow] (second) --  node[left, xshift = -0.1cm, yshift = -0.1cm] {攻擂失败} (max1);}
+				\only<5>{\draw [arrow] (third) -- node[left, xshift = -0.1cm] {攻擂成功} (max2);}
+				\only<6>{\draw [arrow] (stop) --  node[left, xshift=-0.3cm] {攻擂失败} (max2);}
+            \end{tikzpicture}	
         }
     }{
         \begin{exampleblock}{编程题}
@@ -491,9 +487,9 @@
 
     \begin{tikzpicture}[remember picture,overlay]
         \uncover<2->{\redbox{while_break-3}{11}{6}}
-        \uncover<2->{\draw[red, very thick, ->] (3.8,1.25) -- (4.5,1.25) -- (4.5,0.1) -- (0.6,0.1);}
-        \uncover<4>{\redbox{for_break-3}{11}{6}}
-        \uncover<4>{\draw[red, very thick, ->] (8.95,1.25) -- (9.7,1.25) -- (9.7,0.1) -- (5.7,0.1);}
+		\uncover<2->{\draw[red, very thick, ->] (3.8,1.25) -- (4.5,1.25) -- (4.5,0.45) -- (1.0,0.45);}
+		\uncover<4>{\redbox{for_break-3}{11}{6}}
+		\uncover<4>{\draw[red, very thick, ->] (8.95,1.25) -- (9.7,1.25) -- (9.7,0.45) -- (6.1,0.45);}
     \end{tikzpicture}
 \end{frame}
 %------------------------------------------------------------
@@ -546,9 +542,9 @@
 
     \begin{tikzpicture}[remember picture,overlay]
         \uncover<3->{\redbox{while_1_n_break-4}{14}{6}}
-        \uncover<3->{\draw[red, very thick, ->] (3.97,1.65) -- (4.5,1.65) -- (4.5,0.4) -- (0.6,0.4);}
-        \uncover<5>{\redbox{for_1_n_break-4}{14}{6}}
-        \uncover<5>{\draw[red, very thick, ->] (9.1,1.45) -- (9.7,1.45) -- (9.7,0.5) -- (5.7,0.5);}
+		\uncover<3->{\draw[red, very thick, ->] (3.97,1.65) -- (4.5,1.65) -- (4.5,0.4) -- (0.6,0.4);}
+		\uncover<5>{\redbox{for_1_n_break-4}{14}{6}}
+		\uncover<5>{\draw[red, very thick, ->] (9.1,1.45) -- (9.7,1.45) -- (9.7,0.6) -- (5.7,0.6);}
     \end{tikzpicture}
 \end{frame}
 %------------------------------------------------------------
