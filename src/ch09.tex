@@ -1,0 +1,386 @@
+%------------------------------------------------------------
+\title[09 - 一维数组]
+{09 - 一维数组}
+
+\subtitle{C++ 程序设计基础}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{多重循环}
+
+    \begin{itemize}[<+->]
+        \item 一重循环
+        \item 二重循环
+            \begin{itemize}
+                \item 在一重循环的循环体中再写一个循环
+            \end{itemize}
+        \item 三重循环
+        \item ...
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{一维数组}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{引入}
+
+    \begin{itemize}[<+->]
+        \item 使用循环求和的时候，都是一边输入数据一边维护当前的和，并没有将所有的数据都存储起来
+        \item 如果需要将求和的数据重新输出一遍，则没有办法实现
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{思考}
+
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            当变量很多且需要记录他们的值时，该怎么办？
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数组}
+
+    \begin{overlayarea}{\textwidth}{.55\textheight}
+        \begin{itemize}
+            \item<1-> 数组的概念
+
+                \begin{itemize}
+                    \item 数组是用于存储多个同类型数据的结构
+                    \item 多个数据存放在一片连续的内存空间中
+                \end{itemize}
+
+            \item<2-> 数组的优势
+
+                \begin{itemize}
+                    \item 代码简洁
+                    \item 通用、易维护
+                \end{itemize}
+        \end{itemize}
+    \end{overlayarea}
+
+    \begin{columns}
+        \column{.01\textwidth}
+
+        \column{.16\textwidth}
+        \lstinline|int A[8];|
+
+        \column{.83\textwidth}
+        \begin{tikzpicture}
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
+                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
+                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $44$         & $35$        \\
+            }; 
+        \end{tikzpicture}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数组}
+
+    \begin{overlayarea}{\textwidth}{.55\textheight}
+        \begin{itemize}
+            \item<1-> 数组的声明
+
+                \begin{itemize}
+                    \item \textbf{元素类型 \enspace 数组名[数组大小];}
+                    \item \lstinline|int A[8]; // 定义了可以存放 8 个整数的数组 A|
+                \end{itemize}
+
+                \begin{itemize}
+                    \item<2-> 数组中的基本单元叫作“元素”
+                    \item<2-> 数组大小定义为可能存放元素数量的最大值（可适当再大一些）
+                \end{itemize}
+
+                \begin{itemize}
+                    \item<3-> 建议声明为全局变量
+                \end{itemize}
+        \end{itemize}
+    \end{overlayarea}
+
+    \begin{columns}
+        \column{.01\textwidth}
+
+        \column{.16\textwidth}
+        \lstinline|int A[8];|
+
+        \column{.83\textwidth}
+        \begin{tikzpicture}
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
+                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
+                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $43$         & $53$        \\
+            }; 
+        \end{tikzpicture}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数组}
+
+    \begin{overlayarea}{\textwidth}{.55\textheight}
+        \begin{itemize}
+            \item 数组的初始化
+
+                \begin{itemize}
+                    \item<1-> 可以通过一个赋值符号和花括号，将花括号中给定的数值序列，从第 $0$ 位开始，依次赋值给数组中的每一个元素
+                        \begin{itemize}
+                            \item \lstinline|int A[8] = {71, 80, 62, 91, 99, 82, 43, 53};|
+                        \end{itemize}
+                \end{itemize}
+
+                \begin{itemize}
+                    \item<2-> 数组大小可以指定或留空，会按照需要的最小空间申请内存
+                        \begin{itemize}
+                            \item \lstinline|double B[] = {1.0, 2.7, 3.14, 9.8};|
+                        \end{itemize}
+                \end{itemize}
+        \end{itemize}
+    \end{overlayarea}
+
+    \begin{columns}
+        \column{.01\textwidth}
+
+        \column{.16\textwidth}
+        \lstinline|int A[8];|
+
+        \column{.83\textwidth}
+        \begin{tikzpicture}
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
+                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
+                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $43$         & $53$        \\
+            }; 
+        \end{tikzpicture}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数组}
+
+    \begin{overlayarea}{\textwidth}{.55\textheight}
+        \begin{itemize}
+            \item 数组元素的访问
+
+                \begin{itemize}
+                    \item 通过 \textbf{数组名 [下标]} 访问存储在数组中 某一位置 的值
+                        \begin{itemize}
+                            \item 下标是指在元素在数组中的位置，从 $0$ 开始
+                            \item 下标的范围：$0 \sim size - 1$ ($size$ 为数组大小)
+                        \end{itemize}
+                \end{itemize}
+
+                \begin{itemize}
+                    \item<2-> 例如：声明数组 \lstinline[basicstyle=\ttfamily\scriptsize]|int A[5];|
+                        \begin{itemize}
+                            \item 可以使用的数组下标：$0$, $1$, $2$, $3$, $4$
+                            \item 对应的可以使用的数组元素：\lstinline[basicstyle=\ttfamily\scriptsize]|A[0], A[1], A[2], A[3], A[4]|
+                            \item 可以使用变量作为数组下标：\lstinline[basicstyle=\ttfamily\scriptsize]|A[k]| ($0 \le k \le 4$)
+                        \end{itemize}
+                \end{itemize}
+        \end{itemize}
+    \end{overlayarea}
+
+    \begin{columns}
+        \column{.01\textwidth}
+
+        \column{.16\textwidth}
+        \lstinline|int A[8];|
+
+        \column{.83\textwidth}
+        \begin{tikzpicture}
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
+                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
+                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $43$         & $53$        \\
+            }; 
+        \end{tikzpicture}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.1：成绩录入}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=grade_output]{ch09/grade_output.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 6 年 A 班进行了一次小测，现要求编写程序，录入所有学生成绩，并输出所有学生的成绩，学生成绩如图所示。
+
+                    \begin{tikzpicture}
+                        \matrix (A) [matrix of nodes, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                            $71$ \& $80$ \& $62$ \& $91$ \& $99$ \& $82$ \& $43$ \& $53$ \\
+                        }; 
+                    \end{tikzpicture}
+
+                \item 样例输入
+
+                    无
+
+                \item 样例输出
+
+                    \lstinline|71 80 62 91 99 82 42 53|
+
+            \end{itemize}
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.2：成绩查询}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=grade_query]{ch09/grade_query.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 已知 6 年 A 班的小测成绩如图所示，编写程序，输入一个整数 $k$ ($0 \le k < 8$)，输出 $k$ 号学生的分数。
+
+                    \begin{tikzpicture}
+                        \matrix (A) [matrix of nodes, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                            $71$ \& $80$ \& $62$ \& $91$ \& $99$ \& $82$ \& $43$ \& $53$ \\
+                        }; 
+                    \end{tikzpicture}
+
+                \item 样例输入
+
+                    \lstinline|5|
+
+                \item 样例输出
+
+                    \lstinline|82|
+
+            \end{itemize}
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{思考}
+
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            当 $k = -1$ 时运行会怎样？
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数组}
+
+    \begin{overlayarea}{\textwidth}{.55\textheight}
+        \begin{itemize}
+            \item 数组访问越界
+
+                \begin{itemize}
+                    \item 一个大小为 $size$ 的数组，那下标在 $0$ 到 $size-1$ 的之间才是有意义的
+                    \item 访问不在数组有意义区间的元素称为 \textbf{数组越界}
+                \end{itemize}
+
+                \begin{itemize}
+                    \item<2-> 这可能会导致程序出现重大错误，但编译不会报错，需要有意识地避免数组越界
+                    \item<2-> 尤其是当数组的下标是以变量的形式出现时，更要加以小心
+                \end{itemize}
+
+        \end{itemize}
+    \end{overlayarea}
+
+    \begin{columns}
+        \column{.01\textwidth}
+
+        \column{.16\textwidth}
+        \lstinline|int A[8];|
+
+        \column{.83\textwidth}
+        \begin{tikzpicture}
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
+                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
+                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $43$         & $53$        \\
+            }; 
+        \end{tikzpicture}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}
+        \item 数组的概念
+        \item 数组的声明
+        \item 数组的初始化
+        \item 数组元素的访问
+        \item 数组的应用
+            \begin{itemize}
+                \item 数组求和
+                \item 求最值及其下标
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge Thank you!}
+    \end{center}
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
