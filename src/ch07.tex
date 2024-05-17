@@ -48,11 +48,11 @@
 			\end{itemize}
 			
 			\column{.50\textwidth}
-
-				\only<2>{\lstinputlisting[language=C++,name=if]{ch04/if.cc}}
-				\only<3>{\lstinputlisting[language=C++,name=if_else]{ch04/if_else.cc}}
-				\only<4>{\lstinputlisting[language=C++,name=if_else_if]{ch04/if_else_if.cc}}
-				\only<5>{\lstinputlisting[language=C++,name=if_nest]{ch04/if_nest.cc}}
+			
+			\only<2>{\lstinputlisting[language=C++,name=if]{ch04/if.cc}}
+			\only<3>{\lstinputlisting[language=C++,name=if_else]{ch04/if_else.cc}}
+			\only<4>{\lstinputlisting[language=C++,name=if_else_if]{ch04/if_else_if.cc}}
+			\only<5>{\lstinputlisting[language=C++,name=if_nest]{ch04/if_nest.cc}}
 			
 			
 		\end{columns}
@@ -94,19 +94,19 @@
 	\begin{frame}[fragile]
 		\frametitle{循环结构}
 		
-			\begin{itemize}[<+->]
-				\item 可反复执行某些指令
-				\begin{itemize}
-					\item \lstinline|while| 循环：先判断再执行
-					\item \lstinline|do..while| 循环：先执行再判断，至少执行一次
-					\item \lstinline|for| 循环：执行初始动作后，先判断再执行
-				\end{itemize}
+		\begin{itemize}[<+->]
+			\item 可反复执行某些指令
+			\begin{itemize}
+				\item \lstinline|while| 循环：先判断再执行
+				\item \lstinline|do..while| 循环：先执行再判断，至少执行一次
+				\item \lstinline|for| 循环：执行初始动作后，先判断再执行
+			\end{itemize}
 			
 			\only<2>{\lstinputlisting[language=C++,name=while]{ch05/while.cc}}
 			\only<3>{\lstinputlisting[language=C++,name=do_while]{ch05/do_while.cc}}
 			\only<4>{\lstinputlisting[language=C++,name=for]{ch06/for.cc}}
-			\end{itemize}
-			
+		\end{itemize}
+		
 	\end{frame}
 	%------------------------------------------------------------
 	
@@ -295,7 +295,7 @@
 	%------------------------------------------------------------
 	
 	
-		%------------------------------------------------------------
+	%------------------------------------------------------------
 	\begin{frame}[fragile]
 		\frametitle{例 7.5：求 n 个数的最大值}
 		
@@ -303,15 +303,15 @@
 			\alt<7-10> {
 				\alt<9-10>{
 					\begin{itemize}
-					\lstinputlisting[language=C++,name=max2]{ch07/max2.cc}
-					
-					\item 把擂主的初始值设置为最小值，保证第一个挑战者能攻擂成功，则无需特判是否为第一个挑战者
+						\lstinputlisting[language=C++,name=max2]{ch07/max2.cc}
+						
+						\item 把擂主的初始值设置为最小值，保证第一个挑战者能攻擂成功，则无需特判是否为第一个挑战者
 					\end{itemize}
 				}{
 					\begin{itemize}
-					\lstinputlisting[language=C++,name=max1]{ch07/max1.cc}
-					
-					\item 如果 $x$ 是第一个挑战者，那 $x$ 直接成为擂主；或者新来的挑战者 $x$ 大于擂主 $Max$，那挑战者 $x$ 成为擂主
+						\lstinputlisting[language=C++,name=max1]{ch07/max1.cc}
+						
+						\item 如果 $x$ 是第一个挑战者，那 $x$ 直接成为擂主；或者新来的挑战者 $x$ 大于擂主 $Max$，那挑战者 $x$ 成为擂主
 					\end{itemize}
 				}
 				
@@ -333,19 +333,15 @@
 					\node (second) [process, right of=start, xshift = 1.5cm] {7};
 					\node (third) [process, right of=second, xshift = 1.5cm] {9};
 					\node (stop) [process, right of=third, xshift = 1.5cm] {5};
-					\node (max) [startstop, below of=second, xshift = 1.5cm] {擂主};
+					\only<2>{\node (max) [startstop, below of=second, xshift = 1.5cm] {擂主};}
+					\only<3-4>{\node (max1) [startstop, below of=second, xshift = 1.5cm] {擂主: 8};}
+					\only<5-6>{\node (max2) [startstop, below of=second, xshift = 1.5cm] {擂主: 9};}
 					
-					\only<3>{\draw [arrow] (start) --  node[left, xshift = -0.3cm, yshift = -0.1cm] {攻擂成功} (max);}
-					\only<4>{\draw [arrow] (second) --  node[left, xshift = -0.1cm, yshift = -0.1cm] {攻擂失败} (max);}
-					\only<5>{\draw [arrow] (third) -- node[left, xshift = -0.1cm] {攻擂成功} (max);}
-					\only<6>{\draw [arrow] (stop) --  node[left, xshift=-0.3cm] {攻擂失败} (max);}
-				\end{tikzpicture}
-				
-				
-				\begin{itemize}
-					\item<3-4> 擂主：\lstinline|8|
-					\item<5-6> 擂主：\lstinline|9|
-				\end{itemize}				
+					\only<3>{\draw [arrow] (start) --  node[left, xshift = -0.3cm, yshift = -0.1cm] {攻擂成功} (max1);}
+					\only<4>{\draw [arrow] (second) --  node[left, xshift = -0.1cm, yshift = -0.1cm] {攻擂失败} (max1);}
+					\only<5>{\draw [arrow] (third) -- node[left, xshift = -0.1cm] {攻擂成功} (max2);}
+					\only<6>{\draw [arrow] (stop) --  node[left, xshift=-0.3cm] {攻擂失败} (max2);}
+				\end{tikzpicture}			
 			}
 		}{
 			\begin{exampleblock}{编程题}
@@ -473,27 +469,27 @@
 	%------------------------------------------------------------
 	\begin{frame}[fragile]
 		\frametitle{break 和 continue 语句}
-						
-			\begin{itemize}
-				\item \lstinline|break|：用于循环体中，表示跳出本层循环
-			\end{itemize}
+		
+		\begin{itemize}
+			\item \lstinline|break|：用于循环体中，表示跳出本层循环
+		\end{itemize}
+		
+		\begin{columns}
+			\column{.05\textwidth}
 			
-			\begin{columns}
-				\column{.05\textwidth}
-				
-				\column{.43\textwidth}
-				\uncover<1-4>{\lstinputlisting[language=C++,name=while_break]{ch07/while_break.cc}}
-				
-				\column{.52\textwidth}
-				\uncover<3-4>{\lstinputlisting[language=C++,name=for_break]{ch07/for_break.cc}}
-			\end{columns}
+			\column{.43\textwidth}
+			\uncover<1-4>{\lstinputlisting[language=C++,name=while_break]{ch07/while_break.cc}}
 			
-			\begin{tikzpicture}[remember picture,overlay]
-				\uncover<2->{\redbox{while_break-3}{11}{6}}
-				\uncover<2->{\draw[red, very thick, ->] (3.8,1.25) -- (4.5,1.25) -- (4.5,0.1) -- (0.6,0.1);}
-				\uncover<4>{\redbox{for_break-3}{11}{6}}
-				\uncover<4>{\draw[red, very thick, ->] (8.95,1.25) -- (9.7,1.25) -- (9.7,0.1) -- (5.7,0.1);}
-			\end{tikzpicture}
+			\column{.52\textwidth}
+			\uncover<3-4>{\lstinputlisting[language=C++,name=for_break]{ch07/for_break.cc}}
+		\end{columns}
+		
+		\begin{tikzpicture}[remember picture,overlay]
+			\uncover<2->{\redbox{while_break-3}{11}{6}}
+			\uncover<2->{\draw[red, very thick, ->] (3.8,1.25) -- (4.5,1.25) -- (4.5,0.45) -- (1.0,0.45);}
+			\uncover<4>{\redbox{for_break-3}{11}{6}}
+			\uncover<4>{\draw[red, very thick, ->] (8.95,1.25) -- (9.7,1.25) -- (9.7,0.45) -- (6.1,0.45);}
+		\end{tikzpicture}
 	\end{frame}
 	%------------------------------------------------------------
 	
@@ -515,13 +511,13 @@
 			\uncover<3-4>{\lstinputlisting[language=C++,name=for_continue]{ch07/for_continue.cc}}
 		\end{columns}
 		
-	\begin{tikzpicture}[remember picture,overlay]
-		\uncover<2->{\redbox{while_continue-3}{11}{9}}
-		\uncover<2->{\draw[red, very thick, ->] (4.35,1.25) -- (5.0,1.25) -- (5.0,2) -- (3.1,2);}
-		\uncover<4>{\redbox{for_continue-3}{11}{9}}
-		\uncover<4>{\draw[red, very thick, ->] (9.5,1.25) -- (10.4,1.25) -- (10.4,1.85);}
-	\end{tikzpicture}
-	
+		\begin{tikzpicture}[remember picture,overlay]
+			\uncover<2->{\redbox{while_continue-3}{11}{9}}
+			\uncover<2->{\draw[red, very thick, ->] (4.35,1.25) -- (5.0,1.25) -- (5.0,2) -- (3.1,2);}
+			\uncover<4>{\redbox{for_continue-3}{11}{9}}
+			\uncover<4>{\draw[red, very thick, ->] (9.5,1.25) -- (10.4,1.25) -- (10.4,1.85);}
+		\end{tikzpicture}
+		
 	\end{frame}
 	%------------------------------------------------------------
 	
@@ -547,7 +543,7 @@
 			\uncover<3->{\redbox{while_1_n_break-4}{14}{6}}
 			\uncover<3->{\draw[red, very thick, ->] (3.97,1.65) -- (4.5,1.65) -- (4.5,0.4) -- (0.6,0.4);}
 			\uncover<5>{\redbox{for_1_n_break-4}{14}{6}}
-			\uncover<5>{\draw[red, very thick, ->] (9.1,1.45) -- (9.7,1.45) -- (9.7,0.5) -- (5.7,0.5);}
+			\uncover<5>{\draw[red, very thick, ->] (9.1,1.45) -- (9.7,1.45) -- (9.7,0.6) -- (5.7,0.6);}
 		\end{tikzpicture}
 	\end{frame}
 	%------------------------------------------------------------
@@ -597,7 +593,7 @@
 				\item 在 \lstinline|for| 循环中，直接跳转到每次循环后的动作
 			\end{itemize}
 		\end{itemize}
-			
+		
 	\end{frame}
 	%------------------------------------------------------------
 	
@@ -637,13 +633,13 @@
 		\end{itemize}
 	\end{frame}
 	%------------------------------------------------------------
-
-%---------------------------------------------------------
-\begin{frame}
-	\begin{center}
-		{\Huge Thank you!}
-	\end{center}
-\end{frame}
-%---------------------------------------------------------
-
+	
+	%---------------------------------------------------------
+	\begin{frame}
+		\begin{center}
+			{\Huge Thank you!}
+		\end{center}
+	\end{frame}
+	%---------------------------------------------------------
+	
 \end{document}
