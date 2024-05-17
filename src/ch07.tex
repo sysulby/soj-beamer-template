@@ -49,10 +49,10 @@
 			
 			\column{.50\textwidth}
 
-				\only<2>{\lstinputlisting[language=C++]{ch04/if.cc}}
-				\only<3>{\lstinputlisting[language=C++]{ch04/if_else.cc}}
-				\only<4>{\lstinputlisting[language=C++]{ch04/if_else_if.cc}}
-				\only<5>{\lstinputlisting[language=C++]{ch04/if_nest.cc}}
+				\only<2>{\lstinputlisting[language=C++,name=if]{ch04/if.cc}}
+				\only<3>{\lstinputlisting[language=C++,name=if_else]{ch04/if_else.cc}}
+				\only<4>{\lstinputlisting[language=C++,name=if_else_if]{ch04/if_else_if.cc}}
+				\only<5>{\lstinputlisting[language=C++,name=if_nest]{ch04/if_nest.cc}}
 			
 			
 		\end{columns}
@@ -65,7 +65,7 @@
 		\frametitle{例题回顾：闰年判断}
 		
 		\alt<2-2>{
-			\lstinputlisting[language=C++]{ch04/leap2.cc}
+			\lstinputlisting[language=C++,name=leap2]{ch04/leap2.cc}
 		}{
 			\begin{exampleblock}{编程题}
 				
@@ -80,7 +80,7 @@
 					
 					\item 样例输出
 					
-					\lstinline|2010 is not leap year|
+					\lstinline|2010 is not a leap year|
 					
 				\end{itemize}
 				
@@ -102,9 +102,9 @@
 					\item \lstinline|for| 循环：执行初始动作后，先判断再执行
 				\end{itemize}
 			
-			\only<2>{\lstinputlisting[language=C++]{ch05/while.cc}}
-			\only<3>{\lstinputlisting[language=C++]{ch05/do_while.cc}}
-			\only<4>{\lstinputlisting[language=C++]{ch06/for.cc}}
+			\only<2>{\lstinputlisting[language=C++,name=while]{ch05/while.cc}}
+			\only<3>{\lstinputlisting[language=C++,name=do_while]{ch05/do_while.cc}}
+			\only<4>{\lstinputlisting[language=C++,name=for]{ch06/for.cc}}
 			\end{itemize}
 			
 	\end{frame}
@@ -116,7 +116,7 @@
 		\frametitle{例题回顾：输出从 1 到 n 的整数之和}
 		
 		\alt<2>{
-			\lstinputlisting[language=C++]{ch06/for_sum_1_to_n.cc}
+			\lstinputlisting[language=C++,name=for_sum_1_to_n]{ch06/for_sum_1_to_n.cc}
 		}{
 			\begin{exampleblock}{编程题}
 				
@@ -150,7 +150,7 @@
 		\frametitle{例 7.1：加减数列求和}
 		
 		\alt<2>{
-			\lstinputlisting[language=C++]{ch07/sum.cc}
+			\lstinputlisting[language=C++,name=sum]{ch07/sum.cc}
 		}{
 			\begin{exampleblock}{编程题}
 				
@@ -185,7 +185,7 @@
 				\column{.01\textwidth}
 				
 				\column{.72\textwidth}
-				\lstinputlisting[language=C++]{ch07/student.cc}
+				\lstinputlisting[language=C++,name=student]{ch07/student.cc}
 				
 				\column{.27\textwidth}
 				\begin{itemize}
@@ -441,11 +441,11 @@
 		\frametitle{例 7.8：求一个整数中有多少个 3}
 		
 		\alt<2-3>{
-			\lstinputlisting[language=C++,name=numOfdigit3]{ch07/num_of_digit_3.cc}
+			\lstinputlisting[language=C++,name=num_of_digit_3]{ch07/num_of_digit_3.cc}
 			
 			\begin{tikzpicture}[remember picture,overlay]
-				\uncover<3>{\redbox{numOfdigit3-9}{4}{15}}
-				\uncover<3>{\redbox{numOfdigit3-11}{8}{6}}
+				\uncover<3>{\redbox{num_of_digit_3-9}{4}{15}}
+				\uncover<3>{\redbox{num_of_digit_3-11}{8}{6}}
 			\end{tikzpicture}
 		}{
 			\begin{exampleblock}{编程题}
@@ -609,7 +609,7 @@
 			
 			\begin{enumerate}
 				\item 阅读程序写结果
-				\lstinputlisting[language=C++]{ch07/exercise.cc}
+				\lstinputlisting[language=C++,name=exercise]{ch07/exercise.cc}
 				
 				输入：\lstinline|7 12| \tabto{8em} 	
 				输出：\uncover<2->{\textcolor{red}{\lstinline|7 8 9|}}
@@ -637,5 +637,13 @@
 		\end{itemize}
 	\end{frame}
 	%------------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+	\begin{center}
+		{\Huge Thank you!}
+	\end{center}
+\end{frame}
+%---------------------------------------------------------
 
 \end{document}
