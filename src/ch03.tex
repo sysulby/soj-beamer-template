@@ -125,7 +125,7 @@
     \frametitle{运算规则}
 
     \begin{itemize}[<+->]
-        \item \textbf{相同数据类型}的运算数进行算术运算，得到的结果也是\textbf{相同类型}
+        \item \textbf{相同数据类型}的数据进行算术运算，得到的结果也是\textbf{相同类型}
 
             \begin{itemize}
                 \item 例：整数除以整数，结果也是整数
@@ -147,8 +147,7 @@
     \frametitle{隐式类型转换}
 
     \begin{itemize}[<+->]
-        \item
-            \textbf{不同数据类型}的运算数进行算术运算，则存储空间小的类型自动转换为存储空间大的类型，再进行运算，运算的结果为\textbf{存储空间大}的类型
+        \item \textbf{不同数据类型}的数据进行算术运算，则存储空间小的类型自动转换为存储空间大的类型，再进行运算，运算的结果为\textbf{存储空间大}的类型
 
             \begin{itemize}
                 \item 例：实数除以整数 ，结果是实数
@@ -306,7 +305,7 @@
             \toprule
             操作     & 操作符         & 解释                                             \\
             \midrule
-            赋值     & \lstinline|=|  & 将值赋予变量                                     \\
+            赋值     & \lstinline|=|  & 将结果赋予变量                                   \\
             加法赋值 & \lstinline|+=| & \lstinline|a += b|，等价于 \lstinline|a = a + b| \\
             减法赋值 & \lstinline|–=| & \lstinline|a -= b|，等价于 \lstinline|a = a - b| \\
             乘法赋值 & \lstinline|*=| & \lstinline|a *= b|，等价于 \lstinline|a = a * b| \\
@@ -494,19 +493,18 @@
     \frametitle{关系运算}
 
     \begin{itemize}[<+->]
-        \item 参与关系运算的操作数是任意类型的表达式，结果是 \lstinline|bool| 类型
+        \item 参与关系运算的元素是任意类型的表达式，结果是 \lstinline|bool| 类型
 
-        \item 能将关系运算表达式的结果赋值给 \lstinline|bool| 类型变量并输出
+        \item 可以将关系运算表达式的结果赋值给 \lstinline|bool| 类型变量并输出
 
             \begin{itemize}
                 \item
-                    \lstinline|bool f;|\\
-                     \lstinline|f = (20 > 10);|\\
-                     \lstinline|cout << f << endl; // 输出结果为 1|
+                    \lstinline|bool f = (20 > 10);|\\
+                    \lstinline|cout << f << endl; // 输出结果为 1|
 
                 \item
-                    \lstinline|f = (10 + 10 != 20);|\\
-                     \lstinline|cout << f << endl; // 输出结果为 0|
+                    \lstinline|bool f = (10 + 10 != 20);|\\
+                    \lstinline|cout << f << endl; // 输出结果为 0|
             \end{itemize}
 
     \end{itemize}
@@ -521,13 +519,8 @@
         \item 如何判断整数 a 是否为 2 的倍数？
 
             \begin{itemize}
-                \item
-                     
-                    \lstinline|bool f;|\\
-                     \lstinline|f = (a % 2 == 0);|\\
-
-                \item
-                     \lstinline|cout << f << endl; // 2 的倍数则输出 1，否则输出 0|
+                \item \lstinline|bool f = (a % 2 == 0);|\\
+                    \lstinline|cout << f << endl; // 2 的倍数则输出 1，否则输出 0|
             \end{itemize}
 
     \end{itemize}
@@ -585,7 +578,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{逻辑与：\&\&}
+    \frametitle{逻辑与\enspace\&\&}
 
     \begin{itemize}
         \item 逻辑与运算符有“并且”的含义，当两侧的操作数都成立（\lstinline|true|）时，表达式才成立（\lstinline|true|）
@@ -608,7 +601,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{逻辑或：||}
+    \frametitle{逻辑或\enspace||}
 
     \begin{itemize}
         \item 逻辑或运算符有“或者”的含义，当两侧的操作数有一个成立（\lstinline|true|）时，表达式就成立（\lstinline|true|） 
@@ -631,7 +624,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{逻辑非：!}
+    \frametitle{逻辑非\enspace!}
 
     \begin{itemize}
         \item 逻辑非运算符会将表达式的结果取反

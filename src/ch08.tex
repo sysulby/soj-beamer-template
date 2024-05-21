@@ -31,15 +31,15 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例题回顾 - 加减数列求和}
+    \frametitle{问题回顾 - 加减数列求和}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=cal_seq1]{ch08/cal_seq1.cc}
+        \lstinputlisting[language=C++,name=alt_sum]{ch07/alt_sum.cc}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^6$)，求 $1 - 2 + 3 - 4 + 5 ...$，一直到 $n$ 的和。
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，输出 $1 - 2 + 3 - 4 + 5 - \dots$ 一直到 $n$ 的和。
 
                 \item 样例输入
 
@@ -49,7 +49,7 @@
 
                     \lstinline|4|
 
-                \item 解释说明
+                \item 样例说明
 
                     $1 - 2 + 3 - 4 + 5 - 6 + 7 = 4$
 
@@ -112,13 +112,14 @@
 
                     \lstinline|5|
 
-                \item 样例输出\\*****
+                \item 样例输出
+
+                    \lstinline|*****|
 
             \end{itemize}
 
         \end{exampleblock}
     }
-
 \end{frame}
 %------------------------------------------------------------
 
@@ -136,12 +137,15 @@
 
                 \lstinline|3 5|
 
-            \item 样例输出\\*****\\*****\\*****
+            \item 样例输出
+
+                \lstinline|*****|\\
+                \lstinline|*****|\\
+                \lstinline|*****|
 
         \end{itemize}
 
     \end{exampleblock}
-
 
 \end{frame}
 %------------------------------------------------------------
@@ -153,23 +157,23 @@
     \begin{columns}
         \column{.01\textwidth}
 
-        \column{.70\textwidth}
+        \column{.64\textwidth}
         \lstinputlisting[language=C++,name=star_n_m]{ch08/star_n_m.cc}
         \begin{tikzpicture}[remember picture, overlay]
 
-            \uncover<2>{\redbox{star_n_m-8}{9}{10}}
-            \uncover<3,17,31>{\redbox{star_n_m-8}{20}{7}}
-            \uncover<16,30>{\redbox{star_n_m-8}{28}{3}}
-            \uncover<4,18>{\redbox{star_n_m-9}{13}{10}}
-            \uncover<5,8,11,14,19,22,25,28>{\redbox{star_n_m-9}{24}{7}}
-            \uncover<7,10,13,21,24,27>{\redbox{star_n_m-9}{32}{3}}
-            \uncover<6,9,12,20,23,26>{\redbox{star_n_m-10}{12}{12}}
-            \uncover<15,29>{\redbox{star_n_m-12}{8}{13}}
-            \uncover<32>{\redbox{star_n_m-14}{4}{9}}
+            \uncover<2>{\redbox{star_n_m-8}{7}{10}}
+            \uncover<3,17,31>{\redbox{star_n_m-8}{18}{7}}
+            \uncover<16,30>{\redbox{star_n_m-8}{26}{3}}
+            \uncover<4,18>{\redbox{star_n_m-9}{9}{10}}
+            \uncover<5,8,11,14,19,22,25,28>{\redbox{star_n_m-9}{20}{7}}
+            \uncover<7,10,13,21,24,27>{\redbox{star_n_m-9}{28}{3}}
+            \uncover<6,9,12,20,23,26>{\redbox{star_n_m-10}{6}{12}}
+            \uncover<15,29>{\redbox{star_n_m-12}{4}{13}}
+            \uncover<32>{\redbox{star_n_m-15}{2}{9}}
 
         \end{tikzpicture}
 
-        \column{.30\textwidth}
+        \column{.35\textwidth}
         \begin{itemize}
                 \uncover<2-> {
                 \item 输入
@@ -184,7 +188,9 @@
                     \only<17-29>{\lstinline|i = 2|}
                     \only<30>{\textcolor{red}{\lstinline|i = 3|}}
                     \only<31>{\textcolor{red}{\lstinline|i <= 2| 不成立}}
+                    \only<32>{\lstinline||}
 
+                    \only<1-3,15-17,29->{\lstinline||}
                     \only<4,18>{\textcolor{red}{\lstinline|j = 1|}}
                     \only<5-6,19-20>{\lstinline|j = 1|}
                     \only<7,21>{\textcolor{red}{\lstinline|j = 2|}}
@@ -240,7 +246,6 @@
 
         \end{exampleblock}
     }
-
 \end{frame}
 %------------------------------------------------------------
 
@@ -269,7 +274,6 @@
 
         \end{exampleblock}
     }
-
 \end{frame}
 %------------------------------------------------------------
 
@@ -326,7 +330,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^3$)，输出一个等腰直角三角形，腰长为 $n$，每行由整数 $1, 2, 3 ...$ 组成，整数之间用空格间隔。
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 1000$)，输出一个等腰直角三角形，腰长为 $n$，每行由整数 $1, 2, 3 ...$ 组成，整数之间用空格间隔。
 
                 \item 样例输入
 
@@ -342,7 +346,6 @@
 
         \end{exampleblock}
     }
-
 \end{frame}
 %------------------------------------------------------------
 
@@ -353,14 +356,14 @@
     \alt<2-3>{
         \lstinputlisting[language=C++,name=cal_seq2]{ch08/cal_seq2.cc}
         \begin{tikzpicture}[remember picture, overlay]
-            \only<3>{\redbox{cal_seq2-11}{8}{7}}
+            \only<3>{\redbox{cal_seq2-11}{4}{7}}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
                 \item 已知 $A_i = 1 + 2 + 3 + ... + i$，$S_n = A_1 + A_2 + A_3 + ... + A_n$。\\
-                    编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^4$)，计算 $S_n$ 的结果并输出。
+                    编写程序，输入一个整数 $n$ ($1 \leq n \leq 1000$)，计算 $S_n$ 的结果并输出。
 
                 \item 样例输入
 
@@ -370,24 +373,22 @@
 
                     \lstinline|10|
 
-                \item 样例解释\\
+                \item 样例解释
 
-                    $A_1 = 1$\\
-                    $A_2 = 1 + 2$\\
-                    $A_3 = 1 + 2 + 3$\\
-                    $S_3 = A_1 + A_2 + A_3$
+                    $A_1 = 1$, $A_2 = 1 + 2$, $A_3 = 1 + 2 + 3$\\
+                    $S_3 = A_1 + A_2 + A_3 = 1 + 3 + 6 = 10$
 
             \end{itemize}
 
         \end{exampleblock}
     }
-
 \end{frame}
 %------------------------------------------------------------
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
     \frametitle{例8.6：累加数列求和 - 代码优化}
+
     \lstinputlisting[language=C++,name=cal_seq3]{ch08/cal_seq3.cc}
 \end{frame}
 %------------------------------------------------------------
@@ -398,31 +399,31 @@
 
     \alt<2-3>{
         \lstinputlisting[language=C++,name=rectangle_hollow]{ch08/rectangle_hollow.cc}
+
         \begin{tikzpicture}[remember picture, overlay]
-            \only<3>{\redbox{rectangle_hollow-10}{16}{36}}
+            \only<3>{\redbox{rectangle_hollow-10}{10}{36}}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入两个整数 $n,m$ ($1 \leq n,m \leq 10^3$)，\\输出一个 $n$ 行 $m$ 列的空心矩形，矩形由星号形成。
+                \item 编写程序，输入两个整数 $n,m$ ($1 \leq n,m \leq 1000$)，\\输出一个 $n$ 行 $m$ 列的空心矩形，矩形由星号形成。
 
                 \item 样例输入
 
                     \lstinline|4 7|
 
-                \item 样例输出\\
+                \item 样例输出
 
                     \lstinline|*******|\\
-                    \lstinline|* \ \ \ \ \*|\\
-                    \lstinline|* \ \ \ \ \*|\\
+                    \lstinline|*\ \ \ \ \ *|\\
+                    \lstinline|*\ \ \ \ \ *|\\
                     \lstinline|*******|
 
             \end{itemize}
 
         \end{exampleblock}
     }
-
 \end{frame}
 %------------------------------------------------------------
 
@@ -436,17 +437,17 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 20$)，\\输出高为 $n$ 的由 * 号组成的等腰三角形。
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 20$)，输出高为 $n$ 的由 * 号组成的等腰三角形。
 
                 \item 样例输入
 
                     \lstinline|3|
 
-                \item 样例输出\\
+                \item 样例输出
 
-                    \lstinline| \ \ \*|\\
-                    \lstinline| \ \***|\\
-                    \lstinline| \*****|
+                    \lstinline|\ \ *|\\
+                    \lstinline|\ ***|\\
+                    \lstinline|*****|
 
             \end{itemize}
 
@@ -461,49 +462,53 @@
     \frametitle{例8.9：求一个整数中含有多少个 1}
 
     \alt<2-6>{
-        \alt<2-4> {
-            \begin{columns}
+        \begin{overlayarea}{\textwidth}{.9\textheight}
+            \alt<2-4> {
+                \begin{columns}
+                    \column{.04\textwidth}
 
-                \column{.65\textwidth}
-                \lstinputlisting[language=C++,name=cnt_1_1]{ch08/cnt_1_1.cc}
+                    \column{.56\textwidth}
+                    \lstinputlisting[language=C++,name=cnt_1_1]{ch08/cnt_1_1.cc}
 
-                \column{.35\textwidth}
-                \uncover<3->{
-                    \begin{itemize}[<+->]
-                        \item<3-> 运行结果正确吗？
-                        \item<4> 不正确，\\数位拆分后 $n$ 的值会变为 $0$。
-                    \end{itemize}
-                }
-            \end{columns}
-        }{
-            \begin{columns}
+                    \column{.4\textwidth}
+                    \uncover<3->{
+                        \begin{itemize}[<+->]
+                            \item<3-> 运行结果正确吗？
+                            \item<4-> 不正确，数位拆分后 $n$ 的值会变为 $0$。
+                        \end{itemize}
+                    }
+                \end{columns}
+            }{
+                \begin{columns}
+                    \column{.04\textwidth}
 
-                \column{.65\textwidth}
-                \lstinputlisting[language=C++,name=cnt_1_2]{ch08/cnt_1_2.cc}
+                    \column{.56\textwidth}
+                    \lstinputlisting[language=C++,name=cnt_1_2]{ch08/cnt_1_2.cc}
 
-                \begin{tikzpicture}[remember picture, overlay]
-                    \only<6->{\redbox{cnt_1_2-6}{4}{12}}
-                \end{tikzpicture}
+                    \begin{tikzpicture}[remember picture, overlay]
+                        \only<6->{\redbox{cnt_1_2-8}{15}{8}}
+                    \end{tikzpicture}
 
-                \column{.35\textwidth}
-                \uncover<5->{
-                    \begin{itemize}[<+->]
-                        \item<6-> 由于后续需要输出 n，因此不能直接用 n 进行数位拆分
-                    \end{itemize}
-                }
-            \end{columns}
-        }
+                    \column{.4\textwidth}
+                    \uncover<5->{
+                        \begin{itemize}[<+->]
+                            \item<6-> 由于后续需要输出 $n$，因此不能直接用 $n$ 进行数位拆分
+                        \end{itemize}
+                    }
+                \end{columns}
+            }
+        \end{overlayarea}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^9$)，\\统计 $n$ 的数位上有多少个 $1$，输出 $n$ 和其含有 $1$ 的个数，用空格间隔。
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^9$)，统计 $n$ 的数位上有多少个 $1$，输出 $n$ 和其含有 $1$ 的个数，用空格间隔。
 
                 \item 样例输入
 
                     \lstinline|1351|
 
-                \item 样例输出\\
+                \item 样例输出
 
                     \lstinline|1351 2|
 
@@ -522,43 +527,43 @@
     \alt<2-6>{
         \alt<2-4> {
             \begin{columns}
+                \column{.04\textwidth}
 
-                \column{.65\textwidth}
+                \column{.56\textwidth}
                 \lstinputlisting[language=C++,name=count_1_1]{ch08/count_1_1.cc}
 
-                \column{.35\textwidth}
+                \column{.4\textwidth}
                 \uncover<3->{
-                    \begin{itemize}[<+->]
+                    \begin{itemize}
                         \item<3-> 运行结果正确吗？
-                        \item<4> 不正确，会死循环。\\因为数位拆分后 $i$ 会变化！
+                        \item<4-> 不正确，会死循环。\\因为数位拆分后 $i$ 会变化！
                     \end{itemize}
                 }
-
             \end{columns}
         }{
             \begin{columns}
+                \column{.04\textwidth}
 
-                \column{.65\textwidth}
+                \column{.56\textwidth}
                 \lstinputlisting[language=C++,name=count_1_2]{ch08/count_1_2.cc}
 
                 \begin{tikzpicture}[remember picture, overlay]
-                    \only<6->{\redbox{count_1_2-7}{8}{12}}
+                    \only<6->{\redbox{count_1_2-10}{4}{12}}
                 \end{tikzpicture}
 
-                \column{.35\textwidth}
+                \column{.4\textwidth}
                 \uncover<5->{
-                    \begin{itemize}[<+->]
+                    \begin{itemize}
                         \item<6-> 为了避免程序进入死循环，使用临时变量 \lstinline|tmp| 进行数位拆分
                     \end{itemize}
                 }
-
             \end{columns}
         }
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^6$)，\\求从 $1$ 到 $n$ 的所有整数中，数位上出现数字 “$1$” 的个数。                
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^9$)，求从 $1$ 到 $n$ 的所有整数中，数位上出现数字 "1" 的个数。                
 
                 \item 样例输入
 
@@ -568,9 +573,9 @@
 
                     \lstinline|5|
 
-                \item 样例解释\\
+                \item 样例解释
 
-                    当 \lstinline|n = 12| 时，$1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12$ 中\\数位上出现了 $5$ 个数字 “$1$”。
+                    当 \lstinline|n = 12| 时，$1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12$ 中，数位上出现了 $5$ 个数字 "1"
 
             \end{itemize}
 
@@ -591,10 +596,10 @@
     \uncover<3->{\lstinputlisting[language=C++,name=for_break_2]{ch08/for_break_2.cc}}
 
     \begin{tikzpicture}[remember picture, overlay]
-        \uncover<2->{\redbox{for_break_1-4}{12}{6}}
-        \uncover<2->{\draw[red, very thick, ->] (3.5,6.4) -- (6.5,6.4) -- (6.5,4.8) -- (0.3,4.8);}
-        \uncover<4>{\redbox{for_break_2-3}{8}{6}}
-        \uncover<4->{\draw[red, very thick, ->] (2.7,3.05) -- (6.5,3.05) -- (6.5,0.7) -- (0.3,0.7);}
+        \uncover<2->{\redbox{for_break_1-4}{6}{6}}
+        \uncover<2->{\draw[red, very thick, ->] (pic cs:line-for_break_1-4-end) ++(2pt, .3em) -- ++(4em, 0) -- ++(0, -1.8em) -- ++(-8em, 0);}
+        \uncover<4>{\redbox{for_break_2-3}{4}{6}}
+        \uncover<4>{\draw[red, very thick, ->] (pic cs:line-for_break_2-3-end) ++(2pt, .3em) -- ++(10em, 0) -- ++(0, -5.4em) -- ++(-14em, 0);}
     \end{tikzpicture}
 
 \end{frame}
@@ -608,10 +613,10 @@
     \uncover<3->{\lstinputlisting[language=C++,name=for_continue_2]{ch08/for_continue_2.cc}}
 
     \begin{tikzpicture}[remember picture, overlay]
-        \uncover<2->{\redbox{for_continue_1-4}{12}{9}}
-        \uncover<2->{\draw[red, very thick, ->] (4,6.4) -- (5.6,6.4) -- (5.6,6.8);}
-        \uncover<4>{\redbox{for_continue_2-3}{8}{9}}
-        \uncover<4->{\draw[red, very thick, ->] (3.3,3.05) -- (4.9,3.05) -- (4.9,3.7);}
+        \uncover<2->{\redbox{for_continue_1-4}{6}{9}}
+        \uncover<2->{\draw[red, very thick, ->] (pic cs:line-for_continue_1-4-end) ++(2pt, .3em) -- ++(5.5em, 0) -- ++(0, 1.2em);}
+        \uncover<4>{\redbox{for_continue_2-3}{4}{9}}
+        \uncover<4>{\draw[red, very thick, ->] (pic cs:line-for_continue_2-3-end) ++(2pt, .3em) -- ++(5.5em, 0) -- ++(0, 1.2em);}
     \end{tikzpicture}
 
 \end{frame}

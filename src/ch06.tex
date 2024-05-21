@@ -33,19 +33,21 @@
 \begin{frame}[fragile]
     \frametitle{while 循环}
 
-    \begin{itemize}
+    \begin{overlayarea}{\textwidth}{.7\textheight}
+        \begin{itemize}
 
-            \lstinputlisting[language=C++,name=while]{ch06/while.cc}
+                \lstinputlisting[language=C++,name=while]{ch05/while.cc}
 
-        \item 不断依照条件语句判定是否继续执行循环
+            \item<1-> 不断依照条件语句判定是否继续执行循环
 
-            \begin{itemize}
-                \item<2-> 条件成立（\lstinline|true|）则执行循环体
-                \item<2-> 条件不成立（\lstinline|false|）则结束循环
-            \end{itemize}
+                \begin{itemize}
+                    \item<2-> 条件成立（\lstinline|true|）则执行循环体
+                    \item<2-> 条件不成立（\lstinline|false|）则结束循环
+                \end{itemize}
 
-        \item<3-> 当循环体中只有一个语句时，可以省略花括号
-    \end{itemize}
+            \item<3-> 当循环体中只有一个语句时，可以省略花括号
+        \end{itemize}
+    \end{overlayarea}
 \end{frame}
 %------------------------------------------------------------
 
@@ -53,21 +55,23 @@
 \begin{frame}[fragile]
     \frametitle{do..while 循环}
 
-    \begin{itemize}[<+->]
+    \begin{overlayarea}{\textwidth}{.7\textheight}
+        \begin{itemize}
 
-            \lstinputlisting[language=C++,name=while]{ch06/do_while.cc}
+                \lstinputlisting[language=C++,name=while]{ch05/do_while.cc}
 
-        \item 先执行一次循环体，再依照条件语句判定是否继续执行循环
+            \item<1-> 先执行一次循环体，再依照条件语句判定是否继续执行循环
 
-            \begin{itemize}
-                \item<2-> 条件成立（\lstinline|true|）则执行循环体
-                \item<2-> 条件不成立（\lstinline|false|）则结束循环
-            \end{itemize}
+                \begin{itemize}
+                    \item<2-> 条件成立（\lstinline|true|）则执行循环体
+                    \item<2-> 条件不成立（\lstinline|false|）则结束循环
+                \end{itemize}
 
-        \item<3-> \lstinline|do...while| 循环的小括号后必须要有一个分号
+            \item<3-> \lstinline|do...while| 循环的小括号后必须要有一个分号
 
-        \item<4-> 当循环体中只有一个语句时，可以省略花括号
-    \end{itemize}
+            \item<4-> 当循环体中只有一个语句时，可以省略花括号
+        \end{itemize}
+    \end{overlayarea}
 \end{frame}
 %------------------------------------------------------------
 
@@ -88,7 +92,7 @@
     \frametitle{问题回顾：输出从 n 到 1 之间的整数}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=while_n_to_1]{ch06/while_n_to_1.cc}
+        \lstinputlisting[language=C++,name=while_n_to_1]{ch05/while_n_to_1.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -424,7 +428,7 @@
                 \item[1.] 阅读程序写结果
                     \lstinputlisting[language=C++,name=rof_n_to_1]{ch06/rof_n_to_1.cc}
 
-                    输入：5\\
+                    输入：\lstinline|5|\\
                     输出：\uncover<2>{\textcolor{red}{\lstinline|5 4 3 2 1|}}
                 }
 
@@ -432,7 +436,7 @@
                 \item[2.] 阅读程序写结果
                     \lstinputlisting[language=C++,name=rof_r_to_l]{ch06/rof_r_to_l.cc}
 
-                    输入：15 20\\
+                    输入：\lstinline|15 20|\\
                     输出：\uncover<4>{\textcolor{red}{\lstinline|20 19 18 17 16 15|}}
                 }
         \end{enumerate}
@@ -567,13 +571,13 @@
         \item<1-> \lstinline|while| 循环：先判断再执行
 
             \only<1> {
-                \lstinputlisting[language=C++,name=while]{ch06/while.cc}
+                \lstinputlisting[language=C++,name=while]{ch05/while.cc}
             }
 
         \item<2-> \lstinline|do...while| 循环：先执行再判断，至少执行一次
 
             \only<2> {
-                \lstinputlisting[language=C++,name=do_while]{ch06/do_while.cc}
+                \lstinputlisting[language=C++,name=do_while]{ch05/do_while.cc}
             }
 
         \item<3-> \lstinline|for| 循环：执行初始动作后，先判断再执行
@@ -612,15 +616,13 @@
 \begin{frame}[fragile]
     \frametitle{示例：输出从 L 到 R 之间的整数}
 
-    \begin{columns}
-        \column{.01\textwidth}
+    \begin{columns}[T]
+        \column{.04\textwidth}
 
         \column{.4\textwidth}
         \lstinputlisting[language=C++,name=while_l_to_r]{ch06/while_l_to_r.cc}
 
-        \column{.01\textwidth}
-
-        \column{.58\textwidth}
+        \column{.56\textwidth}
         \lstinputlisting[language=C++,name=for_l_to_r]{ch06/for_l_to_r.cc}
     \end{columns}
 \end{frame}

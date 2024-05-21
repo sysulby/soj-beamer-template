@@ -3,11 +3,12 @@
 using namespace std;
 
 int main() {
-    int m;
-    cin >> m;
-    for (int i = 1; i <= m; i++) {
-        cout << "*";
-    }
-    cout << endl;
-    return 0;
+  int m;
+  cin >> m;
+  for (int i = 1; i <= m; i++) {
+    cout << "*";
+  }
+  cout << endl;
+
+  return 0;
 }

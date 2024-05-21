@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-  cout << fixed << setprecision(3) << 3.14159 << endl;
+  cout << fixed << setprecision(4) << 3.14159 << endl;
 
   return 0;
 }

@@ -99,13 +99,13 @@
         \column{.01\textwidth}
 
         \column{.16\textwidth}
-        \lstinline|int A[8];|
+        \lstinline|int a[8];|
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
-                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
-                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $44$         & $35$        \\
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
+                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
             }; 
         \end{tikzpicture}
     \end{columns}
@@ -122,7 +122,7 @@
 
                 \begin{itemize}
                     \item \textbf{元素类型 \enspace 数组名[数组大小];}
-                    \item \lstinline|int A[8]; // 定义了可以存放 8 个整数的数组 A|
+                    \item \lstinline|int a[8]; // 定义了可以存放 8 个整数的数组 A|
                 \end{itemize}
 
                 \begin{itemize}
@@ -140,13 +140,13 @@
         \column{.01\textwidth}
 
         \column{.16\textwidth}
-        \lstinline|int A[8];|
+        \lstinline|int a[8];|
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
-                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
-                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $43$         & $53$        \\
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
+                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
             }; 
         \end{tikzpicture}
     \end{columns}
@@ -164,14 +164,14 @@
                 \begin{itemize}
                     \item<1-> 可以通过一个赋值符号和花括号，将花括号中给定的数值序列，从第 $0$ 位开始，依次赋值给数组中的每一个元素
                         \begin{itemize}
-                            \item \lstinline|int A[8] = {71, 80, 62, 91, 99, 82, 43, 53};|
+                            \item \lstinline|int a[8] = {71, 80, 62, 91, 99, 82, 43, 53};|
                         \end{itemize}
                 \end{itemize}
 
                 \begin{itemize}
                     \item<2-> 数组大小可以指定或留空，会按照需要的最小空间申请内存
                         \begin{itemize}
-                            \item \lstinline|double B[] = {1.0, 2.7, 3.14, 9.8};|
+                            \item \lstinline|double b[] = {1.0, 2.7, 3.14, 9.8};|
                         \end{itemize}
                 \end{itemize}
         \end{itemize}
@@ -181,13 +181,13 @@
         \column{.01\textwidth}
 
         \column{.16\textwidth}
-        \lstinline|int A[8];|
+        \lstinline|int a[8];|
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
-                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
-                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $43$         & $53$        \\
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
+                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
             }; 
         \end{tikzpicture}
     \end{columns}
@@ -211,11 +211,11 @@
                 \end{itemize}
 
                 \begin{itemize}
-                    \item<2-> 例如：声明数组 \lstinline[basicstyle=\ttfamily\scriptsize]|int A[5];|
+                    \item<2-> 例如：声明数组 \lstinline|int a[5];|
                         \begin{itemize}
                             \item 可以使用的数组下标：$0$, $1$, $2$, $3$, $4$
-                            \item 对应的可以使用的数组元素：\lstinline[basicstyle=\ttfamily\scriptsize]|A[0], A[1], A[2], A[3], A[4]|
-                            \item 可以使用变量作为数组下标：\lstinline[basicstyle=\ttfamily\scriptsize]|A[k]| ($0 \le k \le 4$)
+                            \item 对应的可以使用的数组元素：\lstinline|a[0], a[1], a[2], a[3], a[4]|
+                            \item 可以使用变量作为数组下标：\lstinline|a[k]| ($0 \le k \le 4$)
                         \end{itemize}
                 \end{itemize}
         \end{itemize}
@@ -225,13 +225,13 @@
         \column{.01\textwidth}
 
         \column{.16\textwidth}
-        \lstinline|int A[8];|
+        \lstinline|int a[8];|
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
-                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
-                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $43$         & $53$        \\
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
+                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
             }; 
         \end{tikzpicture}
     \end{columns}
@@ -251,8 +251,9 @@
                 \item 6 年 A 班进行了一次小测，现要求编写程序，录入所有学生成绩，并输出所有学生的成绩，学生成绩如图所示。
 
                     \begin{tikzpicture}
-                        \matrix (A) [matrix of nodes, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                            $71$ \& $80$ \& $62$ \& $91$ \& $99$ \& $82$ \& $43$ \& $53$ \\
+                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                            \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
+                            $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
                         }; 
                     \end{tikzpicture}
 
@@ -262,9 +263,10 @@
 
                 \item 样例输出
 
-                    \lstinline|71 80 62 91 99 82 42 53|
+                    \lstinline|71 80 62 91 99 82 43 53|
 
             \end{itemize}
+
         \end{exampleblock}
     }
 \end{frame}
@@ -283,8 +285,9 @@
                 \item 已知 6 年 A 班的小测成绩如图所示，编写程序，输入一个整数 $k$ ($0 \le k < 8$)，输出 $k$ 号学生的分数。
 
                     \begin{tikzpicture}
-                        \matrix (A) [matrix of nodes, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                            $71$ \& $80$ \& $62$ \& $91$ \& $99$ \& $82$ \& $43$ \& $53$ \\
+                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                            \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
+                            $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
                         }; 
                     \end{tikzpicture}
 
@@ -297,6 +300,7 @@
                     \lstinline|82|
 
             \end{itemize}
+
         \end{exampleblock}
     }
 \end{frame}
@@ -341,16 +345,492 @@
         \column{.01\textwidth}
 
         \column{.16\textwidth}
-        \lstinline|int A[8];|
+        \lstinline|int a[8];|
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=1cm}, column sep=-\pgflinewidth]{
-                \small{A[0]} & \small{A[1]} & \small{A[2]} & \small{A[3]} & \small{A[4]} & \small{A[5]} & \small{A[6]} & \small{A[7]}\\
-                $71$         & $80$         & $62$         & $91$         & $99$         & $82$         & $43$         & $53$        \\
+            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
+                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
             }; 
         \end{tikzpicture}
     \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{一维数组的使用}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数组元素的使用}
+
+    \begin{itemize}
+        \item 数组元素的使用与一般变量的用法相同
+
+        \item 例如：输入输出
+
+            \begin{itemize}
+                \item \lstinline|cin >> a[0] >> a[1] >> a[2];|
+                \item \lstinline|cout << a[0] << " " << a[2] << endl;|
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.3：成绩修改 I}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=grade_change1]{ch09/grade_change1.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 已知 6 年 A 班的小测成绩如图所示，其中，$k$ 号同学发现自己试卷错判，实际分数应该高 $x$ 分。\\
+                    编写程序，输入两个整数 $k$ ($0 \le k < 8$) 和 $x$ ($0 \le x \le 100$)，请修改并输出 $k$ 号同学的分数。
+
+                    \begin{tikzpicture}
+                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                            \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
+                            $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
+                        }; 
+                    \end{tikzpicture}
+
+                \item 样例输入
+
+                    \lstinline|2 6|
+
+                \item 样例输出
+
+                    \lstinline|68|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.4：成绩修改 II}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=grade_change2]{ch09/grade_change2.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 已知 6 年 A 班的小测成绩如图所示，其中，$x$ 号与 $y$ 号同学的成绩登记反了。\\
+                    编写程序，输入两个整数 $x$ ($0 \le x < 8$) 和 $y$ ($0 \le y \le 100$)，请交换他们的成绩，并输出正确的成绩表，以空格间隔。
+
+                    \begin{tikzpicture}
+                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                            \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
+                            $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
+                        }; 
+                    \end{tikzpicture}
+
+                \item 样例输入
+
+                    \lstinline|3 4|
+
+                \item 样例输出
+
+                    \lstinline|71 80 52 99 91 82 43 53|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{一维数组的应用}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.5：计算书费 I}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=buy_book1]{ch09/buy_book1.cc}
+    }{
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $k$ ($0 \le k < 5$) 和 $x$ ($0 \le x \le 100$)，表示购买编号为 $k$ 的图书 $x$ 本，输出消费的金额，结果保留两位小数。图书的单价如图所示。
+
+                    \begin{tikzpicture}
+                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                            \small{b[0]} \& \small{b[1]} \& \small{b[2]} \& \small{b[3]} \& \small{b[4]} \\
+                            $28.9$       \& $78.5$       \& $35.4$       \& $43.6$       \& $56$         \\
+                        }; 
+                    \end{tikzpicture}
+
+                \item 样例输入
+
+                    \lstinline|3 5|
+
+                \item 样例输出
+
+                    \lstinline|218.00|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.6：计算书费 II}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=buy_book2]{ch09/buy_book2.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示购买次数。\\
+                    然后输入 $n$ 行，每行两个整数 $k$ ($0 \le k < 5$) 和 $x$ ($0 \le x \le 100$)，表示购买编号为 $k$ 的图书 $x$ 本，分别输出 n 次购书的消费金额，结果保留两位小数。图书的单价如图所示。
+
+                    \begin{tikzpicture}
+                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
+                            \small{b[0]} \& \small{b[1]} \& \small{b[2]} \& \small{b[3]} \& \small{b[4]} \\
+                            $28.9$       \& $78.5$       \& $35.4$       \& $43.6$       \& $56$         \\
+                        }; 
+                    \end{tikzpicture}
+            \end{itemize}
+
+            \begin{multicols}{2}
+                \begin{itemize}
+                    \item 样例输入
+
+                        \lstinline|2|\\
+                        \lstinline|3 4|\\
+                        \lstinline|0 5|
+
+                    \item 样例输出
+
+                        \lstinline|174.40|\\
+                        \lstinline|144.50|
+                \end{itemize}
+            \end{multicols}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{思考}
+
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            如何求 $n$ 次购书的总额呢？
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{数组的遍历}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数组的遍历}
+
+    \begin{overlayarea}{\textwidth}{.55\textheight}
+        \begin{itemize}
+            \item 遍历：对数组中所有元素逐个访问一遍的过程称为遍历
+
+            \item 遍历输入数组
+
+                \begin{itemize}
+                    \item<1-> 存储在下标 $0 \sim n - 1$ 中
+                    \item<1-> \lstinline|for (int i = 0; i < n; i++) cin >> a[i];|
+                    \item<2-> 存储在下标 $1 \sim n$ 中
+                    \item<2-> \lstinline|for (int i = 1; i <= n; i++) cin >> a[i];|
+                \end{itemize}
+
+        \end{itemize}
+    \end{overlayarea}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数组的遍历}
+
+    \begin{overlayarea}{\textwidth}{.55\textheight}
+        \begin{itemize}
+            \item 遍历：对数组中所有元素逐个访问一遍的过程称为遍历
+
+            \item 遍历输出数组
+
+                \begin{itemize}
+                    \item<1-> 存储在下标 $0 \sim n - 1$ 中
+                    \item<1-> \lstinline|for (int i = 0; i < n; i++) cout << a[i] << ' ';|\\
+                        \lstinline|cout << endl;|
+                    \item<2-> 存储在下标 $1 \sim n$ 中
+                    \item<2-> \lstinline|for (int i = 1; i <= n; i++) cout << a[i] << ' ';|\\
+                        \lstinline|cout << endl;|
+                \end{itemize}
+
+        \end{itemize}
+    \end{overlayarea}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.7：倒序输出数组元素}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=array_rev_output]{ch09/array_rev_output.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，要求倒序输出数组元素。
+
+                \item 样例输入
+
+                    \lstinline|6|\\
+                    \lstinline|1 4 2 8 5 7|
+
+                \item 样例输出
+
+                    \lstinline|7 5 8 2 4 1|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.8：交替输出数组元素}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=array_alt_output]{ch09/array_alt_output.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个偶数 $n$ ($1 \le n \le 100$)，接下来输入 $n$ 个整数，然后交替输出。\\
+                    即按照：第 $1$ 个数、倒数第 $1$ 个数、第 $2$ 个数、倒数第 $2$ 个数 $\dots$ 的顺序输出，其中每行输出两个数字，数字与数字之间有空格隔开。
+            \end{itemize}
+
+            \begin{multicols}{2}
+                \begin{itemize}
+                    \item 样例输入
+
+                        \lstinline|6|\\
+                        \lstinline|1 4 2 8 5 7|
+
+                    \item 样例输出
+
+                        \lstinline|1 7|\\
+                        \lstinline|4 5|\\
+                        \lstinline|2 8|
+                \end{itemize}
+            \end{multicols}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{思考}
+
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            两个数组间可以像变量 一样直接赋值吗？
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数组间的赋值}
+
+    \alt<5>{
+        \lstinputlisting[language=C++,name=array_copy_ac]{ch09/array_copy_ac.cc}
+    }{
+        \alt<3-4>{
+            \begin{itemize}
+                \item<3-> 数组之间的赋值不可以像变量那样直接进行赋值
+
+                    \begin{itemize}
+                        \item
+                            \alt<3>{
+                                \lstinline|b = a;|
+                            }{
+                                \redout{{\lstinline|b = a;|}}
+                            }
+                    \end{itemize}
+
+                \item<4-> 只能将元素依次进行赋值
+
+                    \begin{itemize}
+                        \item \lstinline|for (int i = 1; i <= n; i++) b[i] = a[i];|
+                    \end{itemize}
+
+            \end{itemize}
+        }{
+            \lstinputlisting[language=C++,name=array_copy_wa]{ch09/array_copy_wa.cc}
+
+            \uncover<2>{
+                \begin{itemize}
+                    \item 编译会报错，数组之间不能直接赋值
+                \end{itemize}
+            }
+
+            \begin{tikzpicture}[remember picture, overlay]
+                \uncover<2>{\redbox{array_copy_wa-13}{2}{6}}
+            \end{tikzpicture}
+        }
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{数组遍历的应用}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.9：求数组元素的和}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=array_sum]{ch09/array_sum.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素之和。
+
+                \item 样例输入
+
+                    \lstinline|6|\\
+                    \lstinline|1 4 2 8 5 7|
+
+                \item 样例输出
+
+                    \lstinline|27|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.10：求数组元素的最大值}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=array_max]{ch09/array_max.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素中的最大值。
+
+                \item 样例输入
+
+                    \lstinline|6|\\
+                    \lstinline|1 4 2 8 5 7|
+
+                \item 样例输出
+
+                    \lstinline|8|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.11：求数组元素的最大值}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++,name=array_max_with_pos]{ch09/array_max_with_pos.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\redbox{array_max_with_pos-15}{8}{25}}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素中的最大值及位置，保证数组中只有一个最大值，输出以空格间隔。
+
+                \item 样例输入
+
+                    \lstinline|6|\\
+                    \lstinline|1 4 2 8 5 7|
+
+                \item 样例输出
+
+                    \lstinline|8 4|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 9.12：求数组元素的最大值及所有位置}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++,name=array_max_all_pos]{ch09/array_max_all_pos.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\redbox{array_max_all_pos-17}{4}{37}}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素中的最大值及所有位置。\\
+                    第一行输出最大值，第二行以空格间隔输出所有位置。
+
+                \item 样例输入
+
+                    \lstinline|9|\\
+                    \lstinline|2 9 9 7 9 2 4 5 8|
+
+                \item 样例输出
+
+                    \lstinline|9|\\
+                    \lstinline|2 3 5|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
 \end{frame}
 %------------------------------------------------------------
 

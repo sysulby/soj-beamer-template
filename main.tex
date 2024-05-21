@@ -90,7 +90,7 @@
     keywordstyle=\color{codeblue},
     numberstyle=\scriptsize\color{codegray},
     stringstyle=\color{codered},
-    basicstyle=\ttfamily\footnotesize,
+    basicstyle=\ttfamily\scriptsize,
     breakatwhitespace=false,
     breaklines=true,
     captionpos=b,
@@ -112,7 +112,7 @@
 \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1cm, minimum height=.5cm, text centered, text width=1.5cm, draw=black, font=\footnotesize]
 \tikzstyle{process} = [rectangle, minimum width=1cm, minimum height=.5cm, text centered, text width=1.5cm, draw=black, font=\footnotesize]
 \tikzstyle{decision} = [diamond, aspect=3, text centered, draw=black, font=\footnotesize]
-\tikzstyle{arrow} = [->,>=stealth, font=\footnotesize]
+\tikzstyle{arrow} = [thin,->,>=stealth, font=\footnotesize]
 \usetikzlibrary{
     arrows.meta,
     tikzmark,
@@ -121,7 +121,7 @@
 }
 \usetikzmarklibrary{listings}
 \newcommand{\redbox}[3]{
-    \draw[red, very thick] (pic cs:line-#1-start) ++(#2*5.4pt-1.25pt, -.25em) rectangle ++(#3*5.4pt+2.4pt, 1em);
+    \draw[red, very thick] (pic cs:line-#1-start) ++(#2*4.78pt-1.3pt, -.2em) rectangle ++(#3*4.78pt+3.3pt, .88em);
 }
 \usetikzlibrary{matrix}
 \usetikzlibrary{overlay-beamer-styles}

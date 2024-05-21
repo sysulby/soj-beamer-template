@@ -278,8 +278,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 闰年分为世纪闰年和普通闰年。\\
-                    普通闰年的年份是 $4$ 的倍数，且不是 $100$ 的倍数；世纪闰年的年份是 $400$ 的倍数。\\
+                \item 闰年分为世纪闰年和普通闰年。普通闰年的年份是 $4$ 的倍数，且不是 $100$ 的倍数；世纪闰年的年份是 $400$ 的倍数。\\
                     编写程序，输入一个整数 $year$ ($1000 \le year \le 3000$)，表示一个年份，判断该年份是否为闰年，输出对应的判断结果。
 
                 \item 样例输入
@@ -404,7 +403,7 @@
     \frametitle{多分支结构}
 
     \begin{columns}
-        \column{.54\textwidth}
+        \column{.55\textwidth}
         \begin{itemize}[<+->]
             \item 多分支结构会依次判断条件语句
 
@@ -417,7 +416,7 @@
             \item 注意，最后的 \lstinline|else| 不用写条件
         \end{itemize}
 
-        \column{.46\textwidth}
+        \column{.45\textwidth}
         \lstinputlisting[language=C++,name=if_else_if]{ch04/if_else_if.cc}
     \end{columns}
 \end{frame}
@@ -482,16 +481,14 @@
     \end{itemize}
 
     \begin{columns}
-        \column{.08\textwidth}
+        \column{.04\textwidth}
 
         \column{.48\textwidth}
         \uncover<1->{
             \lstinputlisting[language=C++,name=if_else_if]{ch04/if_else_if.cc}
         }
 
-        \column{.02\textwidth}
-
-        \column{.42\textwidth}
+        \column{.48\textwidth}
         \uncover<2->{
             \lstinputlisting[language=C++,name=if_x_3]{ch04/if_x_3.cc}
         }
@@ -507,15 +504,13 @@
         \item 当 $score$ 为 $95$ 时，分别会输出什么？
     \end{itemize}
 
-    \begin{columns}
-        \column{.08\textwidth}
+    \begin{columns}[T]
+        \column{.04\textwidth}
 
-        \column{.45\textwidth}
+        \column{.48\textwidth}
         \lstinputlisting[language=C++,name=grade3]{ch04/grade3.cc}
 
-        \column{.02\textwidth}
-
-        \column{.45\textwidth}
+        \column{.48\textwidth}
         \lstinputlisting[language=C++,name=grade4]{ch04/grade4.cc}
     \end{columns}
 \end{frame}
@@ -526,13 +521,13 @@
     \frametitle{分支嵌套}
 
     \begin{columns}
-        \column{.55\textwidth}
+        \column{.6\textwidth}
         \begin{itemize}[<+->]
             \item 在分支结构的语句块中，使用分支结构，这就形成了分支嵌套
-            \item 注意，应尽量不省略大括号，以明确各层次的嵌套关系
+            \item 注意尽量不要省略大括号，以明确各层次间的嵌套关系
         \end{itemize}
 
-        \column{.45\textwidth}
+        \column{.4\textwidth}
         \lstinputlisting[language=C++,name=if_nest]{ch04/if_nest.cc}
     \end{columns}
 \end{frame}

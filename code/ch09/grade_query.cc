@@ -2,12 +2,12 @@
 
 using namespace std;
 
-int A[8] = {71, 80, 62, 91, 99, 82, 43, 53};
+int a[8] = {71, 80, 62, 91, 99, 82, 43, 53};
 
 int main() {
   int k;
   cin >> k;
-  cout << A[k] << endl;
+  cout << a[k] << endl;
 
   return 0;
 }
