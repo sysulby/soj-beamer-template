@@ -1,5 +1,7 @@
 while (...) {
   ...
-  if (...) continue;
+  if (...) {
+    continue;
+  }
   ...
 }
