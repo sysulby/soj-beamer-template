@@ -10,9 +10,7 @@ int main() {
   for (int i = 1; i <= n; i++) { // 输入数组 a
     cin >> a[i];
   }
-  for (int i = 1; i <= n; i++) { // 将数组 a 赋值给数组 b
-    b[i] = a[i];
-  }
+  b = a;                         // 将数组 a 赋值给数组 b
   for (int i = 1; i <= n; i++) { // 输出数组 b
     cout << b[i] << " ";
   }

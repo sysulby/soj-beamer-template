@@ -103,10 +103,11 @@
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
-                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
-            }; 
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
+            };
         \end{tikzpicture}
     \end{columns}
 \end{frame}
@@ -144,10 +145,11 @@
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
-                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
-            }; 
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
+            };
         \end{tikzpicture}
     \end{columns}
 \end{frame}
@@ -169,7 +171,7 @@
                 \end{itemize}
 
                 \begin{itemize}
-                    \item<2-> 数组大小可以指定或留空，会按照需要的最小空间申请内存
+                    \item<8-> 数组大小可以指定或留空，会按照需要的最小空间申请内存
                         \begin{itemize}
                             \item \lstinline|double b[] = {1.0, 2.7, 3.14, 9.8};|
                         \end{itemize}
@@ -185,10 +187,49 @@
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
-                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
-            }; 
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \only<1>{
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                    \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \\
+                };
+            }
+            \only<2>{
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                    \lstinline|71|   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \\
+                };
+            }
+            \only<3>{
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                    \lstinline|71|   \& \lstinline|80|   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \\
+                };
+            }
+            \only<4>{
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                    \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \\
+                };
+            }
+            \only<5>{
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                    \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|...|  \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \\
+                };
+            }
+            \only<6>{
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                    \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|...|  \& \lstinline|...|   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \\
+                };
+            }
+            \only<7->{
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                    \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
+                };
+            }
         \end{tikzpicture}
     \end{columns}
 \end{frame}
@@ -211,11 +252,11 @@
                 \end{itemize}
 
                 \begin{itemize}
-                    \item<2-> 例如：声明数组 \lstinline|int a[5];|
+                    \item<2-> 例如：声明数组 \lstinline|double b[5];|
                         \begin{itemize}
                             \item 可以使用的数组下标：$0$, $1$, $2$, $3$, $4$
-                            \item 对应的可以使用的数组元素：\lstinline|a[0], a[1], a[2], a[3], a[4]|
-                            \item 可以使用变量作为数组下标：\lstinline|a[k]| ($0 \le k \le 4$)
+                            \item 对应的可以使用的数组元素：\lstinline|b[0], b[1], b[2], b[3], b[4]|
+                            \item 可以使用变量作为数组下标：\lstinline|b[k]| ($0 \le k \le 4$)
                         \end{itemize}
                 \end{itemize}
         \end{itemize}
@@ -229,10 +270,11 @@
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
-                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
-            }; 
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
+            };
         \end{tikzpicture}
     \end{columns}
 \end{frame}
@@ -251,10 +293,11 @@
                 \item 6 年 A 班进行了一次小测，现要求编写程序，录入所有学生成绩，并输出所有学生的成绩，学生成绩如图所示。
 
                     \begin{tikzpicture}
-                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                            \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
-                            $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
-                        }; 
+                        [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                            \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                            \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
+                        };
                     \end{tikzpicture}
 
                 \item 样例输入
@@ -285,10 +328,11 @@
                 \item 已知 6 年 A 班的小测成绩如图所示，编写程序，输入一个整数 $k$ ($0 \le k < 8$)，输出 $k$ 号学生的分数。
 
                     \begin{tikzpicture}
-                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                            \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
-                            $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
-                        }; 
+                        [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                            \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                            \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
+                        };
                     \end{tikzpicture}
 
                 \item 样例输入
@@ -349,10 +393,11 @@
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
-                $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
-            }; 
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
+            };
         \end{tikzpicture}
     \end{columns}
 \end{frame}
@@ -393,10 +438,11 @@
                     编写程序，输入两个整数 $k$ ($0 \le k < 8$) 和 $x$ ($0 \le x \le 100$)，请修改并输出 $k$ 号同学的分数。
 
                     \begin{tikzpicture}
-                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                            \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
-                            $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
-                        }; 
+                        [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                            \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                            \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
+                        };
                     \end{tikzpicture}
 
                 \item 样例输入
@@ -428,10 +474,11 @@
                     编写程序，输入两个整数 $x$ ($0 \le x < 8$) 和 $y$ ($0 \le y \le 100$)，请交换他们的成绩，并输出正确的成绩表，以空格间隔。
 
                     \begin{tikzpicture}
-                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                            \small{a[0]} \& \small{a[1]} \& \small{a[2]} \& \small{a[3]} \& \small{a[4]} \& \small{a[5]} \& \small{a[6]} \& \small{a[7]} \\
-                            $71$         \& $80$         \& $62$         \& $91$         \& $99$         \& $82$         \& $43$         \& $53$         \\
-                        }; 
+                        [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                            \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
+                            \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
+                        };
                     \end{tikzpicture}
 
                 \item 样例输入
@@ -464,10 +511,11 @@
                 \item 编写程序，输入两个整数 $k$ ($0 \le k < 5$) 和 $x$ ($0 \le x \le 100$)，表示购买编号为 $k$ 的图书 $x$ 本，输出消费的金额，结果保留两位小数。图书的单价如图所示。
 
                     \begin{tikzpicture}
-                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                            \small{b[0]} \& \small{b[1]} \& \small{b[2]} \& \small{b[3]} \& \small{b[4]} \\
-                            $28.9$       \& $78.5$       \& $35.4$       \& $43.6$       \& $56$         \\
-                        }; 
+                        [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                        \matrix(B) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                            \lstinline|b[0]| \& \lstinline|b[1]| \& \lstinline|b[2]| \& \lstinline|b[3]| \& \lstinline|b[4]| \\
+                            \lstinline|28.9| \& \lstinline|78.5| \& \lstinline|35.4| \& \lstinline|43.6| \& \lstinline|56|   \\
+                        };
                     \end{tikzpicture}
 
                 \item 样例输入
@@ -499,10 +547,11 @@
                     然后输入 $n$ 行，每行两个整数 $k$ ($0 \le k < 5$) 和 $x$ ($0 \le x \le 100$)，表示购买编号为 $k$ 的图书 $x$ 本，分别输出 n 次购书的消费金额，结果保留两位小数。图书的单价如图所示。
 
                     \begin{tikzpicture}
-                        \matrix (A) [matrix of nodes, row 1/.style={nodes={draw=none}}, nodes={draw, minimum size=.9cm}, column sep=-\pgflinewidth, ampersand replacement=\&]{
-                            \small{b[0]} \& \small{b[1]} \& \small{b[2]} \& \small{b[3]} \& \small{b[4]} \\
-                            $28.9$       \& $78.5$       \& $35.4$       \& $43.6$       \& $56$         \\
-                        }; 
+                        [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                        \matrix(B) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                            \lstinline|b[0]| \& \lstinline|b[1]| \& \lstinline|b[2]| \& \lstinline|b[3]| \& \lstinline|b[4]| \\
+                            \lstinline|28.9| \& \lstinline|78.5| \& \lstinline|35.4| \& \lstinline|43.6| \& \lstinline|56|   \\
+                        };
                     \end{tikzpicture}
             \end{itemize}
 
@@ -547,7 +596,7 @@
 \begin{frame}[fragile]
     \frametitle{数组的遍历}
 
-    \begin{overlayarea}{\textwidth}{.55\textheight}
+    \begin{overlayarea}{\textwidth}{.66\textheight}
         \begin{itemize}
             \item 遍历：对数组中所有元素逐个访问一遍的过程称为遍历
 
@@ -555,9 +604,13 @@
 
                 \begin{itemize}
                     \item<1-> 存储在下标 $0 \sim n - 1$ 中
-                    \item<1-> \lstinline|for (int i = 0; i < n; i++) cin >> a[i];|
+                    \item<1-> \lstinline|for (int i = 0; i < n; i++) {|\\
+                        \lstinline|  cin >> a[i];|\\
+                        \lstinline|}|
                     \item<2-> 存储在下标 $1 \sim n$ 中
-                    \item<2-> \lstinline|for (int i = 1; i <= n; i++) cin >> a[i];|
+                    \item<2-> \lstinline|for (int i = 1; i <= n; i++) {|\\
+                        \lstinline|  cin >> a[i];|\\
+                        \lstinline|}|
                 \end{itemize}
 
         \end{itemize}
@@ -569,7 +622,7 @@
 \begin{frame}[fragile]
     \frametitle{数组的遍历}
 
-    \begin{overlayarea}{\textwidth}{.55\textheight}
+    \begin{overlayarea}{\textwidth}{.66\textheight}
         \begin{itemize}
             \item 遍历：对数组中所有元素逐个访问一遍的过程称为遍历
 
@@ -577,11 +630,15 @@
 
                 \begin{itemize}
                     \item<1-> 存储在下标 $0 \sim n - 1$ 中
-                    \item<1-> \lstinline|for (int i = 0; i < n; i++) cout << a[i] << ' ';|\\
-                        \lstinline|cout << endl;|
+                    \item<1-> \lstinline|for (int i = 0; i < n; i++) {|\\
+                        \lstinline|  cout << a[i] << " ";|\\
+                        \lstinline|}|\\
+                        \lstinline|cout << endl;|\\
                     \item<2-> 存储在下标 $1 \sim n$ 中
-                    \item<2-> \lstinline|for (int i = 1; i <= n; i++) cout << a[i] << ' ';|\\
-                        \lstinline|cout << endl;|
+                    \item<2-> \lstinline|for (int i = 1; i <= n; i++) {|\\
+                        \lstinline|  cout << a[i] << " ";|\\
+                        \lstinline|}|\\
+                        \lstinline|cout << endl;|\\
                 \end{itemize}
 
         \end{itemize}
@@ -658,7 +715,7 @@
     \begin{block}{}
         \vspace{.5cm}
         \begin{center}
-            两个数组间可以像变量 一样直接赋值吗？
+            两个数组间可以像变量一样直接赋值吗？
         \end{center}
         \vspace{.5cm}
     \end{block}
@@ -685,15 +742,17 @@
                             }
                     \end{itemize}
 
-                \item<4-> 只能将元素依次进行赋值
+                \item<4-> 只能用数组元素依次进行赋值
 
                     \begin{itemize}
-                        \item \lstinline|for (int i = 1; i <= n; i++) b[i] = a[i];|
+                        \item \lstinline|for (int i = 1; i <= n; i++) \{|\\
+                            \lstinline|\ \ b[i] = a[i];|\\
+                            \lstinline|\}|
                     \end{itemize}
 
             \end{itemize}
         }{
-            \lstinputlisting[language=C++,name=array_copy_wa]{ch09/array_copy_wa.cc}
+            \lstinputlisting[language=C++,name=array_copy_ce]{ch09/array_copy_ce.cc}
 
             \uncover<2>{
                 \begin{itemize}
@@ -702,7 +761,7 @@
             }
 
             \begin{tikzpicture}[remember picture, overlay]
-                \uncover<2>{\redbox{array_copy_wa-13}{2}{6}}
+                \uncover<2>{\redbox{array_copy_ce-13}{2}{6}}
             \end{tikzpicture}
         }
     }

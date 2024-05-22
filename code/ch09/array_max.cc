@@ -12,7 +12,9 @@ int main() {
   }
   int maxv = -1000000000;
   for (int i = 1; i <= n; i++) {
-    if (a[i] > maxv) maxv = a[i];
+    if (a[i] > maxv) {
+      maxv = a[i];
+    }
   }
   cout << maxv << endl;
 

@@ -12,7 +12,9 @@ int main() {
   }
   int pos = 0;
   for (int i = 1; i <= n; i++) {
-    if (pos == 0 || a[i] > a[pos]) pos = i;
+    if (pos == 0 || a[i] > a[pos]) {
+      pos = i;
+    }
   }
   cout << a[pos] << " " << pos << endl;
 
