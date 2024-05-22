@@ -7,10 +7,11 @@ int main() {
   cin >> n;
   int cnt = 0;
   do {
-    if (n % 10 == 1) {
+    int r = n % 10;
+    n /= 10;
+    if (r == 1) {
       cnt++;
     }
-    n /= 10;
   } while (n != 0);
   cout << n << " " << cnt << endl;
 
