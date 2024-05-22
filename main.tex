@@ -120,8 +120,8 @@
     positioning
 }
 \usetikzmarklibrary{listings}
-\newcommand{\redbox}[3]{
-    \draw[red, very thick] (pic cs:line-#1-start) ++(#2*4.78pt-1.3pt, -.2em) rectangle ++(#3*4.78pt+3.3pt, .88em);
+\newcommand{\redbox}[5]{
+    \draw[red, very thick] ([shift={(#3*4.78pt-6pt, .68em)}] pic cs:line-#1-#2-start) rectangle ([shift={(#5*4.78pt+2pt, -.2em)}] pic cs:line-#1-#4-start)
 }
 \usetikzlibrary{matrix}
 \usetikzlibrary{overlay-beamer-styles}

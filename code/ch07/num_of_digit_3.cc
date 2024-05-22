@@ -7,13 +7,12 @@ int main() {
   cin >> n;
   int cnt = 0;
   do {
-    int r = n % 10; // 取出最低位
-    n /= 10;        // 抹去最低位
-    if (r == 3) {   // 判断取出的最低位是否为 3
+    if (n % 10 == 3) { // 判断取出的最低位是否为 3
       cnt++;
     }
+    n /= 10;           // 抹去最低位
   } while (n != 0);
   cout << cnt << endl;
-  
+
   return 0;
 }

@@ -10,6 +10,7 @@ int main() {
     sum += n; // 相当于 sum = sum + n
     n--;
   }
+  cout << sum << endl;
 
   return 0;
 }

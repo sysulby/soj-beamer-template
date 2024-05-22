@@ -237,7 +237,7 @@
     \alt<2-3>{
         \lstinputlisting[language=C++,name=factors]{ch07/factors.cc}
         \begin{tikzpicture}[remember picture,overlay]
-            \uncover<3>{\redbox{factors-9}{8}{10}}
+            \uncover<3>{\redbox{factors}{9}{9}{9}{18};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
@@ -268,7 +268,7 @@
         \lstinputlisting[language=C++,name=factors_sum]{ch07/factors_sum.cc}
 
         \begin{tikzpicture}[remember picture,overlay]
-            \uncover<3>{\redbox{factors_sum-11}{6}{9}}
+            \uncover<3>{\redbox{factors_sum}{11}{7}{11}{15};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
@@ -308,8 +308,8 @@
             \end{itemize}
 
             \begin{tikzpicture}[remember picture,overlay]
-                \uncover<8>{\redbox{for_max_x-8}{2}{23}}
-                \uncover<8>{\redbox{for_max_x-11}{8}{8}}
+                \uncover<8>{\redbox{for_max_x}{8}{3}{8}{25};}
+                \uncover<8>{\redbox{for_max_x}{11}{9}{11}{16};}
             \end{tikzpicture}
         }{
             \begin{itemize}
@@ -363,8 +363,8 @@
         \lstinputlisting[language=C++,name=for_max_x_with_pos]{ch07/for_max_x_with_pos.cc}
 
         \begin{tikzpicture}[remember picture,overlay]
-            \uncover<3>{\redbox{for_max_x_with_pos-9}{2}{12}}
-            \uncover<3>{\redbox{for_max_x_with_pos-14}{6}{8}}
+            \uncover<3>{\redbox{for_max_x_with_pos}{9}{3}{9}{14};}
+            \uncover<3>{\redbox{for_max_x_with_pos}{14}{7}{14}{14};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
@@ -396,8 +396,8 @@
         \lstinputlisting[language=C++,name=output_digits]{ch07/output_digits.cc}
 
         \begin{tikzpicture}[remember picture,overlay]
-            \uncover<3>{\redbox{output_digits-9}{4}{15}}
-            \uncover<3>{\redbox{output_digits-10}{4}{8}}
+            \uncover<3>{\redbox{output_digits}{9}{13}{9}{18};}
+            \uncover<3>{\redbox{output_digits}{10}{5}{10}{12};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
@@ -428,14 +428,14 @@
         \lstinputlisting[language=C++,name=num_of_digit_3]{ch07/num_of_digit_3.cc}
 
         \begin{tikzpicture}[remember picture,overlay]
-            \uncover<3>{\redbox{num_of_digit_3-10}{4}{15}}
-            \uncover<3>{\redbox{num_of_digit_3-12}{8}{6}}
+            \uncover<3>{\redbox{num_of_digit_3}{10}{9}{10}{19};}
+            \uncover<3>{\redbox{num_of_digit_3}{13}{5}{13}{12};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 10^9$)，统计 $n$ 的数位上有多少个 $3$。
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 10^9$)，统计 $n$ 的数位中 $3$ 的个数。
 
                 \item 样例输入
 
@@ -474,10 +474,10 @@
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
-        \uncover<2->{\redbox{while_break-4}{4}{6}}
-        \uncover<2->{\draw[red, very thick, ->] (pic cs:line-while_break-4-end) ++(2pt, .3em) -- ++(2em, 0) -- ++(0, -2.7em) -- ++(-6em, 0);}
-        \uncover<4>{\redbox{for_break-4}{4}{6}}
-        \uncover<4>{\draw[red, very thick, ->] (pic cs:line-for_break-4-end) ++(2pt, .3em) -- ++(2em, 0) -- ++(0, -2.7em) -- ++(-6em, 0);}
+        \uncover<2->{\redbox{while_break}{4}{5}{4}{10};}
+        \uncover<2->{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-while_break-4-end) -- ++(2em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-while_break-7-end);}
+        \uncover<4>{\redbox{for_break}{4}{5}{4}{10};}
+        \uncover<4>{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-for_break-4-end) -- ++(2em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-for_break-7-end);}
     \end{tikzpicture}
 \end{frame}
 %------------------------------------------------------------
@@ -501,10 +501,10 @@
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
-        \uncover<2->{\redbox{while_continue-4}{4}{9}}
-        \uncover<2->{\draw[red, very thick, ->] (pic cs:line-while_continue-4-end) ++(2pt, .3em) -- ++(2em, 0) -- ++(0, 2.5em) -- ++(-2em, 0);}
-        \uncover<4>{\redbox{for_continue-4}{4}{9}}
-        \uncover<4>{\draw[red, very thick, ->] (pic cs:line-for_continue-4-end) ++(2pt, .3em) -- ++(5.5em, 0) -- ++(0, 2.1em);}
+        \uncover<2->{\redbox{while_continue}{4}{5}{4}{13};}
+        \uncover<2->{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-while_continue-4-end) -- ++(2em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-while_continue-1-end);}
+        \uncover<4>{\redbox{for_continue}{4}{5}{4}{13};}
+        \uncover<4>{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-for_continue-4-end) -| ([shift={(-.8cm, -.2em)}] pic cs:line-for_continue-1-end);}
     \end{tikzpicture}
 
 \end{frame}
@@ -529,10 +529,10 @@
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
-        \uncover<3->{\redbox{while_1_n_break-5}{4}{6}}
-        \uncover<3->{\draw[red, very thick, ->] (pic cs:line-while_1_n_break-5-end) ++(2pt, .3em) -- ++(5em, 0) -- ++(0, -3.6em) -- ++(-9em, 0);}
-        \uncover<5>{\redbox{for_1_n_break-5}{4}{6}}
-        \uncover<5>{\draw[red, very thick, ->] (pic cs:line-for_1_n_break-5-end) ++(2pt, .3em) -- ++(5em, 0) -- ++(0, -2.7em) -- ++(-9em, 0);}
+        \uncover<3->{\redbox{while_1_n_break}{5}{5}{5}{10};}
+        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-while_1_n_break-5-end) -- ++(5em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-while_1_n_break-9-end);}
+        \uncover<5>{\redbox{for_1_n_break}{5}{5}{5}{10};}
+        \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-for_1_n_break-5-end) -- ++(5em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-for_1_n_break-8-end);}
     \end{tikzpicture}
 \end{frame}
 %------------------------------------------------------------
@@ -556,10 +556,10 @@
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
-        \uncover<3->{\redbox{while_1_n_continue-5}{4}{9}}
-        \uncover<3->{\draw[red, very thick, ->] (pic cs:line-while_1_n_continue-5-end) ++(2pt, .3em) -- ++(3em, 0) -- ++(0, 1.7em) -- ++(-1.8em, 0);}
-        \uncover<5>{\redbox{for_1_n_continue-5}{4}{9}}
-        \uncover<5>{\draw[red, very thick, ->] (pic cs:line-for_1_n_continue-5-end) ++(2pt, .3em) -- ++(5.5em, 0) -- ++(0, 1.3em);}
+        \uncover<3->{\redbox{while_1_n_continue}{5}{5}{5}{13};}
+        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-while_1_n_continue-5-end) -- ++(3em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-while_1_n_continue-3-end);}
+        \uncover<5>{\redbox{for_1_n_continue}{5}{5}{5}{13};}
+        \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-for_1_n_continue-5-end) -| ([shift={(-.8cm, -.2em)}] pic cs:line-for_1_n_continue-3-end);}
     \end{tikzpicture}
 
 \end{frame}

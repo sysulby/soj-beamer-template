@@ -6,10 +6,9 @@ int main() {
   int n;
   cin >> n;
   do {
-    int r = n % 10; // 取出最低位
-    n /= 10;        // 抹去最低位
-    cout << r << " ";
+    cout << n % 10 << " "; // 输出最低位
+    n /= 10;               // 抹去最低位
   } while (n != 0);
-  
+
   return 0;
 }

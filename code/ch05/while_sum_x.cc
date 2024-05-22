@@ -11,6 +11,7 @@ int main() {
     sum += x; // 相当于 sum = sum + x
     n--;
   }
+  cout << sum << endl;
 
   return 0;
 }

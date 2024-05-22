@@ -10,6 +10,7 @@ int main() {
     Ai += i;  // 当前的 Ai 为 A_{i-1} + i
     Sn += Ai; // 将求得的 Ai 累加到 Sn 中
   }
+  cout << Sn << endl;
 
   return 0;
 }

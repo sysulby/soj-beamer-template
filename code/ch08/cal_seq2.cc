@@ -14,6 +14,7 @@ int main() {
     }
     Sn += Ai; // 将求得的 Ai 累加到 Sn 中
   }
+  cout << Sn << endl;
 
   return 0;
 }
