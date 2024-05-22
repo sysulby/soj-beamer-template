@@ -1,5 +1,7 @@
 while (...) {
   ...
-  if (...) break;
+  if (...) {
+    break;
+  }
   ...
 }

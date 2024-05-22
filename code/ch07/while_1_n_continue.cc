@@ -1,7 +1,9 @@
 int n, i = 1;
 cin >> n;
 while (i <= n) {
-  if (i == 5) continue;
+  if (i == 5) {
+    continue;
+  }
   cout << i << endl;
   i++;
 }

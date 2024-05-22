@@ -3,8 +3,9 @@
 using namespace std;
 
 int main() {
-  int n, cnt = 0;
+  int n;
   cin >> n;
+  int cnt = 0;
   do {
     int r = n % 10; // 取出最低位
     n /= 10;        // 抹去最低位
