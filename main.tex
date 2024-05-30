@@ -27,7 +27,7 @@
 \RequirePackage{fontspec,xltxtra,xunicode}
 \setmainfont[Mapping=tex-text]{Times New Roman}
 \setsansfont[Mapping=tex-text]{Helvetica Neue}
-\setmonofont{Monaco}
+\setmonofont{Consolas}
 \usefonttheme[onlymath]{serif}
 
 % 模块
@@ -42,40 +42,6 @@
 \usepackage[normalem]{ulem}
 \newcommand\redout{\bgroup\markoverwith
 {\textcolor{red}{\rule[0.5ex]{2pt}{0.8pt}}}\ULon}
-\setlength{\leftmargini}{12pt}
-\usepackage{xpatch}
-\xpatchcmd{\itemize}
-  {\def\makelabel}
-  {\ifnum\@itemdepth=1\relax
-     \setlength\itemsep{1.5ex}% separation for first level
-   \else
-     \ifnum\@itemdepth=2\relax
-       \setlength\itemsep{1ex}% separation for second level
-       \setlength\topsep{1ex}% separation for second level
-     \else
-       \ifnum\@itemdepth=3\relax
-         \setlength\itemsep{1ex}% separation for third level
-         \setlength\topsep{1ex}% separation for third level
-   \fi\fi\fi\def\makelabel
-  }
- {}
- {}
-\xpatchcmd{\beamer@enum@}
-  {\def\makelabel}
-  {\ifnum\@itemdepth=1\relax
-     \setlength\itemsep{1.5ex}% separation for first level
-   \else
-     \ifnum\@itemdepth=2\relax
-       \setlength\itemsep{1ex}% separation for second level
-       \setlength\topsep{1ex}% separation for second level
-     \else
-       \ifnum\@itemdepth=3\relax
-         \setlength\itemsep{1ex}% separation for third level
-         \setlength\topsep{1ex}% separation for third level
-   \fi\fi\fi\def\makelabel
-  }
- {}
- {}
 
 % 代码
 \definecolor{codered}{rgb}{0.8,0,0}
@@ -90,7 +56,7 @@
     keywordstyle=\color{codeblue},
     numberstyle=\scriptsize\color{codegray},
     stringstyle=\color{codered},
-    basicstyle=\ttfamily\scriptsize,
+    basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,
     breaklines=true,
     captionpos=b,
@@ -121,11 +87,48 @@
 }
 \usetikzmarklibrary{listings}
 \newcommand{\redbox}[5]{
-    \draw[red, very thick] ([shift={(#3*4.78pt-6pt, .68em)}] pic cs:line-#1-#2-start) rectangle ([shift={(#5*4.78pt+2pt, -.2em)}] pic cs:line-#1-#4-start)
+    \draw[red, very thick] ([shift={(#3*4.78pt-6pt, .66em)}] pic cs:line-#1-#2-start) rectangle ([shift={(#5*4.78pt+2pt, -.24em)}] pic cs:line-#1-#4-start)
 }
 \usetikzlibrary{matrix}
 \usetikzlibrary{overlay-beamer-styles}
 
+% 段落与缩进
+\setlength{\leftmargini}{12pt}
+\usepackage{xpatch}
+\xpatchcmd{\itemize}
+  {\def\makelabel}
+  {\ifnum\@itemdepth=1\relax
+     \setlength\itemsep{1.5ex}% separation for first level
+   \else
+     \ifnum\@itemdepth=2\relax
+       \setlength\itemsep{1ex}% separation for second level
+       \setlength\topsep{1ex}% separation for second level
+     \else
+       \ifnum\@itemdepth=3\relax
+         \setlength\itemsep{1ex}% separation for third level
+         \setlength\topsep{1ex}% separation for third level
+         \lstset{basicstyle=\ttfamily\scriptsize}
+   \fi\fi\fi\def\makelabel
+  }
+ {}
+ {}
+\xpatchcmd{\beamer@enum@}
+  {\def\makelabel}
+  {\ifnum\@itemdepth=1\relax
+     \setlength\itemsep{1.5ex}% separation for first level
+   \else
+     \ifnum\@itemdepth=2\relax
+       \setlength\itemsep{1ex}% separation for second level
+       \setlength\topsep{1ex}% separation for second level
+     \else
+       \ifnum\@itemdepth=3\relax
+         \setlength\itemsep{1ex}% separation for third level
+         \setlength\topsep{1ex}% separation for third level
+         \lstset{basicstyle=\ttfamily\scriptsize}
+   \fi\fi\fi\def\makelabel
+  }
+ {}
+ {}
 
 %------------------------------------------------------------
 \AtBeginSection[]

@@ -50,10 +50,10 @@
         \end{overlayarea}
 
         \column{.42\textwidth}
-        \only<2>{\lstinputlisting[language=C++,name=if]{ch04/if.cc}}
-        \only<3>{\lstinputlisting[language=C++,name=if_else]{ch04/if_else.cc}}
-        \only<4>{\lstinputlisting[language=C++,name=if_else_if]{ch04/if_else_if.cc}}
-        \only<5>{\lstinputlisting[language=C++,name=if_nest]{ch04/if_nest.cc}}
+        \only<2>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=if]{ch04/if.cc}}
+        \only<3>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=if_else]{ch04/if_else.cc}}
+        \only<4>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=if_else_if]{ch04/if_else_if.cc}}
+        \only<5>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=if_nest]{ch04/if_nest.cc}}
     \end{columns}
 \end{frame}
 %------------------------------------------------------------
@@ -63,7 +63,7 @@
     \frametitle{问题回顾：闰年判断}
 
     \alt<2-2>{
-        \lstinputlisting[language=C++,name=leap2]{ch04/leap2.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=leap2]{ch04/leap2.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -94,19 +94,19 @@
         \item<1-> \lstinline|while| 循环：先判断再执行
 
             \only<1> {
-                \lstinputlisting[language=C++,name=while]{ch05/while.cc}
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=while]{ch05/while.cc}
             }
 
         \item<2-> \lstinline|do...while| 循环：先执行再判断，至少执行一次
 
             \only<2> {
-                \lstinputlisting[language=C++,name=do_while]{ch05/do_while.cc}
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=do_while]{ch05/do_while.cc}
             }
 
         \item<3-> \lstinline|for| 循环：执行初始动作后，先判断再执行
 
             \only<3> {
-                \lstinputlisting[language=C++,name=for]{ch06/for.cc}
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for]{ch06/for.cc}
             }
 
     \end{itemize}
@@ -118,7 +118,7 @@
     \frametitle{问题回顾：输出从 1 到 n 的整数之和}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=for_sum_1_to_n]{ch06/for_sum_1_to_n.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_sum_1_to_n]{ch06/for_sum_1_to_n.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -152,7 +152,7 @@
     \frametitle{例 7.1：加减数列求和}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=alt_sum]{ch07/alt_sum.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=alt_sum]{ch07/alt_sum.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -187,7 +187,7 @@
             \column{.02\textwidth}
 
             \column{.64\textwidth}
-            \lstinputlisting[language=C++,name=student]{ch07/student.cc}
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=student]{ch07/student.cc}
 
             \column{.34\textwidth}
             \begin{itemize}
@@ -235,7 +235,7 @@
     \frametitle{例 7.3：输出 n 的所有因子}
 
     \alt<2-3>{
-        \lstinputlisting[language=C++,name=factors]{ch07/factors.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=factors]{ch07/factors.cc}
         \begin{tikzpicture}[remember picture,overlay]
             \uncover<3>{\redbox{factors}{9}{9}{9}{18};}
         \end{tikzpicture}
@@ -265,7 +265,7 @@
     \frametitle{例 7.4：求 n 的所有因子之和}
 
     \alt<2-3>{
-        \lstinputlisting[language=C++,name=factors_sum]{ch07/factors_sum.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=factors_sum]{ch07/factors_sum.cc}
 
         \begin{tikzpicture}[remember picture,overlay]
             \uncover<3>{\redbox{factors_sum}{11}{7}{11}{15};}
@@ -302,7 +302,7 @@
     \alt<2-8>{
         \alt<7-8> {
             \begin{itemize}
-                    \lstinputlisting[language=C++,name=for_max_x]{ch07/for_max_x.cc}
+                    \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_max_x]{ch07/for_max_x.cc}
 
                 \item 把擂主的初始值设置为最小值，确保第一个挑战者攻擂成功
             \end{itemize}
@@ -360,7 +360,7 @@
     \frametitle{例 7.6：求 n 个数的最大值及位置}
 
     \alt<2-3>{
-        \lstinputlisting[language=C++,name=for_max_x_with_pos]{ch07/for_max_x_with_pos.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_max_x_with_pos]{ch07/for_max_x_with_pos.cc}
 
         \begin{tikzpicture}[remember picture,overlay]
             \uncover<3>{\redbox{for_max_x_with_pos}{9}{3}{9}{14};}
@@ -393,7 +393,7 @@
     \frametitle{例 7.7：反向输出非负整数}
 
     \alt<2-3>{
-        \lstinputlisting[language=C++,name=output_digits]{ch07/output_digits.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=output_digits]{ch07/output_digits.cc}
 
         \begin{tikzpicture}[remember picture,overlay]
             \uncover<3>{\redbox{output_digits}{9}{13}{9}{18};}
@@ -425,7 +425,7 @@
     \frametitle{例 7.8：求一个整数中有多少个 3}
 
     \alt<2-3>{
-        \lstinputlisting[language=C++,name=num_of_digit_3]{ch07/num_of_digit_3.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=num_of_digit_3]{ch07/num_of_digit_3.cc}
 
         \begin{tikzpicture}[remember picture,overlay]
             \uncover<3>{\redbox{num_of_digit_3}{10}{9}{10}{19};}
@@ -467,17 +467,17 @@
         \column{.04\textwidth}
 
         \column{.43\textwidth}
-        \uncover<1-4>{\lstinputlisting[language=C++,name=while_break]{ch07/while_break.cc}}
+        \uncover<1-4>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=while_break]{ch07/while_break.cc}}
 
         \column{.53\textwidth}
-        \uncover<3-4>{\lstinputlisting[language=C++,name=for_break]{ch07/for_break.cc}}
+        \uncover<3-4>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_break]{ch07/for_break.cc}}
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
         \uncover<2->{\redbox{while_break}{4}{5}{4}{10};}
-        \uncover<2->{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-while_break-4-end) -- ++(2em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-while_break-7-end);}
+        \uncover<2->{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-while_break-4-end) -- ++(2em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-while_break-7-end);}
         \uncover<4>{\redbox{for_break}{4}{5}{4}{10};}
-        \uncover<4>{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-for_break-4-end) -- ++(2em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-for_break-7-end);}
+        \uncover<4>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-for_break-4-end) -- ++(2em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-for_break-7-end);}
     \end{tikzpicture}
 \end{frame}
 %------------------------------------------------------------
@@ -494,17 +494,17 @@
         \column{.04\textwidth}
 
         \column{.43\textwidth}
-        \uncover<1-4>{\lstinputlisting[language=C++,name=while_continue]{ch07/while_continue.cc}}
+        \uncover<1-4>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=while_continue]{ch07/while_continue.cc}}
 
         \column{.53\textwidth}
-        \uncover<3-4>{\lstinputlisting[language=C++,name=for_continue]{ch07/for_continue.cc}}
+        \uncover<3-4>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_continue]{ch07/for_continue.cc}}
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
         \uncover<2->{\redbox{while_continue}{4}{5}{4}{13};}
-        \uncover<2->{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-while_continue-4-end) -- ++(2em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-while_continue-1-end);}
+        \uncover<2->{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-while_continue-4-end) -- ++(2em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-while_continue-1-end);}
         \uncover<4>{\redbox{for_continue}{4}{5}{4}{13};}
-        \uncover<4>{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-for_continue-4-end) -| ([shift={(-.8cm, -.2em)}] pic cs:line-for_continue-1-end);}
+        \uncover<4>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-for_continue-4-end) -| ([shift={(-.8cm, -.2em)}] pic cs:line-for_continue-1-end);}
     \end{tikzpicture}
 
 \end{frame}
@@ -522,17 +522,17 @@
         \column{.04\textwidth}
 
         \column{.43\textwidth}
-        \uncover<2-5>{\lstinputlisting[language=C++,name=while_1_n_break]{ch07/while_1_n_break.cc}}
+        \uncover<2-5>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=while_1_n_break]{ch07/while_1_n_break.cc}}
 
         \column{.53\textwidth}
-        \uncover<4-5>{\lstinputlisting[language=C++,name=for_1_n_break]{ch07/for_1_n_break.cc}}
+        \uncover<4-5>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_1_n_break]{ch07/for_1_n_break.cc}}
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
         \uncover<3->{\redbox{while_1_n_break}{5}{5}{5}{10};}
-        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-while_1_n_break-5-end) -- ++(5em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-while_1_n_break-9-end);}
+        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-while_1_n_break-5-end) -- ++(5em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-while_1_n_break-9-end);}
         \uncover<5>{\redbox{for_1_n_break}{5}{5}{5}{10};}
-        \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-for_1_n_break-5-end) -- ++(5em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-for_1_n_break-8-end);}
+        \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-for_1_n_break-5-end) -- ++(5em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-for_1_n_break-8-end);}
     \end{tikzpicture}
 \end{frame}
 %------------------------------------------------------------
@@ -549,17 +549,17 @@
         \column{.04\textwidth}
 
         \column{.43\textwidth}
-        \uncover<2-5>{\lstinputlisting[language=C++,name=while_1_n_continue]{ch07/while_1_n_continue.cc}}
+        \uncover<2-5>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=while_1_n_continue]{ch07/while_1_n_continue.cc}}
 
         \column{.53\textwidth}
-        \uncover<4-5>{\lstinputlisting[language=C++,name=for_1_n_continue]{ch07/for_1_n_continue.cc}}
+        \uncover<4-5>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_1_n_continue]{ch07/for_1_n_continue.cc}}
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
         \uncover<3->{\redbox{while_1_n_continue}{5}{5}{5}{13};}
-        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-while_1_n_continue-5-end) -- ++(3em, 0) |- ([shift={(2pt, .27em)}] pic cs:line-while_1_n_continue-3-end);}
+        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-while_1_n_continue-5-end) -- ++(3em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-while_1_n_continue-3-end);}
         \uncover<5>{\redbox{for_1_n_continue}{5}{5}{5}{13};}
-        \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .27em)}] pic cs:line-for_1_n_continue-5-end) -| ([shift={(-.8cm, -.2em)}] pic cs:line-for_1_n_continue-3-end);}
+        \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-for_1_n_continue-5-end) -| ([shift={(-.8cm, -.2em)}] pic cs:line-for_1_n_continue-3-end);}
     \end{tikzpicture}
 
 \end{frame}
@@ -593,7 +593,7 @@
 
         \begin{enumerate}
             \item 阅读程序写结果
-                \lstinputlisting[language=C++,name=exercise]{ch07/exercise.cc}
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=exercise]{ch07/exercise.cc}
 
                 输入：\lstinline|7 12|\\
                 输出：\uncover<2->{\textcolor{red}{\lstinline|7 8 9|}}

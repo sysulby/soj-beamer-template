@@ -123,7 +123,7 @@
 
                 \begin{itemize}
                     \item \textbf{元素类型 \enspace 数组名[数组大小];}
-                    \item \lstinline|int a[8]; // 定义了可以存放 8 个整数的数组 A|
+                    \item \lstinline|int a[8]; // 定义了可以存放 8 个整数的数组 a|
                 \end{itemize}
 
                 \begin{itemize}
@@ -132,7 +132,7 @@
                 \end{itemize}
 
                 \begin{itemize}
-                    \item<3-> 建议声明为全局变量
+                    \item<3-> 建议声明数组为全局变量
                 \end{itemize}
         \end{itemize}
     \end{overlayarea}
@@ -285,7 +285,7 @@
     \frametitle{例 9.1：成绩录入}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=grade_output]{ch09/grade_output.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=grade_output]{ch09/grade_output.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -320,7 +320,7 @@
     \frametitle{例 9.2：成绩查询}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=grade_query]{ch09/grade_query.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=grade_query]{ch09/grade_query.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -429,7 +429,7 @@
     \frametitle{例 9.3：成绩修改 I}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=grade_change1]{ch09/grade_change1.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=grade_change1]{ch09/grade_change1.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -465,7 +465,7 @@
     \frametitle{例 9.4：成绩修改 II}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=grade_change2]{ch09/grade_change2.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=grade_change2]{ch09/grade_change2.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -504,7 +504,7 @@
     \frametitle{例 9.5：计算书费 I}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=buy_book1]{ch09/buy_book1.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=buy_book1]{ch09/buy_book1.cc}
     }{
         \begin{exampleblock}{编程题}
             \begin{itemize}
@@ -538,7 +538,7 @@
     \frametitle{例 9.6：计算书费 II}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=buy_book2]{ch09/buy_book2.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=buy_book2]{ch09/buy_book2.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -651,7 +651,7 @@
     \frametitle{例 9.7：倒序输出数组元素}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=array_rev_output]{ch09/array_rev_output.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_rev_output]{ch09/array_rev_output.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -679,7 +679,7 @@
     \frametitle{例 9.8：交替输出数组元素}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=array_alt_output]{ch09/array_alt_output.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_alt_output]{ch09/array_alt_output.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -727,7 +727,7 @@
     \frametitle{数组间的赋值}
 
     \alt<5>{
-        \lstinputlisting[language=C++,name=array_copy_ac]{ch09/array_copy_ac.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_copy_ac]{ch09/array_copy_ac.cc}
     }{
         \alt<3-4>{
             \begin{itemize}
@@ -742,7 +742,7 @@
                             }
                     \end{itemize}
 
-                \item<4-> 只能用数组元素依次进行赋值
+                \item<4-> 只能通过遍历依次进行赋值
 
                     \begin{itemize}
                         \item \lstinline|for (int i = 1; i <= n; i++) \{|\\
@@ -752,7 +752,7 @@
 
             \end{itemize}
         }{
-            \lstinputlisting[language=C++,name=array_copy_ce]{ch09/array_copy_ce.cc}
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_copy_ce]{ch09/array_copy_ce.cc}
 
             \uncover<2>{
                 \begin{itemize}
@@ -776,7 +776,7 @@
     \frametitle{例 9.9：求数组元素的和}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=array_sum]{ch09/array_sum.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_sum]{ch09/array_sum.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -804,7 +804,7 @@
     \frametitle{例 9.10：求数组元素的最大值}
 
     \alt<2>{
-        \lstinputlisting[language=C++,name=array_max]{ch09/array_max.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_max]{ch09/array_max.cc}
     }{
         \begin{exampleblock}{编程题}
 
@@ -832,7 +832,7 @@
     \frametitle{例 9.11：求数组元素的最大值}
 
     \alt<2-3>{
-        \lstinputlisting[language=C++,name=array_max_with_pos]{ch09/array_max_with_pos.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_max_with_pos]{ch09/array_max_with_pos.cc}
 
         \begin{tikzpicture}[remember picture, overlay]
             \uncover<3>{\redbox{array_max_with_pos}{15}{9}{15}{33};}
@@ -864,7 +864,7 @@
     \frametitle{例 9.12：求数组元素的最大值及所有位置}
 
     \alt<2-3>{
-        \lstinputlisting[language=C++,name=array_max_all_pos]{ch09/array_max_all_pos.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_max_all_pos]{ch09/array_max_all_pos.cc}
 
         \begin{tikzpicture}[remember picture, overlay]
             \uncover<3>{\redbox{array_max_all_pos}{17}{5}{17}{41};}
