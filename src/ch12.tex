@@ -1,0 +1,542 @@
+%------------------------------------------------------------
+\title[12 - 数组的综合应用]
+{12 - 数组的综合应用}
+
+\subtitle{C++ 程序设计基础}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{一维数组}
+
+    \begin{itemize}[<+->]
+        \item 一维数组的声明
+        
+            \begin{itemize}
+                \item \textbf{元素类型 \enspace 数组名[数组大小];}
+                \item \lstinline|int a[105]; // 定义了可以存放 105 个整数的数组 a|
+            \end{itemize}
+
+        \item 一维数组的元素访问
+        
+            \begin{itemize}
+                \item \textbf{数组名称[下标]}
+            \end{itemize}
+
+        \item 一维数组的遍历
+        
+            \begin{itemize}
+                \item 使用单重循环遍历一维数组
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{多维数组}
+
+    \begin{itemize}[<+->]
+        \item 多维数组的声明
+        
+            \begin{itemize}
+                \item \textbf{元素类型 \enspace 数组名称[第一维大小][第二维大小]...;}
+                \item \lstinline|int a[100][100]; // 定义了可以存放 10000 个整数的二维数组 a|
+            \end{itemize}
+
+        \item 多维数组的元素访问
+        
+            \begin{itemize}
+                \item \textbf{数组名称[第一维大小][第二维大小]...}
+            \end{itemize}
+
+        \item 多维数组的遍历
+        
+            \begin{itemize}
+                \item 使用多重循环遍历多维数组
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{一维数组的应用}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 12.1：统计人数 I}
+
+    \alt<8-9>{
+        \lstinputlisting[language=C++,name=cnt_1]{ch12/cnt_1.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<9>{\redbox{cnt_1}{12}{5}{12}{16};}
+        \end{tikzpicture}
+    }{
+        \alt<2-7> {
+            % 样例解释
+            \begin{itemize}
+                \item 样例说明： 
+            
+                \lstinputlisting[numbers=none,name=cnt_1_io]{ch12/cnt_1_io.txt}
+                    \begin{tikzpicture}[remember picture, overlay,scale=1]
+                        \uncover<3>{\redbox{cnt_1_io}{5}{1}{5}{1};}
+                        \uncover<3>{\redbox{cnt_1_io}{3}{1}{3}{2};}
+                        % \uncover<3>{\redbox{cnt_1_io}{3}{0}{3}{0};}
+        
+                        \uncover<4>{\redbox{cnt_1_io}{5}{3}{5}{3};}
+                        \uncover<4>{\redbox{cnt_1_io}{3}{4}{3}{5};}
+                        \uncover<4>{\redbox{cnt_1_io}{3}{1}{3}{2};}
+        
+                        \uncover<5>{\redbox{cnt_1_io}{5}{5}{5}{5};}
+                        \uncover<5>{\redbox{cnt_1_io}{3}{7}{3}{8};}
+                        \uncover<5>{\redbox{cnt_1_io}{3}{1}{3}{5};}
+        
+                        \uncover<6>{\redbox{cnt_1_io}{5}{7}{5}{7};}
+                        \uncover<6>{\redbox{cnt_1_io}{3}{10}{3}{12};}
+                        \uncover<6>{\redbox{cnt_1_io}{3}{1}{3}{8};}
+        
+                        \uncover<7>{\redbox{cnt_1_io}{5}{9}{5}{9};}
+                        \uncover<7>{\redbox{cnt_1_io}{3}{14}{3}{15};}
+                        \uncover<7>{\redbox{cnt_1_io}{3}{1}{3}{12};}
+        
+                    \end{tikzpicture}
+
+                \begin{itemize}
+                    \item<3-> 第 $1$ 个同学的左侧没有其他同学，输出 $0$
+                    \item<4-> 第 $2$ 个同学的左侧有 $1$ 个同学 $98$，输出 $1$
+                    \item<5-> 第 $3$ 个同学的左侧有 $2$ 个同学 $98,90$，输出 $2$
+                    \item<6-> 第 $4$ 个同学的左侧有 $3$ 个同学 $98,90,79$，输出 $0$
+                    \item<7-> 第 $5$ 个同学的左侧有 $4$ 个同学 $98,90,79,100$，输出 $3$
+                \end{itemize}
+                
+            \end{itemize}
+            
+        }{
+            \begin{exampleblock}{编程题}
+
+                \begin{itemize}
+                    \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 名学生，
+                    从左向右依次输入每个学生的成绩（成绩是 $0$ 到 $100$ 之间的整数）。
+                    统计每个学生的左边有几个成绩比自己好的同学。
+                    
+                    \item 格式要求：输出的每个数据之间以一个空格间隔。
+        
+                    \item 样例输入
+        
+                        \lstinline|5|\\
+                        \lstinline|98 90 79 100 87|
+        
+                    \item 样例输出
+        
+                        \lstinline|0 1 2 0 3|
+        
+                \end{itemize}
+        
+            \end{exampleblock}
+        }
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 12.2：统计人数 II}
+
+    \alt<8-9>{
+        \lstinputlisting[language=C++,name=cnt_2]{ch12/cnt_2.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<9>{\redbox{cnt_2}{16}{14}{16}{27};}
+        \end{tikzpicture}
+    }{
+        \alt<2-7> {
+            % 样例解释
+            \begin{itemize}
+                \item 样例说明： 
+            
+                \lstinputlisting[numbers=none,name=cnt_2_io]{ch12/cnt_2_io.txt}
+
+                    \begin{tikzpicture}[remember picture, overlay,scale=1]
+                        \uncover<3-7>{\redbox{cnt_2_io}{4}{1}{4}{20};}
+
+                        \uncover<3>{\redbox{cnt_2_io}{6}{1}{6}{1};}
+                        \uncover<3>{\redbox{cnt_2_io}{2}{1}{2}{2};}
+        
+                        \uncover<4>{\redbox{cnt_2_io}{6}{3}{6}{3};}
+                        \uncover<4>{\redbox{cnt_2_io}{2}{4}{2}{5};}
+
+                        \uncover<5>{\redbox{cnt_2_io}{6}{5}{6}{5};}
+                        \uncover<5>{\redbox{cnt_2_io}{2}{7}{2}{8};}
+        
+                        \uncover<6>{\redbox{cnt_2_io}{6}{7}{6}{7};}
+                        \uncover<6>{\redbox{cnt_2_io}{2}{10}{2}{12};}
+        
+                        \uncover<7>{\redbox{cnt_2_io}{6}{9}{6}{9};}
+                        \uncover<7>{\redbox{cnt_2_io}{2}{14}{2}{15};}
+        
+                    \end{tikzpicture}
+
+                \begin{itemize}
+                    \item<3-> 对于 $A$ 班第 $1$ 个同学，$B$ 班成绩比他好的同学有 $99$，输出 $1$
+                    \item<4-> 对于 $A$ 班第 $2$ 个同学，$B$ 班成绩比他好的同学有 $99,92$，输出 $2$
+                    \item<5-> 对于 $A$ 班第 $3$ 个同学，$B$ 班成绩比他好的同学有 $89,99,85,92,90$，输出 $5$
+                    \item<6-> 对于 $A$ 班第 $4$ 个同学，$B$ 班没有成绩比他好的同学，输出 $0$
+                    \item<7-> 对于 $A$ 班第 $5$ 个同学，$B$ 班成绩比他好的同学有 $89,99,92,90$，输出 $4$
+                \end{itemize}
+                
+            \end{itemize}
+
+        }{
+            \begin{exampleblock}{编程题}
+
+                \begin{itemize}
+                    \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$) ，表示 $A$ 班有 $n$ 名学
+                    生，接下来输入 $A$ 班 $n$ 名学生的成绩。
+                    输入一个整数 $m$ ($1 \le m \le 100$) ，表示 $B$ 班有 $m$ 名学生，接下
+                    来输入 $B$ 班 $m$ 名学生的成绩。（成绩均为 $0~100$ 之间的整数）
+                    对 $A$ 班的每个学生， 统计在 $B$ 班的 $m$ 个人里有几个同学成绩比
+                    他好，输出以空格间隔。
+                    
+                    \item 格式要求：输出的每个数据之间以一个空格间隔。
+                \end{itemize}
+
+                \begin{columns}[onlytextwidth,T]
+    
+                    \column{.5\textwidth}
+
+                        \begin{itemize}
+                            \item 样例输入
+    
+                            \lstinline|5|\\
+                            \lstinline|98 90 79 100 87|\\
+                            \lstinline|7|\\
+                            \lstinline|70 89 99 85 92 60 90|
+
+                        \end{itemize}
+
+                    \column{.5\textwidth}
+
+                        \begin{itemize}
+                            \item 样例输出
+                            
+                            \lstinline|1 2 5 0 4|
+
+                        \end{itemize}
+                        
+                \end{columns}
+        
+            \end{exampleblock}
+        }
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{二维数组的应用}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 12.3：计算两个矩阵的和}
+
+    \alt<2-10>{
+        \alt<2-8>{
+            \begin{itemize}
+                \item 两个 $n$ 行 $m$ 列的二维数组的和 也是一个 $n$ 行 $m$ 列的二维数组
+                \item 结果中第 i 行第 j 列的元素 等于 原来两个数组中第 i 行第 j 列的元素之和。
+                
+                \lstinputlisting[basicstyle=\ttfamily\large,numbers=none,name=matrix_add_input]{ch12/matrix_add_input.txt}
+
+                \begin{tikzpicture}[remember picture, overlay, scale=1.5]
+                    \uncover<3>{
+                        \redbox{matrix_add_input}{2}{1}{2}{1}; \redbox{matrix_add_input}{2}{14}{2}{14}; \redbox{matrix_add_input}{2}{27}{2}{27};}
+                    \uncover<4>{
+                        \redbox{matrix_add_input}{2}{3}{2}{3}; \redbox{matrix_add_input}{2}{16}{2}{16}; \redbox{matrix_add_input}{2}{29}{2}{29};}
+                    \uncover<5>{
+                        \redbox{matrix_add_input}{2}{5}{2}{5}; \redbox{matrix_add_input}{2}{18}{2}{18}; \redbox{matrix_add_input}{2}{31}{2}{31};}
+                    \uncover<6>{
+                        \redbox{matrix_add_input}{3}{1}{3}{1}; \redbox{matrix_add_input}{3}{14}{3}{14}; \redbox{matrix_add_input}{3}{27}{3}{27};}
+                    \uncover<7>{
+                        \redbox{matrix_add_input}{3}{3}{3}{3}; \redbox{matrix_add_input}{3}{16}{3}{16}; \redbox{matrix_add_input}{3}{29}{3}{29};}
+                    \uncover<8>{
+                        \redbox{matrix_add_input}{3}{5}{3}{5}; \redbox{matrix_add_input}{3}{18}{3}{18}; \redbox{matrix_add_input}{3}{31}{3}{31};}
+                \end{tikzpicture}
+
+            \end{itemize}
+        }{
+            \alt<9>{
+                \lstinputlisting[language=C++,name=matrix_add,firstline=1,lastline=21]{ch12/matrix_add.cc}
+            }{
+                \lstinputlisting[language=C++,name=matrix_add,firstline=22,lastline=37,firstnumber=22]{ch12/matrix_add.cc}
+            }
+        }
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入两个 $n$ 行 $m$ 列、整数类型的二维数组 $a$ 和 $b$，求这两个二维数组的和。
+
+                \item 样例输入
+
+                    \lstinline|2 3|\\
+                    \lstinline|6 3 1|\\
+                    \lstinline|3 2 2|\\
+                    \lstinline|1 6 4|\\
+                    \lstinline|3 2 3|
+
+                \item 样例输出
+
+                    \lstinline|7 9 5|\\
+                    \lstinline|6 4 5|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 12.4：二维数组的旋转}
+
+    \alt<6>{
+        \lstinputlisting[language=C++,name=rotate]{ch12/rotate.cc}
+    }{
+        \alt<2-5> {
+            % 样例解释
+            \begin{columns}[T]
+                \column{.5\textwidth}
+                    \begin{itemize}
+                        \item 当前数组： 
+                    
+                        \lstinputlisting[numbers=none,name=rotate_io]{ch12/rotate_io.txt}
+        
+                            \begin{tikzpicture}[remember picture, overlay,scale=1]
+                                \uncover<3>{\redbox{rotate_io}{1}{1}{3}{6} node[below,xshift=-.6cm]{\lstinline|第1列|};}
+                                \uncover<4>{\redbox{rotate_io}{1}{8}{3}{13} node[below,xshift=-.6cm]{\lstinline|第2列|};}
+                                \uncover<5>{\redbox{rotate_io}{1}{15}{3}{20} node[below,xshift=-.6cm]{\lstinline|第3列|};}
+                            \end{tikzpicture}
+        
+                        % \begin{itemize}
+                        %     \item
+                        % \end{itemize}
+                        
+                    \end{itemize}
+
+                \column{.5\textwidth}
+                    \begin{itemize}
+                        \item 当前输出：\\
+                            
+                            \lstinline| |\\
+                            \uncover<3->{\lstinline|8(2,1) 1(1,1)|}\\
+                            \uncover<4->{\lstinline|4(2,2) 3(1,2)|}\\
+                            \uncover<5->{\lstinline|6(2,3) 7(1,3)|}
+
+                    \end{itemize}
+
+            \end{columns}
+
+            \begin{itemize}
+                \item 输出旋转后的数组时，行坐标 i 和 列坐标 j 如何变化？
+            \end{itemize}
+
+        }{
+            \begin{exampleblock}{编程题}
+
+                \begin{itemize}
+                    \item 首先输入两个整数 $n,m$ ($1 \le n,m \le 100$)，表示接下来需要输
+                    入 $n$ 行 $m$ 列的正整数（正整数均小于 $1000$），这些整数组成了
+                    一个 $n$ 行 $m$ 列的矩阵，请将矩阵顺时针翻转 $90$ 度后输出。
+                    
+                    \item 样例输入
+                    
+                    \lstinline|2 3|\\
+                    \lstinline|1 3 7|\\
+                    \lstinline|8 4 6|
+
+                    \item 样例输出
+                    
+                    \lstinline|8 1|\\
+                    \lstinline|4 3|\\
+                    \lstinline|6 7|
+
+                \end{itemize}
+
+            \end{exampleblock}
+        }
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 12.5：计算小矩阵的和}
+
+    \alt<7>{
+        \lstinputlisting[language=C++,name=small_matrix]{ch12/small_matrix.cc}
+    }{
+        \alt<4-6> {
+            % 样例解释
+            \begin{columns}[T]
+                \column{.5\textwidth}
+                    \begin{itemize}
+                        \item 当前输入： 
+                    
+                        \lstinputlisting[numbers=none,name=small_matrix_i]{ch12/small_matrix_i.txt}
+
+                                \begin{tikzpicture}[remember picture,overlay]
+                                    \uncover<4->{\redbox{small_matrix_i}{2}{5}{4}{7} node[right,xshift=.3cm,yshift=.8cm]{\lstinline|第\ x 行，第 y 列|};}
+                                    \uncover<4->{\redbox{small_matrix_i}{6}{1}{6}{3} node[below,xshift=.1cm]{\lstinline|起点：(x,y)|};}
+                                    \uncover<5->{\redbox{small_matrix_i}{2}{5}{4}{7} node[right,xshift=.3cm,yshift=.2cm]{\lstinline|第\ ? 行，第 ? 列|};}
+                                    \uncover<5->{\redbox{small_matrix_i}{6}{5}{6}{7} node[right,xshift=.3cm,yshift=.2cm]{\lstinline|小矩阵：r 行 c 列|};}
+                                \end{tikzpicture}
+                        
+                    \end{itemize}
+
+                \column{.5\textwidth}
+
+            \end{columns}
+
+            \begin{itemize}
+                \item<6-> 遍历小矩阵时，小矩阵的终点行、终点列应当如何计算？
+            \end{itemize}
+
+        }{
+            \begin{exampleblock}{编程题}
+
+                \begin{itemize}
+                    \item 首先输入两个整数 $n,m$ ($1 \le n,m \le 100$)，表示接下来需要输
+                    入 $n$ 行 $m$ 列的正整数（正整数均小于 $1000$），最后再输入四个
+                    整数 $x,y,r,c$ ($1 \le x,x+r-1 \le n$),($1 \le y,y+c-1 \le m$)，请
+                    输出原矩阵中以 ($x,y$) 为左上角的 $r$ 行 $c$ 列的小矩阵元素的总和。
+                \end{itemize}    
+                
+                \begin{columns}[onlytextwidth,T]
+
+                    \column{.5\textwidth}
+                        \begin{itemize}
+                            \item 样例输入
+
+                                \lstinputlisting[numbers=none,name=small_matrix_i]{ch12/small_matrix_i.txt}
+
+                                \begin{tikzpicture}[remember picture,overlay]
+                                    \uncover<2>{\redbox{small_matrix_i}{2}{5}{4}{7} node[right,xshift=.3cm,yshift=.8cm]{\lstinline|第一行，第三列|};}
+                                    \uncover<2>{\redbox{small_matrix_i}{6}{1}{6}{3} node[below,xshift=.1cm]{\lstinline|起点：(1,3)|};}
+                                    \uncover<3>{\redbox{small_matrix_i}{2}{5}{4}{7} node[right,xshift=.3cm,yshift=.2cm]{\lstinline|第三行，第五列|};}
+                                    \uncover<3>{\redbox{small_matrix_i}{6}{5}{6}{7} node[below,xshift=.1cm]{\lstinline|小矩阵：3 行 2 列|};}
+                                \end{tikzpicture}
+                        \end{itemize}
+
+                    \column{.5\textwidth}
+                        \begin{itemize}
+                            
+                        \item 样例输出
+                        
+                            \lstinputlisting[numbers=none,name=small_matrix_o]{ch12/small_matrix_o.txt}
+
+                        \end{itemize}
+                \end{columns}
+
+            \end{exampleblock}
+        }
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 12.6：出现最频繁的点}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=points_count]{ch12/points_count.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 给定 $n$ ($1 \le n \le 100$) 个二维空间的点，每个点的坐标 ($x,y$) 都是整数 ($0 \le x,y \le 99$)，求其中出现最频繁的点的出现次数。                
+
+                \item 样例输入
+
+                    \lstinline|4|\\
+                    \lstinline|1 2|\\
+                    \lstinline|2 3|\\
+                    \lstinline|2 3|\\
+                    \lstinline|5 6|
+
+                \item 样例输出
+
+                    \lstinline|2|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{多维数组}
+
+    \begin{itemize}[<+->]
+        \item 一维数组的应用
+        
+            \begin{itemize}
+                \item 一维数组部分求和
+                \item 一维数组遍历比较
+            \end{itemize}
+
+        \item 二维数组的应用
+        
+            \begin{itemize}
+                \item 二维数组的旋转
+                \item 计算小矩阵的和
+                \item 二维数组的计数应用
+            \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge Thank you!}
+    \end{center}
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
+
