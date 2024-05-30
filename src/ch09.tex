@@ -859,40 +859,6 @@
 \end{frame}
 %------------------------------------------------------------
 
-%------------------------------------------------------------
-\begin{frame}[fragile]
-    \frametitle{例 9.12：求数组元素的最大值及所有位置}
-
-    \alt<2-3>{
-        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_max_all_pos]{ch09/array_max_all_pos.cc}
-
-        \begin{tikzpicture}[remember picture, overlay]
-            \uncover<3>{\redbox{array_max_all_pos}{17}{5}{17}{41};}
-        \end{tikzpicture}
-    }{
-        \begin{exampleblock}{编程题}
-
-            \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素中的最大值及所有位置。\\
-                    第一行输出最大值，第二行以空格间隔输出所有位置。
-
-                \item 样例输入
-
-                    \lstinline|9|\\
-                    \lstinline|2 9 9 7 9 2 4 5 8|
-
-                \item 样例输出
-
-                    \lstinline|9|\\
-                    \lstinline|2 3 5|
-
-            \end{itemize}
-
-        \end{exampleblock}
-    }
-\end{frame}
-%------------------------------------------------------------
-
 
 \section{总结}
 
