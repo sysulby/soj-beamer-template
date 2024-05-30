@@ -8,11 +8,10 @@ int main() {
   int cnt = 0;
   for (int i = 1; i <= n; i++) {
     do {
-      int r = i % 10;
-      i /= 10;
-      if (r == 1) {
+      if (i % 10 == 1) {
         cnt++;
       }
+      i /= 10;
     } while (i != 0);
   }
   cout << cnt << endl;
