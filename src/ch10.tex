@@ -170,12 +170,46 @@
 \end{frame}
 %------------------------------------------------------------
 
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 10.1：求数组元素的最大值及所有位置}
+
+    \alt<2-3>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_max_all_pos]{ch10/array_max_all_pos.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\redbox{array_max_all_pos}{17}{5}{17}{41};}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素中的最大值及所有位置。\\
+                    第一行输出最大值，第二行以空格间隔输出所有位置。
+
+                \item 样例输入
+
+                    \lstinline|9|\\
+                    \lstinline|2 9 9 7 9 2 4 5 8|
+
+                \item 样例输出
+
+                    \lstinline|9|\\
+                    \lstinline|2 3 5|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
 
 \section{数组计数}
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.1：投票选班长 I}
+    \frametitle{例 10.2：投票选班长 I}
 
     \alt<10>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=vote_1]{ch10/vote_1.cc}
@@ -295,7 +329,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.2：投票选班长 II}
+    \frametitle{例 10.3：投票选班长 II}
 
     \alt<2>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=vote_2]{ch10/vote_2.cc}
@@ -339,7 +373,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.5：梦中的统计}
+    \frametitle{例 10.4：梦中的统计}
 
     \alt<2>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=count_digit_in_range]{ch10/count_digit_in_range.cc}
@@ -369,6 +403,76 @@
 %------------------------------------------------------------
 
 
+\section{一维数组的部分遍历}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 10.5：求前 k 个数组元素的和}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++,name=sum_pre_k]{ch10/sum_pre_k.cc}
+        
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\redbox{sum_pre_k}{14}{13}{14}{28};}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，接下来输入 $n$ 个整数。再输入一个整数 $k$ ($1 \le k \le n$)，求前 $k$ 个数组元素的和。
+
+                \item 样例输入
+
+                    \lstinline|4|\\
+                    \lstinline|3 1 4 5|\\
+                    \lstinline|3|
+
+                \item 样例输出
+
+                    \lstinline|8|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 10.6：求部分数组元素的和}
+
+    \alt<2-3>{
+        \lstinputlisting[language=C++,name=sum_lr]{ch10/sum_lr.cc}
+        
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\redbox{sum_lr}{14}{13}{14}{28};}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，接下来输入 $n$ 个整数。
+                再输入两个整数 $l,r$ ($1 \le l \le r \le n$)，求数组中第 $l$ 至第 $r$ 个元素之和。
+
+                \item 样例输入
+
+                    \lstinline|7|\\
+                    \lstinline|1 0 7 5 4 4 3|\\
+                    \lstinline|3 5|
+
+                \item 样例输出
+
+                    \lstinline|16|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
 \section{数组表示状态}
 
 \tikzset{
@@ -385,7 +489,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.6：校门外的树}
+    \frametitle{例 10.7：校门外的树}
 
     \alt<10>{
     \begin{block}{}
@@ -514,7 +618,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.6：校门外的树}
+    \frametitle{例 10.7：校门外的树}
 
     \alt<8>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cut_tree]{ch10/cut_tree.cc}
@@ -600,7 +704,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.7：小鱼的数字游戏}
+    \frametitle{例 10.8：小鱼的数字游戏}
 
     \alt<2-3>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=vector]{ch10/vector.cc}
