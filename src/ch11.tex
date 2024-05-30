@@ -1,0 +1,756 @@
+%------------------------------------------------------------
+\title[11 - 多维数组]
+{09 - 一维数组}
+
+\subtitle{C++ 程序设计基础}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{问题回顾 - 倒序输出数组元素}
+
+    \alt<2>{
+        \lstinputlisting[language=C++,name=array_rev_output]{ch09/array_rev_output.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，要求倒序输出数组元素。
+
+                \item 样例输入
+
+                    \lstinline|6|\\
+                    \lstinline|1 4 2 8 5 7|
+
+                \item 样例输出
+
+                    \lstinline|7 5 8 2 4 1|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{二维数组}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{引入}
+
+    \begin{itemize}[<+->]
+        \item 现实生活中有很多事物是以“二维”的方式组织起来的：
+        \begin{itemize}
+            \item 电影院的每个座位会被编排为“第 i 排第 j 号”，其中 i 是第一维的编号，j 是第二维的编号。
+            \item 你所在的班级往往编号为 x 年级 y 班，其中 x 可以看作是第一维的编号，y 可以看作是第二维的编号。
+        \end{itemize}
+        \item 程序是对现实世界的抽象，所以 C++ 提供了二维数组，让我们可以表示这类二维编号。
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{二维数组的声明}
+
+    \begin{itemize}
+        \item<1-> 二维数组的声明
+        \begin{itemize}
+            \item \textbf{元素类型 \enspace 数组名[第一维大小][第二维大小];}
+            \item<2-> 数组的第一维通常称为“行”
+            \item<2-> 数组的第二维通常称为“列”
+            \item<3-> \lstinline|int a[4][3]; // 定义了 4 行 3 列的存放整数的数组 a|
+        \end{itemize}
+    \end{itemize}
+
+    \begin{columns}
+        \column{.04\textwidth}
+
+        \column{.24\textwidth}
+        \only<3>{\lstinline|int a[4][3];|}
+
+        \column{.72\textwidth}
+        \begin{tikzpicture}
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \only<3>{
+                \matrix(a) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, column 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|  | \& \lstinline|0| \& \lstinline|1| \& \lstinline|2|\\
+                    \lstinline|0|   \& \lstinline|  | \& \lstinline|  | \& \lstinline|  |\\
+                    \lstinline|1|   \& \lstinline|  | \& \lstinline|  | \& \lstinline|  |\\
+                    \lstinline|2|   \& \lstinline|  | \& \lstinline|  | \& \lstinline|  |\\
+                    \lstinline|3|   \& \lstinline|  | \& \lstinline|  | \& \lstinline|  |\\
+                };
+            }
+        \end{tikzpicture}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{二维数组的初始化}
+
+    \begin{itemize}
+        \item 二维数组的初始化
+        \begin{itemize}[<+->]
+            \item 二维数组可视作元素类型为一维数组的数组，故二维数组可按行分段赋值。
+            \item \lstinline|int a[2][4] = {{7, 8, 9, 1}, {2, 3, 4, 6}}; // 定义了 2 行 4 列的存放整数的数组 a，并初始化|
+        \end{itemize}
+    \end{itemize}
+
+    \begin{columns}
+        \column{.04\textwidth}
+
+        \column{.24\textwidth}
+        \only<2-4>{\lstinline|int a[2][4];|}
+
+        \column{.72\textwidth}
+        \begin{tikzpicture}
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \only<2>{
+                \matrix(a) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, column 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|  | \& \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3|\\
+                    \lstinline|0|   \& \lstinline|  | \& \lstinline|  | \& \lstinline|  | \& \lstinline|  |\\
+                    \lstinline|1|   \& \lstinline|  | \& \lstinline|  | \& \lstinline|  | \& \lstinline|  |\\
+                };
+            }
+            \only<3>{
+                \matrix(a) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, column 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|  | \& \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3|\\
+                    \lstinline|0|   \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|1|\\
+                    \lstinline|1|   \& \lstinline|  | \& \lstinline|  | \& \lstinline|  | \& \lstinline|  |\\
+                };
+            }
+            \only<4>{
+                \matrix(a) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, column 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|  | \& \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3|\\
+                    \lstinline|0|   \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|1|\\
+                    \lstinline|1|   \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|6|\\
+                };
+            }
+        \end{tikzpicture}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{二维数组的访问}
+
+    \begin{itemize}
+        \item 访问数组元素
+
+            \begin{itemize}
+                \item 通过 \textbf{数组名 [i][j]} 访问存储在数组中第 i 行第 j 列的值
+                \begin{itemize}
+                    \item 下标 i 的范围：$0 \sim Rsize - 1$ ($Rsize$ 为数组第一维大小)
+                    \item 下标 j 的范围：$0 \sim Csize - 1$ ($Csize$ 为数组第二维大小)
+                    \item 要注意数组每一维都不能越界
+                \end{itemize}
+                \item 数组元素的用法与一般变量的用法相同
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{二维数组的访问 - 示例}
+
+
+    \begin{itemize}
+        \item 例如：声明数组 \lstinline|int a[2][3];|
+            \begin{itemize}
+                \item<2-> 可以使用的行下标：$0$, $1$
+                \item<2-> 可以使用的列下标：$0$, $1$, $2$
+                \item<3-> 对应的可以使用的数第 0 行元素：\lstinline|a[0][0], a[0][1], a[0][2]|
+                \item<3-> 对应的可以使用的数第 1 行元素：\lstinline|a[1][0], a[1][1], a[1][2]|
+                \item<4-> 可以使用变量作为数组下标：\lstinline|a[x][y]| ($0 \le x \le 1, 0 \le y \le 2$)
+            \end{itemize}
+    \end{itemize}
+
+    \begin{columns}
+        \column{.04\textwidth}
+
+        \column{.24\textwidth}
+        \lstinline|int a[2][3];|
+
+        \column{.72\textwidth}
+        \begin{tikzpicture}
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \matrix(a) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, column 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \lstinline|  | \& \lstinline|0| \& \lstinline|1| \& \lstinline|2|\\
+                    \lstinline|0|   \& \lstinline|5| \& \lstinline|0| \& \lstinline|1|\\
+                    \lstinline|1|   \& \lstinline|2| \& \lstinline|3| \& \lstinline|4|\\
+                };
+        \end{tikzpicture}
+    \end{columns}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{随堂练习}
+
+    \begin{exampleblock}{填空题}
+
+        \begin{enumerate}
+            \item 阅读程序写结果
+                \lstinputlisting[language=C++,name=exercise]{ch11/exercise.cc}
+
+                输入：\lstinline|2 1|\\
+                输出：\uncover<2->{\textcolor{red}{\lstinline|11|}}
+        \end{enumerate}
+
+    \end{exampleblock}
+\end{frame}
+%------------------------------------------------------------
+
+\section{二维数组的遍历}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{二维数组的遍历}
+
+        \begin{itemize}
+            \item 通常使用二重循环来遍历二维数组
+
+            \item 遍历输入二维数组
+
+                \begin{itemize}
+                    \item<2-> 从下标 $0$ 开始储存
+                    \uncover<3->{\lstinputlisting[language=C++,name=array_input_0]{ch11/array_input_0.cc}}
+                    \item<4-> 从下标 $1$ 开始储存
+                    \uncover<5->{\lstinputlisting[language=C++,name=array_input_1]{ch11/array_input_1.cc}}
+                \end{itemize}
+        \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{二维数组的遍历}
+
+        \begin{itemize}
+            \item 通常使用二重循环来遍历二维数组
+
+            \item 遍历输出二维数组
+
+                \begin{itemize}
+                    \item<2-> 从下标 $0$ 开始储存
+                    \uncover<3->{\lstinputlisting[language=C++,name=array_output_0]{ch11/array_output_0.cc}}
+                    \item<4-> 从下标 $1$ 开始储存
+                    \uncover<5->{\lstinputlisting[language=C++,name=array_output_1]{ch11/array_output_1.cc}}
+                \end{itemize}
+        \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 11.1：求二维数组元素的和}
+
+    \alt<2>{
+           \lstinputlisting[language=C++,name=array_sum]{ch11/array_sum.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数  $x$ ($-10^9 \le x \le 10^9$)，求这些整数的和。
+
+                \item 样例输入
+
+                    \lstinline|2 4|\\
+                    \lstinline|7 2 6 1|\\
+                    \lstinline|3 5 8 0|
+
+                \item 样例输出
+
+                    \lstinline|32|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 11.2：求数组元素的最大值}
+
+    \alt<2>{
+            \lstinputlisting[language=C++,name=array_max]{ch11/array_max.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数 $x$ ($-10^9 \le x \le 10^9$)，求这些整数中的最大值。
+
+                \item 样例输入
+
+                    \lstinline|2 4|\\
+                    \lstinline|7 2 6 1|\\
+                    \lstinline|3 5 8 0|
+
+                \item 样例输出
+
+                    \lstinline|8|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 11.3：求数组元素的最大值及下标}
+
+    \alt<2-4>{
+        \alt<2>{
+                \lstinputlisting[language=C++,name=array_max_with_pos,firstline=1,lastline=15]{ch11/array_max_with_pos.cc}
+            }{
+                \lstinputlisting[language=C++,name=array_max_with_pos,firstline=16,lastline=29,firstnumber=16]{ch11/array_max_with_pos.cc}
+            }
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<4>{
+                \redbox{array_max_with_pos}{19}{11}{19}{32}; 
+                \redbox{array_max_with_pos}{20}{9}{21}{17};
+            }
+
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数 $x$ ($-10^9 \le x \le 10^9$)，求这些整数中的最大值及位置，保证数据中只有一个最大值。
+
+                \item 样例输入
+
+                    \lstinline|2 4|\\
+                    \lstinline|7 2 6 1|\\
+                    \lstinline|3 5 8 0|
+
+                \item 样例输出
+
+                    \lstinline|8|\\
+                    \lstinline|2 3|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+\section{二维数组的部分遍历}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 11.5：求矩阵第 x 行元素的和}
+
+    \alt<3-5>{
+        \alt<3>{
+            \lstinputlisting[language=C++,name=array_sum_of_row_x]{ch11/array_sum_of_row_x.cc}
+        }{
+            \lstinputlisting[language=C++,name=array_sum_of_row_x_2]{ch11/array_sum_of_row_x_2.cc}
+        }
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<5>{\redbox{array_sum_of_row_x_2}{16}{11}{16}{16};}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数 $x$ ($1 \le x \le n$)，求这个整数矩阵中第 $x$ 行元素的和。
+
+                \item 样例输入
+
+                    \lstinputlisting[numbers=none,name=matrix_row_input]{ch11/matrix_row_col_input.txt}
+
+                \item 样例输出
+
+                    \lstinline[name=n]|11|
+
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<2>{\redbox{matrix_row_input}{3}{1}{3}{7};}
+                \end{tikzpicture}
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 11.6：求矩阵第 y 列元素的和}
+
+    \alt<3-4>{
+         \lstinputlisting[language=C++,name=array_sum_of_col_y_2]{ch11/array_sum_of_col_y_2.cc}
+        
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<4>{\redbox{array_sum_of_col_y_2}{16}{11}{16}{16};}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数 $y$ ($1 \le y \le m$)，求这个整数矩阵中第 $y$ 列元素的和。
+
+                \item 样例输入
+
+                    \lstinputlisting[numbers=none,name=matrix_col_input]{ch11/matrix_row_col_input.txt}
+
+                \item 样例输出
+
+                    \lstinline|12|
+
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<2>{\redbox{matrix_col_input}{2}{3}{3}{3};}
+                \end{tikzpicture}
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 11.7：求方阵正对角线元素的和}
+
+    \alt<3-4>{
+        \lstinputlisting[language=C++,name=array_sum_of_diagonal]{ch11/array_sum_of_diagonal.cc}
+        
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<4>{\redbox{array_sum_of_diagonal}{15}{11}{15}{16};}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，接下来输入 $n$ 行 $n$ 列的整数方阵，求这个整数方阵正对角线（左上到右下）元素的和。
+
+                \item 样例输入
+
+                    \lstinputlisting[numbers=none,name=matrix_diagonal_input]{ch11/matrix_diagonal_subdiagonal_input.txt}
+
+                \item 样例输出
+
+                    \lstinline|17|
+
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<2>{
+                        \redbox{matrix_diagonal_input}{2}{1}{2}{1};
+                        \redbox{matrix_diagonal_input}{3}{3}{3}{3};
+                        \redbox{matrix_diagonal_input}{4}{5}{4}{5};
+                    }
+                \end{tikzpicture}
+          
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 11.8：求方阵副对角线元素的和}
+
+    \alt<3-4>{
+            \lstinputlisting[language=C++,name=array_sum_of_subdiagonal]{ch11/array_sum_of_subdiagonal.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<4>{\redbox{array_sum_of_subdiagonal}{15}{11}{15}{24};}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，接下来输入 $n$ 行 $n$ 列的整数方阵，求这个整数方阵副对角线（右上到左下）元素的和。
+
+                \item 样例输入
+
+                    \lstinputlisting[numbers=none,name=matrix_subdiagonal_input]{ch11/matrix_diagonal_subdiagonal_input.txt}
+
+                \item 样例输出
+
+                    \lstinline|19|
+
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<2>{
+                        \redbox{matrix_subdiagonal_input}{2}{5}{2}{5};
+                        \redbox{matrix_subdiagonal_input}{3}{3}{3}{3};
+                        \redbox{matrix_subdiagonal_input}{4}{1}{4}{1};
+                    }
+                \end{tikzpicture}
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{二维数组的部分遍历}
+
+        \begin{itemize}
+            \item 对于二维数组遍历特定元素的问题，都可以使用 \textbf{二重循环 + 分支} 求解
+
+            \lstinputlisting[language=C++,name=traverse_certain_item]{ch11/traverse_certain_item.cc}
+        \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+\section{多维数组}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{三维数组}
+
+    \begin{itemize}
+        \item<1-> 三维数组的声明
+        \begin{itemize}
+            \item<1-> \textbf{元素类型 \enspace 数组名[第一维大小][第二维大小][第三维大小];}
+            \item<1-> \lstinline|int a[100][100][100];|
+        \end{itemize}
+        \item<2-> 三维数组的元素访问
+        \begin{itemize}
+            \item<2-> \textbf{数组名称[第一维下标][第二维下标][第三维下标];}
+        \end{itemize}
+        \item<3-> 三维数组的遍历
+        \begin{itemize}
+            \item<3-> 使用三重循环遍历三维数组
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{三维数组的遍历}
+
+        \begin{itemize}
+            \item 三重循环遍历输入三维数组
+
+                \begin{itemize}
+                    \item<2-> 从下标 $0$ 开始储存
+                    \uncover<3->{\lstinputlisting[language=C++,name=array3_input_0]{ch11/array3_input_0.cc}}
+                    \item<4-> 从下标 $1$ 开始储存
+                    \uncover<5->{\lstinputlisting[language=C++,name=array3_input_1]{ch11/array3_input_1.cc}}
+                \end{itemize}
+        \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{三维数组的遍历}
+
+        \begin{itemize}
+            \item 三重循环遍历输出三维数组
+
+                \begin{itemize}
+                    \item<2-> 从下标 $0$ 开始储存
+                    \uncover<3->{\lstinputlisting[language=C++,name=array3_output_0]{ch11/array3_output_0.cc}}
+                    \item<4-> 从下标 $1$ 开始储存
+                    \uncover<5->{\lstinputlisting[language=C++,name=array3_output_1]{ch11/array3_output_1.cc}}
+                \end{itemize}
+        \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 11.9：查询指定学生的成绩}
+
+    \alt<2-3>{
+        \alt<2>{
+            \begin{columns}[onlytextwidth]
+                \column{.38\textwidth}
+                \begin{itemize}
+                    \item 样例输入
+    
+                        \lstinline|2 2 4|\\
+                        \lstinline|88 85 86 98|\\
+                        \lstinline|70 93 96 90|\\
+                        \lstinline|78 87 89 90|\\
+                        \lstinline|66 99 76 60|\\
+                        \lstinline|1 2 3|\\
+    
+                    \item 样例输出
+    
+                        \lstinline|96|
+                \end{itemize}
+
+                \column{.02\textwidth}
+
+                \column{.5\textwidth}
+                \begin{tabular}{ccccc}
+                    \toprule
+                    $1$ 年级 & 1  & 2 & 3 & 4 \\
+                    \midrule
+                    $1$ 班 & 88 & 85 & 86 & 98   \\
+                    $2$ 班 & 70 & 93 & 96 & 90    \\
+                    \bottomrule
+                \end{tabular}
+
+                \begin{tabular}{ccccc}
+                    \toprule
+                    $2$ 年级 & 1  & 2 & 3 & 4 \\
+                    \midrule
+                    $1$ 班 & 78 & 87 & 89 & 90   \\
+                    $2$ 班 & 66 & 99 & 76 & 60    \\
+                    \bottomrule
+                \end{tabular}
+            \end{columns}
+        }{
+            \lstinputlisting[language=C++,name=array3_query]{ch11/array3_query.cc}
+        }
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入三个整数 $n, m, h$ ($1 \le n, m, h \le 100$)，表示有 $n$ 个年级，每个年级有 $m$ 个班，每个班有 $h$ 名学生。现用一个三维整数数组登记整个学校的学生成绩，输入这个三维数组的元素（最高成绩不超过 $100$）。\\
+                最后输入三个整数 $x, y, z$  ($1 \le x \le n, 1 \le y \le m, 1 \le z \le h$)，求这名 $x$ 年级 $y$ 班 $z$ 号学生的成绩。
+            \end{itemize}
+
+            \begin{columns}[onlytextwidth,T]
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item 样例输入
+    
+                        \lstinline|2 2 4|\\
+                        \lstinline|88 85 86 98|\\
+                        \lstinline|70 93 96 90|\\
+                        \lstinline|78 87 89 90|\\
+                        \lstinline|66 99 76 60|\\
+                        \lstinline|1 2 3|\\
+                \end{itemize}
+
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item 样例输出
+    
+                        \lstinline|96|
+                \end{itemize}
+            \end{columns}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 11.10：查询学生成绩的最高分}
+
+    \alt<2-3>{
+        \alt<2>{
+            \lstinputlisting[language=C++,name=array3_max1,firstline=1,lastline=16]{ch11/array3_max.cc}
+        }{
+            \lstinputlisting[language=C++,name=array3_max2,firstline=17,lastline=30,firstnumber=17]{ch11/array3_max.cc}
+        }
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 编写程序，输入三个整数 $n, m, h$ ($1 \le n, m, h \le 100$)，表示有 $n$ 个年级，每个年级有 $m$ 个班，每个班有 $h$ 名学生。现用一个三维整数数组登记整个学校的学生成绩，输入这个三维数组的元素（最高成绩不超过 $100$）。\\
+                输出全校学生成绩的最高分。
+            \end{itemize}
+
+            \begin{columns}[onlytextwidth,T]
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item 样例输入
+    
+                        \lstinline|2 2 4|\\
+                        \lstinline|88 85 86 98|\\
+                        \lstinline|70 93 96 90|\\
+                        \lstinline|78 87 89 90|\\
+                        \lstinline|66 99 76 60|\\
+                \end{itemize}
+
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item 样例输出
+    
+                        \lstinline|99|
+                \end{itemize}
+            \end{columns}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}
+        \item 二维数组的声明和遍历
+        \item 数组的应用
+            \begin{itemize}
+                \item 二维数组求和
+                \item 二维数组求最值及其下标
+            \end{itemize}
+        \item 多维数组的声明和遍历
+            \begin{itemize}
+                \item 多维数组求最值
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge Thank you!}
+    \end{center}
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
