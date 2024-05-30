@@ -11,7 +11,7 @@ int main() {
     if (x >= 90 && y >= 90) {
       cout << "Good Job" << endl;
     } else {
-      cout << "Study Harder" << endl;
+      cout << "Fighting" << endl;
     }
   }
   
