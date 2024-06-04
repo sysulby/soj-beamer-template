@@ -41,7 +41,7 @@
 \usepackage[absolute,overlay]{textpos}
 \usepackage[normalem]{ulem}
 \newcommand\redout{\bgroup\markoverwith
-{\textcolor{red}{\rule[0.5ex]{2pt}{0.8pt}}}\ULon}
+{\textcolor{red}{\rule[0.5ex]{2.5pt}{0.8pt}}}\ULon}
 
 % 代码
 \definecolor{codered}{rgb}{0.8,0,0}
@@ -99,6 +99,7 @@
   {\def\makelabel}
   {\ifnum\@itemdepth=1\relax
      \setlength\itemsep{1.5ex}% separation for first level
+     \lstset{basicstyle=\ttfamily\small}
    \else
      \ifnum\@itemdepth=2\relax
        \setlength\itemsep{1ex}% separation for second level
@@ -116,6 +117,7 @@
   {\def\makelabel}
   {\ifnum\@itemdepth=1\relax
      \setlength\itemsep{1.5ex}% separation for first level
+     \lstset{basicstyle=\ttfamily\small}
    \else
      \ifnum\@itemdepth=2\relax
        \setlength\itemsep{1ex}% separation for second level

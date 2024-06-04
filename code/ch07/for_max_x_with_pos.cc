@@ -5,8 +5,8 @@ using namespace std;
 int main() {
   int n;
   cin >> n;
-  int maxv = -1000000000, x;
-  int pos = 0; // 记录最大值是第几个数（位置）
+  // maxv 记录最大值，pos 记录最大值是第几个数（位置）
+  int maxv = -1000000000, pos = 0, x;
   for (int i = 1; i <= n; i++) {
     cin >> x;
     if (x > maxv) {

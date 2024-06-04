@@ -1,4 +1,6 @@
-// #include ...
+#include <iostream>
+
+using namespace std;
 
 int cnt[10];       // cnt[d] 记录数码 d 出现的次数
 
@@ -12,9 +14,7 @@ int main() {
       x /= 10;
     } while (x != 0);
   }
-  for (int i = 0; i < 10; i++) {
-    cout << cnt[i] << " ";
-  }
+  for (int i = 0; i < 10; i++) cout << cnt[i] << " ";
   cout << endl;
 
   return 0;

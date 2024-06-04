@@ -146,7 +146,7 @@
 
     \begin{columns}
         \column{.7\textwidth}
-        \begin{overlayarea}{\textwidth}{.6\textheight}
+        \begin{overlayarea}{\textwidth}{.55\textheight}
             \begin{itemize}
                 \item \lstinline|if..else| 语句：以条件语句作为判断依据，选择执行不同的分支
             \end{itemize}
@@ -186,7 +186,7 @@
 
     \begin{columns}
         \column{.7\textwidth}
-        \begin{overlayarea}{\textwidth}{.6\textheight}
+        \begin{overlayarea}{\textwidth}{.55\textheight}
             \begin{itemize}
                 \item \lstinline|if..else| 语句：以条件语句作为判断依据，选择执行不同的分支
 
@@ -215,7 +215,7 @@
 
     \begin{columns}
         \column{.7\textwidth}
-        \begin{overlayarea}{\textwidth}{.6\textheight}
+        \begin{overlayarea}{\textwidth}{.55\textheight}
             \begin{itemize}
                 \item \lstinline|if..else| 语句：以条件语句作为判断依据，选择执行不同的分支
 
@@ -312,7 +312,8 @@
             \begin{itemize}
                 \item 条件成立（\lstinline|true|）则取表达式 1 的结果
                 \item 条件不成立（\lstinline|false|）则取表达式 2 的结果
-                \item \lstinline|int a = 3, b = 5;|\\
+                \item 例如：\\
+                    \lstinline|int a = 3, b = 5;|\\
                     \lstinline{cout << (a < b? a: b) << endl; // 输出 3}
             \end{itemize}
 
@@ -332,21 +333,21 @@
                 \item[1.] 阅读程序写结果
                     \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=exercise1]{ch04/exercise1.cc}
 
-                    输出：\uncover<2>{\textcolor{red}{\lstinline|false|}}
+                    \small{输出：}\uncover<2>{\textcolor{red}{\lstinline|false|}}
                 }
 
                 \only<3-4>{
                 \item[2.] 阅读程序写结果
                     \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=exercise2]{ch04/exercise2.cc}
 
-                    输出：\uncover<4>{\textcolor{red}{\lstinline|true|}}
+                    \small{输出：}\uncover<4>{\textcolor{red}{\lstinline|true|}}
                 }
 
                 \only<5-6>{
                 \item[3.] 阅读程序写结果
                     \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=exercise3]{ch04/exercise3.cc}
 
-                    输出：\uncover<6>{\textcolor{red}{\lstinline|true|}}
+                    \small{输出：}\uncover<6>{\textcolor{red}{\lstinline|true|}}
                 }
         \end{enumerate}
 
@@ -389,9 +390,9 @@
             \item 阅读程序写结果
                 \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=days]{ch04/days.cc}
 
-                输入：2020 \tabto{8em} 输出：\uncover<2->{\textcolor{red}{\lstinline|366|}}
+                \small{输入：}\lstinline|2020| \tabto{8em} \small{输出：}\uncover<2->{\textcolor{red}{\lstinline|366|}}
 
-                输入：1900 \tabto{8em} 输出：\uncover<3->{\textcolor{red}{\lstinline|365|}}
+                \small{输入：}\lstinline|1900| \tabto{8em} \small{输出：}\uncover<3->{\textcolor{red}{\lstinline|365|}}
         \end{enumerate}
 
     \end{exampleblock}
@@ -427,11 +428,28 @@
     \frametitle{例 4.3：成绩分级}
 
     \alt<2-3>{
-        \alt<2>{
-            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=grade1]{ch04/grade1.cc}
-        }{
-            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=grade2]{ch04/grade2.cc}
-        }
+        \begin{columns}
+            \column{.01\textwidth}
+
+            \column{.63\textwidth}
+            \alt<2>{
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=grade1]{ch04/grade1.cc}
+            }{
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=grade2]{ch04/grade2.cc}
+            }
+
+            \column{.36\textwidth}
+            \begin{tabular}{cc}
+                \toprule
+                分数          & 等级 \\
+                \midrule
+                $90 \sim 100$ & A    \\
+                $80 \sim 89$  & B    \\
+                $60 \sim 79$  & C    \\
+                $0 \sim 59$   & F    \\
+                \bottomrule
+            \end{tabular}
+        \end{columns}
     }{
         \begin{exampleblock}{编程题}
             \begin{columns}[onlytextwidth]
@@ -467,9 +485,6 @@
     }
 \end{frame}
 %------------------------------------------------------------
-
-
-\section{分支嵌套}
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
@@ -515,6 +530,9 @@
     \end{columns}
 \end{frame}
 %------------------------------------------------------------
+
+
+\section{分支嵌套}
 
 %------------------------------------------------------------
 \begin{frame}[fragile]

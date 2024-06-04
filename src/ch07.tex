@@ -145,7 +145,7 @@
 %------------------------------------------------------------
 
 
-\section{循环嵌套分支}
+\section{for 循环嵌套分支}
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
@@ -184,12 +184,12 @@
 
     \alt<2-9>{
         \begin{columns}
-            \column{.02\textwidth}
+            \column{.01\textwidth}
 
-            \column{.64\textwidth}
+            \column{.63\textwidth}
             \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=student]{ch07/student.cc}
 
-            \column{.34\textwidth}
+            \column{.36\textwidth}
             \begin{itemize}
                     \uncover<3-> {
                     \item 允许边输入边输出
@@ -301,10 +301,10 @@
 
     \alt<2-8>{
         \alt<7-8> {
-            \begin{itemize}
-                    \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_max_x]{ch07/for_max_x.cc}
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_max_x]{ch07/for_max_x.cc}
 
-                \item 把擂主的初始值设置为最小值，确保第一个挑战者攻擂成功
+            \begin{itemize}
+                \item<8> 把擂主的初始值设置为最小值，确保第一个挑战者攻擂成功
             \end{itemize}
 
             \begin{tikzpicture}[remember picture,overlay]
@@ -363,14 +363,14 @@
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=for_max_x_with_pos]{ch07/for_max_x_with_pos.cc}
 
         \begin{tikzpicture}[remember picture,overlay]
-            \uncover<3>{\redbox{for_max_x_with_pos}{9}{3}{9}{14};}
+            \uncover<3>{\redbox{for_max_x_with_pos}{9}{27}{9}{34};}
             \uncover<3>{\redbox{for_max_x_with_pos}{14}{7}{14}{14};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，接下来输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，求这 $n$ 个整数中的最大值及位置。
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 1000$)，接下来输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，求这 $n$ 个整数中的最大值及位置（保证最大值是唯一的）。
 
                 \item 样例输入
 
@@ -388,9 +388,12 @@
 \end{frame}
 %------------------------------------------------------------
 
+
+\section{while/do..while 循环嵌套分支}
+
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 7.7：反向输出非负整数}
+    \frametitle{问题回顾：反向输出非负整数}
 
     \alt<2-3>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=output_digits]{ch07/output_digits.cc}
@@ -422,7 +425,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 7.8：求一个整数中有多少个 3}
+    \frametitle{例 7.7：统计数位中 3 的个数}
 
     \alt<2-3>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=num_of_digit_3]{ch07/num_of_digit_3.cc}
@@ -506,7 +509,6 @@
         \uncover<4>{\redbox{for_continue}{4}{5}{4}{13};}
         \uncover<4>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-for_continue-4-end) -| ([shift={(-.8cm, -.2em)}] pic cs:line-for_continue-1-end);}
     \end{tikzpicture}
-
 \end{frame}
 %------------------------------------------------------------
 
@@ -561,7 +563,6 @@
         \uncover<5>{\redbox{for_1_n_continue}{5}{5}{5}{13};}
         \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-for_1_n_continue-5-end) -| ([shift={(-.8cm, -.2em)}] pic cs:line-for_1_n_continue-3-end);}
     \end{tikzpicture}
-
 \end{frame}
 %------------------------------------------------------------
 
@@ -570,18 +571,21 @@
     \frametitle{break 和 continue 语句}
 
     \begin{itemize}
-        \item \lstinline|break|
+        \item<1-> \lstinline|break|
+
             \begin{itemize}
                 \item 在 \lstinline|while| 循环中，直接跳出本层 \lstinline|while| 循环
                 \item 在 \lstinline|for| 循环中，直接跳出本层 \lstinline|for| 循环
             \end{itemize}
-        \item \lstinline|continue|
+
+        \item<2-> \lstinline|continue|
+
             \begin{itemize}
                 \item 在 \lstinline|while| 循环中，直接跳转到\textbf{条件语句}，需要额外注意
                 \item 在 \lstinline|for| 循环中，直接跳转到每次循环后的动作
             \end{itemize}
-    \end{itemize}
 
+    \end{itemize}
 \end{frame}
 %------------------------------------------------------------
 
@@ -595,8 +599,8 @@
             \item 阅读程序写结果
                 \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=exercise]{ch07/exercise.cc}
 
-                输入：\lstinline|7 12|\\
-                输出：\uncover<2->{\textcolor{red}{\lstinline|7 8 9|}}
+                \small{输入：}\lstinline|7 12|\\
+                \small{输出：}\uncover<2->{\textcolor{red}{\lstinline|7 8 9|}}
         \end{enumerate}
 
     \end{exampleblock}

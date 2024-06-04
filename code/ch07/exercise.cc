@@ -1,3 +1,5 @@
+// #include ...
+
 int main() {
   int a, b;
   cin >> a >> b;
@@ -9,5 +11,4 @@ int main() {
   }
   cout << endl;
 
-  return 0;
-}
+// ...

@@ -35,7 +35,7 @@
 
     \begin{overlayarea}{\textwidth}{.55\textheight}
         \begin{itemize}
-            \item 数组的声明
+            \item<1-> 数组的声明
 
                 \begin{itemize}
                     \item \textbf{元素类型 \enspace 数组名[数组大小];}
@@ -43,12 +43,12 @@
                 \end{itemize}
 
                 \begin{itemize}
-                    \item 数组中的基本单元叫作“元素”
-                    \item 数组大小定义为可能存放元素数量的最大值（可适当再大一些）
+                    \item<2-> 数组中的基本单元叫作“元素”
+                    \item<2-> 数组大小定义为可能存放元素数量的最大值（可适当再大一些）
                 \end{itemize}
 
                 \begin{itemize}
-                    \item 建议声明数组为全局变量
+                    \item<3-> 建议声明数组为全局变量
                 \end{itemize}
         \end{itemize}
     \end{overlayarea}
@@ -61,8 +61,8 @@
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
-            \matrix(a) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
                 \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
                 \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
             };
@@ -83,16 +83,16 @@
                     \item 通过 \textbf{数组名 [下标]} 访问存储在数组中 某一位置 的值
                         \begin{itemize}
                             \item 下标是指在元素在数组中的位置，从 $0$ 开始
-                            \item 下标的范围：$0 \sim size - 1$ ($size$ 为数组大小)
+                            \item 下标的范围：$0 \sim L - 1$ ($L$ 为数组大小)
                         \end{itemize}
                 \end{itemize}
 
                 \begin{itemize}
-                    \item 例如：声明数组 \lstinline|double b[5];|
+                    \item<2-> 例如：声明数组 \lstinline|double b[5];|
                         \begin{itemize}
                             \item 可以使用的数组下标：$0$, $1$, $2$, $3$, $4$
                             \item 对应的可以使用的数组元素：\lstinline|b[0], b[1], b[2], b[3], b[4]|
-                            \item 可以使用变量作为数组下标：\lstinline|b[k]| ($0 \le k \le 4$)
+                            \item 可以使用变量作为数组下标：\lstinline|b[i]| ($0 \le i \le 4$)
                         \end{itemize}
                 \end{itemize}
         \end{itemize}
@@ -106,8 +106,8 @@
 
         \column{.83\textwidth}
         \begin{tikzpicture}
-            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.75cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
-            \matrix(a) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            [nodes in empty cells, nodes={minimum width=1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
                 \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|a[4]| \& \lstinline|a[5]| \& \lstinline|a[6]| \& \lstinline|a[7]| \\
                 \lstinline|71|   \& \lstinline|80|   \& \lstinline|62|   \& \lstinline|91|   \& \lstinline|99|   \& \lstinline|82|   \& \lstinline|43|   \& \lstinline|53|   \\
             };
@@ -128,11 +128,13 @@
 
                 \begin{itemize}
                     \item<1-> 存储在下标 $0 \sim n - 1$ 中
-                    \item<1-> \lstinline|for (int i = 0; i < n; i++) {|\\
+                    \item<1->
+                        \lstinline|for (int i = 0; i < n; i++) {|\\
                         \lstinline|  cin >> a[i];|\\
                         \lstinline|}|
                     \item<2-> 存储在下标 $1 \sim n$ 中
-                    \item<2-> \lstinline|for (int i = 1; i <= n; i++) {|\\
+                    \item<2->
+                        \lstinline|for (int i = 1; i <= n; i++) {|\\
                         \lstinline|  cin >> a[i];|\\
                         \lstinline|}|
                 \end{itemize}
@@ -184,7 +186,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素中的最大值及所有位置。\\
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素中的最大值及最大值出现的所有位置。\\
                     第一行输出最大值，第二行以空格间隔输出所有位置。
 
                 \item 样例输入
@@ -251,8 +253,7 @@
                     \begin{itemize}
                         \item 样例输入
 
-                            \lstinline|6|\\
-                            \lstinline|1 1 4 5 1 4|
+                            \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=vote_1_in]{ch10/vote_1.in}
 
                     \end{itemize}
 
@@ -274,57 +275,67 @@
                 \begin{itemize}
                     \item 样例说明
 
-                    \begin{tikzpicture}
-                        [nodes in empty cells, nodes={minimum width=.9cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
-                        \only<2>{
-                            \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
-                                \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
-                            };
-                        }
-                        \only<3>{
-                            \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
-                                \lstinline|1| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
-                            };
-                        }
-                        \only<4>{
-                            \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
-                                \lstinline|2| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
-                            };
-                        }
-                        \only<5>{
-                            \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
-                                \lstinline|2| \& \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|0| \\
-                            };
-                        }
-                        \only<6>{
-                            \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
-                                \lstinline|2| \& \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \\
-                            };
-                        }
-                        \only<7>{
-                            \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
-                                \lstinline|3| \& \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \\
-                            };
-                        }
-                        \only<8->{
-                            \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
-                                \lstinline|3| \& \lstinline|0| \& \lstinline|0| \& \lstinline|2| \& \lstinline|1| \\
-                            };
-                        }
-                    \end{tikzpicture}
+                        \begin{tikzpicture}[remember picture, overlay, scale=1.25]
+                            \uncover<3>{\redbox{vote_1_in}{2}{1}{2}{1};}
+                            \uncover<4>{\redbox{vote_1_in}{2}{3}{2}{3};}
+                            \uncover<5>{\redbox{vote_1_in}{2}{5}{2}{5};}
+                            \uncover<6>{\redbox{vote_1_in}{2}{7}{2}{7};}
+                            \uncover<7>{\redbox{vote_1_in}{2}{9}{2}{9};}
+                            \uncover<8>{\redbox{vote_1_in}{2}{11}{2}{11};}
+                        \end{tikzpicture}
+
+                        \begin{tikzpicture}
+                            [nodes in empty cells, nodes={minimum width=.9cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                            \only<2>{
+                                \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
+                                    \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
+                                };
+                            }
+                            \only<3>{
+                                \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
+                                    \lstinline|1| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
+                                };
+                            }
+                            \only<4>{
+                                \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
+                                    \lstinline|2| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
+                                };
+                            }
+                            \only<5>{
+                                \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
+                                    \lstinline|2| \& \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|0| \\
+                                };
+                            }
+                            \only<6>{
+                                \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
+                                    \lstinline|2| \& \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \\
+                                };
+                            }
+                            \only<7>{
+                                \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
+                                    \lstinline|3| \& \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \\
+                                };
+                            }
+                            \only<8->{
+                                \matrix(cnt) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
+                                    \lstinline|3| \& \lstinline|0| \& \lstinline|0| \& \lstinline|2| \& \lstinline|1| \\
+                                };
+                            }
+                        \end{tikzpicture}
+
                 \end{itemize}
             }
 
         \end{exampleblock}
-    }
-\end{frame}
+        }
+    \end{frame}
 %------------------------------------------------------------
 
 %------------------------------------------------------------
@@ -373,7 +384,48 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.4：梦中的统计}
+    \frametitle{例 10.4：分数统计}
+
+    \alt<2>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=count_score]{ch10/count_score.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 6 年 A 班刚刚考完期中考，编写一个程序，帮助老师统计每种分数的得分人数。\\
+                    首先，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 名同学。再输入一个整数 $m$ ($1 \le m \le 100$)，表示该考试的满分为 $m$。接下来依次输入 $n$ 个同学的成绩 $x$ ($0 \le x \le m$)。\\
+                    对于所有出现了的成绩，按照 $0$ 到 $m$ 的次序，输出分数以及对应的学生人数，每条记录一行，以空格间隔。
+            \end{itemize}
+
+            \begin{columns}[onlytextwidth,T]
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item 样例输入
+
+                        \lstinline|4 100|\\
+                        \lstinline|42 85 71 42|
+
+                \end{itemize}
+
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item 样例输出
+
+                        \lstinline|42 2|\\
+                        \lstinline|71 1|\\
+                        \lstinline|85 1|
+
+                \end{itemize}
+            \end{columns}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 10.5：梦中的统计}
 
     \alt<2>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=count_digit_in_range]{ch10/count_digit_in_range.cc}
@@ -407,29 +459,29 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.5：求前 k 个数组元素的和}
+    \frametitle{例 10.6：求前 k 个数组元素的和}
 
     \alt<2-3>{
-        \lstinputlisting[language=C++,name=sum_pre_k]{ch10/sum_pre_k.cc}
-        
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=sum_pre_k]{ch10/sum_pre_k.cc}
+
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<3>{\redbox{sum_pre_k}{14}{13}{14}{28};}
+            \uncover<3>{\redbox{sum_pre_k}{14}{12}{14}{25};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，接下来输入 $n$ 个整数。再输入一个整数 $k$ ($1 \le k \le n$)，求前 $k$ 个数组元素的和。
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，接下来依次输入 $n$ 个整数，表示数组中的每个元素。再输入一个整数 $k$ ($1 \le k \le n$)，求前 $k$ 个数组元素的和。
 
                 \item 样例输入
 
-                    \lstinline|4|\\
-                    \lstinline|3 1 4 5|\\
-                    \lstinline|3|
+                    \lstinline|6|\\
+                    \lstinline|1 4 2 8 5 7|\\
+                    \lstinline|4|
 
                 \item 样例输出
 
-                    \lstinline|8|
+                    \lstinline|15|
 
             \end{itemize}
 
@@ -440,30 +492,29 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.6：求部分数组元素的和}
+    \frametitle{例 10.7：求部分数组元素的和}
 
     \alt<2-3>{
-        \lstinputlisting[language=C++,name=sum_lr]{ch10/sum_lr.cc}
-        
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=sum_lr]{ch10/sum_lr.cc}
+
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<3>{\redbox{sum_lr}{14}{13}{14}{28};}
+            \uncover<3>{\redbox{sum_lr}{14}{12}{14}{25};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，接下来输入 $n$ 个整数。
-                再输入两个整数 $l,r$ ($1 \le l \le r \le n$)，求数组中第 $l$ 至第 $r$ 个元素之和。
+                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，接下来依次输入 $n$ 个整数，表示数组中的每个元素。再输入两个整数 $l,r$ ($1 \le l \le r \le n$)，求数组中第 $l$ 至第 $r$ 个元素之和。
 
                 \item 样例输入
 
-                    \lstinline|7|\\
-                    \lstinline|1 0 7 5 4 4 3|\\
-                    \lstinline|3 5|
+                    \lstinline|6|\\
+                    \lstinline|1 4 2 8 5 7|\\
+                    \lstinline|4 5|
 
                 \item 样例输出
 
-                    \lstinline|16|
+                    \lstinline|13|
 
             \end{itemize}
 
@@ -489,212 +540,212 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.7：校门外的树}
+    \frametitle{例 10.8：校门外的树}
 
     \alt<10>{
-    \begin{block}{}
-        \vspace{.5cm}
-        \begin{center}
-            如何表示以上过程？
-        \end{center}
-        \vspace{.5cm}
-    \end{block}
+        \begin{block}{}
+            \vspace{.5cm}
+            \begin{center}
+                如何表示以上过程？
+            \end{center}
+            \vspace{.5cm}
+        \end{block}
     }{
-            \begin{exampleblock}{编程题}
+        \begin{exampleblock}{编程题}
 
-                \temporal<2>{
+            \temporal<2>{
+                \begin{itemize}
+                    \item 某校大门外长度为 $L$ ($1 \le L \le 10000$) 的马路上有一排树，每两棵相邻的树之间的间隔都是 $1$ 米。\\
+                        在马路中，第一棵树在 $0$ 的位置，最后一棵树在 $L$ 的位置。例如 $L = 5$ 时，马路的情况如下图所示。
+
+                        \vspace{.1cm}
+                        \begin{tikzpicture}
+                            [nodes in empty cells, nodes={minimum width=.9cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                            \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \\
+                                \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
+                            };
+                        \end{tikzpicture}
+
+                \end{itemize}
+            }{
+                \begin{itemize}
+                    \item 由于马路上有 $m$ 个区域要建地铁，每个区域的起点和终点分别为 $a$, $b$ ($0 \le a \le b \le L$)，不同区域之间可能有重合的部分。\\
+                        现在要把这些区域中的树移走，对于每个区域，需要移走 $a \sim b$ 之间的树（包含端点 $a$ 和 $b$）。\\
+                        你的任务是计算将这些树都移走后，马路上还有多少棵树。
+                \end{itemize}
+
+                \begin{columns}[onlytextwidth,T]
+                    \column{.5\textwidth}
                     \begin{itemize}
-                        \item 某校大门外长度为 $L$ ($1 \le L \le 10000$) 的马路上有一排树，每两棵相邻的树之间的间隔都是 $1$ 米。\\
-                            在马路中，第一棵树在 $0$ 的位置，最后一棵树在 $L$ 的位置。例如 $L = 5$ 时，马路的情况如下图所示。
+                        \item 样例输入
 
-                            \vspace{.1cm}
-                            \begin{tikzpicture}
-                                [nodes in empty cells, nodes={minimum width=.9cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                            \lstinline|10 3|\\
+                            \lstinline|2 3|\\
+                            \lstinline|5 7|\\
+                            \lstinline|6 8|
+
+                    \end{itemize}
+
+                    \column{.5\textwidth}
+                    \begin{itemize}
+                        \item 样例输出
+
+                            \lstinline|5|
+
+                    \end{itemize}
+                \end{columns}
+            }{
+                \begin{columns}[onlytextwidth,T]
+                    \column{.5\textwidth}
+                    \begin{itemize}
+                        \item 样例输入
+
+                            \lstinline|10 3|\\
+                            \lstinline|2 3|\\
+                            \lstinline|5 7|\\
+                            \lstinline|6 8|\\
+                            \lstinline||
+
+                    \end{itemize}
+
+                    \column{.5\textwidth}
+                    \begin{itemize}
+                        \item 样例输出
+
+                            \lstinline|5|
+
+                    \end{itemize}
+                \end{columns}
+
+                \begin{itemize}
+                    \item 样例说明
+
+                        \vspace{.1cm}
+                        \begin{tikzpicture}
+                            [nodes in empty cells, nodes={minimum width=.9cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                            \only<3-4>{
                                 \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                    \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \\
-                                    \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \\
+                                    \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree      \\
+                                    \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
                                 };
-                            \end{tikzpicture}
+                            }
+                            \only<5-6>{
+                                \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \drawtree     \& \drawtree     \&               \&               \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree      \\
+                                    \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
+                                };
+                            }
+                            \only<7-8>{
+                                \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \drawtree     \& \drawtree     \&               \&               \& \drawtree     \&               \&               \&               \& \drawtree     \& \drawtree     \& \drawtree      \\
+                                    \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
+                                };
+                            }
+                            \only<9->{
+                                \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                    \drawtree     \& \drawtree     \&               \&               \& \drawtree     \&               \&               \&               \&               \& \drawtree     \& \drawtree      \\
+                                    \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
+                                };
+                            }
+                        \end{tikzpicture}
 
-                    \end{itemize}
-                }{
-                    \begin{itemize}
-                        \item 由于马路上有 $m$ 个区域要建地铁，每个区域的起点和终点分别为 $a$, $b$ ($0 \le a \le b \le L$)，不同区域之间可能有重合的部分。\\
-                            现在要把这些区域中的树移走，对于每个区域，需要移走 $a \sim b$ 之间的树（包含端点 $a$ 和 $b$）。\\
-                            你的任务是计算将这些树都移走后，马路上还有多少棵树。
-                    \end{itemize}
+                \end{itemize}
 
-                    \begin{columns}[onlytextwidth,T]
-                        \column{.5\textwidth}
-                        \begin{itemize}
-                            \item 样例输入
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<4>{\draw[red, very thick] (0.38, 4.47) rectangle (1.04, 4.82);}
+                    \uncover<4>{\draw[red, very thick] (2.35, 1.25) rectangle (4.11, 2.5);}
+                    \uncover<6>{\draw[red, very thick] (0.38, 4.0) rectangle (1.04, 4.35);}
+                    \uncover<6>{\draw[red, very thick] (5.02, 1.25) rectangle (7.65, 2.5);}
+                    \uncover<8>{\draw[red, very thick] (0.38, 3.52) rectangle (1.04, 3.87);}
+                    \uncover<8>{\draw[red, very thick] (5.91, 1.25) rectangle (8.54, 2.5);}
+                \end{tikzpicture}
+            }
 
-                                \lstinline|10 3|\\
-                                \lstinline|2 3|\\
-                                \lstinline|5 7|\\
-                                \lstinline|6 8|
-
-                        \end{itemize}
-
-                        \column{.5\textwidth}
-                        \begin{itemize}
-                            \item 样例输出
-
-                                \lstinline|5|
-
-                        \end{itemize}
-                    \end{columns}
-                }{
-                    \begin{columns}[onlytextwidth,T]
-                        \column{.5\textwidth}
-                        \begin{itemize}
-                            \item 样例输入
-
-                                \lstinline|10 3|\\
-                                \lstinline|2 3|\\
-                                \lstinline|5 7|\\
-                                \lstinline|6 8|\\
-                                \lstinline||
-
-                        \end{itemize}
-
-                        \column{.5\textwidth}
-                        \begin{itemize}
-                            \item 样例输出
-
-                                \lstinline|5|
-
-                        \end{itemize}
-                    \end{columns}
-
-                    \begin{itemize}
-                        \item 样例说明
-
-                            \vspace{.1cm}
-                            \begin{tikzpicture}
-                                [nodes in empty cells, nodes={minimum width=.9cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
-                                \only<3-4>{
-                                    \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                        \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree      \\
-                                        \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
-                                    };
-                                }
-                                \only<5-6>{
-                                    \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                        \drawtree     \& \drawtree     \&               \&               \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree      \\
-                                        \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
-                                    };
-                                }
-                                \only<7-8>{
-                                    \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                        \drawtree     \& \drawtree     \&               \&               \& \drawtree     \&               \&               \&               \& \drawtree     \& \drawtree     \& \drawtree      \\
-                                        \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
-                                    };
-                                }
-                                \only<9->{
-                                    \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                        \drawtree     \& \drawtree     \&               \&               \& \drawtree     \&               \&               \&               \&               \& \drawtree     \& \drawtree      \\
-                                        \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
-                                    };
-                                }
-                            \end{tikzpicture}
-
-                    \end{itemize}
-
-                    \begin{tikzpicture}[remember picture, overlay]
-                        \uncover<4>{\draw[red, very thick] (0.35, 4.5) rectangle (1, 4.8);}
-                        \uncover<4>{\draw[red, very thick] (2.35, 1.25) rectangle (4.11, 2.5);}
-                        \uncover<6>{\draw[red, very thick] (0.35, 4.025) rectangle (1, 4.325);}
-                        \uncover<6>{\draw[red, very thick] (5.02, 1.25) rectangle (7.65, 2.5);}
-                        \uncover<8>{\draw[red, very thick] (0.35, 3.55) rectangle (1, 3.85);}
-                        \uncover<8>{\draw[red, very thick] (5.91, 1.25) rectangle (8.54, 2.5);}
-                    \end{tikzpicture}
-                }
-
-            \end{exampleblock}
+        \end{exampleblock}
     }
 \end{frame}
 %------------------------------------------------------------
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.7：校门外的树}
+    \frametitle{例 10.8：校门外的树}
 
     \alt<8>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cut_tree]{ch10/cut_tree.cc}
     }{
-            \begin{exampleblock}{编程题}
+        \begin{exampleblock}{编程题}
 
-                    \begin{columns}[onlytextwidth,T]
-                        \column{.5\textwidth}
-                        \begin{itemize}
-                            \item 样例输入
+            \begin{columns}[onlytextwidth,T]
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item 样例输入
 
-                                \lstinline|10 3|\\
-                                \lstinline|2 3|\\
-                                \lstinline|5 7|\\
-                                \lstinline|6 8|\\
-                                \lstinline||
+                        \lstinline|10 3|\\
+                        \lstinline|2 3|\\
+                        \lstinline|5 7|\\
+                        \lstinline|6 8|\\
+                        \lstinline||
 
-                        \end{itemize}
+                \end{itemize}
 
-                        \column{.5\textwidth}
-                        \begin{itemize}
-                            \item 样例输出
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item 样例输出
 
-                                \lstinline|5|
+                        \lstinline|5|
 
-                        \end{itemize}
-                    \end{columns}
+                \end{itemize}
+            \end{columns}
 
-                    \begin{itemize}
-                        \item 使用数组记录状态
+            \begin{itemize}
+                \item 使用数组记录状态
 
-                            \vspace{.1cm}
-                            \begin{tikzpicture}
-                                [nodes in empty cells, nodes={minimum width=.9cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
-                                \only<1-2>{
-                                    \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                        \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree      \\
-                                        \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
-                                        \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
-                                    };
-                                }
-                                \only<3-4>{
-                                    \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                        \drawtree     \& \drawtree     \&               \&               \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree      \\
-                                        \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
-                                        \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
-                                    };
-                                }
-                                \only<5-6>{
-                                    \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                        \drawtree     \& \drawtree     \&               \&               \& \drawtree     \&               \&               \&               \& \drawtree     \& \drawtree     \& \drawtree      \\
-                                        \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
-                                        \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
-                                    };
-                                }
-                                \only<7->{
-                                    \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
-                                        \drawtree     \& \drawtree     \&               \&               \& \drawtree     \&               \&               \&               \&               \& \drawtree     \& \drawtree      \\
-                                        \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
-                                        \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|0| \\
-                                    };
-                                }
-                            \end{tikzpicture}
-
-                    \end{itemize}
-
-                    \begin{tikzpicture}[remember picture, overlay]
-                        \uncover<2>{\draw[red, very thick] (0.35, 5.2) rectangle (1, 5.5);}
-                        \uncover<2>{\draw[red, very thick] (2.35, 0.72) rectangle (4.15, 1.42);}
-                        \uncover<4>{\draw[red, very thick] (0.35, 4.725) rectangle (1, 5.025);}
-                        \uncover<4>{\draw[red, very thick] (5.05, 0.72) rectangle (7.75, 1.42);}
-                        \uncover<6>{\draw[red, very thick] (0.35, 4.25) rectangle (1, 4.55);}
-                        \uncover<6>{\draw[red, very thick] (5.95, 0.72) rectangle (8.65, 1.42);}
+                    \vspace{.1cm}
+                    \begin{tikzpicture}
+                        [nodes in empty cells, nodes={minimum width=.9cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                        \only<1-2>{
+                            \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree      \\
+                                \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
+                                \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
+                            };
+                        }
+                        \only<3-4>{
+                            \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                \drawtree     \& \drawtree     \&               \&               \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree     \& \drawtree      \\
+                                \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
+                                \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
+                            };
+                        }
+                        \only<5-6>{
+                            \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                \drawtree     \& \drawtree     \&               \&               \& \drawtree     \&               \&               \&               \& \drawtree     \& \drawtree     \& \drawtree      \\
+                                \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
+                                \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|0| \& \lstinline|0| \\
+                            };
+                        }
+                        \only<7->{
+                            \matrix(idx) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, row 2/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                \drawtree     \& \drawtree     \&               \&               \& \drawtree     \&               \&               \&               \&               \& \drawtree     \& \drawtree      \\
+                                \lstinline|0| \& \lstinline|1| \& \lstinline|2| \& \lstinline|3| \& \lstinline|4| \& \lstinline|5| \& \lstinline|6| \& \lstinline|7| \& \lstinline|8| \& \lstinline|9| \& \lstinline|10| \\
+                                \lstinline|0| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|1| \& \lstinline|1| \& \lstinline|1| \& \lstinline|1| \& \lstinline|0| \& \lstinline|0| \\
+                            };
+                        }
                     \end{tikzpicture}
 
-            \end{exampleblock}
+            \end{itemize}
+
+            \begin{tikzpicture}[remember picture, overlay]
+                \uncover<2>{\draw[red, very thick] (0.38, 5.17) rectangle (1.04, 5.52);}
+                \uncover<2>{\draw[red, very thick] (2.35, 0.72) rectangle (4.15, 1.42);}
+                \uncover<4>{\draw[red, very thick] (0.38, 4.7) rectangle (1.04, 5.05);}
+                \uncover<4>{\draw[red, very thick] (5.05, 0.72) rectangle (7.75, 1.42);}
+                \uncover<6>{\draw[red, very thick] (0.38, 4.22) rectangle (1.04, 4.57);}
+                \uncover<6>{\draw[red, very thick] (5.95, 0.72) rectangle (8.65, 1.42);}
+            \end{tikzpicture}
+
+        \end{exampleblock}
     }
 \end{frame}
 %------------------------------------------------------------
@@ -704,7 +755,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.8：小鱼的数字游戏}
+    \frametitle{例 10.9：小鱼的数字游戏}
 
     \alt<2-3>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=vector]{ch10/vector.cc}

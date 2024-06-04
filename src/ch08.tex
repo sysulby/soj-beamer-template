@@ -157,7 +157,7 @@
     \begin{columns}
         \column{.01\textwidth}
 
-        \column{.64\textwidth}
+        \column{.63\textwidth}
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=star_n_m]{ch08/star_n_m.cc}
         \begin{tikzpicture}[remember picture, overlay]
 
@@ -173,7 +173,7 @@
 
         \end{tikzpicture}
 
-        \column{.35\textwidth}
+        \column{.36\textwidth}
         \begin{itemize}
                 \uncover<2-> {
                 \item 输入
@@ -231,7 +231,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入两个整数 $n,m$ ($1 \le n,m \le 1000$)，输出 $n$ 行从 $1$ 到 $m$ 的整数。
+                \item 编写程序，输入两个整数 $n,m$ ($1 \le n, m \le 1000$)，输出 $n$ 行从 $1$ 到 $m$ 的整数。
 
                 \item 样例输入
 
@@ -260,16 +260,16 @@
             \begin{itemize}
                 \item 当输入 n 为 3，m 为 4 时，输出如图所示
 
-                    \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=num_ij_output]{ch08/num_ij_output.txt}
+                    \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=num_ij_out]{ch08/num_ij.out}
 
                     \begin{tikzpicture}[remember picture, overlay, scale=1.25]
-                        \uncover<4>{\redbox{num_ij_output}{2}{1}{2}{23} node[right,yshift=.22cm]{\lstinline|i = 1|};}
-                        \uncover<5>{\redbox{num_ij_output}{3}{1}{3}{23} node[right,yshift=.22cm]{\lstinline|i = 2|};}
-                        \uncover<6>{\redbox{num_ij_output}{4}{1}{4}{23} node[right,yshift=.22cm]{\lstinline|i = 3|};}
-                        \uncover<7>{\redbox{num_ij_output}{2}{1}{4}{5} node[below,xshift=-.55cm]{\lstinline|j = 1|};}
-                        \uncover<8>{\redbox{num_ij_output}{2}{7}{4}{11} node[below,xshift=-.55cm]{\lstinline|j = 2|};}
-                        \uncover<9>{\redbox{num_ij_output}{2}{13}{4}{17} node[below,xshift=-.55cm]{\lstinline|j = 3|};}
-                        \uncover<10>{\redbox{num_ij_output}{2}{19}{4}{23} node[below,xshift=-.55cm]{\lstinline|j = 4|};}
+                        \uncover<4>{\redbox{num_ij_out}{2}{1}{2}{23} node[right,yshift=.22cm]{\lstinline|i = 1|};}
+                        \uncover<5>{\redbox{num_ij_out}{3}{1}{3}{23} node[right,yshift=.22cm]{\lstinline|i = 2|};}
+                        \uncover<6>{\redbox{num_ij_out}{4}{1}{4}{23} node[right,yshift=.22cm]{\lstinline|i = 3|};}
+                        \uncover<7>{\redbox{num_ij_out}{2}{1}{4}{5} node[below,xshift=-.55cm]{\lstinline|j = 1|};}
+                        \uncover<8>{\redbox{num_ij_out}{2}{7}{4}{11} node[below,xshift=-.55cm]{\lstinline|j = 2|};}
+                        \uncover<9>{\redbox{num_ij_out}{2}{13}{4}{17} node[below,xshift=-.55cm]{\lstinline|j = 3|};}
+                        \uncover<10>{\redbox{num_ij_out}{2}{19}{4}{23} node[below,xshift=-.55cm]{\lstinline|j = 4|};}
                     \end{tikzpicture}
 
                 \item<4-> i 表示所在的行号
@@ -282,7 +282,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 在【例 8.2】的基础上，输出二重循环的循环变量 \lstinline|(i,j)| 的值，每次输出以空格间隔。
+                \item 在【例 8.2】的基础上，输出二重循环的循环变量 \lstinline|(i,j)| 的值，以空格间隔。
 
                 \item 样例输入
 
@@ -304,13 +304,17 @@
 \begin{frame}[fragile]
     \frametitle{例 8.4：输出数字直角三角形}
 
-    \alt<2>{
+    \alt<2-3>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=num_triangle]{ch08/num_triangle.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \only<3>{\redbox{num_triangle}{9}{21}{9}{27};}
+        \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 1000$)，输出一个等腰直角三角形，腰长为 $n$，每行由整数 $1, 2, 3 ...$ 组成，整数之间用空格间隔。
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 1000$)，输出一个等腰直角三角形，腰长为 $n$，每行由整数 $1, 2, 3 ...$ 组成，以空格间隔。
 
                 \item 样例输入
 
@@ -334,10 +338,10 @@
     \frametitle{例 8.5：累加数列求和}
 
     \alt<2-3>{
-        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cal_seq2]{ch08/cal_seq2.cc}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cal_seq1]{ch08/cal_seq1.cc}
 
         \begin{tikzpicture}[remember picture, overlay]
-            \only<3>{\redbox{cal_seq2}{11}{5}{11}{11};}
+            \only<3>{\redbox{cal_seq1}{10}{5}{10}{15};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
@@ -356,7 +360,9 @@
 
                 \item 样例说明
 
-                    $A_1 = 1$, $A_2 = 1 + 2$, $A_3 = 1 + 2 + 3$\\
+                    $A_1 = 1$\\
+                    $A_2 = 1 + 2 = 3$\\
+                    $A_3 = 1 + 2 + 3 = 6$\\
                     $S_3 = A_1 + A_2 + A_3 = 1 + 3 + 6 = 10$
 
             \end{itemize}
@@ -370,7 +376,7 @@
 \begin{frame}[fragile]
     \frametitle{例 8.5：累加数列求和 - 代码优化}
 
-    \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cal_seq3]{ch08/cal_seq3.cc}
+    \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cal_seq2]{ch08/cal_seq2.cc}
 \end{frame}
 %------------------------------------------------------------
 
@@ -388,7 +394,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入两个整数 $n,m$ ($1 \leq n,m \leq 1000$)，\\输出一个 $n$ 行 $m$ 列的空心矩形，矩形由星号形成。
+                \item 编写程序，输入两个整数 $n$, $m$ ($1 \leq n ,m \leq 1000$)，输出 $n$ 行 $m$ 列的由空格与星号组成的空心矩形。
 
                 \item 样例输入
 
@@ -418,7 +424,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 20$)，输出高为 $n$ 的由 * 号组成的等腰三角形。
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 20$)，输出高为 $n$ 的由空格与星号组成的等腰三角形。
 
                 \item 样例输入
 
@@ -446,12 +452,12 @@
         \begin{overlayarea}{\textwidth}{.9\textheight}
             \alt<2-4> {
                 \begin{columns}
-                    \column{.04\textwidth}
+                    \column{.01\textwidth}
 
-                    \column{.56\textwidth}
+                    \column{.55\textwidth}
                     \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cnt_1_1]{ch08/cnt_1_1.cc}
 
-                    \column{.4\textwidth}
+                    \column{.44\textwidth}
                     \uncover<3->{
                         \begin{itemize}[<+->]
                             \item<3-> 运行结果正确吗？
@@ -461,16 +467,16 @@
                 \end{columns}
             }{
                 \begin{columns}
-                    \column{.04\textwidth}
+                    \column{.01\textwidth}
 
-                    \column{.56\textwidth}
+                    \column{.55\textwidth}
                     \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cnt_1_2]{ch08/cnt_1_2.cc}
 
                     \begin{tikzpicture}[remember picture, overlay]
                         \only<6->{\redbox{cnt_1_2}{8}{16}{8}{23};}
                     \end{tikzpicture}
 
-                    \column{.4\textwidth}
+                    \column{.44\textwidth}
                     \uncover<5->{
                         \begin{itemize}[<+->]
                             \item<6-> 由于后续需要输出 $n$，因此不能直接用 $n$ 进行数位拆分
@@ -483,7 +489,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^9$)，输出 $n$ 及其数位中 $1$ 的个数，用空格间隔。
+                \item 编写程序，输入一个整数 $n$ ($1 \leq n \leq 10^6$)，输出 $n$ 及其数位中 $1$ 的个数，用空格间隔。
 
                 \item 样例输入
 
@@ -508,12 +514,12 @@
     \alt<2-6>{
         \alt<2-4> {
             \begin{columns}
-                \column{.04\textwidth}
+                \column{.01\textwidth}
 
-                \column{.56\textwidth}
+                \column{.55\textwidth}
                 \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=count_1_1]{ch08/count_1_1.cc}
 
-                \column{.4\textwidth}
+                \column{.44\textwidth}
                 \uncover<3->{
                     \begin{itemize}
                         \item<3-> 运行结果正确吗？
@@ -523,16 +529,16 @@
             \end{columns}
         }{
             \begin{columns}
-                \column{.04\textwidth}
+                \column{.01\textwidth}
 
-                \column{.56\textwidth}
+                \column{.55\textwidth}
                 \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=count_1_2]{ch08/count_1_2.cc}
 
                 \begin{tikzpicture}[remember picture, overlay]
                     \only<6->{\redbox{count_1_2}{10}{5}{10}{16};}
                 \end{tikzpicture}
 
-                \column{.4\textwidth}
+                \column{.44\textwidth}
                 \uncover<5->{
                     \begin{itemize}
                         \item<6-> 为了避免程序进入死循环，使用临时变量 \lstinline|tmp| 进行数位拆分
