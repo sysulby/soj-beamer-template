@@ -171,7 +171,7 @@
                 \end{itemize}
 
                 \begin{itemize}
-                    \item<8-> 数组大小可以指定或留空，会按照需要的最小空间申请内存
+                    \item<7-> 数组大小可以指定或留空，会按照需要的最小空间申请内存
                         \begin{itemize}
                             \item \lstinline|double b[] = {1.0, 2.7, 3.14, 9.8};|
                         \end{itemize}
@@ -284,7 +284,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 6 年 A 班进行了一次小测，现要求编写程序，录入所有学生成绩，并输出所有学生的成绩，学生的成绩如下。
+                \item 6 年 A 班进行了一次小测，现要求录入所有学生成绩，并输出所有学生的成绩，学生的成绩如下。
 
                     \begin{tikzpicture}
                         [nodes in empty cells, nodes={minimum width=1.1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
@@ -319,7 +319,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 已知 6 年 A 班的小测成绩如下，编写程序，输入一个整数 $k$ ($0 \le k < 8$)，输出 $k$ 号学生的分数。
+                \item 已知 6 年 A 班的小测成绩如下，输入一个整数 $k$ ($0 \le k < 8$)，输出 $k$ 号学生的分数。
 
                     \begin{tikzpicture}
                         [nodes in empty cells, nodes={minimum width=1.1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
@@ -429,7 +429,7 @@
 
             \begin{itemize}
                 \item 已知 6 年 A 班的小测成绩如下，其中，$k$ 号同学发现自己试卷错判，实际分数应该高 $x$ 分。\\
-                    编写程序，输入两个整数 $k$ ($0 \le k < 8$) 和 $x$ ($0 \le x \le 100$)，请修改并输出 $k$ 号同学的分数。
+                    输入两个整数 $k$ ($0 \le k < 8$) 和 $x$ ($0 \le x \le 100$)，请修改并输出 $k$ 号同学的分数。
 
                     \begin{tikzpicture}
                         [nodes in empty cells, nodes={minimum width=1.1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
@@ -465,7 +465,7 @@
 
             \begin{itemize}
                 \item 已知 6 年 A 班的小测成绩如下，其中，$x$ 号与 $y$ 号同学的成绩登记反了。\\
-                    编写程序，输入两个整数 $x$ ($0 \le x < 8$) 和 $y$ ($0 \le y \le 8$)，请交换他们的成绩，并输出正确的成绩表，以空格间隔。
+                    输入两个整数 $x$ ($0 \le x < 8$) 和 $y$ ($0 \le y \le 8$)，请交换他们的成绩，并输出正确的成绩表，以空格间隔。
 
                     \begin{tikzpicture}
                         [nodes in empty cells, nodes={minimum width=1.1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
@@ -499,7 +499,7 @@
     }{
         \begin{exampleblock}{编程题}
             \begin{itemize}
-                \item 编写程序，输入两个整数 $k$ ($0 \le k < 5$) 和 $x$ ($0 \le x \le 100$)，表示购买编号为 $k$ 的图书 $x$ 本，输出消费的金额，结果保留两位小数，图书的单价如下。
+                \item 输入两个整数 $k$ ($0 \le k < 5$) 和 $x$ ($0 \le x \le 100$)，表示购买编号为 $k$ 的图书 $x$ 本，输出消费的金额，结果保留两位小数，图书的单价如下。
 
                     \begin{tikzpicture}
                         [nodes in empty cells, nodes={minimum width=1.1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
@@ -534,7 +534,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示购买次数。\\
+                \item 输入一个整数 $n$ ($1 \le n \le 100$)，表示购买次数。\\
                     然后输入 $n$ 行，每行两个整数 $k$ ($0 \le k < 5$) 和 $x$ ($0 \le x \le 100$)，表示购买编号为 $k$ 的图书 $x$ 本，分别输出 n 次购书的消费金额，结果保留两位小数，图书的单价如下。
 
                     \begin{tikzpicture}
@@ -649,7 +649,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，要求倒序输出数组元素。
+                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，第二行输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，表示数组中的每个元素，要求倒序输出数组元素。
 
                 \item 样例输入
 
@@ -677,7 +677,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个偶数 $n$ ($1 \le n \le 100$)，接下来输入 $n$ 个整数，然后交替输出。\\
+                \item 第一行输入一个偶数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，第二行输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，然后交替输出。\\
                     即按照：第 $1$ 个数、倒数第 $1$ 个数、第 $2$ 个数、倒数第 $2$ 个数 $\dots$ 的顺序输出，其中每行输出两个数字，数字与数字之间有空格隔开。
             \end{itemize}
 
@@ -790,7 +790,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素之和。
+                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，第二行输入 $n$ 个整数 $x$ ($-10^6 \le x \le 10^6$)，表示数组中的每个元素，求这 $n$ 个数组元素之和。
 
                 \item 样例输入
 
@@ -818,7 +818,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素中的最大值。
+                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，第二行输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，表示数组中的每个元素，求这 $n$ 个数组元素中的最大值。
 
                 \item 样例输入
 
@@ -850,7 +850,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 编写程序，输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，接下来输入 $n$ 个整数存储在数组中，求这 $n$ 个数组元素中的最大值及位置（保证最大值是唯一的），输出以空格间隔。
+                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，第二行输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，表示数组中的每个元素，求这 $n$ 个数组元素中的最大值及位置（保证最大值是唯一的），输出以空格间隔。
 
                 \item 样例输入
 
