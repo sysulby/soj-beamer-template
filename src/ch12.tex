@@ -50,7 +50,7 @@
         \item 一维数组的遍历
         
             \begin{itemize}
-                \item 使用单重循环遍历一维数组
+                \item 使用一重循环遍历一维数组
             \end{itemize}
 
     \end{itemize}
@@ -99,33 +99,57 @@
         \end{tikzpicture}
     }{
         \alt<2-7> {
-            \begin{itemize}
-                \item 样例说明： 
+            \begin{exampleblock}{编程题}
 
-                    \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=cnt_1_io]{ch12/cnt_1_io.txt}
-
-                    \begin{tikzpicture}[remember picture, overlay,scale=1.25]
-                        \uncover<3>{\redbox{cnt_1_io}{5}{1}{5}{1};}
-                        \uncover<3>{\redbox{cnt_1_io}{3}{1}{3}{2};}
-
-                        \uncover<4>{\redbox{cnt_1_io}{5}{3}{5}{3};}
-                        \uncover<4>{\redbox{cnt_1_io}{3}{4}{3}{5};}
-                        \uncover<4>{\redbox{cnt_1_io}{3}{1}{3}{2};}
-
-                        \uncover<5>{\redbox{cnt_1_io}{5}{5}{5}{5};}
-                        \uncover<5>{\redbox{cnt_1_io}{3}{7}{3}{8};}
-                        \uncover<5>{\redbox{cnt_1_io}{3}{1}{3}{5};}
-
-                        \uncover<6>{\redbox{cnt_1_io}{5}{7}{5}{7};}
-                        \uncover<6>{\redbox{cnt_1_io}{3}{10}{3}{12};}
-                        \uncover<6>{\redbox{cnt_1_io}{3}{1}{3}{8};}
-
-                        \uncover<7>{\redbox{cnt_1_io}{5}{9}{5}{9};}
-                        \uncover<7>{\redbox{cnt_1_io}{3}{14}{3}{15};}
-                        \uncover<7>{\redbox{cnt_1_io}{3}{1}{3}{12};}
-
-                    \end{tikzpicture}
-
+                \begin{columns}[onlytextwidth,T]
+                    \column{.5\textwidth}
+                    \begin{itemize}
+                        \item<2-> 样例输入
+                    
+                        \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=cnt_1_i]{ch12/cnt_1_i.txt}
+    
+                        \begin{tikzpicture}[remember picture, overlay,scale=1.25]
+                            
+                            \uncover<3>{\redbox{cnt_1_i}{3}{1}{3}{2};}
+    
+                            
+                            \uncover<4>{\redbox{cnt_1_i}{3}{4}{3}{5};}
+                            \uncover<4>{\redbox{cnt_1_i}{3}{1}{3}{2};}
+    
+                            
+                            \uncover<5>{\redbox{cnt_1_i}{3}{7}{3}{8};}
+                            \uncover<5>{\redbox{cnt_1_i}{3}{1}{3}{5};}
+    
+                            
+                            \uncover<6>{\redbox{cnt_1_i}{3}{10}{3}{12};}
+                            \uncover<6>{\redbox{cnt_1_i}{3}{1}{3}{8};}
+    
+                            
+                            \uncover<7>{\redbox{cnt_1_i}{3}{14}{3}{15};}
+                            \uncover<7>{\redbox{cnt_1_i}{3}{1}{3}{12};}
+                        \end{tikzpicture}
+    
+                    \end{itemize}
+    
+                    \column{.5\textwidth}
+                    \begin{itemize}
+                        \item 样例输出\\
+    
+                        \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=cnt_1_o]{ch12/cnt_1_o.txt}
+                        
+                        \begin{tikzpicture}[remember picture, overlay,scale=1.25]
+                            \uncover<3>{\redbox{cnt_1_o}{1}{1}{1}{1};}
+                            \uncover<4>{\redbox{cnt_1_o}{1}{3}{1}{3};}
+                            \uncover<5>{\redbox{cnt_1_o}{1}{5}{1}{5};}
+                            \uncover<6>{\redbox{cnt_1_o}{1}{7}{1}{7};}
+                            \uncover<7>{\redbox{cnt_1_o}{1}{9}{1}{9};}
+                        \end{tikzpicture}
+    
+                    \end{itemize}
+                \end{columns}
+    
+                \begin{itemize}
+                    \item 样例说明\\
                     \begin{itemize}
                         \item<3-> 第 $1$ 个同学的左侧没有其他同学，输出 $0$
                         \item<4-> 第 $2$ 个同学的左侧有 $1$ 个同学 $98$，输出 $1$
@@ -133,14 +157,16 @@
                         \item<6-> 第 $4$ 个同学的左侧有 $3$ 个同学 $98,90,79$，输出 $0$
                         \item<7-> 第 $5$ 个同学的左侧有 $4$ 个同学 $98,90,79,100$，输出 $3$
                     \end{itemize}
+                \end{itemize}
 
-            \end{itemize}
+            \end{exampleblock}
+
         }{
             \begin{exampleblock}{编程题}
 
                 \begin{itemize}
-                    \item 输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 名学生，从左向右依次输入每个学生的成绩（成绩是 $0$ 到 $100$ 之间的整数）。\\
-                        统计每个学生的左边有几个成绩比自己好的同学，输出以空格间隔。
+                    \item 输入一个整数 $n$ ($1 \le n \le 100$) ，接下来从左往右依次输入这 $n$ 名学生的整数成绩 $x$ ($1 \le x \le 100$)。\\
+                        请统计每个学生的左边有几个学生成绩比自己好，输出以空格间隔。
 
                     \item 样例输入
 
@@ -171,47 +197,62 @@
         \end{tikzpicture}
     }{
         \alt<2-7> {
-            \begin{itemize}
-                \item 样例说明： 
+            \begin{exampleblock}{编程题}
 
-                    \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=cnt_2_io]{ch12/cnt_2_io.txt}
-
-                    \begin{tikzpicture}[remember picture, overlay,scale=1.25]
-                        \uncover<3-7>{\redbox{cnt_2_io}{4}{1}{4}{20};}
-
-                        \uncover<3>{\redbox{cnt_2_io}{6}{1}{6}{1};}
-                        \uncover<3>{\redbox{cnt_2_io}{2}{1}{2}{2};}
-
-                        \uncover<4>{\redbox{cnt_2_io}{6}{3}{6}{3};}
-                        \uncover<4>{\redbox{cnt_2_io}{2}{4}{2}{5};}
-
-                        \uncover<5>{\redbox{cnt_2_io}{6}{5}{6}{5};}
-                        \uncover<5>{\redbox{cnt_2_io}{2}{7}{2}{8};}
-
-                        \uncover<6>{\redbox{cnt_2_io}{6}{7}{6}{7};}
-                        \uncover<6>{\redbox{cnt_2_io}{2}{10}{2}{12};}
-
-                        \uncover<7>{\redbox{cnt_2_io}{6}{9}{6}{9};}
-                        \uncover<7>{\redbox{cnt_2_io}{2}{14}{2}{15};}
-                    \end{tikzpicture}
-
+                \begin{columns}[onlytextwidth,T]
+                    \column{.5\textwidth}
                     \begin{itemize}
-                        \item<3-> 对于 $A$ 班第 $1$ 个同学，$B$ 班成绩比他好的同学有 $99$，输出 $1$
-                        \item<4-> 对于 $A$ 班第 $2$ 个同学，$B$ 班成绩比他好的同学有 $99,92$，输出 $2$
-                        \item<5-> 对于 $A$ 班第 $3$ 个同学，$B$ 班成绩比他好的同学有 $89,99,85,92,90$，输出 $5$
-                        \item<6-> 对于 $A$ 班第 $4$ 个同学，$B$ 班没有成绩比他好的同学，输出 $0$
-                        \item<7-> 对于 $A$ 班第 $5$ 个同学，$B$ 班成绩比他好的同学有 $89,99,92,90$，输出 $4$
+                        \item<2-> 样例输入
+                    
+                        \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=cnt_2_i]{ch12/cnt_2_i.txt}
+    
+                        \begin{tikzpicture}[remember picture, overlay,scale=1.25]
+                            \uncover<3-7>{\redbox{cnt_2_i}{4}{1}{4}{20};}
+                            \uncover<3>{\redbox{cnt_2_i}{2}{1}{2}{2};}
+                            \uncover<4>{\redbox{cnt_2_i}{2}{4}{2}{5};}
+                            \uncover<5>{\redbox{cnt_2_i}{2}{7}{2}{8};}
+                            \uncover<6>{\redbox{cnt_2_i}{2}{10}{2}{12};}
+                            \uncover<7>{\redbox{cnt_2_i}{2}{14}{2}{15};}
+                        \end{tikzpicture}
+    
                     \end{itemize}
+    
+                    \column{.5\textwidth}
+                    \begin{itemize}
+                        \item 样例输出\\
+    
+                        \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=cnt_2_o]{ch12/cnt_2_o.txt}
+                        
+                        \begin{tikzpicture}[remember picture, overlay,scale=1.25]
+                            \uncover<3>{\redbox{cnt_2_o}{1}{1}{1}{1};}
+                            \uncover<4>{\redbox{cnt_2_o}{1}{3}{1}{3};}
+                            \uncover<5>{\redbox{cnt_2_o}{1}{5}{1}{5};}
+                            \uncover<6>{\redbox{cnt_2_o}{1}{7}{1}{7};}
+                            \uncover<7>{\redbox{cnt_2_o}{1}{9}{1}{9};}
+                        \end{tikzpicture}
+    
+                    \end{itemize}
+                \end{columns}
 
-            \end{itemize}
+                \begin{itemize}
+                    \item 样例说明\\
+                    \begin{itemize}
+                        \item<3-> B 班成绩比 $98$ 好的同学有 $99$，输出 $1$
+                        \item<4-> B 班成绩比 $90$ 好的同学有 $99,92$，输出 $2$
+                        \item<5-> B 班成绩比 $79$ 好的同学有 $89,99,85,92,90$，输出 $5$
+                        \item<6-> B 班没有成绩比 $100$ 好的同学，输出 $0$
+                        \item<7-> B 班成绩比 $87$ 好的同学有 $89,99,92,90$，输出 $4$
+                    \end{itemize}
+                \end{itemize}
+            \end{exampleblock}
 
         }{
             \begin{exampleblock}{编程题}
 
                 \begin{itemize}
-                    \item 输入一个整数 $n$ ($1 \le n \le 100$) ，表示 $A$ 班有 $n$ 名学 生，接下来输入 $A$ 班 $n$ 名学生的成绩。\\
-                        输入一个整数 $m$ ($1 \le m \le 100$) ，表示 $B$ 班有 $m$ 名学生，接下 来输入 $B$ 班 $m$ 名学生的成绩。（成绩均为 $0~100$ 之间的整数）\\
-                        对 $A$ 班的每个学生， 统计在 $B$ 班的 $m$ 个人里有几个同学成绩比他好，输出以空格间隔。
+                    \item 输入一个整数 $n$ ($1 \le n \le 100$)，接下来输入 A 班 $n$ 名学生的成绩 $x$。\\
+                        输入一个整数 $m$ ($1 \le m \le 100$)，接下来输入 B 班 $m$ 名学生的成绩 $x$，其中 $1 \le x \le 100$。\\
+                        对 A 班的每个学生， 统计在 B 班中有几个学生成绩比自己好，输出以空格间隔。
                 \end{itemize}
 
                 \begin{columns}[onlytextwidth,T]
@@ -250,23 +291,25 @@
 
     \alt<2-10>{
         \alt<2-8>{
-            \begin{itemize}
-                \item 两个 $n$ 行 $m$ 列的二维数组的和 也是一个 $n$ 行 $m$ 列的二维数组
+            \begin{exampleblock}{编程题}
+                \begin{itemize}
+                    \item 两个 $n$ 行 $m$ 列的矩阵的和也是一个 $n$ 行 $m$ 列的矩阵
 
-                \item 结果中第 i 行第 j 列的元素 等于 原来两个数组中第 i 行第 j 列的元素之和。
-                
-                \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=matrix_add_input]{ch12/matrix_add_input.txt}
+                    \item 结果中第 $i$ 行第 $j$ 列的元素等于原来两个矩阵中第 $i$ 行第 $j$ 列的元素之和。
+                    
+                    \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=matrix_add_input]{ch12/matrix_add_input.txt}
 
-                \begin{tikzpicture}[remember picture, overlay, scale=1.25]
-                    \uncover<3>{\redbox{matrix_add_input}{2}{1}{2}{1}; \redbox{matrix_add_input}{2}{14}{2}{14}; \redbox{matrix_add_input}{2}{27}{2}{27};}
-                    \uncover<4>{\redbox{matrix_add_input}{2}{3}{2}{3}; \redbox{matrix_add_input}{2}{16}{2}{16}; \redbox{matrix_add_input}{2}{29}{2}{29};}
-                    \uncover<5>{\redbox{matrix_add_input}{2}{5}{2}{5}; \redbox{matrix_add_input}{2}{18}{2}{18}; \redbox{matrix_add_input}{2}{31}{2}{31};}
-                    \uncover<6>{\redbox{matrix_add_input}{3}{1}{3}{1}; \redbox{matrix_add_input}{3}{14}{3}{14}; \redbox{matrix_add_input}{3}{27}{3}{27};}
-                    \uncover<7>{\redbox{matrix_add_input}{3}{3}{3}{3}; \redbox{matrix_add_input}{3}{16}{3}{16}; \redbox{matrix_add_input}{3}{29}{3}{29};}
-                    \uncover<8>{\redbox{matrix_add_input}{3}{5}{3}{5}; \redbox{matrix_add_input}{3}{18}{3}{18}; \redbox{matrix_add_input}{3}{31}{3}{31};}
-                \end{tikzpicture}
+                    \begin{tikzpicture}[remember picture, overlay, scale=1.25]
+                        \uncover<3>{\redbox{matrix_add_input}{3}{1}{3}{1}; \redbox{matrix_add_input}{3}{14}{3}{14}; \redbox{matrix_add_input}{3}{27}{3}{27};}
+                        \uncover<4>{\redbox{matrix_add_input}{3}{3}{3}{3}; \redbox{matrix_add_input}{3}{16}{3}{16}; \redbox{matrix_add_input}{3}{29}{3}{29};}
+                        \uncover<5>{\redbox{matrix_add_input}{3}{5}{3}{5}; \redbox{matrix_add_input}{3}{18}{3}{18}; \redbox{matrix_add_input}{3}{31}{3}{31};}
+                        \uncover<6>{\redbox{matrix_add_input}{4}{1}{4}{1}; \redbox{matrix_add_input}{4}{14}{4}{14}; \redbox{matrix_add_input}{4}{27}{4}{27};}
+                        \uncover<7>{\redbox{matrix_add_input}{4}{3}{4}{3}; \redbox{matrix_add_input}{4}{16}{4}{16}; \redbox{matrix_add_input}{4}{29}{4}{29};}
+                        \uncover<8>{\redbox{matrix_add_input}{4}{5}{4}{5}; \redbox{matrix_add_input}{4}{18}{4}{18}; \redbox{matrix_add_input}{4}{31}{4}{31};}
+                    \end{tikzpicture}
 
-            \end{itemize}
+                \end{itemize}
+            \end{exampleblock}
         }{
             \alt<9>{
                 \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=matrix_add,firstline=1,lastline=21]{ch12/matrix_add.cc}
@@ -278,7 +321,8 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入两个 $n$ 行 $m$ 列、整数类型的二维数组 $a$ 和 $b$，求这两个二维数组的和。
+                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入两个 $n$ 行 $m$ 列的整数矩阵 $a$ 和 $b$，其中 $1 \le a_{i,j},b_{i,j} \le 100$。\\
+                    求这两个矩阵的和。
 
                 \item 样例输入
 
@@ -302,30 +346,32 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 12.4：二维数组的旋转}
+    \frametitle{例 12.4：矩阵的旋转}
 
-    \alt<6>{
+    \alt<7>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=rotate]{ch12/rotate.cc}
     }{
-        \alt<2-5> {
-            \begin{columns}[T]
+        \alt<2-6> {
+            \begin{exampleblock}{编程题}
+
+            \begin{columns}[onlytextwidth,T]
                 \column{.5\textwidth}
                 \begin{itemize}
-                    \item 当前数组： 
+                    \item<2-> 样例输入
+                
+                    \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=rotate_io]{ch12/rotate_io.txt}
 
-                        \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=rotate_io]{ch12/rotate_io.txt}
-
-                        \begin{tikzpicture}[remember picture, overlay,scale=1.25]
-                            \uncover<3>{\redbox{rotate_io}{1}{1}{3}{6} node[below,xshift=-.6cm]{\lstinline|第1列|};}
-                            \uncover<4>{\redbox{rotate_io}{1}{8}{3}{13} node[below,xshift=-.6cm]{\lstinline|第2列|};}
-                            \uncover<5>{\redbox{rotate_io}{1}{15}{3}{20} node[below,xshift=-.6cm]{\lstinline|第3列|};}
-                        \end{tikzpicture}
+                    \begin{tikzpicture}[remember picture, overlay,scale=1.25]
+                        \uncover<3>{\redbox{rotate_io}{1}{1}{3}{6} node[below,xshift=-.6cm]{\lstinline|第1列|};}
+                        \uncover<4>{\redbox{rotate_io}{1}{8}{3}{13} node[below,xshift=-.6cm]{\lstinline|第2列|};}
+                        \uncover<5>{\redbox{rotate_io}{1}{15}{3}{20} node[below,xshift=-.6cm]{\lstinline|第3列|};}
+                    \end{tikzpicture}
 
                 \end{itemize}
 
                 \column{.5\textwidth}
                 \begin{itemize}
-                    \item 当前输出：\\
+                    \item 样例输出\\
 
                         \lstinline| |\\
                         \uncover<3->{\lstinline|8(2,1) 1(1,1)|}\\
@@ -333,17 +379,19 @@
                         \uncover<5->{\lstinline|6(2,3) 7(1,3)|}
 
                 \end{itemize}
-
             \end{columns}
 
             \begin{itemize}
-                \item 输出旋转后的数组时，行坐标 i 和 列坐标 j 如何变化？
+                \item<6-> 输出旋转后的矩阵时，行坐标 $i$ 和 列坐标 $j$ 如何变化？
             \end{itemize}
+
+            \end{exampleblock}
         }{
             \begin{exampleblock}{编程题}
 
                 \begin{itemize}
-                    \item 首先输入两个整数 $n,m$ ($1 \le n,m \le 100$)，表示接下来需要输入 $n$ 行 $m$ 列的正整数（正整数均小于 $1000$），这些整数组成了一个 $n$ 行 $m$ 列的矩阵，请将矩阵顺时针翻转 $90$ 度后输出。
+                    \item 输入两个整数 $n, m$ ($1 \le n, m \le 100$)，接下来输入一个 $n$ 行 $m$ 列的整数矩阵 $a$，其中 $1 \le a_{i,j} \le 100$。\\
+                        请将该矩阵 $a$ 顺时针旋转 $90$ 度后输出。
 
                     \item 样例输入
 
@@ -373,10 +421,12 @@
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=small_matrix]{ch12/small_matrix.cc}
     }{
         \alt<4-6> {
-            \begin{columns}[T]
+            \begin{exampleblock}{编程题}
+
+            \begin{columns}[onlytextwidth,T]
                 \column{.5\textwidth}
                 \begin{itemize}
-                    \item 当前输入： 
+                    \item 样例输入
 
                         \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=small_matrix_i]{ch12/small_matrix_i.txt}
 
@@ -396,11 +446,13 @@
             \begin{itemize}
                 \item<6-> 遍历小矩阵时，小矩阵的终点行、终点列应当如何计算？
             \end{itemize}
+
+            \end{exampleblock}
         }{
             \begin{exampleblock}{编程题}
 
                 \begin{itemize}
-                    \item 首先输入两个整数 $n,m$ ($1 \le n,m \le 100$)，表示接下来需要输入 $n$ 行 $m$ 列的正整数（正整数均小于 $1000$），最后再输入四个整数 $x,y,r,c$ ($1 \le x,x+r-1 \le n$),($1 \le y,y+c-1 \le m$)，请输出原矩阵中以 ($x,y$) 为左上角的 $r$ 行 $c$ 列的小矩阵元素的总和。
+                    \item 输入两个整数 $n, m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数矩阵 $a$，其中 $1 \le a_{i,j} \le 100$。最后输入四个整数 $x,y,r,c$ ($1 \le x,x+r-1 \le n$),($1 \le y,y+c-1 \le m$)，请输出原矩阵 $a$ 中以 ($x,y$) 为左上角的 $r$ 行 $c$ 列的小矩阵中元素的总和。
                 \end{itemize}    
 
                 \begin{columns}[onlytextwidth,T]
@@ -445,7 +497,8 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 给定 $n$ ($1 \le n \le 100$) 个二维空间的点，每个点的坐标 ($x,y$) 都是整数 ($0 \le x,y \le 99$)，求其中出现最频繁的点的出现次数。                
+                \item 输入一个整数 $n$ ($1 \le n \le 100$)，接下来输入 $n$ 个点的坐标 ($x,y$)，其中 $0 \le x,y \le 99$。\\
+                    求其中出现最频繁的点的出现次数。                
 
                 \item 样例输入
 
@@ -473,20 +526,20 @@
 \begin{frame}[fragile]
     \frametitle{多维数组}
 
-    \begin{itemize}[<+->]
-        \item 一维数组的应用
+    \begin{itemize}
+        \item<1-> 一维数组的应用
         
             \begin{itemize}
-                \item 一维数组部分求和
                 \item 一维数组遍历比较
             \end{itemize}
 
-        \item 二维数组的应用
+        \item<2-> 二维数组的应用
         
             \begin{itemize}
-                \item 二维数组的旋转
-                \item 计算小矩阵的和
-                \item 二维数组的计数应用
+                \item 两个矩阵求和
+                \item 二维数组旋转
+                \item 二维数组部分求和
+                \item 二维数组计数
             \end{itemize}
 
     \end{itemize}
