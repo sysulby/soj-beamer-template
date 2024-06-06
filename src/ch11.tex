@@ -39,7 +39,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数，第二行输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，表示数组中的每个元素，要求倒序输出数组元素。
+                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$)，表示有 $n$ 个整数；第二行输入 $n$ 个整数 $x$ ($-10^9 \le x \le 10^9$)，表示数组中的每个元素。要求倒序输出数组元素。
 
                 \item 样例输入
 
@@ -68,8 +68,8 @@
         \item 现实生活中有很多事物是以“二维”的方式组织起来的：
 
             \begin{itemize}
-                \item 电影院的每个座位会被编排为“第 i 排第 j 号”，其中 i 是第一维的编号，j 是第二维的编号。
-                \item 你所在的班级往往编号为 x 年级 y 班，其中 x 可以看作是第一维的编号，y 可以看作是第二维的编号。
+                \item 电影院的每个座位会被编排为“第 $i$ 排第 $j$ 号”，其中 $i$ 是第一维的编号，$j$ 是第二维的编号。
+                \item 你所在的班级往往编号为 $x$ 年级 $y$ 班，其中 $x$ 可以看作是第一维的编号，$y$ 可以看作是第二维的编号。
             \end{itemize}
 
         \item 程序是对现实世界的抽象，所以 C++ 提供了二维数组，让我们可以表示这类二维编号。
@@ -88,7 +88,7 @@
                 \item \textbf{元素类型 \enspace 数组名[第一维大小][第二维大小];}
                 \item<2-> 数组的第一维通常称为“行”
                 \item<2-> 数组的第二维通常称为“列”
-                \item<3-> \lstinline|int a[4][3]; // 定义了 4 行 3 列的存放整数的数组 a|
+                \item<3-> \lstinline|int a[4][3]; // 定义了 4 行 3 列存放整数的二维数组 a|
             \end{itemize}
 
     \end{itemize}
@@ -125,7 +125,7 @@
             \begin{itemize}[<+->]
                 \item 二维数组可视作元素类型为一维数组的数组，故二维数组可按行分段赋值。
                 \item
-                    \lstinline|// 定义了 2 行 4 列的存放整数的数组 a，并初始化|\\
+                    \lstinline|// 定义了 2 行 4 列存放整数的二维数组 a，并初始化|\\
                     \lstinline|int a[2][4] = {{7, 8, 9, 1}, {2, 3, 4, 6}};|
             \end{itemize}
     \end{itemize}
@@ -174,11 +174,11 @@
         \item 访问数组元素
 
             \begin{itemize}
-                \item 通过 \textbf{数组名[i][j]} 访问存储在数组中第 i 行第 j 列的值
+                \item 通过 \textbf{数组名[i][j]} 访问存储在数组中第 $i$ 行第 $j$ 列的值
 
                     \begin{itemize}
-                        \item 下标 i 的范围：$0 \sim R - 1$ ($R$ 为数组第一维大小)
-                        \item 下标 j 的范围：$0 \sim C - 1$ ($C$ 为数组第二维大小)
+                        \item 下标 $i$ 的范围：$0 \sim R - 1$ ($R$ 为数组第一维大小)
+                        \item 下标 $j$ 的范围：$0 \sim C - 1$ ($C$ 为数组第二维大小)
                         \item 要注意数组每一维都不能越界
                     \end{itemize}
 
@@ -199,8 +199,8 @@
             \begin{itemize}
                 \item<2-> 可以使用的行下标：$0$, $1$
                 \item<2-> 可以使用的列下标：$0$, $1$, $2$
-                \item<3-> 对应的可以使用的数第 0 行元素：\lstinline|a[0][0], a[0][1], a[0][2]|
-                \item<3-> 对应的可以使用的数第 1 行元素：\lstinline|a[1][0], a[1][1], a[1][2]|
+                \item<3-> 可以使用的第 $0$ 行元素：\lstinline|a[0][0], a[0][1], a[0][2]|
+                \item<3-> 可以使用的第 $1$ 行元素：\lstinline|a[1][0], a[1][1], a[1][2]|
                 \item<4-> 可以使用变量作为数组下标：\lstinline|a[x][y]| ($0 \le x \le 1, 0 \le y \le 2$)
             \end{itemize}
 
@@ -288,13 +288,20 @@
 \begin{frame}[fragile]
     \frametitle{例 11.1：求二维数组元素的和}
 
-    \alt<2>{
+    \alt<2-3>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_sum]{ch11/array_sum.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{
+                \redbox{array_sum}{13}{3}{13}{20}; 
+            }
+
+        \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数 $x$ ($-10^9 \le x \le 10^9$)，求这些整数的和。
+                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)；接下来输入 $n$ 行 $m$ 列的整数矩阵 $a$，其中 $-10^9 \le a_{i,j} \le 10^9$。求整数矩阵中元素的和。
 
                 \item 样例输入
 
@@ -323,7 +330,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数 $x$ ($-10^9 \le x \le 10^9$)，求这些整数中的最大值。
+                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)；接下来输入 $n$ 行 $m$ 列的整数矩阵 $a$，其中 $-10^9 \le a_{i,j} \le 10^9$。求整数矩阵中元素的最大值。
 
                 \item 样例输入
 
@@ -364,7 +371,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数 $x$ ($-10^9 \le x \le 10^9$)，求这些整数中的最大值及位置，保证数据中只有一个最大值。
+                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)；接下来输入 $n$ 行 $m$ 列的整数矩阵 $a$，其中 $-10^9 \le a_{i,j} \le 10^9$。求整数矩阵中元素的最大值及位置（保证最大值是唯一的）。
 
                 \item 样例输入
 
@@ -388,7 +395,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 11.5：求矩阵第 x 行元素的和}
+    \frametitle{例 11.4：求矩阵第 x 行元素的和}
 
     \alt<3-5>{
         \alt<3>{
@@ -398,13 +405,13 @@
         }
 
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<5>{\redbox{array_sum_of_row_x_2}{16}{11}{16}{16};}
+            \uncover<5>{\redbox{array_sum_of_row_x_2}{17}{11}{17}{16};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数 $x$ ($1 \le x \le n$)，求这个整数矩阵中第 $x$ 行元素的和。
+                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)；接下来输入 $n$ 行 $m$ 列的整数矩阵 $a$，其中 $-10^9 \le a_{i,j} \le 10^9$；最后输入一个整数 $x$ ($1 \le x \le n$)。求整数矩阵中第 $x$ 行元素的和。
 
                 \item 样例输入
 
@@ -427,20 +434,20 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 11.6：求矩阵第 y 列元素的和}
+    \frametitle{例 11.5：求矩阵第 y 列元素的和}
 
     \alt<3-4>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_sum_of_col_y_2]{ch11/array_sum_of_col_y_2.cc}
 
 
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<4>{\redbox{array_sum_of_col_y_2}{16}{11}{16}{16};}
+            \uncover<4>{\redbox{array_sum_of_col_y_2}{17}{11}{17}{16};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)，接下来输入 $n$ 行 $m$ 列的整数 $y$ ($1 \le y \le m$)，求这个整数矩阵中第 $y$ 列元素的和。
+                \item 输入两个整数 $n$ 和 $m$ ($1 \le n, m \le 100$)；接下来输入 $n$ 行 $m$ 列的整数矩阵 $a$，其中 $-10^9 \le a_{i,j} \le 10^9$；最后输入一个整数 $y$ ($1 \le y \le m$)。求整数矩阵中第 $y$ 列元素的和。
 
                 \item 样例输入
 
@@ -463,20 +470,20 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 11.7：求方阵正对角线元素的和}
+    \frametitle{例 11.6：求方阵正对角线元素的和}
 
     \alt<3-4>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_sum_of_diagonal]{ch11/array_sum_of_diagonal.cc}
 
 
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<4>{\redbox{array_sum_of_diagonal}{15}{11}{15}{16};}
+            \uncover<4>{\redbox{array_sum_of_diagonal}{16}{11}{16}{16};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入一个整数 $n$ ($1 \le n \le 100$)，接下来输入 $n$ 行 $n$ 列的整数方阵，求这个整数方阵正对角线（左上到右下）元素的和。
+                \item 输入一个整数 $n$ ($1 \le n \le 100$)，接下来输入 $n$ 行 $n$ 列的整数方阵 $a$，其中 $-10^9 \le a_{i,j} \le 10^9$。求整数方阵中正对角线（左上到右下）元素的和。
 
                 \item 样例输入
 
@@ -504,19 +511,19 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 11.8：求方阵副对角线元素的和}
+    \frametitle{例 11.7：求方阵副对角线元素的和}
 
     \alt<3-4>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array_sum_of_subdiagonal]{ch11/array_sum_of_subdiagonal.cc}
 
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<4>{\redbox{array_sum_of_subdiagonal}{15}{11}{15}{24};}
+            \uncover<4>{\redbox{array_sum_of_subdiagonal}{16}{11}{16}{24};}
         \end{tikzpicture}
     }{
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入一个整数 $n$ ($1 \le n \le 100$)，接下来输入 $n$ 行 $n$ 列的整数方阵，求这个整数方阵副对角线（右上到左下）元素的和。
+                \item 输入一个整数 $n$ ($1 \le n \le 100$)，接下来输入 $n$ 行 $n$ 列的整数方阵 $a$，其中 $-10^9 \le a_{i,j} \le 10^9$。求整数方阵中副对角线（右上到左下）元素的和。
 
                 \item 样例输入
 
@@ -614,48 +621,52 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 11.9：查询指定学生的成绩}
+    \frametitle{例 11.8：查询指定学生的成绩}
 
     \alt<2-3>{
         \alt<2>{
-            \begin{columns}[onlytextwidth]
-                \column{.38\textwidth}
-                \begin{itemize}
-                    \item 样例输入
 
-                        \lstinline|2 2 4|\\
-                        \lstinline|88 85 86 98|\\
-                        \lstinline|70 93 96 90|\\
-                        \lstinline|78 87 89 90|\\
-                        \lstinline|66 99 76 60|\\
-                        \lstinline|1 2 3|\\
+            \begin{exampleblock}{编程题}
+                \begin{columns}[onlytextwidth]
+                    \column{.38\textwidth}
+                    \begin{itemize}
+                        \item 样例输入
+    
+                            \lstinline|2 2 4|\\
+                            \lstinline|88 85 86 98|\\
+                            \lstinline|70 93 96 90|\\
+                            \lstinline|78 87 89 90|\\
+                            \lstinline|66 99 76 60|\\
+                            \lstinline|1 2 3|\\
+    
+                        \item 样例输出
+    
+                            \lstinline|96|
+                    \end{itemize}
 
-                    \item 样例输出
+                    \column{.02\textwidth}
 
-                        \lstinline|96|
-                \end{itemize}
+                    \column{.5\textwidth}
+                    \begin{tabular}{ccccc}
+                        \toprule
+                        $1$ 年级 & 1  & 2 & 3 & 4 \\
+                        \midrule
+                        $1$ 班 & 88 & 85 & 86 & 98   \\
+                        $2$ 班 & 70 & 93 & 96 & 90    \\
+                        \bottomrule
+                    \end{tabular}
+    
+                    \begin{tabular}{ccccc}
+                        \toprule
+                        $2$ 年级 & 1  & 2 & 3 & 4 \\
+                        \midrule
+                        $1$ 班 & 78 & 87 & 89 & 90   \\
+                        $2$ 班 & 66 & 99 & 76 & 60    \\
+                        \bottomrule
+                    \end{tabular}
+                \end{columns}
 
-                \column{.02\textwidth}
-
-                \column{.5\textwidth}
-                \begin{tabular}{ccccc}
-                    \toprule
-                    $1$ 年级 & 1  & 2 & 3 & 4 \\
-                    \midrule
-                    $1$ 班 & 88 & 85 & 86 & 98   \\
-                    $2$ 班 & 70 & 93 & 96 & 90    \\
-                    \bottomrule
-                \end{tabular}
-
-                \begin{tabular}{ccccc}
-                    \toprule
-                    $2$ 年级 & 1  & 2 & 3 & 4 \\
-                    \midrule
-                    $1$ 班 & 78 & 87 & 89 & 90   \\
-                    $2$ 班 & 66 & 99 & 76 & 60    \\
-                    \bottomrule
-                \end{tabular}
-            \end{columns}
+            \end{exampleblock}
         }{
             \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=array3_query]{ch11/array3_query.cc}
         }
@@ -663,8 +674,9 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入三个整数 $n, m, h$ ($1 \le n, m, h \le 100$)，表示有 $n$ 个年级，每个年级有 $m$ 个班，每个班有 $h$ 名学生。现用一个三维整数数组登记整个学校的学生成绩，输入这个三维数组的元素（最高成绩不超过 $100$）。\\
-                    最后输入三个整数 $x, y, z$  ($1 \le x \le n, 1 \le y \le m, 1 \le z \le h$)，求这名 $x$ 年级 $y$ 班 $z$ 号学生的成绩。
+                \item 输入三个整数 $n, m, c$ ($1 \le n, m, c \le 100$)，表示有 $n$ 个年级，每个年级有 $m$ 个班，每个班有 $c$ 名学生。\\
+                    现用一个三维整数数组登记整个学校的学生成绩，输入这个三维数组的元素，其中元素数值不超过 $100$。\\
+                    最后输入三个整数 $x, y, z$  ($1 \le x \le n, 1 \le y \le m, 1 \le z \le c$)，求这名 $x$ 年级 $y$ 班 $z$ 号学生的成绩。
             \end{itemize}
 
             \begin{columns}[onlytextwidth,T]
@@ -695,7 +707,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 11.10：查询学生成绩的最高分}
+    \frametitle{例 11.9：查询学生成绩的最高分}
 
     \alt<2-3>{
         \alt<2>{
@@ -707,8 +719,9 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入三个整数 $n, m, h$ ($1 \le n, m, h \le 100$)，表示有 $n$ 个年级，每个年级有 $m$ 个班，每个班有 $h$ 名学生。现用一个三维整数数组登记整个学校的学生成绩，输入这个三维数组的元素（最高成绩不超过 $100$）。\\
-                    输出全校学生成绩的最高分。
+                \item 输入三个整数 $n, m, c$ ($1 \le n, m, c \le 100$)，表示有 $n$ 个年级，每个年级有 $m$ 个班，每个班有 $c$ 名学生。\\
+                    现用一个三维整数数组登记整个学校的学生成绩，输入这个三维数组的元素，其中元素数值不超过 $100$。\\
+                    求全校学生成绩的最高分。
             \end{itemize}
 
             \begin{columns}[onlytextwidth,T]
@@ -743,15 +756,18 @@
     \frametitle{总结}
 
     \begin{itemize}
-        \item 二维数组的声明和遍历
-        \item 数组的应用
+        \item<1-> 二维数组的声明、初始化
+        \item<1-> 二维数组的遍历、部分遍历
+        \item<1-> 二维数组的应用
             \begin{itemize}
-                \item 二维数组求和
-                \item 二维数组求最值及其下标
+                \item<1-> 二维数组求和
+                \item<1-> 二维数组求最值及其下标
+                \item<1-> 方阵的正对角线、副对角线
             \end{itemize}
-        \item 多维数组的声明和遍历
+        \item<2-> 多维数组的声明、遍历
+        \item<2-> 多维数组的应用
             \begin{itemize}
-                \item 多维数组求最值
+                \item<2-> 多维数组求最值
             \end{itemize}
     \end{itemize}
 \end{frame}

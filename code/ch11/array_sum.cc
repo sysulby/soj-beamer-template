@@ -10,7 +10,7 @@ int main() {
       cin >> a[i][j];
     }
   }
-  int sum = 0;
+  long long sum = 0;
   for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= m; j++) {
       sum += a[i][j];
