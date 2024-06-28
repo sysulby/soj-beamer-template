@@ -1,6 +1,6 @@
 %------------------------------------------------------------
-\title[14 - 函数Ⅱ]
-{14 - 函数Ⅱ}
+\title[02 - 函数Ⅱ]
+{02 - 函数Ⅱ}
 
 \subtitle{C++ 程序设计进阶}
 
@@ -31,9 +31,12 @@
 
 %------------------------------------------------------------
 
-% 复习回顾
+% todo:复习回顾
 
 %------------------------------------------------------------
+
+
+\section{模块化编程}
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
@@ -161,7 +164,7 @@
                         \begin{columns}[onlytextwidth,T]
                             \column{.7\textwidth}
                             \begin{itemize}
-                        1        \item 三角形的面积可以套用海伦公式求解
+                                \item 三角形的面积可以套用海伦公式求解
                             \end{itemize}
 
                             \column{.3\textwidth}
@@ -232,23 +235,23 @@
 \begin{frame}[fragile]
     \frametitle{例 2.2：质数判断}
 
-    \alt<6-8> {
+    \alt<7-9> {
         \begin{columns}[onlytextwidth,T]
             \column{.7\textwidth}
             \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=isPrime_2]{ch14/isPrime_2.cc}
 
             \begin{tikzpicture}[remember picture, overlay]
-                \uncover<8>{\redbox{isPrime_2}{9}{14}{9}{14} node[right,xshift=.5cm,yshift=-0.7cm]{如果 $n$ 是 \lstinline|long long| 类型，怎么修改？};}
+                \uncover<9>{\redbox{isPrime_2}{9}{12}{9}{12} node[right,xshift=.5cm,yshift=-0.7cm]{如果 $n$ 是 \lstinline|long long| 类型，怎么修改？};}
             \end{tikzpicture}
 
             \column{.3\textwidth}
             \begin{itemize}
-                \item<7-> 时间复杂度 $O(\sqrt{n})$
+                \item<8-> 时间复杂度 $O(\sqrt{n})$
             \end{itemize}
         \end{columns}
 
     } {
-    \alt<5>{
+    \alt<6>{
         \begin{exampleblock}{质数判定的优化}
             \begin{itemize}
                 \item 观察一个数字除了 $1$ 和它本身之外的因数，例如 $36$
@@ -264,15 +267,16 @@
             \end{itemize}
         \end{exampleblock}
     } {
-        \alt<3-4>{
+        \alt<3-5>{
             \begin{itemize}
                 \item 判断 $n$ 有没有 $2 \sim n - 1$ 范围的因数
             \end{itemize}
 
-            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=isPrime_1]{ch14/isPrime_1.cc}
+            \only<3-4>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=isPrime_1]{ch14/isPrime_1.cc}}
+            \only<5>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=isPrime_1_2]{ch14/isPrime_1_2.cc}}
 
             \begin{tikzpicture}[remember picture, overlay]
-                \uncover<4>{\redbox{isPrime_1}{2}{5}{2}{30} node[right,xshift=.5cm,yshift=.2cm]{是否正确？};}
+                \uncover<4>{\redbox{isPrime_1}{2}{3}{2}{29} node[right,xshift=.5cm,yshift=.2cm]{是否正确？};}
             \end{tikzpicture}
         } {
             \alt<2>{
@@ -319,137 +323,361 @@
 \end{frame}
 %------------------------------------------------------------
 
-% 变量的作用域
+\section{局部变量和全局变量}
+
 %------------------------------------------------------------
 \begin{frame}[fragile]
     \frametitle{变量的作用域}
 
         \begin{itemize}
-            \item<1-> 代码中的变量并不是在任何位置都可以使用
-            \item<2-> 一个变量可用的代码范围就是这个变量的作用域
-            \item<3-> 根据作用域的不同，可以把变量分为局部变量和全局变量
+            \item 代码中的变量并不是在任何位置都可以使用
+            \item 一个变量可用的代码范围就是这个变量的作用域
+            \item 根据作用域的不同，可以把变量分为局部变量和全局变量
         \end{itemize}
     
 \end{frame}
 %------------------------------------------------------------
 
-% 局部变量的定义
 %------------------------------------------------------------
 \begin{frame}[fragile]
     \frametitle{局部变量}
 
+    \alt<6->{
         \begin{itemize}
-            \item 声明在函数内部的变量
-            \item 作用域：从变量的声明开始到包含它的块结束
-
-            \begin{itemize}
-                \item 块是用一对花括号括起来的代码区域
-                \item 循环、分支语句（包含条件语句）视作一个块
-                \item 函数（包含参数列表）也视作一个块
-            \end{itemize}
-            
+            \item 函数（包含参数列表）也视作一个块
         \end{itemize}
+
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=local_var_2]{ch14/local_var_2.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<7>{\redbox{local_var_2}{1}{1}{5}{39};}
+        \end{tikzpicture}
+
+        \begin{itemize}
+            \item<7> 这是一个“块”，变量 \lstinline|n| 只能在这个“块”中使用
+        \end{itemize}
+
+    } {
+        \alt<2-5> {
+            \begin{columns}[onlytextwidth,T]
+                \column{.5\textwidth}
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=local_var_1]{ch14/local_var_1.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<2>{\redbox{local_var_1}{3}{1}{15}{24};}
+                    \uncover<3>{\redbox{local_var_1}{5}{3}{8}{13};}
+                    \uncover<4>{\redbox{local_var_1}{9}{3}{11}{23};}
+                    \uncover<5>{\redbox{local_var_1}{12}{3}{12}{23};}
+                \end{tikzpicture}
+    
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item <2> 这是一个“块”，变量 \lstinline|n| 只能在这个“块”中使用
+                    \item <3> 这是一个“块”，变量 \lstinline|a| 只能在这个“块”中使用
+                    \item <4> 这是一个“块”，变量 \lstinline|i| 只能在这个“块”中使用
+                    \item <5> {\textcolor{red}{编译错误：此处的 \lstinline|i| 未声明}}
+                \end{itemize}
+            \end{columns}
+        }{
+            \begin{itemize}
+                \item 声明在函数内部的变量
+                \item 作用域：从变量的声明开始到包含它的块结束
+    
+                \begin{itemize}
+                    \item 块是用一对大括号括起来的代码区域
+                    \item 循环、分支语句（包含条件语句）视作一个块
+                    \item 函数（包含参数列表）也视作一个块
+                \end{itemize}
+                
+            \end{itemize}
+        }
+    }
     
 \end{frame}
 %------------------------------------------------------------
 
-% 局部变量的动画讲解
-%------------------------------------------------------------
-
-%------------------------------------------------------------
-
-% 全局变量的定义
 %------------------------------------------------------------
 \begin{frame}[fragile]
     \frametitle{全局变量}
 
+    \alt<5-6>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=global_var_2]{ch14/global_var_2.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<6>{\redbox{global_var_2}{11}{1}{12}{36};}
+        \end{tikzpicture}
+
         \begin{itemize}
-            \item 定义在所有函数外部、没有被任何花括号包含起来的变量
-            \item 作用域：从变量的声明开始一直到代码结束，作用域中任意的函数都可以使用该变量
+            \item<6> 能成功编译吗？
         \end{itemize}
-    
+    } {
+        \alt<2-4> {
+            \begin{columns}[onlytextwidth,T]
+                \column{.6\textwidth}
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=global_var_1]{ch14/global_var_1.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<2>{\redbox{global_var_1}{8}{1}{8}{36};}
+                    \uncover<3>{\redbox{global_var_1}{9}{1}{9}{36};}
+                    \uncover<4>{\redbox{global_var_1}{10}{1}{10}{36};}
+                \end{tikzpicture}
+
+                \column{.4\textwidth}
+                \begin{itemize}
+                    \item 输出\\
+                    
+                        \uncover<3->{\lstinline|main(): 1|\\}
+                        \uncover<4->{\lstinline|f(): 1|}
+
+                \end{itemize}
+            \end{columns}
+        } {
+            \begin{itemize}
+                \item 定义在所有函数外部、没有被任何大括号包含起来的变量
+                \item 作用域：从变量的声明开始一直到代码结束，作用域中任意的函数都可以使用该变量
+            \end{itemize}
+        }
+    }
+        
 \end{frame}
 %------------------------------------------------------------
 
-% 全局变量的动画讲解
-%------------------------------------------------------------
+\section{同名变量和引用变量}
 
-%------------------------------------------------------------
-
-% 同名变量的定义
 %------------------------------------------------------------
 \begin{frame}[fragile]
     \frametitle{同名变量}
 
+    \alt<9> {
         \begin{itemize}
-            \item 在同一个“块”里面声明的同名变量冲突
-            \item 在不同“块” 里面声明的同名变量不冲突
-
-            \begin{itemize}
-                \item 完全覆盖
-                \item 完全不覆盖
-            \end{itemize}
-            
+            \item 函数：输出 $1 \sim n$ 的和
         \end{itemize}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=get_sum]{ch14/get_sum.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<9>{\redbox{get_sum}{3}{12}{3}{16};}
+            \uncover<9>{\redbox{get_sum}{12}{3}{12}{7};}
+        \end{tikzpicture}
+    } {
+    \alt<8> {
+        \begin{itemize}
+            \item 函数：输出 $n$ 行 \lstinline|hello world|
+        \end{itemize}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=say_hello]{ch14/say_hello.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<8>{\redbox{say_hello}{3}{15}{3}{19};}
+            \uncover<8>{\redbox{say_hello}{10}{3}{10}{7};}
+        \end{tikzpicture}
+    } {
+        \alt<6-7> {
+            \begin{itemize}
+                \item 查询第一个 \lstinline|x| 所在位置
+            \end{itemize}
+
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=search_x]{ch14/search_x.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<6->{\redbox{search_x}{7}{3}{7}{44};}
+                    \uncover<7>{\redbox{search_x}{10}{3}{15}{32} node[below, xshift=0cm, yshift=0cm]{两个“块”完全不重叠, 变量 \lstinline|i| 互不影响};}
+                \end{tikzpicture}
+        } {
+            \alt<2-5> {
+                \begin{itemize}
+                    \item 输出 $3$ 行 $4$ 列的星号 \lstinline|*|
+                \end{itemize}
+
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=star]{ch14/star.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<3->{\redbox{star}{1}{1}{6}{33};}
+                    \uncover<4->{\redbox{star}{2}{3}{4}{32};}
+                \end{tikzpicture}
+
+                \begin{itemize}
+                    \item<4-> 第一层 \lstinline|for| 循环完全覆盖第二层 \lstinline|for| 循环
+                    \item<5-> \lstinline|i| 的声明屏蔽了外部的 \lstinline|i|, 若此时使用 \lstinline|i|, 
+                            则使用的是内部的 \lstinline|i| 容易混淆两个 \lstinline|i| 的使用
+                \end{itemize}
+            } {
+                \begin{itemize}
+                    \item 在同一个“块”里面声明的同名变量冲突
+                    \item 在不同“块” 里面声明的同名变量不冲突
+
+                    \begin{itemize}
+                        \item 完全覆盖
+                        \item 完全不覆盖
+                    \end{itemize}
+                    
+                \end{itemize}
+            }
+        }
+    }
+    }
     
 \end{frame}
 %------------------------------------------------------------
 
-% 同名变量的动画讲解
-%------------------------------------------------------------
-
-%------------------------------------------------------------
-
-% 引用变量
 %------------------------------------------------------------
 \begin{frame}[fragile]
     \frametitle{引用变量}
 
-    \alt<2-3>{
-        \begin{itemize}
-            \item<2-> 一般变量
+    \alt<4-9> {
+        \begin{columns}[onlytextwidth,T]
+            \column{.5\textwidth}
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=refer_var]{ch14/refer_var.cc}
+            \begin{tikzpicture}[remember picture, overlay]
+                \uncover<5>{\redbox{refer_var}{4}{3}{4}{20};}
+                \uncover<6>{\redbox{refer_var}{5}{3}{5}{20};}
+                \uncover<7>{\redbox{refer_var}{6}{3}{6}{20};}
+                \uncover<8>{\redbox{refer_var}{7}{3}{7}{20};}
+                \uncover<9>{\redbox{refer_var}{8}{3}{8}{20};}
+            \end{tikzpicture}
 
+            \column{.5\textwidth}
             \begin{itemize}
-                \item 一般变量在声明时，会被分配一个独立的内存空间
+                \item 内存
             \end{itemize}
-            
-            \item<3-> 引用变量
+
+            \begin{tikzpicture}
+                [nodes in empty cells, nodes={minimum width=1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+
+                \only<4>{
+                    \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                        \\
+                        \lstinline|...| \& \& \& \& \lstinline|...| \\
+                    };
+                }
+                \only<5>{
+                    \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                        \\
+                        \lstinline|...|   \& \& \lstinline|1|   \& \& \lstinline|...| \\
+                    };
+                    \node (x) [rectangle, minimum height=.5cm, text centered, text width=2cm, draw=black, font=\footnotesize, below of=A, yshift=-.5cm] {我的名字是 \lstinline|x|};
+                    \draw [arrow] (x) -- (A);
+                }
+                \only<6>{
+                    \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                        \\
+                        \lstinline|...|   \& \& \lstinline|1|   \& \& \lstinline|...| \\
+                    };
+                    \node (x) [rectangle, minimum height=.5cm, text centered, text width=2cm, draw=black, font=\footnotesize, below of=A, xshift=-1.5cm, yshift=-.5cm] {我的名字是 \lstinline|x|};
+                    \node (y) [rectangle, minimum height=.5cm, text centered, text width=2.5cm, draw=black, font=\footnotesize, below of=A, xshift=1.5cm, yshift=-.5cm] {我多了个名字 \lstinline|y|};
+                    \draw [arrow] (x) -- (A.south);
+                    \draw [arrow] (y) -- (A.south);
+                }
+                \only<7-9>{
+                    \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                        \\
+                        \lstinline|...|   \& \& \lstinline|2|   \& \& \lstinline|...| \\
+                    };
+                    \node (x) [rectangle, minimum height=.5cm, text centered, text width=2cm, draw=black, font=\footnotesize, below of=A, xshift=-1.5cm, yshift=-.5cm] {我的名字是 \lstinline|x|};
+                    \node (y) [rectangle, minimum height=.5cm, text centered, text width=2.5cm, draw=black, font=\footnotesize, below of=A, xshift=1.5cm, yshift=-.5cm] {我多了个名字 \lstinline|y|};
+                    \draw [arrow] (x) -- (A.south);
+                    \draw [arrow] (y) -- (A.south);
+                }
+                
+            \end{tikzpicture}
 
             \begin{itemize}
-                \item 引用变量是其他变量的别名，与其他变量共用同一块内存空间
-                \item 在变量类型和变量名之间加一个 & ，表示该变量是一个引用
+                \item<8-> 输出\\
+                    \uncover<8->{\lstinline|2|\\}
+                    \uncover<9->{\lstinline|2|}
+            \end{itemize}
+
+        \end{columns}
+    } {
+        \alt<2-3>{
+            \begin{itemize}
+                \item<2-> 一般变量
+
                 \begin{itemize}
-                    \item 变量类型 &引用变量名 = 被引用的变量名;
-                    \item 引用需要在声明的时候进行初始化，与一个固定的变量绑定
+                    \item 一般变量在声明时，会被分配一个独立的内存空间
                 \end{itemize}
-            \end{itemize}
-            
-        \end{itemize}    
-    }{
-        \begin{block}{}
-            \vspace{.5cm}
-            \begin{center}
-                两个变量可以用相同名称，\\
-                那么同一个变量可不可以有不同名称？
-            \end{center}
-            \vspace{.5cm}
-        \end{block}
+                
+                \item<3-> 引用变量
+
+                \begin{itemize}
+                    \item 引用变量是其他变量的别名，与其他变量共用同一块内存空间
+                    \item 在变量类型和变量名之间加一个 \lstinline|&|，表示该变量是一个引用
+
+                    \begin{itemize}
+                        \item \textbf{数据类型 \textcolor{red}{\lstinline|&|} 引用变量名 \lstinline|=| 被引用的变量名;}
+                        \item 引用需要在声明的时候进行初始化，与一个固定的变量绑定
+                    \end{itemize}
+
+                \end{itemize}
+                
+            \end{itemize}    
+        }{
+            \begin{block}{}
+                \vspace{.5cm}
+                \begin{center}
+                    两个变量可以用相同名称，\\
+                    那么同一个变量可不可以有不同名称？
+                \end{center}
+                \vspace{.5cm}
+            \end{block}
+        }
     }
+    
 \end{frame}
 %------------------------------------------------------------
 
-% 引用变量的动画讲解
-%------------------------------------------------------------
-
-%------------------------------------------------------------
-
-% 引用变量的应用
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{引用变量}
+    \frametitle{交换变量的值}
 
-    \alt<2-4>{
-        % 代码动画
+    \alt<2-7>{
+        \begin{columns}[onlytextwidth,T]
+            \column{.5\textwidth}
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=my_swap_1]{ch14/my_swap_1.cc}
+            \begin{tikzpicture}[remember picture, overlay]
+                \uncover<3>{\redbox{my_swap_1}{10}{3}{10}{28};}
+                \uncover<4-6>{\redbox{my_swap_1}{11}{3}{11}{28};}
+                \uncover<5>{\redbox{my_swap_1}{3}{1}{3}{28};}
+                \uncover<6>{\redbox{my_swap_1}{4}{3}{6}{28};}
+                \uncover<7>{\redbox{my_swap_1}{12}{3}{12}{33};}
+            \end{tikzpicture}
+
+            \column{.5\textwidth}
+            \begin{itemize}
+                \item 内存
+            \end{itemize}
+
+            \begin{tikzpicture}
+                [nodes in empty cells, nodes={minimum width=0.8cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+
+                \only<2>{
+                    \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                        \\
+                        \lstinline|...| \& \& \& \lstinline|...| \& \& \& \lstinline|...| \\
+                    };
+                }
+                \only<3-4>{
+                    \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                        \& \lstinline|x|\& \lstinline|y| \\
+                        \lstinline|...| \& \lstinline|1|\& \lstinline|2| \& \lstinline|...| \& \& \& \lstinline|...| \\
+                    };
+                }
+                \only<5>{
+                    \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                        \& \lstinline|x|\& \lstinline|y| \&                 \& \lstinline|a| \& \lstinline|b| \\
+                        \lstinline|...| \& \lstinline|1|\& \lstinline|2| \& \lstinline|...| \& \lstinline|1| \& \lstinline|2| \& \lstinline|...| \\
+                    };
+                }
+                \only<6>{
+                    \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                        \& \lstinline|x|\& \lstinline|y| \&                 \& \lstinline|a| \& \lstinline|b| \\
+                        \lstinline|...| \& \lstinline|1|\& \lstinline|2| \& \lstinline|...| \& \lstinline|2| \& \lstinline|1| \& \lstinline|...| \\
+                    };
+                }
+                \only<7>{
+                    \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                        \& \lstinline|x|\& \lstinline|y| \& \& \& \\
+                        \lstinline|...| \& \lstinline|1|\& \lstinline|2| \& \lstinline|...| \& \lstinline|2| \& \lstinline|1| \& \lstinline|...| \\
+                    };
+                }
+            \end{tikzpicture}
+
+            \begin{itemize}
+                \item<7> 输出\\
+                    \uncover<7>{\lstinline|1 2|}
+            \end{itemize}
+
+        \end{columns}
     }{
         \begin{block}{}
             \vspace{.5cm}
@@ -462,40 +690,11 @@
 \end{frame}
 %------------------------------------------------------------
 
-% 参数传递的定义
 %------------------------------------------------------------
 \begin{frame}[fragile]
     \frametitle{参数传递}
 
-        \begin{itemize}
-            \item 按值传递
-
-            \begin{itemize}
-                \item 若参数声明为一般形式，参数传递时只是将实参的数值赋值给形参，函数不能访问实参本身
-            \end{itemize}
-            
-            \item 按引用传递
-
-            \begin{itemize}
-                \item 引用变量是其他变量的别名，与其他变量共用同一块内存空间
-                \item 将形式参数声明为引用类型，可以访问和修改实参本身
-            \end{itemize}
-            
-        \end{itemize}
-    
-\end{frame}
-%------------------------------------------------------------
-
-% 交换变量的值动画讲解
-%------------------------------------------------------------
-
-%------------------------------------------------------------
-
-% 参数传递的总结
-%------------------------------------------------------------
-\begin{frame}[fragile]
-    \frametitle{参数传递}
-
+    \alt<8->{
         \begin{itemize}
             \item 按值传递
 
@@ -512,43 +711,271 @@
             \end{itemize}
             
         \end{itemize}
-    
+    }{
+        \alt<2-7>{
+            \begin{columns}[onlytextwidth,T]
+                \column{.6\textwidth}
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=my_swap_2]{ch14/my_swap_2.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<3>{\redbox{my_swap_2}{10}{3}{10}{27};}
+                    \uncover<4-6>{\redbox{my_swap_2}{11}{3}{11}{15};}
+                    \uncover<5>{\redbox{my_swap_2}{3}{1}{3}{27};}
+                    \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-my_swap_2-11-end) -- ++(8em, 0) |- node[left,yshift=-1.5cm,text width=2cm] {\lstinline|int &a = x; int &b = y;|}([shift={(2pt, .25em)}] pic cs:line-my_swap_2-3-end);}
+                    \uncover<6>{\redbox{my_swap_2}{4}{3}{6}{15};}
+                    \uncover<7>{\redbox{my_swap_2}{12}{3}{12}{33};}
+                \end{tikzpicture}
+
+                \column{.4\textwidth}
+                \begin{itemize}
+                    \item 内存
+                \end{itemize}
+
+                \begin{tikzpicture}
+                    [nodes in empty cells, nodes={minimum width=0.8cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+
+                    \only<2>{
+                        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                            \\
+                            \lstinline|...| \& \& \& \lstinline|...| \\
+                        };
+                    }
+                    \only<3-4>{
+                        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                            \& \lstinline|x|\& \lstinline|y| \\
+                            \lstinline|...| \& \lstinline|1|\& \lstinline|2| \& \lstinline|...| \\
+                        };
+                    }
+                    \only<5>{
+                        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                            \& \lstinline|x|\& \lstinline|y| \\
+                            \lstinline|...| \& \lstinline|1|\& \lstinline|2| \& \lstinline|...| \\
+                        };
+                        \node (a) [rectangle, minimum height=.5cm, text centered, text width=0.7cm, draw=white, font=\footnotesize, below of=A, xshift=-.4cm] {\textcolor{black}{\lstinline|a|}};
+                        \node (b) [rectangle, minimum height=.5cm, text centered, text width=0.7cm, draw=white, font=\footnotesize, below of=A, xshift=.4cm] {\textcolor{black}{\lstinline|b|}};
+                    }
+                    \only<6-7>{
+                        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                                            \& \lstinline|x|\& \lstinline|y| \\
+                            \lstinline|...| \& \lstinline|2|\& \lstinline|1| \& \lstinline|...| \\
+                        };
+                        \node (a) [rectangle, minimum height=.5cm, text centered, text width=0.7cm, draw=white, font=\footnotesize, below of=A, xshift=-.4cm] {\textcolor{black}{\lstinline|a|}};
+                        \node (b) [rectangle, minimum height=.5cm, text centered, text width=0.7cm, draw=white, font=\footnotesize, below of=A, xshift=.4cm] {\textcolor{black}{\lstinline|b|}};
+                    }
+                    
+                \end{tikzpicture}
+
+                \begin{itemize}
+                    \item<7> 输出\\
+                        \uncover<7>{\lstinline|2 1|}
+                \end{itemize}
+
+            \end{columns}
+        }{
+            \begin{itemize}
+                \item 按值传递
+
+                \begin{itemize}
+                    \item 若参数声明为一般形式，参数传递时只是将实参的数值赋值给形参，函数不能访问实参本身
+                \end{itemize}
+                
+                \item 按引用传递
+
+                \begin{itemize}
+                    \item 引用变量是其他变量的别名，与其他变量共用同一块内存空间
+                    \item 将形式参数声明为引用类型，可以访问和修改实参本身
+                \end{itemize}
+                
+            \end{itemize}
+        }
+    }
+        
 \end{frame}
 %------------------------------------------------------------
 
-% 数组传递
+\section{数组参数传递}
+
 %------------------------------------------------------------
 \begin{frame}[fragile]
     \frametitle{数组参数传递}
 
-    
-
-    \alt<2-4>{
+    \alt<5->{
         \begin{itemize}
-            \item<2-> 按值传递 ?
-
-            \begin{itemize}
-                \item 把实参数组所有元素复制到形参数组中，需要付出的时间和储存空间代价过大
-                \item C++ 不支持按值传递数组
-            \end{itemize}
+            \item 数组储存在一块连续的内存中
+            \item<6-> 内存中每个位置有个“编号”，即“内存地址”
             
-            \item 函数传递数组默认用类似按引用传递的方式
-
             \begin{itemize}
-                \item 形参格式：数据类型 数组名[ ]
-                \item 不需要使用引用传递
+                \item<5-> 通过数组名 \lstinline|a| 可以访问到这个数组的首地址
             \end{itemize}
+
+        \end{itemize}
+
+        \begin{tikzpicture}
+            [nodes in empty cells, nodes={minimum width=0.8cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \only<5-6>{
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \\
+                    \lstinline|...| \& \lstinline|a[0]| \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|...| \\
+                };
+            }
+            \uncover<7->{
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \\
+                    \lstinline|...| \& \textcolor{red}{\lstinline|a[0]|} \& \lstinline|a[1]| \& \lstinline|a[2]| \& \lstinline|a[3]| \& \lstinline|...| \\
+                };
+                \node (a) [rectangle, minimum height=.5cm, text centered, text width=7cm, draw=white, font=\footnotesize, above of=A, xshift=.5cm, yshift=-.5cm] {\textcolor{black}{输出数组名 \lstinline|a| 可以看到这块内存的“编号”}};
+            }
+        \end{tikzpicture}
+
+        \begin{itemize}   
+            \item<6-> 数组元素是通过首地址 + 偏移量来访问的
             
+            \begin{itemize}
+                \item<6-> \lstinline|a[1]| 储存在首地址往后偏移 $1$ 个位置，\lstinline|a[2]| 储存在首地址往后偏移 $2$ 个位置……
+            \end{itemize}
+
         \end{itemize}
     }{
-        \begin{block}{}
-            \vspace{.5cm}
-            \begin{center}   
-                参数是数组，应该按什么方式传递？
-            \end{center}
-            \vspace{.5cm}
-        \end{block}
+        \alt<2-4>{
+            \begin{itemize}
+                \item<2-> 按值传递?
+
+                \begin{itemize}
+                    \item<3-> 把实参数组所有元素复制到形参数组中，需要付出的时间和储存空间代价过大
+                    \item<3-> C++ 不支持按值传递数组
+                \end{itemize}
+                
+                \item<4> 函数传递数组默认用类似按引用传递的方式
+
+                \begin{itemize}
+                    \item 形参格式：\textbf{数据类型\quad 数组名[ ]}
+                    \item 不需要使用引用传递
+                \end{itemize}
+                
+            \end{itemize}
+        }{
+            \begin{block}{}
+                \vspace{.5cm}
+                \begin{center}   
+                    参数是数组，应该按什么方式传递？
+                \end{center}
+                \vspace{.5cm}
+            \end{block}
+        }
     }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{首地址与参数传递}
+    \begin{itemize}
+        \item 只要知道数组的首地址，就能访问到数组的每个元素
+        \item 参数传递首地址，被调用的函数就能访问原数组
+        
+        \begin{itemize}
+            \item 传递的是地址，效果类似按引用传递
+            \item 数组名的值表示数组首地址，实参填写数组名即可
+        \end{itemize}
+        
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 2.3：一维数组的输入输出}
+
+    \alt<2-4> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=arr_io]{ch14/arr_io.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3->{\redbox{arr_io}{5}{12}{5}{18} node[right,xshift=1.7cm,yshift=.3cm]{形参加 \lstinline|[ ]|};}
+            \uncover<4>{\redbox{arr_io}{18}{3}{19}{15} node[right,xshift=.3cm,yshift=.5cm]{注意实参写数组名即可，不能写成 \lstinline|A[110]|};}
+        \end{tikzpicture}
+
+    } {
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 实现一个 \lstinline|input| 函数，功能：将 $n$ 个整数存入一维数组中；\\
+                    实现一个 \lstinline|output| 函数，功能：顺序输出数组中的 $n$ 个整数，数字之间以空格间隔。\\
+                    请调用上述函数，输入 $n$ ($n \le 100$) 个整数，顺序输出这 $n$ 个整数。\\
+                \item 样例输入
+
+                    \lstinline|5|\\
+                    \lstinline|3 1 5 2 8|
+
+                \item 样例输出
+                
+                    \lstinline|3 1 5 2 8|
+
+            \end{itemize}
+        \end{exampleblock}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{小结：参数传递}
+
+    \begin{itemize}
+        \item<1-> 按值传递（被调用的函数不会影响实参）
+        
+        \begin{itemize}
+            \item 形参的声明：和声明普通变量一样
+        \end{itemize}
+
+        \item<2-> 按引用传递（被调用的函数能修改实参的值）
+        
+        \begin{itemize}
+            \item 形参的声明：变量名前面加 \lstinline|&|
+        \end{itemize}
+
+        \item<3-> 数组传递（传递首地址，效果类似按引用传递）
+        
+        \begin{itemize}
+            \item 形参的声明：数组名后面加 \lstinline|[]|
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+% ------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+    \begin{itemize}
+        \item<1-> 函数的设计
+        
+        \begin{itemize}
+            \item 模块化编程
+            \item 函数的优点和适用场景
+        \end{itemize}
+
+        \item<2-> 变量
+        
+        \begin{itemize}
+            \item 作用域
+            \item 同名变量
+            \item 引用变量
+        \end{itemize}
+
+        \item<3-> 函数参数传递
+        
+        \begin{itemize}
+            \item 按值传递
+            \item 按引用传递
+            \item 数组传递
+        \end{itemize}
+
+    \end{itemize}
 \end{frame}
 %------------------------------------------------------------
 
