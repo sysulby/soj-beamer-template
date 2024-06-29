@@ -847,7 +847,7 @@
                 \item<4> 函数传递数组默认用类似按引用传递的方式
 
                 \begin{itemize}
-                    \item 形参格式：\textbf{数据类型\quad 数组名[ ]}
+                    \item 形参格式：\textbf{数据类型\quad 数组名[]}
                     \item 不需要使用引用传递
                 \end{itemize}
                 
@@ -891,7 +891,7 @@
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=arr_io]{ch14/arr_io.cc}
 
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<3->{\redbox{arr_io}{5}{12}{5}{18} node[right,xshift=1.7cm,yshift=.3cm]{形参加 \lstinline|[ ]|};}
+            \uncover<3->{\redbox{arr_io}{5}{12}{5}{18} node[right,xshift=1.7cm,yshift=.3cm]{形参加 \lstinline|[]|};}
             \uncover<4>{\redbox{arr_io}{18}{3}{19}{15} node[right,xshift=.3cm,yshift=.5cm]{注意实参写数组名即可，不能写成 \lstinline|A[110]|};}
         \end{tikzpicture}
 
