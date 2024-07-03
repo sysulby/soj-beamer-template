@@ -64,7 +64,7 @@
             \column{.55\textwidth}
             \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=printNHelloWorld]{ch13/printNHelloWorld.cc}
             \begin{tikzpicture}[remember picture,overlay]
-                \uncover<3->{\redbox{printNHelloWorld}{12}{8}{12}{10} node[right,xshift=.2cm,yshift=-.2cm]{实际参数};}
+                \uncover<3->{\redbox{printNHelloWorld}{12}{9}{12}{9} node[right,xshift=.2cm]{实际参数};}
                 \uncover<2->{\redbox{printNHelloWorld}{5}{12}{5}{16} node[right,xshift=.2cm,yshift=.5cm]{形式参数};}
             \end{tikzpicture}
         \end{columns}
@@ -78,8 +78,7 @@
                 \item<5-> \lstinline|函数名(实参1, 实参2, …);|
                 \item<6-> 无参数时也要保留小括号
                 \item<7-> 注意参数顺序要对应
-                \item<8-> 求 $2$ 的 $10$ 次方：\lstinline|pow(10,2)|
-                \item<9-> \quad \quad \quad \textcolor{red}{错误，应为 \lstinline|pow(2,10)|}
+                \item<8-> 求 $2$ 的 $10$ 次方：\only<8>{\lstinline|pow(10,2)|} \uncover<9>{\redout{\lstinline|pow(10,2)|} \textcolor{red}{\lstinline|pow(2,10)|}}
             \end{itemize}
         \end{itemize}
     }
@@ -431,7 +430,7 @@
                 \column{.5\textwidth}
                 \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=local_var_1]{ch14/local_var_1.cc}
                 \begin{tikzpicture}[remember picture, overlay]
-                    \uncover<2>{\redbox{local_var_1}{3}{1}{15}{24};}
+                    \uncover<2>{\redbox{local_var_1}{3}{1}{14}{23};}
                     \uncover<3>{\redbox{local_var_1}{5}{3}{8}{13};}
                     \uncover<4>{\redbox{local_var_1}{9}{3}{11}{23};}
                     \uncover<5>{\redbox{local_var_1}{12}{3}{12}{23};}
@@ -470,7 +469,7 @@
     \alt<5-6>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=global_var_2]{ch14/global_var_2.cc}
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<6>{\redbox{global_var_2}{11}{1}{12}{36};}
+            \uncover<6>{\redbox{global_var_2}{14}{1}{15}{36};}
         \end{tikzpicture}
 
         \begin{itemize}
@@ -482,9 +481,9 @@
                 \column{.6\textwidth}
                 \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=global_var_1]{ch14/global_var_1.cc}
                 \begin{tikzpicture}[remember picture, overlay]
-                    \uncover<2>{\redbox{global_var_1}{8}{1}{8}{36};}
-                    \uncover<3>{\redbox{global_var_1}{9}{1}{9}{36};}
-                    \uncover<4>{\redbox{global_var_1}{10}{1}{10}{36};}
+                    \uncover<2>{\redbox{global_var_1}{11}{1}{11}{36};}
+                    \uncover<3>{\redbox{global_var_1}{12}{1}{12}{36};}
+                    \uncover<4>{\redbox{global_var_1}{13}{1}{13}{36};}
                 \end{tikzpicture}
 
                 \column{.4\textwidth}
@@ -529,8 +528,8 @@
         \end{itemize}
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=say_hello]{ch14/say_hello.cc}
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<8>{\redbox{say_hello}{3}{15}{3}{19};}
-            \uncover<8>{\redbox{say_hello}{10}{3}{10}{7};}
+            \uncover<8>{\redbox{say_hello}{5}{15}{5}{19};}
+            \uncover<8>{\redbox{say_hello}{12}{3}{12}{7};}
         \end{tikzpicture}
     } {
         \alt<6-7> {
@@ -540,8 +539,8 @@
 
             \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=search_x]{ch14/search_x.cc}
                 \begin{tikzpicture}[remember picture, overlay]
-                    \uncover<6->{\redbox{search_x}{7}{3}{7}{44};}
-                    \uncover<7>{\redbox{search_x}{10}{3}{15}{32} node[below, xshift=0cm, yshift=0cm]{两个“块”完全不重叠, 变量 \lstinline|i| 互不影响};}
+                    \uncover<6->{\redbox{search_x}{10}{3}{10}{44};}
+                    \uncover<7>{\redbox{search_x}{13}{3}{18}{32} node[below, xshift=0cm, yshift=0cm]{两个“块”完全不重叠, 变量 \lstinline|i| 互不影响};}
                 \end{tikzpicture}
         } {
             \alt<2-5> {
@@ -588,11 +587,11 @@
             \column{.5\textwidth}
             \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=refer_var]{ch14/refer_var.cc}
             \begin{tikzpicture}[remember picture, overlay]
-                \uncover<5>{\redbox{refer_var}{4}{3}{4}{20};}
-                \uncover<6>{\redbox{refer_var}{5}{3}{5}{20};}
-                \uncover<7>{\redbox{refer_var}{6}{3}{6}{20};}
-                \uncover<8>{\redbox{refer_var}{7}{3}{7}{20};}
-                \uncover<9>{\redbox{refer_var}{8}{3}{8}{20};}
+                \uncover<5>{\redbox{refer_var}{6}{3}{6}{20};}
+                \uncover<6>{\redbox{refer_var}{7}{3}{7}{20};}
+                \uncover<7>{\redbox{refer_var}{8}{3}{8}{20};}
+                \uncover<8>{\redbox{refer_var}{9}{3}{9}{20};}
+                \uncover<9>{\redbox{refer_var}{10}{3}{10}{20};}
             \end{tikzpicture}
 
             \column{.5\textwidth}
@@ -960,8 +959,8 @@
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=arr_io]{ch14/arr_io.cc}
 
         \begin{tikzpicture}[remember picture, overlay]
-            \uncover<3->{\redbox{arr_io}{5}{12}{5}{18} node[right,xshift=1.7cm,yshift=.3cm]{形参加 \lstinline|[]|};}
-            \uncover<4>{\redbox{arr_io}{18}{3}{19}{15} node[right,xshift=.3cm,yshift=.5cm]{注意实参写数组名即可，不能写成 \lstinline|A[110]|};}
+            \uncover<3->{\redbox{arr_io}{4}{12}{4}{18} node[right,xshift=1.7cm,yshift=.3cm]{形参加 \lstinline|[]|};}
+            \uncover<4>{\redbox{arr_io}{19}{3}{20}{15} node[right,xshift=.3cm,yshift=.5cm]{注意实参写数组名即可，不能写成 \lstinline|A[110]|};}
         \end{tikzpicture}
 
     } {

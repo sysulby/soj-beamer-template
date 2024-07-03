@@ -10,6 +10,5 @@ int main() {
   int x = 1, y = 2;
   mySwap(x, y);
   cout << x << " " << y << endl;
-
   return 0;
 }

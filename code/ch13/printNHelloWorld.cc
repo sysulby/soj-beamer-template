@@ -2,15 +2,14 @@
 
 using namespace std;
 
-void sayHello(int n) {
+void print(int n) {
   for (int i = 1; i <= n; i++) {
-    cout << "hello, world" << endl;
+    cout << "hello world" << endl;
   }
 }
 
 int main() {
-  int n;
-  cin >> n;
-  sayHello(n);
+  print(5);
+
   return 0;
 }
