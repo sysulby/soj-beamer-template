@@ -12,6 +12,5 @@ int main() {
   int n;
   cin >> n;
   cout << getSum(n) << endl;
-
-    return 0;
+  return 0;
 }

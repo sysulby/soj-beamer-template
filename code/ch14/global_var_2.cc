@@ -1,6 +1,9 @@
-// #include ...
+#include <iostream>
+
+using namespace std;
 
 int a = 1;
+
 void f() {
   cout << "f(): " << a << endl;
 }
@@ -10,6 +13,5 @@ int main() {
   f();
   int a = 2;
   cout << "main(): " << a << endl;
-
   return 0;
 }

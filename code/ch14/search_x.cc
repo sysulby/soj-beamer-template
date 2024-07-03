@@ -1,6 +1,9 @@
-// #include ...
+#include <iostream>
+
+using namespace std;
 
 int a[110];
+
 int main() {
   int n;
   cin >> n;
@@ -13,6 +16,5 @@ int main() {
       break;
     }
   }
-
   return 0;
 }
