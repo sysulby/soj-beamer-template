@@ -578,7 +578,7 @@
             \uncover<2>{\redbox{printNHelloWorld}{12}{3}{12}{11};}
             \uncover<2>{\redbox{printNHelloWorld}{5}{1}{5}{19};}
             \uncover<2>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-printNHelloWorld-12-end) -- ++(12em, 0) |- ([shift={(6pt, .25em)}] pic cs:line-printNHelloWorld-5-end);}
-            \uncover<3>{\redbox{printNHelloWorld}{12}{8}{12}{10} node[right,xshift=.2cm,yshift=-.2cm]{实际参数};}
+            \uncover<3>{\redbox{printNHelloWorld}{12}{9}{12}{9} node[right,xshift=.2cm,yshift=-.2cm]{实际参数};}
             \uncover<3>{\redbox{printNHelloWorld}{5}{12}{5}{16} node[right,xshift=.2cm,yshift=.5cm]{形式参数};}
             \uncover<3>{\draw[red, very thick, ->] ([shift={(-2pt, .25em)}] pic cs:line-printNHelloWorld-12-end) -- ++(12em, 0) |- node[right,yshift=-1cm] {n = 5}([shift={(0pt, .25em)}] pic cs:line-printNHelloWorld-5-end);}
         \end{tikzpicture}
@@ -654,7 +654,7 @@
         \begin{itemize}
             \item 贩卖机：选商品、付款 → 取货
             \item 计算机：输入数字和运算符 → 得到结果
-            \item \lstinline|getSum| 函数：输入 n → 得到 $1+2+3+\dots+n$ 的结果
+            \item \lstinline|getSum| 函数：输入 $n$ → 得到 $1+2+3+\dots+n$ 的结果
         \end{itemize}
 
         \begin{figure}
