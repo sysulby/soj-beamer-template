@@ -1,0 +1,1209 @@
+%------------------------------------------------------------
+\title[04 - 编码与位运算]
+{04 - 编码与位运算}
+
+\subtitle{C++ 程序设计进阶}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{进制}
+
+    \begin{itemize}[<+->]
+        \item 进制是人为定义的带进位的计数方法
+        \item $X$ 进制
+        \begin{itemize}
+           \item 逢 $X$ 进一，由 $X$ 个\textbf{数码}组成，分别代表 $0 \sim X-1$ 这 $X$ 个数字
+           \item 从低位到高位的权重依次是 $X^0, X^1, X^2, X^3, ...$
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{二进制转十进制}
+
+    \only<1-2> {
+        \begin{itemize}
+            \item 按权展开求和
+    
+            \alt<2> {
+                \begin{align*}
+                    (10011)_{2} &= 1 \times 2^4 + 0 \times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 1 \times 2^0\\
+                                &= 19
+                \end{align*}
+            } {
+                \begin{align*}
+                    (10011)_{2} &= ?\\
+                \end{align*}
+            }
+    
+        \end{itemize}
+    }
+    
+    \only<3> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=bin2dec]{ch15/bin2dec.cc}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{十进制转二进制}
+
+    \only<1> {
+        \begin{itemize}
+            \item 除二取余法
+            \begin{itemize}
+               \item 对一个数值 \lstinline|n| 在循环中重复 \lstinline|n \% 2, n /= 2;| 的操作，可以得到这个数值二进制逆序的每一位
+               \item 取余二除以二，逆序输出
+            \end{itemize}
+        \end{itemize}    
+    }
+    
+    \only<2-3> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=dec2bin]{ch15/dec2bin.cc}
+            
+        \begin{tikzpicture}[remember picture,overlay]
+            \uncover<3>{\redbox{dec2bin}{7}{3}{11}{21};}
+        \end{tikzpicture}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{编码}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数据储存单位}
+
+    \begin{itemize}
+        \item<1-> 比特 ($Bit$)
+        
+        \begin{itemize}
+            \item 比特是数据储存的最小单位
+            \item 二进制的一位，叫做 $1\ Bit$
+        \end{itemize}
+
+        \item<2-> 字节 ($Byte$)
+        
+        \begin{itemize}
+            \item 字节是用于计量存储容量的一种计量单位
+            \item $1\ Byte = 8\ Bit$
+        \end{itemize}
+
+    \end{itemize}
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{变量的数据范围}
+
+    \begin{itemize}
+        \item $1\ Bit$ 可以表示出 $0$ 和 $1$ 这 $2$ 个二进制码
+        \item $2\ Bit$ 可以表示出 $00,01,10,11$ 这 $4$ 个二进制码
+        \item $3\ Bit$ 可以表示出 $000,001,010,011 ,100,101,110,111$ 这 $8$ 个二进制码
+        \item $32\ Bit$ 可以表示多少个不同数字？
+        
+        \begin{itemize}
+            \item $2^{32}$ 个
+            \item 可表示的数的范围是 \only<1>{?}\only<2>{$0 \sim 2^{32} -1$}
+        \end{itemize}
+
+    \end{itemize}
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{编码}
+
+    \alt<2->{
+        \begin{itemize}
+            \item 编码是信息从一种形式或格式转换为另一种形式的过程，一般是指用预先规定的方法将文字、数字或其它对象编成数码
+            \item 整数编码的发展过程：原码、反码、补码
+            
+            \begin{itemize}
+                \item 原码、反码、补码的形式都是 \textbf{符号位 + 数值位}
+                \item 规定二进制最高位是符号位，$0$ 表示正，$1$ 表示负
+            \end{itemize}
+
+        \end{itemize}
+    } {
+        \begin{block}{}
+            \vspace{.5cm}
+            \begin{center}
+                负数如何转换为二进制码存储？
+            \end{center}
+            \vspace{.5cm}
+        \end{block}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{原码}
+
+    \alt<4->{
+        \begin{itemize}
+            \item 优点
+            
+            \begin{itemize}
+                \item 解决了负数的存储问题
+            \end{itemize}
+
+            \item 缺点
+            
+            \begin{itemize}
+                \item $0$ 存在两种形式: $(00000000)_2$ 和 $(10000000)_2$
+                \item 加减数值运算不符合竖式运算的规律
+                \item 例如：
+                    \begin{align*}
+                        (1)_{10} + (-1)_{10}&= (00000001)_2 + (10000001)_2 \\
+                                            &= (10000010)_2 \\
+                                            &= (-2)_{10}
+                    \end{align*}
+
+                    \uncover<5>{\textcolor{red}{\hspace{4cm} 运算结果是错误的}}
+            \end{itemize}
+
+        \end{itemize}
+    } {
+        \begin{itemize}
+            \item 原码表示法
+            
+            \begin{itemize}
+                \item 先写出数值的绝对值对应的二进制表示
+                \item 在数值位前面（最高位）增加一位符号位，$0$ 表示正，$1$ 表示负
+            \end{itemize}
+
+            \item $9$ 的 二进制表示：$1001$
+            \item $+9$ 的 $8$ 位原码为：$00001001$
+            \item $-9$ 的 $8$ 位原码为：$10001001$
+
+            \lstinputlisting[basicstyle=\ttfamily\normalsize,language=C++,name=ori_code]{ch16/ori_code.txt}
+            \begin{tikzpicture}[remember picture,overlay]
+                \uncover<2->{\redbox{ori_code}{1}{1}{2}{1} node[below,xshift=-.2cm]{符号位};}
+                \uncover<3->{\redbox{ori_code}{1}{3}{2}{11} node[below,xshift=-.2cm]{数值位};}
+            \end{tikzpicture}
+
+        \end{itemize}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{反码}
+
+    \only<1-5>{
+        \begin{itemize}
+            \item 反码表示法
+            
+            \begin{itemize}
+                \item 正数的反码与原码相同
+                \item 负数的反码与原码相比，符号位相同，其他位相反
+            \end{itemize}
+    
+            \item $+9$ 的 $8$ 位原码为：\uncover<2->{$00001001$}，反码为 \uncover<3->{$00001001$}
+            \item $-9$ 的 $8$ 位原码为：\uncover<4->{$10001001$}，反码为 \uncover<5->{$11110110$}
+    
+        \end{itemize}
+    }
+    
+    \only<6->{
+        \begin{itemize}
+            \item 优点
+            
+            \begin{itemize}
+                \item 加减数值运算部分符合竖式运算的规律
+                \item 例如：
+                    \begin{align*}
+                        (1)_{10} + (-1)_{10}&= (00000001)_2 + (11111110)_2 \\
+                                            &= (11111111)_2 \\
+                                            &= (-0)_{10}
+                    \end{align*}
+            \end{itemize}
+
+            \item 缺点
+            
+            \begin{itemize}
+                \item $0$ 存在两种形式: $(00000000)_2$ 和 $(11111111)_2$
+                \item 加减数值运算不完全符合竖式运算的规律
+            \end{itemize}
+
+        \end{itemize}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{反码计算的规律}
+    \begin{itemize}
+        \item 不符合竖式运算规律
+        
+        \begin{align*}
+            (5)_{10} + (-4)_{10}&= (00000101)_2 + (11111011)_2 \\
+                                &= (100000000)_2 \text{\space \textcolor{red}{9 位数，溢出}}\\
+                                &= (00000000)_2 \\
+                                &= (0)_{10}
+        \end{align*}
+
+        \begin{align*}
+            (4)_{10} + (-2)_{10}&= (00000100)_2 + (11111101)_2 \\
+                                &= (100000001)_2 \text{\space \textcolor{red}{9 位数，溢出}}\\
+                                &= (00000001)_2 \\
+                                &= (1)_{10}
+        \end{align*}
+
+        \begin{itemize}
+            \item 计算结果比正确答案少了 $1$
+            \item 负数在反码的基础上加 $1$，可解决这个问题
+        \end{itemize}
+
+    \end{itemize}
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{补码}
+
+    \alt<2->{
+        \begin{itemize}
+            \item 优点
+            
+            \begin{itemize}
+                \item 每个数值均有唯一一种表示
+                \item 加减数值运算符合竖式运算规律，可以将符号位和数值位统一处理
+            \end{itemize}
+
+            \item 在计算机系统中，通常使用补码来表示和存储整数
+            
+            \begin{itemize}
+                \item \lstinline|int| 数据范围是 $-2^{31} \sim 2^{31}-1$ 
+                \item \lstinline|long long| 数据范围是 $-2^{63} \sim 2^{63}-1$
+            \end{itemize}
+
+        \end{itemize}
+    }{
+        \begin{itemize}
+            \item 补码表示法
+    
+            \begin{itemize}
+                \item 正数的补码、反码、原码都相同
+                \item 负数的补码是它的反码 $+ 1$
+            \end{itemize}
+    
+            \item $+9$ 的 $8$ 位原码为 $00001001$，反码为 $00001001$，\\ \hspace{1.7cm} 补码为 $00001001$
+            \item $-9$ 的 $8$ 位原码为 $10001001$，反码为 $11110110$，\\ \hspace{1.7cm} 补码为 $11110111$
+            
+        \end{itemize}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{小结}
+
+    \begin{table}[!ht]
+        \centering
+        % \setlength{\tabcolsep}{6pt} % 设置单元格水平内边距为6pt（默认 6pt）
+        \renewcommand{\arraystretch}{1.5} % 设置垂直内边距为1.5倍默认行高
+        \begin{tabular}{p{1cm}p{4cm}p{4cm}}
+        \hline
+            \textbf{} & \textbf{正数} & \textbf{负数} \\ \hline
+            \textbf{原码} & 符号位为 $0$, 数值位为正常二进制表示 & 符号位为 $1$, 数值位为正常二进制表示 \\ 
+            \textbf{反码} & 与原码相同 & 数值位在原码的基础上取反 \\ 
+            \textbf{补码} & 与原码相同 & 数值位在反码的基础上 $+ 1$ \\ \hline
+        \end{tabular}
+    \end{table}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{随堂练习}
+
+    \begin{exampleblock}{选择题}
+
+        \begin{itemize}
+            \item 十进制数 $-14$ 的 $8$ 位二进制补码是
+            
+                \begin{tasks}
+                    \task[A.] $10001110$
+                    \task[B.] $11110001$
+                    \task[C.] \only<1>{$11110010$}\uncover<2->{\textcolor{red}{$11110010$}}
+                    \task[D.] $01110010$
+                \end{tasks}
+                
+            \item<3-> 解法
+            
+            \uncover<3->{
+                \begin{itemize}
+                    \item 原码：\uncover<4->{$10001110$ (注意负数符号位是 $1$)}
+                    \item 反码：\uncover<5->{$11110001$}
+                    \item 补码：\uncover<6->{$11110010$}
+                \end{itemize}
+            }
+            
+        \end{itemize}
+
+    \end{exampleblock}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{原码和补码的转换}
+
+    \only<1>{
+        \begin{block}{}
+            \vspace{.5cm}
+            \begin{center}
+                如何将给定的补码，转换回原码的形式？
+            \end{center}
+            \vspace{.5cm}
+        \end{block}
+    }
+
+    \only<2>{
+        \begin{itemize}
+            \item 正数的原码、反码、补码都相同
+
+            \item 负数原码转补码
+            
+            \begin{itemize}
+                \item 符号位不变、数值位取反（$0$ 变 $1$ ，$1$ 变 $0$）转为反码，反码 $+ 1$ 转为补码
+            \end{itemize}
+
+            \item 负数补码转原码
+            
+            \begin{itemize}
+                \item 补码 $- 1$ 转为反码，反码符号位不变、数值位取反转为原码
+            \end{itemize}
+
+        \end{itemize}    
+    }
+
+    \only<3-8>{
+        \begin{exampleblock}{选择题}
+
+            \begin{itemize}
+                \item 在 $8$ 位二进制补码中，$00101011$ 表示的数是十进制下的
+                    
+                    \begin{tasks}
+                        \task[A.] \only<3>{$43$}\uncover<4->{\textcolor{red}{$43$}}
+                        \task[B.] $85$
+                        \task[C.] $-43$
+                        \task[D.] $-84$
+                    \end{tasks}
+                    
+                \item<5-> 解法
+                
+                \uncover<5->{
+                    \begin{enumerate}
+                        \uncover<6->{\item[1.] 观察到符号位是 $0$ 所以是正数}
+                        \uncover<7->{\item[2.] 正数的原码、反码、补码一致}
+                        \uncover<8->{\item[3.] 将原码 $01010101$ 按权展开求和为十进制即可}
+                    \end{enumerate}
+                }
+                
+            \end{itemize}
+    
+        \end{exampleblock}
+    }
+
+    \only<9-15>{
+        \begin{exampleblock}{选择题}
+
+            \begin{itemize}
+                \item 在 $8$ 位二进制补码中，$10101011$ 表示的数是十进制下的
+                    
+                    \begin{tasks}
+                        \task[A.] $43$
+                        \task[B.] \only<9>{$-85$}\uncover<10->{\textcolor{red}{$-85$}}
+                        \task[C.] $-43$
+                        \task[D.] $-84$
+                    \end{tasks}
+                    
+                \item<11-> 解法
+                
+                \uncover<11->{
+                    \begin{itemize}
+                        \item 补码：\uncover<12->{$10101011$}
+                        \item 反码：\uncover<13->{$10101010$}
+                        \item 原码：\uncover<14->{$11010101$}
+                        \item<15-> 对原码的数值位进行按权展开求和，得到 $85$，符号位是 $1$，所以是负数
+                    \end{itemize}
+                }
+                
+            \end{itemize}
+    
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{字符与字符编码}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字符}
+
+    \only<1>{
+        \begin{block}{}
+            \vspace{.5cm}
+            \begin{center}
+                计算机只能存储二进制内容，\\ 那如何存储字母、符号等文本信息呢？
+            \end{center}
+            \vspace{.5cm}
+        \end{block}
+    }
+
+    \only<2>{
+        \begin{itemize}
+            \item 字符是字母、数字符号、标点符号等的统称
+            \item 计算机储存字符，通常是将字符编码成一个整数，再将这个整数转换为对应的二进制进行储存
+            \item C++ 中用 \lstinline|char| 类型储存字符，将字符编码成整数的方式是 ASCII 码（定义了 $128$ 个字符，用 $0 \sim 127$ 表示）   
+        \end{itemize}    
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字符编码 - ASCII 码}
+
+    \alt<2->{
+        \begin{itemize}
+            \item 代码示例
+            
+            \begin{columns}[onlytextwidth,T]
+                \column{.5\textwidth}
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=char_exp]{ch16/char_exp.cc}
+
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<2>{\redbox{char_exp}{6}{3}{6}{28};}
+                    \uncover<3>{\redbox{char_exp}{7}{3}{7}{28};}
+                    \uncover<4>{\redbox{char_exp}{8}{3}{8}{28};}
+                \end{tikzpicture}
+
+                \column{.5\textwidth}
+                \begin{itemize}
+                    \item 输出
+
+                        \uncover<3->{\lstinline|65|\\}
+                        \uncover<4->{\lstinline|B|}
+
+                \end{itemize}
+            \end{columns}
+        \end{itemize}
+    } {
+        \begin{itemize}
+            \item \lstinline|'0'~'9'|: $48 \sim 57$
+            \item \lstinline|'A'~'Z'|: $65 \sim 90$
+            \item \lstinline|'a'~'z'|: $97 \sim 122$
+            \item 储存字符时，本质上是储存了它对应的整数
+        \end{itemize}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字符类型的运算}
+
+    \begin{itemize}
+        \item<1-> \lstinline|char| 类型本质上也是整数类型，因此也支持算术运算、布尔运算
+        
+        \begin{itemize}
+            \item \lstinline|char| 类型数据参与运算时，会隐式转换为 \lstinline|int| 类型，然后进行计算
+            \item 注意 \lstinline|char| 类型变量占 $1$ 字节，能储存的数据范围是 $-128 \sim 127$ ，计算结果超过这个范围不能储存在 \lstinline|char| 变量中
+        \end{itemize}
+
+        \item<2-> 常用场景
+        
+        \begin{itemize}
+            \item 字符类型的判断
+            \item 字符与整数之间的转换
+            \item 大小写字母转换
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字符类型的判断}
+
+    \begin{itemize}
+        \item 大写字母 $A \sim Z$ 的 ASCII 码是\textbf{连续的} $65 \sim 90$，所以可以方便地判断一个 \lstinline|char| 类型变量 \lstinline|ch| 是否为大写字母类型
+        
+        \begin{itemize}
+            \item<2-> \lstinline|if (ch >= 'A' && ch <= 'Z')|
+            \item<2-> \lstinline|if (ch >= 65 && ch <= 90)|
+        \end{itemize}
+
+        \item<3-> 判断 \lstinline|ch| 是否为小写字母类型
+        
+        \begin{itemize}
+            \item<4-> \lstinline|if (ch >= 'a' && ch <= 'z')|
+        \end{itemize}
+
+        \item<5-> 判断 \lstinline|ch| 是否为数字类型
+        
+        \begin{itemize}
+            \item<6-> \lstinline|if (ch >= '0' && ch <= '9')|
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{字符转换}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{数字字符转换为整数}
+
+    \begin{itemize}
+        \item 如何将数字字符 \lstinline|ch| 换算为对应的整数？
+        
+        \begin{itemize}
+            \item 即 \lstinline|'0'|($48$) 换算为 $0$，\lstinline|'1'|($49$) 换算为 $1$ ，\lstinline|'2'|($50$) 换算为 $2$ ……
+            \item \only<2>{\lstinline|(int)ch|}\uncover<3->{\redout{\lstinline|(int)ch|}}
+            \item<4-> \lstinline|ch - '0'|
+            \item<4-> \lstinline|ch - 48|
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字母转换为整数}
+
+    \begin{itemize}
+        \item 如何计算大写字母字符 \lstinline|ch| 是第几个字母 ？
+        
+        \begin{itemize}
+            \item 即 \lstinline|'A'| 换算为 $0$ ，\lstinline|'B'| 换算为 $1$ ，\lstinline|'C'| 换算为 $2$ ... \lstinline|'Z'| 换算为 $25$
+            \item<2-> \lstinline|ch - 'A'|
+        \end{itemize}
+
+        \item<3-> 如何计算小写字母字符 \lstinline|ch| 是第几个字母 ？
+        
+        \begin{itemize}
+            \item<4-> \lstinline|ch - 'a'|
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{整数转换为字母}
+
+    \begin{itemize}
+        \item 如何计算第 $x$ 个大写字母是什么？
+        
+        \begin{itemize}
+            \item 即 $0$ 换算为 \lstinline|'A'|($65$) ，$1$ 换算为 \lstinline|'B'|($66$) ，$2$ 换算为 \lstinline|'C'|($67$) ...
+            \item<2-> \lstinline|x + 'A'|
+            \item<2-> \lstinline|x + 65|
+        \end{itemize}
+
+        \item<3-> 如何计算第 $x$ 个小写字母是什么？
+        
+        \begin{itemize}
+            \item<4-> \lstinline|x + 'a'|
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{大小写字母换算}
+
+    \begin{itemize}
+        \item 如何将大写字母 \lstinline|ch| 换算为对应的小写字母？
+        
+        \begin{itemize}
+            \item 即 \lstinline|'A'| 换算为 \lstinline|'a'| ，\lstinline|'B'| 换算为 \lstinline|'b'| ，\lstinline|'C'| 换算为 \lstinline|'c'| ...
+        \end{itemize}
+        
+        \begin{enumerate}
+            \item[1.] <2-> 先计算出 \lstinline|ch| 是第几个字母：\lstinline|int x = ch - 'A';|
+            \item[2.] <3-> 再计算第 \lstinline|x| 个小写字母是什么：\lstinline|x + 'a';|
+        \end{enumerate}
+
+        \begin{itemize}
+            \item<4-> 结合上述两步：\lstinline|ch - 'A' + 'a'|
+        \end{itemize}
+
+        \item<5-> 如何将小写字母 \lstinline|ch| 换算为对应的大写字母？
+        
+        \begin{itemize}
+            \item<6-> \lstinline|ch - 'a' + 'A'|
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字符换算}
+
+    \begin{exampleblock}{填空题}
+        \begin{itemize}
+            \item 字符 \lstinline|ch| 换算为整数
+            
+            \begin{itemize}
+                \item \lstinline|'0'~'9'| 换算为 $0 \sim 9$，公式为 \uncover<2->{\textcolor{red}{\lstinline|ch - '0'|}} 
+            \end{itemize}
+    
+            \item 字符 \lstinline|ch| 大小写字母换算
+            
+            \begin{itemize}
+                \item \lstinline|'A'~'Z'| 换算为 \lstinline|'a'~'z'|，公式为 \uncover<3->{\textcolor{red}{\lstinline|ch - 'A' + 'a'|}}
+                \item \lstinline|'a'~'z'| 换算为 \lstinline|'A'~'Z'|，公式为 \uncover<4->{\textcolor{red}{\lstinline|ch - 'a' + 'A'|}}
+            \end{itemize}
+    
+        \end{itemize}
+    \end{exampleblock}
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{位运算}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{位运算}
+
+    \only<1>{
+        \begin{itemize}
+            \item 位运算是基于整数的二进制补码进行的运算
+            
+            \begin{itemize}
+                \item 计算机内部就是以二进制补码来存储整数数据，因此位运算速度极快
+                \item 进行位运算时程序会自动按照二进制进行运算，无需把十进制数字转换为二进制
+                \item 通常只对非负整数进行位运算
+            \end{itemize}
+    
+            \item 位运算共 $6$ 种
+            
+            \begin{itemize}
+                \item 与 ( \lstinline|&| ) , 或 ( \lstinline|\|| ) , 异或 ( \lstinline|^| ) , 取反 ( \lstinline|\~| ) , 左移 ( \lstinline|<<| ) , 右移 ( \lstinline|>>| )
+            \end{itemize}
+    
+        \end{itemize}
+    }
+
+    \only<2>{
+        \begin{itemize}
+            \item 与 ( \lstinline|&| ) , 或 ( \lstinline|\|| ) , 异或 ( \lstinline|^| ) 这三种位运算都是两数间的位运算
+            \item 两数之间的位运算：将两个整数的二进制补码中的每一位逐一进行运算，得到结果的每一位
+        \end{itemize} 
+        
+        \begin{table}[!ht]
+            \centering
+            \renewcommand{\arraystretch}{1.5} % 设置垂直内边距为1.5倍默认行高
+            \begin{tabular}{cc} 
+            \hline
+                \textbf{运算符} & \textbf{解释} \\ \hline
+                \textbf{\lstinline|\&|} & 只有两个对应位都为 $1$ 时才为 $1$ \\ 
+                \textbf{\lstinline|\||} & 只要两个对应位中有一个 $1$ 时就为 $1$ \\ 
+                \textbf{\lstinline|^|} & 只有两个对应位不同时才为 $1$ \\ \hline
+            \end{tabular}
+        \end{table}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{按位与 \&}
+
+    \begin{columns}
+
+        \column{.3\textwidth}
+
+        \alt<2->{
+            $
+            \begin{array}{r}
+                            0010101 \\
+                \& \quad    0000000 \\ \hline
+                            0000000
+            \end{array}
+            $
+        } {
+            $
+            \begin{array}{r}
+                            0010101 \\
+                \& \quad    0000000 \\ \hline
+                            \quad
+            \end{array}
+            $
+        }
+
+        \column{.3\textwidth}
+
+        \uncover<3->{
+            \alt<4->{
+                $
+                \begin{array}{r}
+                                0010101 \\
+                    \& \quad    0000001 \\ \hline
+                                0000001
+                \end{array}
+                $
+            } {
+                $
+                \begin{array}{r}
+                                0010101 \\
+                    \& \quad    0000001 \\ \hline
+                                \quad
+                \end{array}
+                $
+            }
+        }
+
+        \column{.3\textwidth}
+        
+        \uncover<6->{
+            \alt<7->{
+                $
+                \begin{array}{r}
+                                0010101 \\
+                    \& \quad    0010101 \\ \hline
+                                0010101
+                \end{array}
+                $
+            } {
+                $
+                \begin{array}{r}
+                                0010101 \\
+                    \& \quad    0010101 \\ \hline
+                                \quad
+                \end{array}
+                $
+            }
+        }
+        
+    \end{columns}
+
+    \quad \\
+    \quad \\
+
+    \begin{itemize}
+        \item<2-> \lstinline|x & 0| 结果为 $0$
+        \item<4-> \lstinline|x & 1| 结果为 $0$ 或 $1$
+        
+        \begin{itemize}
+            \item<5-> 二进制补码中的最低位，可用于判断 \lstinline|x| 的奇偶性
+        \end{itemize}
+
+        \item<7-> \lstinline|x & x| 结果为 \lstinline|x| 
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{按位或 |}
+
+    \begin{columns}
+
+        \column{.3\textwidth}
+        $
+        \begin{array}{r}
+                        0010101 \\
+            | \quad     0000000 \\ \hline
+                        0010101
+        \end{array}
+        $
+
+        \column{.3\textwidth}
+        \uncover<2->{
+            $
+            \begin{array}{r}
+                            0010101 \\
+                | \quad     0010101 \\ \hline
+                            0010101
+            \end{array}
+            $
+        }
+        
+    \end{columns}
+
+    \quad \\
+    \quad \\
+
+    \begin{itemize}
+        \item<1-> \lstinline|x| | \lstinline|0| 结果为 \lstinline|x|
+        \item<2-> \lstinline|x| | \lstinline|x| 结果为 \lstinline|x|
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{按位异或 \textasciicircum}
+
+    \begin{columns}
+
+        \column{.3\textwidth}
+        $
+        \begin{array}{r}
+                        0010101 \\
+        \wedge \quad    0000000 \\ \hline
+                        0010101
+        \end{array}
+        $
+
+        \column{.3\textwidth}
+        \uncover<2->{
+            $
+            \begin{array}{r}
+                            0010101 \\
+            \wedge \quad    0010101 \\ \hline
+                            0000000
+            \end{array}
+            $
+        }
+        
+    \end{columns}
+
+    \quad \\
+    \quad \\
+
+    \begin{itemize}
+        \item<1-> \lstinline|x ^ 0| 结果为 \lstinline|x|
+        \item<2-> \lstinline|x ^ x| 结果为 \lstinline|0|
+        
+        \begin{itemize}
+            \item 如果多个数进行异或，出现偶数次的数字相当于被消除掉
+            \item 例如: \lstinline|x ^ x ^ y| 的结果为 \lstinline|y|
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{随堂练习}
+
+    \begin{exampleblock}{填空题}
+        
+        \begin{itemize}
+            \item 执行 \lstinline|cout << (21 & 36) << endl;| 的输出结果是 \uncover<3->{\textcolor{red}{$4$}}
+            \item 执行 \lstinline|cout << (21 ||\lstinline| 36) << endl;| 的输出结果是 \uncover<5->{\textcolor{red}{$53$}}
+            \item 执行 \lstinline|cout << (21 ^ 36) << endl;| 的输出结果是 \uncover<7->{\textcolor{red}{$49$}}
+            \item $21$ 的补码： $0 ... 0 0 1 0 1 0 1$
+            \item $36$ 的补码： $0 ... 0 1 0 0 1 0 0$
+            \item \textcolor{red}{
+                    \hspace{.1pt}
+                    \only<2-3>{按位与：\quad $0 ... 0 0 0 0 1 0 0$}\only<4-5>{按位或：\quad $0 ... 0 1 1 0 1 0 1$}\only<6-7>{按位异或：$0 ... 0 1 1 0 0 0 1$}
+                }
+        \end{itemize}
+
+    \end{exampleblock}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 4.1：找筷子}
+
+    \alt<2-3> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=find_chopsticks]{ch16/find_chopsticks.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\redbox{find_chopsticks}{8}{3}{8}{14};}
+        \end{tikzpicture}
+    } {
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 输入一个整数 $n$ ($1 \le n \le 10^7$)，表示有 $n$ 只筷子，接下来输入 $n$ 个整数 $x$ ($1 \le x \le 10^9$)，表示筷子的长度。\\
+                    这些筷子中只有一只筷子是落单的，其余都成双。\\
+                    请找到落单的那只筷子，并输出它的长度。
+                    
+                \item 样例输入
+    
+                    \lstinline|5|\\
+                    \lstinline|2 1 2 3 3|
+    
+                \item 样例输出
+                
+                    \lstinline|1|
+    
+            \end{itemize}
+        \end{exampleblock}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{按位取反 ~}
+
+    \begin{itemize}
+        \item 取反是对一个数进行的计算，即单目运算
+        \item \lstinline|~x| 表示将 \lstinline|x| 的二进制补码中包括符号位在内的所有 $0$ 变 $1$，$1$ 变 $0$ 所得的值
+        \begin{columns}
+            \column{.1\textwidth}
+            \column{.2\textwidth}
+            \quad \\
+            \quad \\
+            \alt<2->{
+                $
+                \begin{array}{r}
+                    \sim 0010101 \\ \hline
+                         1101010
+                \end{array}
+                $
+            } {
+                $
+                \begin{array}{r}
+                    \sim 0010101 \\ \hline
+                         \quad
+                \end{array}
+                $
+            }
+            
+            \column{.7\textwidth}
+                \uncover<3->{
+                    \begin{itemize}
+                        \item 原数值：$21$
+                        \item $\sim 21$ 的值是 $-22$
+                    \end{itemize}
+                }
+        \end{columns}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{左移 < <}
+
+    \begin{itemize}
+        \item \lstinline|x << i| 表示将 \lstinline|x| 的二进制补码向左移动 \lstinline|i| 位所得的值
+
+        \begin{itemize}
+            \item 左边越界部分被丢弃，右边的空位填充为 $0$
+        \end{itemize}
+
+        \quad \\
+
+        \item 例：$00010111$ \quad 左移 $2$ 位后 \quad $010111$\textcolor{red}{$00$}
+        
+        \quad \\
+
+        \begin{itemize}
+            \item \lstinline|23 << 2| 的结果是 $92$
+            \item \lstinline|x << i| 相当于 $x \times 2^i$
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{右移 > >}
+
+    \begin{itemize}
+        \item \lstinline|x >> i| 表示将 \lstinline|x| 的二进制补码向右移动 \lstinline|i| 位所得的值
+
+        \begin{itemize}
+            \item 右边越界部分被丢弃，若 \lstinline|x| 为非负数，左边的空位填充为 $0$
+        \end{itemize}
+
+        \quad \\
+
+        \item 例：$00010111$ \quad 右移 $2$ 位后 \quad \textcolor{red}{$00$}$000101$
+        
+        \quad \\
+
+        \begin{itemize}
+            \item \lstinline|23 >> 2| 的结果是 $5$
+            \item \lstinline|x >> i| 相当于 $x \div 2^i$
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 4.2：二进制补码形式}
+
+    \only<1> {
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 输入一个整数 $n$ ($1 \le n \le 10^9$)，输出该整数 $8$ 位二进制补码形式。
+                    
+                \item 样例输入
+    
+                    \lstinline|7|
+    
+                \item 样例输出
+                
+                    \lstinline|00000111|
+    
+            \end{itemize}
+        \end{exampleblock}
+    }
+
+    \only<2-3> {
+        \begin{itemize}
+            \item<2-> 类似十进制整数分离数位的原理：
+            
+            \begin{enumerate}
+                \item[1.] 取出最后一位，并存储在数组中
+                \item[2.] 去除最后一位 
+                \item[3.] 不断重复上述过程，直到整数二进制补码的每一位都已被取出
+                \item[4.] 逆序输出数组
+            \end{enumerate}
+
+            \item<3> 通过 \lstinline|& 1| 得到最后一位，通过 \lstinline|>> 1| 去掉最后一位。
+        \end{itemize}
+    }
+    
+    \only<4> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=binary_com]{ch16/binary_com.cc}
+    } 
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{位运算注意要点}
+
+    \begin{itemize}
+        \item 同加减乘除运算，位运算本身也不修改变量的值
+        
+        \begin{itemize}
+            \item 如 \lstinline|~x| 不改变 \lstinline|x| 的值，赋值语句 \lstinline|x = ~x;| 才能修改 \lstinline|x| 的值
+        \end{itemize}
+
+        \item 位运算的优先级容易遗忘，注意按照自己希望的计算顺序加括号
+        
+        \begin{itemize}
+            \item 如 \lstinline|if (0 & 1 < 1)| 
+            \item 如果希望 \lstinline|0 & 1| 先算，应写为 \lstinline|if ((0 & 1) < 1)|
+        \end{itemize}
+
+        \item 移位
+
+        \begin{itemize}
+            \item 常用 \lstinline|1 << n| 来计算 $2^n$ ，不能写为 \lstinline|2 << n|
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}
+        \item<1-> 编码
+        
+        \begin{itemize}
+            \item 整数编码：原码、反码、补码
+            \item 字符编码：字符类型判断、字符和整数转换、大小写字母转换
+        \end{itemize}
+
+        \item<2-> 位运算
+        
+        \begin{itemize}
+            \item 与 ( \lstinline|&| ) , 或 ( | ) , 异或 ( \lstinline|^| )
+            \item 取反 ( \lstinline|~| ) 
+            \item 左移 ( \lstinline|<<| ) , 右移 ( \lstinline|>>| )
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
