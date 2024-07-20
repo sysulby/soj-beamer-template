@@ -430,8 +430,9 @@
                         \lstinputlisting[basicstyle=\ttfamily\small,aboveskip=.1ex,numbers=none,name=small_matrix_i]{ch12/small_matrix_input.txt}
 
                         \begin{tikzpicture}[remember picture,overlay,scale=1.25]
-                            \uncover<4->{\redbox{small_matrix_i}{2}{5}{4}{7} node[right,xshift=.3cm,yshift=.8cm]{\lstinline|第\ x 行，第 y 列|};}
+                            \uncover<4->{\redbox{small_matrix_i}{2}{5}{2}{5} node[right,xshift=.7cm,yshift=.2cm]{\lstinline|第\ x 行，第 y 列|};}
                             \uncover<4->{\redbox{small_matrix_i}{6}{1}{6}{3} node[below,xshift=.1cm]{\lstinline|起点：(x,y)|};}
+                            \uncover<5->{\redbox{small_matrix_i}{4}{7}{4}{7};}
                             \uncover<5->{\redbox{small_matrix_i}{2}{5}{4}{7} node[right,xshift=.3cm,yshift=.2cm]{\lstinline|第\ ? 行，第 ? 列|};}
                             \uncover<5->{\redbox{small_matrix_i}{6}{5}{6}{7} node[right,xshift=.3cm,yshift=.2cm]{\lstinline|小矩阵：r 行 c 列|};}
                         \end{tikzpicture}
@@ -463,9 +464,10 @@
                             \lstinputlisting[basicstyle=\ttfamily\small,aboveskip=.1ex,numbers=none,name=small_matrix_i]{ch12/small_matrix_input.txt}
 
                             \begin{tikzpicture}[remember picture,overlay,scale=1.25]
-                                \uncover<2>{\redbox{small_matrix_i}{2}{5}{4}{7} node[right,xshift=.3cm,yshift=.8cm]{\lstinline|第一行，第三列|};}
+                                \uncover<2>{\redbox{small_matrix_i}{2}{5}{2}{5} node[right,xshift=.7cm,yshift=.2cm]{\lstinline|第\ 1 行，第 3 列|};}
                                 \uncover<2>{\redbox{small_matrix_i}{6}{1}{6}{3} node[below,xshift=.1cm]{\lstinline|起点：(1,3)|};}
-                                \uncover<3>{\redbox{small_matrix_i}{2}{5}{4}{7} node[right,xshift=.3cm,yshift=.2cm]{\lstinline|第三行，第五列|};}
+                                \uncover<3>{\redbox{small_matrix_i}{4}{7}{4}{7};}
+                                \uncover<3>{\redbox{small_matrix_i}{2}{5}{4}{7} node[right,xshift=.3cm,yshift=.2cm]{\lstinline|第\ 3 行，第 5 列|};}
                                 \uncover<3>{\redbox{small_matrix_i}{6}{5}{6}{7} node[below,xshift=.1cm]{\lstinline|小矩阵：3 行 2 列|};}
                             \end{tikzpicture}
                     \end{itemize}
