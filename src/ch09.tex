@@ -296,7 +296,7 @@
 
                 \item 样例输入
 
-                    无
+                    \small{无}
 
                 \item 样例输出
 
@@ -465,7 +465,7 @@
 
             \begin{itemize}
                 \item 已知 6 年 A 班的小测成绩如下，其中，$x$ 号与 $y$ 号同学的成绩登记反了。\\
-                    输入两个整数 $x$ ($0 \le x < 8$) 和 $y$ ($0 \le y \le 8$)，请交换他们的成绩，并输出正确的成绩表，以空格间隔。
+                    输入两个整数 $x$ ($0 \le x < 8$) 和 $y$ ($0 \le y < 8$)，请交换他们的成绩，并输出正确的成绩表，以空格间隔。
 
                     \begin{tikzpicture}
                         [nodes in empty cells, nodes={minimum width=1.1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
@@ -481,7 +481,7 @@
 
                 \item 样例输出
 
-                    \lstinline|71 80 52 99 91 82 43 53|
+                    \lstinline|71 80 62 99 91 82 43 53|
 
             \end{itemize}
 
@@ -534,8 +534,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入一个整数 $n$ ($1 \le n \le 100$)，表示购买次数。\\
-                    然后输入 $n$ 行，每行两个整数 $k$ ($0 \le k < 5$) 和 $x$ ($0 \le x \le 100$)，表示购买编号为 $k$ 的图书 $x$ 本，分别输出 n 次购书的消费金额，结果保留两位小数，图书的单价如下。
+                \item 输入一个整数 $n$ ($1 \le n \le 100$)，表示购买次数。然后输入 $n$ 行，每行两个整数 $k$ ($0 \le k < 5$) 和 $x$ ($0 \le x \le 100$)，表示购买编号为 $k$ 的图书 $x$ 本，分别输出 n 次购书的消费金额，结果保留两位小数，图书的单价如下。
 
                     \begin{tikzpicture}
                         [nodes in empty cells, nodes={minimum width=1.1cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
@@ -686,7 +685,7 @@
                 \begin{itemize}
                     \item 样例输入
 
-                        \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=array_alt_output_in]{ch09/array_alt_output.in}
+                        \lstinputlisting[basicstyle=\ttfamily\small,aboveskip=.1ex,numbers=none,name=array_alt_output_in]{ch09/array_alt_output_input.txt}
 
                 \end{itemize}
 
@@ -694,7 +693,7 @@
                 \begin{itemize}
                     \item 样例输出
 
-                        \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=array_alt_output_out]{ch09/array_alt_output.out}
+                        \lstinputlisting[basicstyle=\ttfamily\small,aboveskip=.1ex,numbers=none,name=array_alt_output_out]{ch09/array_alt_output_output.txt}
 
                         \begin{tikzpicture}[remember picture, overlay, scale=1.25]
                             \uncover<2>{\redbox{array_alt_output_in}{2}{1}{2}{1};}

@@ -80,7 +80,7 @@
     \frametitle{while 和 do..while 的区别}
 
     \begin{itemize}
-        \item \lstinline|while| 循环：先循环再判断
+        \item \lstinline|while| 循环：先判断再循环
         \item \lstinline|do..while| 循环：先执行再判断，\textbf{至少执行一次}
     \end{itemize}
 
@@ -140,9 +140,9 @@
 
                 \item 样例输出
 
-                    \lstinline|3|\\
+                    \lstinline|1|\\
                     \lstinline|2|\\
-                    \lstinline|1|
+                    \lstinline|3|
 
             \end{itemize}
 
@@ -193,7 +193,7 @@
         \end{itemize}
 
         \uncover<2->{
-            \vspace*{-1.5em}
+            \vspace*{-1ex}
             \centering
             \begin{tikzpicture}[node distance=1.2cm]
                 \node (start) [process] {初始动作};
@@ -428,6 +428,7 @@
                 \item[1.] 阅读程序写结果
                     \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=rof_n_to_1]{ch06/rof_n_to_1.cc}
 
+                    \vspace{.8ex}
                     \small{输入：}\lstinline|5|\\
                     \small{输出：}\uncover<2>{\textcolor{red}{\lstinline|5 4 3 2 1|}}
                 }
@@ -436,6 +437,7 @@
                 \item[2.] 阅读程序写结果
                     \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=rof_r_to_l]{ch06/rof_r_to_l.cc}
 
+                    \vspace{.8ex}
                     \small{输入：}\lstinline|15 20|\\
                     \small{输出：}\uncover<4>{\textcolor{red}{\lstinline|20 19 18 17 16 15|}}
                 }

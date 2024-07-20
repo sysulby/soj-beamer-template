@@ -207,11 +207,80 @@
 %------------------------------------------------------------
 
 
+\section{数组的部分遍历}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 10.2：求前 k 个数组元素的和}
+
+    \alt<2-3>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=sum_pre_k]{ch10/sum_pre_k.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\redbox{sum_pre_k}{14}{12}{14}{25};}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，第二行输入 $n$ 个整数 $x$ ($-10^6 \le x \le 10^6$)，表示数组中的每个元素。再输入一个整数 $k$ ($1 \le k \le n$)，求前 $k$ 个数组元素的和。
+
+                \item 样例输入
+
+                    \lstinline|6|\\
+                    \lstinline|1 4 2 8 5 7|\\
+                    \lstinline|4|
+
+                \item 样例输出
+
+                    \lstinline|15|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 10.3：求部分数组元素的和}
+
+    \alt<2-3>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=sum_lr]{ch10/sum_lr.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\redbox{sum_lr}{14}{12}{14}{25};}
+        \end{tikzpicture}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，第二行输入 $n$ 个整数 $x$ ($-10^6 \le x \le 10^6$)，表示数组中的每个元素。再输入两个整数 $l,r$ ($1 \le l \le r \le n$)，求数组中第 $l$ 至第 $r$ 个元素之和。
+
+                \item 样例输入
+
+                    \lstinline|6|\\
+                    \lstinline|1 4 2 8 5 7|\\
+                    \lstinline|4 5|
+
+                \item 样例输出
+
+                    \lstinline|13|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+
 \section{数组计数}
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.2：投票选班长 I}
+    \frametitle{例 10.4：投票选班长 I}
 
     \alt<10>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=vote_1]{ch10/vote_1.cc}
@@ -253,7 +322,7 @@
                     \begin{itemize}
                         \item 样例输入
 
-                            \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=vote_1_in]{ch10/vote_1.in}
+                            \lstinputlisting[basicstyle=\ttfamily\small,aboveskip=.1ex,numbers=none,name=vote_1_in]{ch10/vote_1_input.txt}
 
                     \end{itemize}
 
@@ -272,17 +341,17 @@
                     }
                 \end{columns}
 
+                \begin{tikzpicture}[remember picture, overlay, scale=1.25]
+                    \uncover<3>{\redbox{vote_1_in}{2}{1}{2}{1};}
+                    \uncover<4>{\redbox{vote_1_in}{2}{3}{2}{3};}
+                    \uncover<5>{\redbox{vote_1_in}{2}{5}{2}{5};}
+                    \uncover<6>{\redbox{vote_1_in}{2}{7}{2}{7};}
+                    \uncover<7>{\redbox{vote_1_in}{2}{9}{2}{9};}
+                    \uncover<8>{\redbox{vote_1_in}{2}{11}{2}{11};}
+                \end{tikzpicture}
+
                 \begin{itemize}
                     \item 样例说明
-
-                        \begin{tikzpicture}[remember picture, overlay, scale=1.25]
-                            \uncover<3>{\redbox{vote_1_in}{2}{1}{2}{1};}
-                            \uncover<4>{\redbox{vote_1_in}{2}{3}{2}{3};}
-                            \uncover<5>{\redbox{vote_1_in}{2}{5}{2}{5};}
-                            \uncover<6>{\redbox{vote_1_in}{2}{7}{2}{7};}
-                            \uncover<7>{\redbox{vote_1_in}{2}{9}{2}{9};}
-                            \uncover<8>{\redbox{vote_1_in}{2}{11}{2}{11};}
-                        \end{tikzpicture}
 
                         \begin{tikzpicture}
                             [nodes in empty cells, nodes={minimum width=.9cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
@@ -340,7 +409,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.3：投票选班长 II}
+    \frametitle{例 10.5：投票选班长 II}
 
     \alt<2>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=vote_2]{ch10/vote_2.cc}
@@ -349,7 +418,7 @@
 
             \begin{itemize}
                 \item 6 年 A 班在选班长，有 $m$ 位候选人，编号 $1 \sim m$，共 $n$ 名同学将进行投票。\\
-                    第一行输入两个整数 $n$ ($1 \le n \le 100$) 和 $m$ ($1 \le m \le 10$)，如上所述，第二行输入 $n$ 个整数 $x$ ($1 \le x \le 5$)，表示每位同学的投票结果。\\
+                    第一行输入两个整数 $n$ ($1 \le n \le 100$) 和 $m$ ($1 \le m \le 10$)，如上所述，第二行输入 $n$ 个整数 $x$ ($1 \le x \le m$)，表示每位同学的投票结果。\\
                     按候选人的编号顺序输出 $m$ 行，每行输出候选人编号及票数，用空格间隔，表示得票结果。
             \end{itemize}
 
@@ -384,7 +453,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.4：分数统计}
+    \frametitle{例 10.6：分数统计}
 
     \alt<2>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=count_score]{ch10/count_score.cc}
@@ -425,7 +494,7 @@
 
 %------------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{例 10.5：梦中的统计}
+    \frametitle{例 10.7：梦中的统计}
 
     \alt<2>{
         \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=count_digit_in_range]{ch10/count_digit_in_range.cc}
@@ -446,75 +515,6 @@
                 \item 样例说明
 
                     在 $129$ 到 $137$ 之间，数码 $0$ 出现了 $1$ 次，数码 $1$ 出现了 $10$ 次，以此类推
-
-            \end{itemize}
-
-        \end{exampleblock}
-    }
-\end{frame}
-%------------------------------------------------------------
-
-
-\section{数组的部分遍历}
-
-%------------------------------------------------------------
-\begin{frame}[fragile]
-    \frametitle{例 10.6：求前 k 个数组元素的和}
-
-    \alt<2-3>{
-        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=sum_pre_k]{ch10/sum_pre_k.cc}
-
-        \begin{tikzpicture}[remember picture, overlay]
-            \uncover<3>{\redbox{sum_pre_k}{14}{12}{14}{25};}
-        \end{tikzpicture}
-    }{
-        \begin{exampleblock}{编程题}
-
-            \begin{itemize}
-                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，第二行输入 $n$ 个整数 $x$ ($-10^6 \le x \le 10^6$)，表示数组中的每个元素。再输入一个整数 $k$ ($1 \le k \le n$)，求前 $k$ 个数组元素的和。
-
-                \item 样例输入
-
-                    \lstinline|6|\\
-                    \lstinline|1 4 2 8 5 7|\\
-                    \lstinline|4|
-
-                \item 样例输出
-
-                    \lstinline|15|
-
-            \end{itemize}
-
-        \end{exampleblock}
-    }
-\end{frame}
-%------------------------------------------------------------
-
-%------------------------------------------------------------
-\begin{frame}[fragile]
-    \frametitle{例 10.7：求部分数组元素的和}
-
-    \alt<2-3>{
-        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=sum_lr]{ch10/sum_lr.cc}
-
-        \begin{tikzpicture}[remember picture, overlay]
-            \uncover<3>{\redbox{sum_lr}{14}{12}{14}{25};}
-        \end{tikzpicture}
-    }{
-        \begin{exampleblock}{编程题}
-
-            \begin{itemize}
-                \item 第一行输入一个整数 $n$ ($1 \le n \le 100$) ，表示有 $n$ 个数组元素，第二行输入 $n$ 个整数 $x$ ($-10^6 \le x \le 10^6$)，表示数组中的每个元素。再输入两个整数 $l,r$ ($1 \le l \le r \le n$)，求数组中第 $l$ 至第 $r$ 个元素之和。
-
-                \item 样例输入
-
-                    \lstinline|6|\\
-                    \lstinline|1 4 2 8 5 7|\\
-                    \lstinline|4 5|
-
-                \item 样例输出
-
-                    \lstinline|13|
 
             \end{itemize}
 
@@ -795,8 +795,8 @@
     \begin{itemize}
         \item 数组的应用
             \begin{itemize}
-                \item 数组计数
                 \item 数组的部分遍历
+                \item 数组计数
                 \item 数组表示状态
                 \item 数组下标维护
             \end{itemize}

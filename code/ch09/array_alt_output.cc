@@ -12,8 +12,8 @@ int main() {
     cin >> a[i];
   }
   // 交替输出数组元素
-  for (int i = 1, j = n ; i <= j; i++, j--) {
-    cout << a[i] << " " << a[j] << endl;
+  for (int i = 1; i <= n / 2; i++) {
+    cout << a[i] << " " << a[n-i+1] << endl;
   }
 
   return 0;

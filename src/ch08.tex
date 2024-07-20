@@ -260,7 +260,7 @@
             \begin{itemize}
                 \item 当输入 n 为 3，m 为 4 时，输出如图所示
 
-                    \lstinputlisting[basicstyle=\ttfamily\small,numbers=none,name=num_ij_out]{ch08/num_ij.out}
+                    \lstinputlisting[basicstyle=\ttfamily\small,aboveskip=.1ex,numbers=none,name=num_ij_out]{ch08/num_ij_output.txt}
 
                     \begin{tikzpicture}[remember picture, overlay, scale=1.25]
                         \uncover<4>{\redbox{num_ij_out}{2}{1}{2}{23} node[right,yshift=.22cm]{\lstinline|i = 1|};}
@@ -550,7 +550,7 @@
         \begin{exampleblock}{编程题}
 
             \begin{itemize}
-                \item 输入一个整数 $n$ ($1 \leq n \leq 10^9$)，统计从 $1$ 到 $n$ 的所有整数中，数位上 $1$ 的个数。
+                \item 输入一个整数 $n$ ($1 \leq n \leq 10^6$)，统计从 $1$ 到 $n$ 的所有整数中，数位上 $1$ 的个数。
 
                 \item 样例输入
 
@@ -562,7 +562,7 @@
 
                 \item 样例说明
 
-                    当 \lstinline|n = 12| 时，$1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12$ 中，数位上 $1$ 的个数为 $5$。
+                    当 $n = 12$ 时，$1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12$ 中，数位上 $1$ 的个数为 $5$。
 
             \end{itemize}
 
@@ -616,10 +616,10 @@
 \begin{frame}[fragile]
     \frametitle{总结}
 
-    \begin{itemize}[<+->]
+    \begin{itemize}
         \item 多重循环的概念
         \item 多重循环的应用
-            \begin{itemize}[<+->]
+            \begin{itemize}
                 \item 输出图形问题
                 \item 数列计算问题
                 \item 数位拆分问题

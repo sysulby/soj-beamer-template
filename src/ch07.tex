@@ -316,7 +316,7 @@
                 \item 打擂台找最大值
             \end{itemize}				
 
-            \vspace*{1em}
+            \vspace*{1ex}
             \centering
             \begin{tikzpicture}[node distance=1.25cm]
                 \node (start) [process] {8};
@@ -531,8 +531,8 @@
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
-        \uncover<3->{\redbox{while_1_n_break}{5}{5}{5}{10};}
-        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-while_1_n_break-5-end) -- ++(5em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-while_1_n_break-9-end);}
+        \uncover<3->{\redbox{while_1_n_break}{6}{5}{6}{10};}
+        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-while_1_n_break-6-end) -- ++(5em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-while_1_n_break-10-end);}
         \uncover<5>{\redbox{for_1_n_break}{5}{5}{5}{10};}
         \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-for_1_n_break-5-end) -- ++(5em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-for_1_n_break-8-end);}
     \end{tikzpicture}
@@ -558,8 +558,8 @@
     \end{columns}
 
     \begin{tikzpicture}[remember picture,overlay]
-        \uncover<3->{\redbox{while_1_n_continue}{5}{5}{5}{13};}
-        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-while_1_n_continue-5-end) -- ++(3em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-while_1_n_continue-3-end);}
+        \uncover<3->{\redbox{while_1_n_continue}{6}{5}{6}{13};}
+        \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-while_1_n_continue-6-end) -- ++(3em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-while_1_n_continue-4-end);}
         \uncover<5>{\redbox{for_1_n_continue}{5}{5}{5}{13};}
         \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-for_1_n_continue-5-end) -| ([shift={(-.8cm, -.2em)}] pic cs:line-for_1_n_continue-3-end);}
     \end{tikzpicture}
@@ -599,6 +599,7 @@
             \item 阅读程序写结果
                 \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=exercise]{ch07/exercise.cc}
 
+                \vspace{.8ex}
                 \small{输入：}\lstinline|7 12|\\
                 \small{输出：}\uncover<2->{\textcolor{red}{\lstinline|7 8 9|}}
         \end{enumerate}
