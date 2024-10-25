@@ -1,0 +1,510 @@
+%------------------------------------------------------------
+\title[06 - string 类型]
+{06 - string 类型}
+
+\subtitle{C++ 程序设计进阶}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+
+\begin{frame}[fragile]
+    \frametitle{复习回顾}
+
+    \only<1>{
+        \begin{itemize}
+            \item C 风格字符串
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=review]{ch18/review.cc}
+    
+        \end{itemize}
+    }
+
+    \only<2> {
+        \begin{itemize}
+            \item \lstinline|strlen(str)| : 获取长度
+            \item \lstinline|strcpy(str1, str2)| : 复制
+            \item \lstinline|strcat(str1, str2)| : 拼接
+            \item \lstinline|strcmp(str1, str2)| : 比较字典序
+        \end{itemize}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{C 风格字符串的优缺点}
+
+    \begin{itemize}
+        \item 优点
+        
+        \begin{itemize}
+            \item 本质是字符数组，简单，接近系统底层，效率高
+        \end{itemize}
+
+        \item 缺点
+        
+        \begin{itemize}
+            \item 容易出错（数组越界），操作不便（提取子串、替换子串等需要自己实现）
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{string 类型的基本用法}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{string 类型}
+
+    \only<1>{
+        \begin{itemize}
+            \item 为了克服 C 风格字符串的缺点，C++ 引入 string 类型
+            \item 用 string 类型处理字符串的主要优点有：
+            
+            \begin{itemize}
+                \item string 类型在 C 风格字符串的基础上进行了包装和加工，自带了丰富的函数和运算符可以直接使用，可以很方便地操作字符串
+                \item 存储字符串的内存空间是系统自动分配的，字符串的大小会根据实际存储内容进行自动调整，不需要一开始声明大小
+            \end{itemize}
+    
+        \end{itemize}
+    }
+    
+    \only<2>{
+        \begin{itemize}
+            \item 添加头文件 \textcolor{red}{\lstinline|<string>|}
+            \item 声明与初始化
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=init_string]{ch18/init_string.cc}
+
+            \item 整体输出
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=cout_string]{ch18/cout_string.cc}
+
+        \end{itemize}
+    }
+
+    \only<3>{
+        \begin{itemize}
+            \item \lstinline|cin| 输入
+            
+            \begin{itemize}
+                \item 当遇到空格、换行等空字符时会结束输入
+                \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=cin_string]{ch18/cin_string.cc}
+            \end{itemize}
+
+            \item \lstinline|getline| 整行输入
+            
+            \begin{itemize}
+                \item 当遇到换行时会结束输入，会把空格读入，但不会读入换行符
+                \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=getline_string]{ch18/getline_string.cc}
+            \end{itemize}
+
+        \end{itemize}
+    }
+
+    \only<4-5>{
+        \begin{itemize}
+            \item 访问单个字符\\
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=single_ch]{ch18/single_ch.cc}
+            
+            \item 遍历字符串\\
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=tra_string]{ch18/tra_string.cc}
+
+            \begin{tikzpicture}[remember picture, overlay]
+                \uncover<5>{\redbox{tra_string}{4}{16}{4}{16};}
+            \end{tikzpicture}
+
+        \end{itemize}
+    }
+
+    \only<6>{
+        \begin{itemize}
+            \item \lstinline|s.length()/s.size()|
+            
+            \begin{itemize}
+                \item 返回一个整数，表示字符串的长度
+                
+                \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=size_string]{ch18/size_string.cc}
+                % \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=length_string]{ch18/length_string.cc}
+                
+            \end{itemize}
+
+        \end{itemize}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字符串转小写}
+
+    \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=lower.cc]{ch18/lower.cc}
+            
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{string 类型的运算符}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{string 类型的运算符}
+
+    \only<1> {
+        \begin{block}{}
+            \vspace{.5cm}
+            \begin{center}
+                C 风格字符串不可以用 = 直接进行赋值，\\ 那 string 类型可以吗？
+            \end{center}
+            \vspace{.5cm}
+        \end{block}
+    }
+
+    \only<2> {
+        \begin{itemize}
+            \item 赋值
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=assign_string]{ch18/assign_string.cc}
+
+            \item 字典序比较
+            
+            \lstinline|>、<、>=、<=、==、!=| \\
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=compare_string]{ch18/compare_string.cc}
+        
+        \end{itemize}
+    }
+
+    \only<3> {
+        \begin{itemize}
+            \item 拼接
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=splicing_string]{ch18/splicing_string.cc}
+        
+        \end{itemize}
+    }
+            
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{string 类型的常用函数}
+
+    \begin{itemize}
+        \item \lstinline|s.substr(pos, len)|
+        
+        \begin{itemize}
+            \item 返回一个字符串，内容为字符串 $s$ 中从下标 $pos$ 开始，长度为 $len$ 的子串
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=substr_string]{ch18/substr_string.cc}
+
+            \begin{tikzpicture}[remember picture, overlay]
+                \uncover<2>{\redbox{substr_string}{4}{20}{4}{21} node[below,xshift=-.2cm]{注意 pos 不能越界，越界会导致 RE};}
+                \uncover<3>{\redbox{substr_string}{4}{25}{4}{26} node[below,xshift=-.2cm]{如果 len 越界了，substr 会返回从 pos 开始直到字符串末尾的子字符串};}
+            \end{tikzpicture}
+
+        \end{itemize}
+    \end{itemize}
+            
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 6.1：枚举子串}
+
+    \alt<2-3> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=substring]{ch18/substring.cc}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\redbox{substring}{8}{19}{8}{27};}
+        \end{tikzpicture}
+    } {
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 输入一个字符串 $s$（只包含小写字母），输出字符串 $s$ 中所有长度为 $3$ 的子串
+                    
+                \item 样例输入
+    
+                    \lstinline|hello|
+    
+                \item 样例输出
+                
+                    \lstinline|hel|\\
+                    \lstinline|ell|\\
+                    \lstinline|llo|
+    
+            \end{itemize}
+        \end{exampleblock}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{string 类型的常用函数}
+
+    \begin{itemize}
+        \item \lstinline|s.find(s1, pos)|
+        
+        \begin{itemize}
+            \item 返回一个整数，表示在字符串 $s$ 中，从 $pos$ 这个下标开始，第一次查找到的字符串 $s1$ 的位置
+            \item 找不到时函数返回 \lstinline|string::npos|
+            \item 省略 $pos$ 时，\lstinline|find| 默认从下标 $0$ 开始查找
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=find_string]{ch18/find_string.cc}
+
+        \end{itemize}
+    \end{itemize}
+            
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{C 风格字符串与 string 类型对比}
+
+    \begin{table}[!ht]
+        \centering
+        \renewcommand{\arraystretch}{1.5} % 设置垂直内边距为1.5倍默认行高
+        \begin{tabular}{p{2.2cm}p{3.5cm}p{4cm}}
+        \hline
+            \textbf{操作}   & \textbf{C 风格字符串}   & \textbf{string 类型} \\ \hline
+            输入、输出       & \lstinline|cin / cout|            & \lstinline|cin / cout| \\ 
+            整行输入         & \lstinline|fgets(s, len, stdin)|   & \lstinline|getline(cin, s)| \\ 
+            第 $i$ 个字符    & \lstinline|s[i]|                  & \lstinline|s[i]| \\ 
+            求长度          & \lstinline|strlen(s)|            & \lstinline|s.size() / s.length()| \\
+            字符串比较       & \lstinline|strcmp(s1, s2)|        & \lstinline|s1 > s2, s1 < s2| ... \\
+            字符串复制       & \lstinline|strcpy(s1, s2)|        & \lstinline|s1 = s2| \\ 
+            字符串拼接       & \lstinline|strcat(s1, s2)|        & \lstinline|s1 = s1 + s2| \\\hline
+        \end{tabular} 
+    \end{table}
+            
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{string 数组}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{string 数组}
+
+    \only<1> {
+        \begin{itemize}
+            \item 声明
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=init_arr_string]{ch18/init_arr_string.cc}
+    
+            \item 访问单个字符串
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=single_si]{ch18/single_si.cc}
+    
+            \item 输入
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=cin_arr_string]{ch18/cin_arr_string.cc}
+    
+        \end{itemize}
+    }
+
+    \only<2>{
+        \begin{itemize}
+            \item 输出
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=init_arr_string]{ch18/cout_arr_string.cc}
+    
+            \begin{tikzpicture}
+                [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, column 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \\
+                    \lstinline|s[1]| \& \lstinline|h| \& \lstinline|e| \& \lstinline|l| \& \lstinline|l| \& \lstinline|o| \\
+                    \lstinline|s[2]| \& \lstinline|h| \& \lstinline|i| \\
+                    \lstinline|s[3]| \& \lstinline|t| \& \lstinline|u| \& \lstinline|r| \& \lstinline|i| \& \lstinline|n| \& \lstinline|g| \\
+                    \lstinline|...| \& \lstinline|...| \\
+                };
+            \end{tikzpicture}
+
+        \end{itemize}
+    }
+            
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{string 数组}
+
+    \only<1> {
+        \begin{block}{}
+            \vspace{.5cm}
+            \begin{center}
+                string 数组和什么数组很像？
+            \end{center}
+            \vspace{.5cm}
+        \end{block}
+    }
+
+    \only<2> {
+        \begin{itemize}
+            \item 声明
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=init_arr_ch]{ch18/init_arr_ch.cc}
+    
+            \item 访问单个字符串
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=single_si_2]{ch18/single_si_2.cc}
+    
+            \item 输入
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=cin_arr_string]{ch18/cin_arr_string.cc}
+    
+        \end{itemize}
+    }
+
+    \only<3>{
+        \begin{itemize}
+            \item 输出
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=init_arr_string]{ch18/cout_arr_string.cc}
+    
+            \begin{tikzpicture}
+                [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+                \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, column 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                    \\
+                    \lstinline|s[1]| \& \lstinline|h| \& \lstinline|e| \& \lstinline|l| \& \lstinline|l| \& \lstinline|o| \& \lstinline|'\\0'| \& \\
+                    \lstinline|s[2]| \& \lstinline|h| \& \lstinline|i| \& \lstinline|'\\0'| \& \& \& \& \\
+                    \lstinline|s[3]| \& \lstinline|t| \& \lstinline|u| \& \lstinline|r| \& \lstinline|i| \& \lstinline|n| \& \lstinline|g| \& \lstinline|'\\0'| \\
+                    \lstinline|...|  \& \lstinline|...| \& \& \& \& \& \& \\
+                };
+            \end{tikzpicture}
+
+        \end{itemize}
+    }
+            
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 6.2：字符串频率}
+
+    \alt<2> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=fre_string]{ch18/fre_string.cc}
+    } {
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 输入 $n$ ($1 \le n \le 200$) 个字符串（只包含大小写字母），
+                再输入一个字符串 $t$，统计 $n$ 个字符串里与字符串 $t$ 相同的字符串的个数
+                    
+                \item 样例输入
+    
+                    \lstinline|3|\\
+                    \lstinline|hello HELLO hello|\\
+                    \lstinline|hello|
+    
+                \item 样例输出
+                
+                    \lstinline|2|
+    
+            \end{itemize}
+        \end{exampleblock}
+    }
+            
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{string 数组小结}
+
+    \begin{itemize}
+        \item 声明
+        
+        \begin{itemize}
+            \item<2-> \lstinline|string s[210]; // 声明 210 个字符串|
+        \end{itemize}
+
+        \item \lstinline|s[i]| 的含义
+        
+        \begin{itemize}
+            \item<3-> 表示的是第 $i$ 个字符串，不是第 $i$ 个字符
+        \end{itemize}
+
+        \item 使用场景
+        
+        \begin{itemize}
+            \item<4-> 需要存储多个字符串时
+        \end{itemize}
+
+    \end{itemize}
+            
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}
+        \item string 类型
+        
+        \begin{itemize}
+            \item 声明与初始化、输入、输出、元素访问与遍历
+        \end{itemize}
+
+        \item 运算符
+        
+        \begin{itemize}
+            \item =、+、+=、>、<、>=、<=、==、!=
+        \end{itemize}
+
+        \item 函数
+        
+        \begin{itemize}
+            \item \lstinline|s.length()|、\lstinline|s.substr(pos, len)|、\lstinline|s.find(s1, pos)|
+        \end{itemize}
+
+        \item string 数组
+
+    \end{itemize}
+            
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
