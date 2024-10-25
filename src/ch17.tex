@@ -1,0 +1,488 @@
+%------------------------------------------------------------
+\title[05 - C 风格字符串]
+{05 - C 风格字符串}
+
+\subtitle{C++ 程序设计进阶}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{编码}
+
+    \begin{itemize}
+        \item<1-> 整数编码：符号位 + 数值位
+            \begin{itemize}
+                \item 原码：正数符号位为 $0$，负数为 $1$；数值位为数值的二进制
+                \item 反码：正数的反码和原码相同；负数的反码将数值位取反
+                \item 补码：正数的补码和原码相同：负数的补码在反码的基础上 $+ 1$
+            \end{itemize}
+
+        \item<2-> 字符编码
+            \begin{itemize}
+                \item 字符类型判断：\lstinline|if(ch >= 'a' && ch <= 'z')|
+                \item 字符和整数转换：\lstinline|ch - 'a'|
+                \item 大小写字母转换：\lstinline|ch - 'a' + 'A'|
+            \end{itemize}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{位运算}
+
+    \begin{itemize}
+        \item 位运算
+            \begin{itemize}
+                \item 按位与（\lstinline|&|）：只有两个对应位都为 $1$ 时才为 $1$
+                \item 按位或（\lstinline|||）：只要两个对应位中有一个 $1$ 时就为 $1$
+                \item 异或（\lstinline|^|）：只有两个对应位不同时才为 $1$
+                \item 取反（\lstinline|~|）：符号位、数值位全部取反
+                \item 左移（\lstinline|<<|）：\lstinline|x << i| 相当于 $x * 2^i$
+                \item 右移（\lstinline|>>|）：\lstinline|x >> i| 相当于 $x / {2^i}$
+            \end{itemize}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+\section{字符串}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字符串}
+
+    \begin{itemize}
+        \item<1-> “字符串”就是文本信息
+        \item<1-> 那我们什么时候接触过文本信息呢？
+            \begin{itemize}
+                \item \lstinline|cout << "文本";|
+                \item Word 软件
+                \item 搜索引擎
+                \item ……
+            \end{itemize}
+
+        \item<2-> 通俗来说，字符串就是一串字符
+            \begin{itemize}
+                \item C 语言中的字符串 —— 以空字符 \lstinline|'\0'| 结束的字符数组，又称 C 风格字符串
+                \item C++ 语言中的字符串 —— string 类
+            \end{itemize}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字符数组}
+
+    \begin{itemize}
+        \item C 风格字符串的本质是字符数组，而字符数组的本质是元素为字符的数组
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=charArrayDeclare]{ch17/charArrayDeclare.cc}
+    \end{itemize}
+
+    \begin{tikzpicture}
+            [nodes in empty cells, nodes={minimum width=1.5cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                \lstinline|city[0]| \& \lstinline|city[1]| \& \lstinline|city[2]| \& \lstinline|city[3]| \& \lstinline|city[4]| \& \lstinline|city[5]| \& \lstinline|city[6]|  \\
+                \lstinline|P|   \& \lstinline|a|   \& \lstinline|r|   \& \lstinline|i|   \& \lstinline|s|   \& \lstinline|  |   \& \lstinline|  |   \\
+            };
+     \end{tikzpicture}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{C 风格字符串}
+
+    \begin{itemize}
+        \item 在字符数组最后一个字符的下一个位置，加上字符串结束标志 \lstinline|'\0'|，一个字符数组就变成了 C 风格字符串
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cstringDecalre]{ch17/cstringDecalre.cc}
+        \item<2-> 在声明字符串时，数组的大小至少要大 $1$，如：\lstinline|char s[110];|
+    \end{itemize}
+
+    \begin{tikzpicture}
+            [nodes in empty cells, nodes={minimum width=1.5cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+            \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+                \lstinline|city[0]| \& \lstinline|city[1]| \& \lstinline|city[2]| \& \lstinline|city[3]| \& \lstinline|city[4]| \& \lstinline|city[5]| \& \lstinline|city[6]|  \\
+                \lstinline|P|   \& \lstinline|a|   \& \lstinline|r|   \& \lstinline|i|   \& \lstinline|s|   \& \lstinline|\0|   \& \lstinline|  |  \\
+            };
+     \end{tikzpicture}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{C 风格字符串}
+
+    \begin{itemize}
+        \item<1-> \lstinline|cin| 输入
+            \begin{itemize}
+                \item 当遇到空格、换行等空字符时会结束输入
+                \item 默认从下标 $0$ 开始存储
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=input]{ch17/input.cc}
+            \end{itemize}
+
+        \item<3-> \lstinline|fgets| 整行输入
+            \begin{itemize}
+                \item 当遇到换行时会结束输入，会把空格、\textbf{换行符}全部读入
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=inputALine]{ch17/inputALine.cc}
+            \end{itemize}
+    \end{itemize}
+
+    \only<2>{
+        \begin{itemize}
+        \item 图示：输入 \lstinline|hi c++| 后回车的效果
+        \end{itemize}
+
+        \begin{tikzpicture}
+        [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            \lstinline|s[0]| \& \lstinline|s[1]| \& \lstinline|s[2]| \& \lstinline|s[3]| \& \lstinline|s[4]| \& \lstinline|s[5]| \& \lstinline|s[6]| \& \lstinline|s[7]| \& \lstinline|...| \\
+            \lstinline|h|   \& \lstinline|i|   \& \lstinline|\\0|   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  | \\
+        };
+        \end{tikzpicture}
+    }
+    \only<4>{
+        \begin{itemize}
+        \item 图示：输入 \lstinline|hi c++| 后回车的效果
+        \end{itemize}
+
+        \begin{tikzpicture}
+        [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            \lstinline|s[0]| \& \lstinline|s[1]| \& \lstinline|s[2]| \& \lstinline|s[3]| \& \lstinline|s[4]| \& \lstinline|s[5]| \& \lstinline|s[6]| \& \lstinline|s[7]|  \& \lstinline|...| \\
+            \lstinline|h|   \& \lstinline|i|   \& \lstinline|  |   \& \lstinline|c|   \& \lstinline|+|   \& \lstinline|+|   \& \lstinline|\\n|   \& \lstinline|\\0|   \& \lstinline|  | \\
+        };
+        \end{tikzpicture}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{C 风格字符串}
+
+    \begin{itemize}
+        \item<1-> 输出整个字符串
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=output]{ch17/output.cc}
+
+        \item<2-> 访问字符
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=elementAccess]{ch17/elementAccess.cc}
+            
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+\section{C 风格字符串的常用函数}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{C 风格字符串的的常用函数}
+
+    \begin{itemize}
+        \item 头文件 \textbf{\lstinline|cstring|} 中有一些常用的函数
+        \item \textbf{\lstinline|strlen(s)|} 函数
+            \begin{itemize}
+                \item 返回一个整数，表示字符串 $s$ 的\textbf{长度}
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=strlen]{ch17/strlen.cc}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.1：字符串转小写}
+
+    \alt<2>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=A2a]{ch17/A2a.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 输入一个长度不超过 $100$ 的字符串（只包含大小写字母），将其中的大写字母全部转为小写字母，其他字符不变，输出转变后的结果。
+
+                \item 样例输入
+
+                    \lstinline|HeLLO|
+
+                \item 样例输出
+
+                    \lstinline|hello|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{C 风格字符串的的常用函数}
+
+    \begin{itemize}
+        \item<1-> \textbf{\lstinline|strcpy(s, t)|} 函数
+            \begin{itemize}
+                \item 无返回值，表示将字符串 $t$ \textbf{整体赋值}给字符串 $s$，字符串 $t$ 的内容保持不变
+            \end{itemize}
+        \item<4-> \textbf{\lstinline|strcat(s, t)|} 函数
+            \begin{itemize}
+                \item 无返回值，表示将字符串 $t$ \textbf{连接}到字符串 $s$ 之后，字符串 $t$ 的内容保持不变
+            \end{itemize}
+    \end{itemize}
+
+    \only<2,5>{
+        \begin{tikzpicture}
+        [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            \lstinline|s[0]| \& \lstinline|s[1]| \& \lstinline|s[2]| \& \lstinline|s[3]| \& \lstinline|s[4]| \& \lstinline|s[5]| \& \lstinline|s[6]| \& \lstinline|...| \\
+            \lstinline|K|   \& \lstinline|O|   \& \lstinline|\\0|   \& \lstinline|  |   \& \lstinline|  |   \& \lstinline|  |     \& \lstinline|  |  \& \lstinline|  |\\
+        };
+        \end{tikzpicture}
+
+        \begin{tikzpicture}
+        [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            \lstinline|t[0]| \& \lstinline|t[1]| \& \lstinline|t[2]| \& \lstinline|t[3]| \& \lstinline|t[4]| \& \lstinline|t[5]| \& \lstinline|t[6]| \& \lstinline|...| \\
+            \lstinline|H|   \& \lstinline|a|   \& \lstinline|H|   \& \lstinline|a|   \& \lstinline|\\0|   \& \lstinline|  |     \& \lstinline|  |  \& \lstinline|  |\\
+        };
+        \end{tikzpicture}
+    }
+    \only<3>{
+        \begin{tikzpicture}
+        [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            \lstinline|s[0]| \& \lstinline|s[1]| \& \lstinline|s[2]| \& \lstinline|s[3]| \& \lstinline|s[4]| \& \lstinline|s[5]| \& \lstinline|s[6]| \& \lstinline|...| \\
+            \lstinline|H|   \& \lstinline|a|   \& \lstinline|H|   \& \lstinline|a|   \& \lstinline|\\0|   \& \lstinline|  |  \& \lstinline|  |   \& \lstinline|  | \\
+        };
+        \end{tikzpicture}
+
+        \begin{tikzpicture}
+        [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            \lstinline|t[0]| \& \lstinline|t[1]| \& \lstinline|t[2]| \& \lstinline|t[3]| \& \lstinline|t[4]| \& \lstinline|t[5]| \& \lstinline|t[6]| \& \lstinline|...| \\
+            \lstinline|H|   \& \lstinline|a|   \& \lstinline|H|   \& \lstinline|a|   \& \lstinline|\\0|   \& \lstinline|  |  \& \lstinline|  |   \& \lstinline|  | \\
+        };
+        \end{tikzpicture}
+    }
+    \only<6>{
+        \begin{tikzpicture}
+        [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            \lstinline|s[0]| \& \lstinline|s[1]| \& \lstinline|s[2]| \& \lstinline|s[3]| \& \lstinline|s[4]| \& \lstinline|s[5]| \& \lstinline|s[6]| \& \lstinline|...| \\
+            \lstinline|K|   \& \lstinline|O|   \& \lstinline|H|   \& \lstinline|a|   \& \lstinline|H|   \& \lstinline|a|   \& \lstinline|\\0| \& \lstinline|  |\\
+        };
+        \end{tikzpicture}
+
+        \begin{tikzpicture}
+        [nodes in empty cells, nodes={minimum width=1.2cm, minimum height=.7cm}, row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+        \matrix(A) [matrix of nodes, ampersand replacement=\&, row 1/.style={nodes={draw=none}}, nodes={draw, anchor=center}]{
+            \lstinline|t[0]| \& \lstinline|t[1]| \& \lstinline|t[2]| \& \lstinline|t[3]| \& \lstinline|t[4]| \& \lstinline|t[5]| \& \lstinline|t[6]| \& \lstinline|...| \\
+            \lstinline|H|   \& \lstinline|a|   \& \lstinline|H|   \& \lstinline|a|   \& \lstinline|\\0|   \& \lstinline|  |     \& \lstinline|  | \& \lstinline|  | \\
+        };
+        \end{tikzpicture}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{讨论}
+
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            {\Large 整数、小数都存在大小关系，\\那字符串存在大小关系吗？}
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字典序}
+
+    \begin{itemize}[<+->]
+        \item 字典序表示单词在字典中出现的先后顺序
+        \begin{itemize}
+            \item \lstinline|bear, apple, beer| 三个单词在字典中的先后顺序是什么？
+            \item \lstinline|Bear, apple, Beer| 三个单词在字典中的先后顺序是什么？
+        \end{itemize}
+        \item 在计算机中会以 \textbf{\lstinline|ASCII| 码} 的数值大小为依据，比较每个字符
+        \begin{itemize}
+            \item \lstinline|Bear, 123, apple| 三个字符串的字典序大小是什么？
+            \item \lstinline|Bee, Bee| 两个字符串的字典序大小是什么？
+            \item \lstinline|Beer, Bee| 两个字符串的字典序大小是什么？
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{字典序}
+
+    \begin{itemize}
+        \item<1-> \textbf{\lstinline|strcmp(s, t)|} 函数
+        \begin{itemize}
+            \item 返回值一个整数，表示字符串 $s, t$ 之间的字典序大小关系
+            \item 返回值大于 $0$，表示字符串 $s$ 的字典序大于字符串 $t$
+            \item 返回值等于 $0$，表示字符串 $s$ 的字典序等于字符串 $t$（两个字符串相同）
+            \item 返回值小于 $0$，表示字符串 $s$ 的字典序小于字符串 $t$
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.2：字典序比较}
+
+    \alt<2>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=cmp]{ch17/cmp.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 输入两个长度均不超过 $100$ 的字符串 $s, t$（均只包含大小写字母和数字字符），依据以下要求进行输出：
+                \begin{itemize}
+                    \item 如果 $s$ 的字典序大于 $t$，则输出 >
+                    \item 如果 $s$ 的字典序等于 $t$，则输出 =
+                    \item 如果 $s$ 的字典序小于 $t$，则输出 <
+                \end{itemize}
+
+                \item 样例输入
+
+                    \lstinline|bee beer|
+
+                \item 样例输出
+
+                    \lstinline|<|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.3：判断回文串}
+
+    \alt<2>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=palindrome]{ch17/palindrome.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 输入一个长度不超过 $100$ 的字符串 $s$（只包含大小写字母和数字字符）。若 $s$ 是回文串则输出 YES，否则输出 NO。\\
+                    回文串表示字符串正着念与倒着念相同。
+
+                \item 样例输入
+
+                    \lstinline|level|
+
+                \item 样例输出
+
+                    \lstinline|YES|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 5.4：输出子串}
+
+    \alt<2>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=substr]{ch17/substr.cc}
+    }{
+        \begin{exampleblock}{编程题}
+
+            \begin{itemize}
+                \item 输入一个长度不超过 $100$ 的字符串 $s$（只包含大小写字母）。再输入两个整数 $pos, len$，请输出 $s$ 中从下标 $pos$ 开始、长度为 $len$ 的子串（保证不会越界）。
+
+                \item 样例输入
+
+                    \lstinline|abcdef|\\
+                    \lstinline|2 3|
+
+                \item 样例输出
+
+                    \lstinline|cde|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{C 风格字符串}
+
+    \begin{itemize}
+        \item<1-> C 风格字符串
+        
+            \begin{itemize}
+                \item 声明、初始化、输入、输出
+            \end{itemize}
+
+        \item<2-> 常用函数
+        
+            \begin{itemize}
+                \item \lstinline|strlen(s)|：获取长度
+                \item \lstinline|strcpy(s, t)|：整体赋值
+                \item \lstinline|strcat(s, t)|：拼接
+                \item \lstinline|strcmp(s, t)|：比较字典序
+            \end{itemize}
+       
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge Thank you!}
+    \end{center}
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
