@@ -1,0 +1,609 @@
+%------------------------------------------------------------
+\title[08 - 结构体 II]
+{08 - 结构体 II}
+
+\subtitle{C++ 程序设计进阶}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{复习回顾}
+
+    \begin{itemize}
+        \item 结构体的定义
+        
+        \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=st_def]{ch20/st_def.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3->{\redbox{st_def}{3}{20}{3}{23} node[right,xshift=.2cm,yshift=.2cm]{一般不写 \lstinline|sum = s1 + s2;|};}
+            \uncover<4->{\redbox{st_def}{5}{14}{5}{34};}
+        \end{tikzpicture}
+
+        \only<2-> {
+            \begin{itemize}
+                \item<2-> 结构体包含\textbf{成员变量}（属性）和\textbf{成员函数}（行为）
+                \item<3-> 成员变量在声明时一般不会进行初始化
+                \item<4-> 成员函数可以直接使用结构体内的成员变量
+            \end{itemize}
+        }
+        
+    \end{itemize}
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{复习回顾}
+
+    \begin{itemize}
+        \item 结构体的使用
+        
+        \begin{itemize}
+            \item <1-> 声明与初始化
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=st_init]{ch20/st_init.cc}
+            \vspace{1em}
+
+            \item <2-> 整体赋值
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=st_assign]{ch20/st_assign.cc}
+            \vspace{1em}
+
+            \item <3-> 访问成员列表
+            
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=st_mem_list]{ch20/st_mem_list.cc}
+            \vspace{1em}
+
+            \lstinputlisting[basicstyle=\ttfamily\footnotesize,language=C++,name=st_mem_list_err]{ch20/st_mem_list_err.cc}
+            \begin{tikzpicture}[remember picture, overlay]
+                \uncover<4->{\draw[red, very thick] ([shift={(2pt, .25em)}] pic cs:line-st_mem_list_err-1-start) -- ++(8em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-st_mem_list_err-1-start);}
+                \uncover<4->{\draw[red, very thick] ([shift={(2pt, .25em)}] pic cs:line-st_mem_list_err-2-start) -- ++(5em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-st_mem_list_err-2-end);}
+            \end{tikzpicture}
+
+        \end{itemize}
+        
+    \end{itemize}
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            上节课使用 \{ \} 可以将结构体进行初始化，\\
+            那除此之外还有其他快捷初始化的方法吗？
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{构造函数}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{构造函数}
+
+    \only<1-3>{
+        \begin{columns}
+            \column{.55\textwidth}
+            \begin{itemize}
+                \item 构造函数常用在声明结构体变量时\textbf{初始化成员变量}
+                \item 构造函数的定义
+                
+                \begin{itemize}
+                    \item \lstinline|函数名(参数列表)|
+                    \item 构造函数不能写返回值类型
+                    \item 构造函数的函数名只能是结构体名
+                \end{itemize}
+
+                \item <3-> 使用结构体声明变量时会自动调用构造函数进行初始化
+
+            \end{itemize}
+
+            \column{.45\textwidth}
+            
+            \only<1-2> {
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=st_constr]{ch20/st_constr.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<2->{\redbox{st_constr}{5}{3}{7}{19};}
+                \end{tikzpicture}
+            }
+
+            \only<3-> {
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=st_constr_2]{ch20/st_constr_2.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<3->{\redbox{st_constr_2}{5}{3}{7}{19};}
+                    \uncover<3->{\redbox{st_constr_2}{11}{3}{11}{12} node[above,xshift=0cm,yshift=.6cm]{默认调用该构造函数};}
+                    \uncover<3->{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-st_constr_2-11-end) -- ++(5em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-st_constr_2-6-end);}
+                \end{tikzpicture}
+            }
+
+        \end{columns}
+    }
+
+    \only<4-> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=st_constr_3]{ch20/st_constr_3.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<5->{\redbox{st_constr_3}{9}{5}{10}{14};}
+        \end{tikzpicture}
+
+        \begin{itemize}
+            \item <5> 构造函数可以根据需要初始化成员变量的值
+        \end{itemize}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{构造函数}
+
+        \begin{columns}
+            \column{.43\textwidth}
+            \begin{itemize}
+                \item <1-> 构造函数可以传入参数，用参数初始化成员变量
+                \item <3-> 声明结构体变量：
+                
+                \lstinline|结构体名 变量名(参数)|
+
+                \item <4-> 此时还可以使用 \lstinline|Student b;| 
+                
+                声明结构体变量吗？
+
+            \end{itemize}
+
+            \column{.57\textwidth}
+            
+            \only<1-2> {
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=st_constr_par]{ch20/st_constr_par.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<2>{\redbox{st_constr_par}{5}{3}{9}{36};}
+                \end{tikzpicture}
+            }
+
+            \only<3> {
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=st_constr_par_2]{ch20/st_constr_par_2.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<3>{\redbox{st_constr_par_2}{5}{3}{9}{36};}
+                    \uncover<3>{\redbox{st_constr_par_2}{13}{3}{15}{26};}
+                    \uncover<3>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-st_constr_par_2-13-end) -- ++(3em, 0) -- (5.6, 3.3);}
+                \end{tikzpicture}
+            }
+
+            \only<4-5> {
+                \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=st_constr_par_3]{ch20/st_constr_par_3.cc}
+                \begin{tikzpicture}[remember picture, overlay]
+                    \uncover<4>{\redbox{st_constr_par_3}{14}{3}{14}{12};}
+                    \uncover<5>{\redbox{st_constr_par_3}{14}{3}{14}{12} node[above,xshift=.5cm,yshift=1cm]{无法调用该构造函数};}
+                    \uncover<5>{\redbox{st_constr_par_3}{5}{3}{9}{36};}
+                    \uncover<5>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-st_constr_par_3-14-end) -- ++(9em, 0) -- (5.55, 2.9);}
+                \end{tikzpicture}
+            }
+
+        \end{columns}
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{构造函数}
+
+        \begin{columns}
+            \column{.43\textwidth}
+            \begin{itemize}
+                \item <1-> 一个结构体可以有多个构造函数，但每个构造函数的\textbf{参数列表必须不同}
+                \item <3-> 声明结构体变量的写法不同，会调用不同的构造函数
+            \end{itemize}
+
+            \column{.57\textwidth}
+            
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=st_constr_par_4]{ch20/st_constr_par_4.cc}
+            \begin{tikzpicture}[remember picture, overlay]
+                \uncover<2>{\redbox{st_constr_par_4}{5}{3}{5}{11};}
+                \uncover<2>{\redbox{st_constr_par_4}{8}{3}{8}{34};}
+
+                \uncover<3>{\redbox{st_constr_par_4}{8}{3}{12}{36};}
+                \uncover<3>{\redbox{st_constr_par_4}{16}{3}{16}{26} node[above,xshift=-.5cm,yshift=.5cm]{自动调用该构造函数};}
+                \uncover<3>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-st_constr_par_4-16-end) -- ++(4em, 0) -- (6, 2.9);}
+
+                \uncover<4>{\redbox{st_constr_par_4}{5}{3}{7}{19};}
+                \uncover<4>{\redbox{st_constr_par_4}{17}{3}{17}{12} node[above,xshift=2.3cm,yshift=1cm]{自动调用该构造函数};}
+                \uncover<4>{\draw[red, very thick, ->] ([shift={(2pt, .25em)}] pic cs:line-st_constr_par_4-17-end) -- ++(11em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-st_constr_par_4-6-end);}
+            \end{tikzpicture}
+
+        \end{columns}
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 8.1：计算学生的成绩}
+
+    \alt<2> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc]{ch20/calc.cc}
+    } {
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 编写一个 Student 结构体，成员变量包含姓名 $name$、学号 $id$、分数 $score$（$name$ 是字符串，$id$、$score$ 是整数）
+                        使用构造函数解决以下问题：
+
+                        已知班级里有 $n$ ($1 \leq n \leq 100$) 个学生，并且学生的平均分为 $60$ 分。每个学生与平均分都有一定的差距 $d$，
+                        $d$ 为正数表示比平均分高多少分，负数表示比平均分低多少分。
+                        
+                        最后输出 $n$ 个学生的 $name$、$id$、$score$
+                
+                \begin{columns}
+                    \column{.04\textwidth}        
+
+                    \column{.46\textwidth}        
+
+                    \item 样例输入
+        
+                        \lstinline|3|\\
+                        \lstinline|Tom 1 4|\\
+                        \lstinline|Lucy 2 -3|\\
+                        \lstinline|Ken 3 -1|
+        
+                    \column{.50\textwidth}        
+
+                    \item 样例输出
+                    
+                        \lstinline|Tom 1 64|\\
+                        \lstinline|Lucy 2 57|\\
+                        \lstinline|Ken 3 59|
+
+                \end{columns}
+    
+            \end{itemize}
+        \end{exampleblock}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{运算符函数}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{运算符函数}
+
+    \begin{itemize}
+        \item <1-> 已知两个 string 类型的变量可以通过 < 进行比较
+        
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_def_1]{ch20/calc_def_1.cc}
+
+        \item <2-> 当比较两个结构体变量的大小关系时，可以直接使用 < 吗？
+        
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_def_2]{ch20/calc_def_2.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3>{\draw[red, very thick] ([shift={(2pt, .25em)}] pic cs:line-calc_def_2-3-start) -- ++(4em, 0) |- ([shift={(2pt, .25em)}] pic cs:line-calc_def_2-3-start);}
+        \end{tikzpicture}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{运算符函数}
+
+    \begin{itemize}
+        \item <1-> 运算符函数 使得结构体类型变量支持符号运算
+
+        \item <2-> 常被定义（或重载）的运算符函数有：
+        
+        \begin{itemize}
+            \item 算术运算符：\lstinline|+ - * / %|
+            \item 关系运算符：\textcolor{red}{\lstinline|< >|} \lstinline|<= >= == !=|
+        \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{运算符函数}
+
+    \begin{itemize}
+        \item <1-> 运算符函数的函数头与普通函数相似，不同的是：
+        
+        \begin{itemize}
+            \item 函数名由 \textcolor{red}{operator 运算符} 组成
+            \item 参数列表往往需要 \textcolor{red}{const} 和 \textcolor{red}{\&}
+        \end{itemize}
+
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_def]{ch20/calc_def.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<2->{\redbox{calc_def}{4}{20}{4}{24};}
+            \uncover<2->{\redbox{calc_def}{4}{34}{4}{35} node[below,xshift=-1cm,yshift=-.3cm]{保证形参不被修改};}
+            \uncover<2->{\draw[red, very thick, ->] (3.6,2) -- (3.6,2.3) -- (5.7,2.3) -- (5.7,2);}
+
+            \uncover<3->{\redbox{calc_def}{2}{3}{3}{16};}
+            \uncover<3->{\redbox{calc_def}{4}{38}{4}{42} node[above,xshift=-1cm,yshift=1cm]{保证自己的成员变量不被修改};}
+            \uncover<3->{\draw[red, very thick, ->] (6.7,2) -- (6.7,2.5) -- (2.8,2.5);}
+        \end{tikzpicture}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{< 运算符函数}
+
+    \begin{itemize}
+        \item 运算符函数的功能是设计比较规则
+        
+        \only<1> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_def_rule]{ch20/calc_def_rule.cc}}
+        \only<2> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_def_rule_2]{ch20/calc_def_rule_2.cc}}
+        
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 8.2：比较两个学生的大小关系}
+
+    \alt<2-5> {
+        \only<2> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=compare]{ch20/compare.cc}}
+        \only<3> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=compare_2]{ch20/compare_2.cc}}
+        \only<4-5> {
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=compare_3]{ch20/compare_3.cc}
+
+            \begin{itemize}
+                \uncover<5> {\item 重载的运算符只有 <，所以不能使用 >、<= 等进行比较大小}
+            \end{itemize}
+        }
+    } {
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 编写一个 Student 结构体，成员变量包含姓名 $name$、学号 $id$、分数 $score$。
+
+                        输入两个学生的信息，使用 < 比较两个结构体变量，输出其中分数较小的学生的名字   
+
+                \item 样例输入
+    
+                    \lstinline|Tom 1 89|\\
+                    \lstinline|Lucy 2 75|    
+
+                \item 样例输出
+                
+                    \lstinline|Lucy|
+    
+            \end{itemize}
+        \end{exampleblock}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{> 运算符函数}
+
+    \begin{itemize}
+        \item 当想要使用 > 比较两个结构体变量时，必须重载 > 运算符函数
+        
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_def_rule_3]{ch20/calc_def_rule_3.cc}
+
+        \item<2> 该运算符函数比较的是什么？
+        
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{其他运算符函数}
+
+    \begin{itemize}
+        \item 同理，当需要判断两个结构体变量的 == 或 >= 等关系时，也可以重载对应的运算符函数
+        
+        \only<1> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_def_rule_4]{ch20/calc_def_rule_4.cc}}
+        \only<2> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_def_rule_5]{ch20/calc_def_rule_5.cc}}
+        \only<3> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_def_rule_6]{ch20/calc_def_rule_6.cc}}
+
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{多个比较规则的运算符函数}
+
+    \only<1>{
+        \begin{block}{}
+            \vspace{.5cm}
+            \begin{center}
+                当两个学生结构体变量需要先比较总分谁大，\\
+                如果总分相同再比较姓名字典序谁大时，该怎么办？
+            \end{center}
+            \vspace{.5cm}
+        \end{block}
+    }
+
+    \only<2-4>{
+        \begin{itemize}
+            \item 可以重载多个运算符函数来进行比较吗？
+            
+            \begin{itemize}
+                \item<2-> 重载多个不同的运算符函数是可以的
+                \item<3-> 但不可以多次重载相同的运算符函数
+            \end{itemize}
+
+            \item<4-> 理论上可行，但有没有更简单的写法？
+        \end{itemize}
+
+        \only<1-3> {
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_defs_1]{ch20/calc_defs_1.cc}
+            \begin{tikzpicture}[remember picture, overlay]
+                \only<2> {\redbox{calc_defs_1}{4}{3}{9}{45};}
+                \only<3> {
+                    \redbox{calc_defs_1}{4}{3}{4}{17};
+                    \redbox{calc_defs_1}{10}{3}{10}{17};
+                }
+            \end{tikzpicture}
+        }
+        
+        \only<4> {
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_defs_2]{ch20/calc_defs_2.cc}
+            \begin{tikzpicture}[remember picture, overlay]
+                \only<4> {\redbox{calc_defs_2}{10}{3}{12}{37};}
+            \end{tikzpicture}
+        } 
+    }
+
+    \only<5-6> {
+        \begin{itemize}
+            \item 可以将多个比较规则合并到一个运算符函数里：
+            
+            \only<5> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_defs_3]{ch20/calc_defs_3.cc}}
+            \only<6> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=calc_defs_4]{ch20/calc_defs_4.cc}}
+
+        \end{itemize}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 8.3：成绩最优异的学生}
+
+    \alt<2> {
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=mx_stu]{ch20/mx_stu.cc}
+    } {
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 编写一个 Student 结构体，成员变量包含姓名 $name$、学号 $id$、分数 $score$。
+                定义一个 > 运算符函数，用于比较学生分数的关系，找到 $n$ ($1 \leq n \leq 100$) 个学生里分数最高的学生。\\
+                如果有多个同学的分数并列最高，则输出学号最大的学生的名字
+
+                \item 样例输入
+    
+                    \lstinline|3|\\
+                    \lstinline|Tom 3 90|\\
+                    \lstinline|Lucy 1 90|\\
+                    \lstinline|Ken 2 85|
+
+                \item 样例输出
+                
+                    \lstinline|Tom|
+    
+            \end{itemize}
+        \end{exampleblock}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 8.4：时间运算}
+
+    \alt<2-3> {
+        \only<2> {\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=time_1]{ch20/time_1.cc}}
+        \only<3> {
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=time_2]{ch20/time_2.cc}
+            \begin{tikzpicture}[remember picture, overlay]
+                \redbox{time_2}{8}{5}{8}{20};
+            \end{tikzpicture}
+        }
+    } {
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 给出 $n$ 个时间，每个时间用小时和分钟表示。\\
+                    希望你计算所有时间的和并输出。
+
+                \item 样例输入
+    
+                    \lstinline|4|\\
+                    \lstinline|1 15|\\
+                    \lstinline|0 56|\\
+                    \lstinline|5 12|\\
+                    \lstinline|3 8|
+
+                \item 样例输出
+                
+                    \lstinline|10 31|
+    
+            \end{itemize}
+        \end{exampleblock}
+    }
+
+\end{frame}
+%------------------------------------------------------------
+
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{总结}
+
+    \begin{itemize}
+        \item 构造函数
+        
+        \begin{itemize}
+            \item 有、无参构造函数
+        \end{itemize}
+
+        \item 运算符函数
+        
+        \begin{itemize}
+            \item \lstinline|<、>、+| 运算符函数
+        \end{itemize}
+
+        \item 运算符函数应用
+        
+        \begin{itemize}
+            \item 多个比较规则
+            \item 结构体数组找最值
+        \end{itemize}
+
+    \end{itemize}
+            
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
