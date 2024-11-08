@@ -1,0 +1,493 @@
+%------------------------------------------------------------
+\title[07 - 结构体 I]
+{07 - 结构体 I}
+
+\subtitle{C++ 程序设计进阶}
+
+\author[Beiyu Li]
+{Beiyu Li\\
+\texttt{<sysulby@gmail.com>}}
+
+% \institute[SOJ]
+% {Sicily Online Judge}
+
+\date[\today]
+{\number\year 年 \number\month 月 \number\day 日}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+\author[sysulby]
+{SOJ 信息学竞赛教练组}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\setcounter{framenumber}{0} % 标题页不编号
+
+\section{复习回顾}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{string 类型}
+    \alt<2-3>{
+        \begin{itemize}
+        \item<2-> 赋值：\lstinline|s = t;|
+        \item<2-> 字典序比较：\lstinline|s > t|
+        \item<2-> 拼接：\lstinline|s += t;|
+
+        \item<3-> 获取长度：\lstinline|s.length()/s.size()|
+        \item<3-> 提取子串：\lstinline|s.substr(pos, len)|
+        \item<3-> 查找字符串：\lstinline|s.find(t, pos)|
+        \end{itemize}
+    }{
+        
+        \begin{itemize}
+        \item 声明、输入、输出
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=string]{ch19/string.cc}
+        \end{itemize}
+    }
+    
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{讨论}
+
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            {\Large string 类型是经过包装的数据类型，\\那我们可以自己包装一个新的数据类型吗？}
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+\end{frame}
+%------------------------------------------------------------
+
+\section{结构体的定义}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{结构体}
+
+    \begin{itemize}
+        \item<1-> 结构体是将一个事物的\textbf{多种属性和行为}包装起来的自定义数据类型
+        \item<2-> 如果用独立的变量或数组来存储一个事物的多种属性，无法时刻体现数据之间的相互联系，因此常用结构体实现\textbf{数据之间的相互联系}
+            \begin{itemize}
+                \item<3-> 学生：姓名、学号、年龄、成绩等信息
+                \item<3-> 平面上的点：\lstinline|x| 坐标、\lstinline|y| 坐标
+            \end{itemize}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{结构体的定义}
+    \begin{columns}
+        \column{.05\textwidth}
+
+        \column{.35\textwidth}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=declareOfstruct]{ch19/declareOfstruct.cc}
+    
+        \column{.60\textwidth}
+        \uncover<5>{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=declareExample]{ch19/declareExample.cc}}
+    \end{columns}
+
+    \begin{itemize}
+        \vspace{.5cm}    
+        \item<2-> 结构体需要定义在 \textbf{\lstinline|main| 函数外面}
+        \item<3-> 结构体包含\textbf{成员变量}（属性）和\textbf{成员函数}（行为）
+        \item<4-> 结构体的定义需要\textbf{以分号结束}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{成员变量}
+    
+    \begin{columns}
+        \column{.65\textwidth}
+        \begin{itemize}
+            \item<1-> 成员变量用来描述一个事物的各种属性
+            \item<2-> 成员变量的定义
+            \begin{itemize}
+                \item<3-> \textbf{类型} \textbf{变量名;}
+                \item<4-> 类型可以是基本数据类型，也可以是 \lstinline|string| 类型等包装过的数据类型
+                \item<5-> 变量在声明时一般不会进行初始化
+            \end{itemize}
+        \end{itemize}
+    
+        \column{.35\textwidth}
+        \alt<5-6>{
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=errorDeclareExample]{ch19/errorDeclareExample.cc}
+            \begin{tikzpicture}[remember picture, overlay]
+                \uncover<6>{\draw[red,very thick]([shift={(-50pt, .25em)}] pic cs:line-errorDeclareExample-4-end) -- ([shift={(0pt, .25em)}] pic cs:line-errorDeclareExample-4-end);}
+            \end{tikzpicture}
+        }{            
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=StudentStructExample]{ch19/StudentStructExample.cc}
+        }
+    \end{columns}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{讨论}
+
+    \begin{block}{}
+        \vspace{.5cm}
+        \begin{center}
+            {\Large 定义了一个拥有多个成员变量\\的结构体后，如何使用它呢？}
+        \end{center}
+        \vspace{.5cm}
+    \end{block}
+\end{frame}
+%------------------------------------------------------------
+
+\section{结构体的使用}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{结构体变量的声明和使用}
+    
+    \begin{itemize}
+        \item<1-> 结构体的定义完成后，结构体名就是一个\textbf{全新的数据类型} 
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=declareStructVariable]{ch19/declareStructVariable.cc}
+        \item<2-> 输入输出
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=io]{ch19/io.cc}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<3->{
+                \draw[red,very thick]([shift={(0pt, .25em)}] pic cs:line-io-1-start) -- ([shift={(0pt, .25em)}] pic cs:line-io-1-end);
+                \draw[red,very thick]([shift={(0pt, .25em)}] pic cs:line-io-2-start) -- ([shift={(0pt, .25em)}] pic cs:line-io-2-end);
+            }
+        \end{tikzpicture}
+        \item<4-> 结构体中没有定义整体输入输出的操作，因此结构体不支持直接使用 cin 和 cout 进行整体输入输出
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{结构体变量的声明和使用}
+    
+    \begin{itemize}
+        \item<1-> 在声明完一个结构体变量后，可以使用点操作符访问其成员列表
+        \uncover<2->{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=dotOperator]{ch19/dotOperator.cc}}
+        
+        \uncover<3->{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=ErrorDotOperator]{ch19/ErrorDotOperator.cc}}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<4->{
+                \draw[red,very thick]([shift={(0pt, .25em)}] pic cs:line-ErrorDotOperator-1-start) -- ([shift={(0pt, .25em)}] pic cs:line-ErrorDotOperator-1-end);
+            }
+        \end{tikzpicture}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 7.1 输入输出学生的信息}
+
+    \alt<2>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=example1]{ch19/example1.cc}
+    }{
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 编写一个 \lstinline|Student| 结构体，成员变量包含姓名 $name$、成绩 $s1$、$s2$、总分 $sum$。其中，$name$ 是字符串，$s1$、$s2$、$sum$ 是小数。\\
+                使用结构体声明一个学生变量 $a$，依次输入 $name$、$s1$、$s2$，并计算 $sum$ 的值，最后再输出 $name$、$s1$、$s2$、$sum$
+
+                \item 样例输入
+
+                    \lstinline|Tom 80 81|
+
+                \item 样例输出
+
+                    \lstinline|Tom 80 81 161|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{结构体变量的声明和使用}
+    
+    \begin{itemize}
+        \item<1-> 已知 \lstinline|string| 类型可以使用 = 直接进行初始化和赋值，那么自定义的结构体可以吗？
+        \uncover<1->{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=assign_string]{ch18/assign_string.cc}}
+        
+        \item<2-> 结构体可以进行初始化，也支持整体赋值
+        \uncover<3->{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=assign]{ch19/assign.cc}}
+        
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+\section{结构体数组}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{结构体数组的声明和使用}
+    
+    \begin{itemize}
+        \item \lstinline|string str[110];| 表示什么意思？
+        \begin{itemize}
+            \item 声明了可以存储 \lstinline|110| 个字符串的数组
+        \end{itemize}
+        \item<2-> 声明结构体数组
+        \uncover<2->{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=declareStructArray]{ch19/declareStructArray.cc}}
+
+        \item<3-> 访问元素的成员变量
+        \uncover<3->{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=usageStructArray]{ch19/usageStructArray.cc}}
+        \begin{tikzpicture}[remember picture, overlay]
+            \uncover<4->{
+                \draw[red,very thick]([shift={(0pt, .25em)}] pic cs:line-usageStructArray-2-start) -- ([shift={(75pt, .25em)}] pic cs:line-usageStructArray-2-start);
+            }
+        \end{tikzpicture}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{结构体数组的声明和使用}
+    
+    \begin{itemize}
+        \item 遍历数组
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=traverseStructArray]{ch19/traverseStructArray.cc}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 7.2 输入输出学生的信息 II}
+
+    \alt<2>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=example2]{ch19/example2.cc}
+    }{
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 利用【例7.1】的结构体，主函数中输入 $n(1 \leq n \leq 100)$ 个学生的 $name$、$s1$、$s2$，计算 $sum$ 后再输出 $n$ 个学生的 $name$、$sum$
+
+                \item 样例输入
+
+                    \lstinline|3|\\
+                    \lstinline|Tom 80 81|\\
+                    \lstinline|Lucy 80.5 81|\\
+                    \lstinline|Ken 75 85|
+
+                \item 样例输出
+
+                    \lstinline|Tom 161|\\
+                    \lstinline|Lucy 161.5|\\
+                    \lstinline|Ken 160|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+\section{结构体类型作函数参数}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{结构体变量的使用}
+    
+    \begin{itemize}
+        \item 结构体是一种新的数据类型，可不可以作为函数的参数呢？
+        
+        \uncover<2->{\lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=example]{ch19/example.cc}}
+
+        \item<3-> 以上程序输入 \lstinline|Tom 80 82.5| 会输出什么？
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 7.3 判断学生是否优秀}
+
+    \alt<2>{
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=example3]{ch19/example3.cc}
+    }{
+        \begin{exampleblock}{编程题}
+            \begin{itemize}
+                \item 利用【例7.1】的结构体，编写一个普通函数 \lstinline|isExcellent|，作用是判断学生的总分是否超过优秀分的分数线，如果超过，就返回 \lstinline|true|，否则返回 \lstinline|false|\\
+                主函数中先输入优秀分；再声明一个学生变量，输入学生的信息后，再使用 \lstinline|isExcellent| 函数判断学生是否优秀，如果是就输出 \lstinline|Excellent| ，否则输出 \lstinline|Keep going|
+
+                \item 样例输入
+
+                    \lstinline|185|\\
+                    \lstinline|Tom 92 94|
+
+                \item 样例输出
+
+                    \lstinline|Excellent|
+
+            \end{itemize}
+
+        \end{exampleblock}
+    }
+\end{frame}
+%------------------------------------------------------------
+
+\section{结构体的成员函数}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{成员函数}
+    
+    \begin{itemize}
+        \item<1-> 成员函数用来描述一个事物支持的操作（行为）
+        \item<2-> 成员函数的定义
+        \begin{itemize}
+            \item<3-> \textbf{返回值类型} \textbf{函数名(参数列表)}
+            \item<4-> 成员函数内可以直接使用结构体内的成员变量
+        \end{itemize}
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=declareOfstructFun]{ch19/declareOfstructFun.cc}
+    \end{itemize}
+
+    \begin{tikzpicture}[remember picture, overlay]
+        \only<3-4>{\redbox{declareOfstructFun}{4}{3}{4}{15};}
+        \only<4>{\redbox{declareOfstructFun}{5}{13}{5}{30};}
+    \end{tikzpicture}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{成员函数}
+    
+    \begin{itemize}
+        \item 成员函数的调用
+        \begin{itemize}
+            \item \textbf{结构体变量名.成员函数名()}
+        \end{itemize}
+        \alt<3>{
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=usageOfstructFun2]{ch19/usageOfstructFun2.cc}
+        }{
+            \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=usageOfstructFun1]{ch19/usageOfstructFun1.cc}
+        }
+        \item<3> 调用函数进行输出和直接输出哪种更方便？
+    \end{itemize}
+
+    \begin{tikzpicture}[remember picture, overlay]
+        \only<2>{\redbox{usageOfstructFun1}{5}{3}{5}{13};}
+        \only<3>{\redbox{usageOfstructFun2}{5}{3}{5}{13}; \redbox{usageOfstructFun2}{6}{3}{6}{41}; }
+    \end{tikzpicture}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{成员函数}
+    
+    \begin{itemize}
+        \item 成员函数不需要点操作符就可以直接使用成员变量，因此常用成员函数进行输入 \lstinline|input|、输出 \lstinline|output|、计算 \lstinline|calc| 等需使用成员变量的操作
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=declareOfCompleteStruct]{ch19/declareOfCompleteStruct.cc}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 7.2 的两种做法}
+    
+    \alt<2>{
+        \begin{itemize}
+        \item 做法 2
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=example2_1]{ch19/example2_1.cc}
+        \end{itemize}
+    }{
+        \begin{itemize}
+        \item 做法 1
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=example2]{ch19/example2.cc}
+        \end{itemize}
+   }
+        
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{成员函数}
+    
+    \begin{itemize}
+        \item 成员函数在进行输入、输出、计算时，也可以传入参数进行运算或输出
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=functionWithVariable]{ch19/functionWithVariable.cc}
+    \end{itemize}
+
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{例 7.3 的两种做法}
+    \alt<2>{
+        \begin{itemize}
+        \item 做法 2
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=example3_1]{ch19/example3_1.cc}
+        \end{itemize}
+    }{
+        \begin{itemize}
+        \item 做法 1
+        \lstinputlisting[basicstyle=\ttfamily\scriptsize,language=C++,name=example3]{ch19/example3.cc}
+        \end{itemize}
+   }
+    
+\end{frame}
+%------------------------------------------------------------
+
+\section{总结}
+
+%------------------------------------------------------------
+\begin{frame}[fragile]
+    \frametitle{结构体}
+
+    \begin{itemize}
+        \item<1-> 结构体的定义
+        \item<2-> 结构体的使用
+            \begin{itemize}
+                \item 声明、初始化、使用、访问成员
+                \item 结构体数组
+            \end{itemize}
+       \item<3-> 成员函数的设计和使用
+            \begin{itemize}
+                \item 输入、输出、修改成员变量
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge Thank you!}
+    \end{center}
+\end{frame}
+%------------------------------------------------------------
+
+\end{document}
